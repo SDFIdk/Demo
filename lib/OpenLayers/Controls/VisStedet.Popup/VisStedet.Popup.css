@@ -1,0 +1,146 @@
+/****************** POPUP WINDOW COLORS *************************/
+
+
+.popupdiv {
+    background-color: #fff;
+    border-color: #444; 
+}
+
+.popupdivScrollerCentent a {
+    color: #00B018;
+}
+
+.triangle-topleft-front {
+    border-top-color: #fff; /* match popupdiv background */
+}
+
+.triangle-topleft-behind {
+    border-top-color: #444; /* match popupdiv border */
+}
+
+.popupdivHeading {
+    background-color: #eee;
+    color: #333;
+}
+
+.popupdivClose {
+    color: #333;
+}
+
+
+
+/****************** *************************/
+.popupdiv { 
+    font-family: "arial", sans-serif; 
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    z-index:2;  
+    width: 200px;
+}
+
+
+.arrowContainer {
+    height: 20px;   
+}
+
+.arrow-down-front {
+    margin-left: 96px;
+    margin-top: -1px;
+    *margin-top: -5px;
+    position: absolute;
+    z-index: 3;
+}
+.arrow-down-behind {
+    margin-left: 95px;
+    margin-top: 0;
+    *margin-top: -4px;
+    position: absolute;
+    z-index: 1;
+}
+
+.triangle-topleft-front {
+    width: 0;
+    height: 0;
+    border-top-style:solid;
+    border-top-width: 20px;
+    border-right: 20px solid transparent;
+}
+
+.triangle-topleft-behind {
+    width: 0;
+    height: 0;
+    border-top-style:solid;
+    border-top-width: 22px;
+    border-right: 22px solid transparent;
+}
+
+.popupdivScroller {
+    clear:both;
+    max-height: 100px;
+    width:100%;
+    color: #333;
+    overflow: auto;
+    padding: 0;
+    margin-bottom: 4px;
+    }
+
+.popupdivScrollerCentent {
+    font-size: 10px;
+    margin: 8px;
+}
+
+.popupdivScrollerCentent a {
+    text-decoration: none;
+}
+
+.popupdivScrollerCentent a:hover {
+    text-decoration: underline;
+}
+ 
+.popupdivClose {
+    float: right;
+    text-align:center;
+    margin: 0 4px;
+    padding: 0;         
+}
+    
+.popupdivClose a { 
+   font-family:"Verdana", sans-serif;
+   display:inline;
+   font-size: 17px;
+   font-weight:bold;
+   padding:0;
+   margin:0;
+}  
+     
+.popupdivClose a:hover {
+    cursor: pointer;
+}   
+    
+.popupdivHeading {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight:bold;
+    margin: 0;
+    padding: 6px;   
+}
+
+/****************** CSS3 *************************/
+
+.rounded {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius:5px; 
+    border-radius: 5px;
+}
+
+.shadow {
+
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#666666')"; /* For IE 8 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#666666');   /* For IE 5.5 - 7 */
+    
+    -webkit-box-shadow: #666 0px 2px 3px !important; /* Safari and Chrome */
+    -moz-box-shadow: #666 0px 2px 3px !important; /* Firefox */
+    box-shadow: #666 0px 2px 3px !important; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+}
