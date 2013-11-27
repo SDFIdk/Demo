@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Expires" content="Tue, 01 Jan 2000 12:12:12 GMT">
+	<meta http-equiv="Pragma" content="no-cache">
+ 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.17/themes/base/jquery-ui.css" />
+
+    <link rel="stylesheet" href="css/FindStedet.css" />
+    <link rel="stylesheet" href="css/FindStedetDesktop.css" />
+
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.17/jquery-ui.min.js"></script>
+    
+	 <script src="../../../lib/OpenLayers/2.12/OpenLayers.js" type="text/javascript" ></script>
+
+    <script type="text/javascript" src="../../../server/Ticket/kfticket.php"></script>
+    <script type="text/javascript" src="../../../lib/VisStedet/Utils.js"></script>
+    <script type="text/javascript" src="../../../lib/VisStedet/Ticket.js"></script>
+    <script type="text/javascript" src="../../../lib/VisStedet/Search.js"></script>
+    <script type="text/javascript" src="../../../lib/VisStedet/Search/GeoSearch.js"></script>
+
+    <script type="text/javascript" src="js/FindStedet.Layers.js"></script>
+    <script type="text/javascript" src="js/FindStedet.Map.js"></script>
+    <script type="text/javascript" src="js/FindStedet.Search.js"></script>
+    <script type="text/javascript" src="js/proj4js-compressed.js"></script>
+
+    <script type="text/javascript" src="js/JUnitDesktop.js"></script>
+
+
+    <title>Vis Stedet desktop app</title>
+<script>
+$(document).ready(function () {
+
+/*** Dialog*/ 
+        $( "#responseText" ).dialog(
+        {
+        autoOpen: true,
+        resizable: false,
+        position: 'center',
+        height: '650',
+        width: '420'
+        });
+        alert('sss');
+
+});
+</script>
+
+</head>
+<body>
+        <div id="responseText" style="display:none" title=" Offentlige Informationer"></div>
+
+</body>
+</html>

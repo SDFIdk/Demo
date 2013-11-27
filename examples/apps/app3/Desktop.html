@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Expires" content="Tue, 01 Jan 2000 12:12:12 GMT">
+	<meta http-equiv="Pragma" content="no-cache">
+ 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.17/themes/redmond/jquery-ui.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/FindStedet.css"  />
+    <link rel="stylesheet" type="text/css" href="css/FindStedetDesktop.css"  />
+
+
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.17/jquery-ui.min.js"></script>
+    
+    <script src="../../../lib/OpenLayers/2.12/OpenLayers.js" type="text/javascript" ></script>
+
+    <script type="text/javascript" src="../../../server/Ticket/kfticket.php"></script>
+    
+    <script type="text/javascript" src="../../../lib/VisStedet/Utils.js"></script>
+    <script type="text/javascript" src="../../../lib/VisStedet/Ticket.js"></script>
+    <script type="text/javascript" src="../../../lib/VisStedet/Search.js"></script>
+    <script type="text/javascript" src="../../../lib/VisStedet/Search/GeoSearch.js"></script>
+    <script type="text/javascript" src="js/FindStedet.Layers.js"></script>
+    <script type="text/javascript" src="js/FindStedet.Map.js"></script>
+    <script type="text/javascript" src="js/FindStedet.Search.js"></script>
+    <script type="text/javascript" src="js/JUnitDesktop.js"></script>
+    <script type="text/javascript" src="js/proj4js-compressed.js"></script>
+    <script type="text/javascript" src="js/Offentligeblad.js"></script>
+    <script type="text/javascript" src="http://github.com/erikzaadi/jQueryPlugins/raw/master/jQuery.printElement/jquery.printElement.min.js">
+    
+    </script>
+    <title>Vis Stedet desktop app</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="findstedet_div" class="findplaceDiv">
+        <div id="mapmenu">
+            <table id="mapmenu_table">
+                <tr valign="center" >
+                    <td align="left" class="mapmenu_table_call">
+                            <a href="#" id="btnOffentligeInformation" class="button infoBtn" title="Information"></a>
+                            <a href="#" id="layerPopup" class="button layerBtn" title="Kortvælger"></a>
+                            <a href="#" id="locate" class="button locateBtn" title="Min placering"></a>
+                    </td>
+                    <td align="right" class="mapmenu_table_call">
+                        <a href="#" id="search_address" class="button search_address" title="Adresse"></a>
+                        <a href="#" id="search_place" class="button search_place" title="Sted"></a>
+                        <a href="#" id="search_cadastral" class="button search_cadastral" title="Matrikel"></a>
+                        <span id="querydiv">
+                            <input type="search" name="query" id="query" placeholder="Søg" autocomplete="off"></input>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="map" style="background-color:#DEEDFF">
+
+           <div id="navigation">
+            <button ID="plus"></button>
+            <button ID="minus"></button>
+
+          </div>
+           <div id="dialogLayer">
+                <ol id="layerslist">
+                </ol>
+            </div>
+              <div id="copyrightDiv">© Geodatastyrelsen - BETA</div>
+        </div>
+
+    </div>
+    <div id="divOffentligeInformation" title=" Offentlige Informationer">
+        <table id="tableGeoKeys" width="400" style="table-layout:fixed;font-family: Arial, Helvetica, sans-serif; font-size: medium; font-style: inherit; border: 1px solid #2E6E9E; caption-side: top; border-spacing: 2px"> 
+             <col width=30>
+             <col width=115>
+             <col width=250>
+             <tbody>
+                <tr><td><input type="checkbox" name="checkboxlist" id="0_cbx" value="Adresse INFO" disabled="true" /></td><td>Adresse</td><td></td></tr>
+                <tr><td></td><td>Terrænhøjde</td><td></td></tr>
+                <tr><td><input type="checkbox" name="checkboxlist" id="2_cbx" value="Jordstykke INFO" disabled="true" /></td><td>Matrikelnr.</td><td></td></tr>
+                <tr><td></td><td>EjerLav</td><td></td></tr>
+                <tr><td></td><td>Ejendomsnr.</td><td></td></tr>
+                <tr><td><input type="checkbox" name="checkboxlist" id="5_cbx" value="Region INFO" disabled="true" /></td><td>Region</td><td></td></tr>
+                <tr><td><input type="checkbox" name="checkboxlist" id="6_cbx" value="Kommune INFO" disabled="true" /></td><td>Kommune</td><td></td></tr>
+                <tr><td><input type="checkbox" name="checkboxlist" id="7_cbx" value="Sogne INFO" disabled="true" /></td><td>Sogne</td><td></td></tr>
+                <tr><td><input type="checkbox" name="checkboxlist" id="8_cbx" value="Politikreds INFO" disabled="true" /></td><td>Politikreds</td><td></td></tr>
+                <tr><td><input type="checkbox" name="checkboxlist" id="9_cbx" value="Retskreds INFO" disabled="true" /></td><td>Restskreds</td><td></td></tr>
+                <tr><td><input type="checkbox" name="checkboxlist" id="10_cbx" value="Opstillingskreds INFO" disabled="true" /></td><td>Opstillingskreds</td><td></td></tr>
+                <tr><td><input type="checkbox" name="checkboxlist" id="11_cbx" value="Bygning INFO" disabled="true" /></td><td>Bygningstype</td><td></td></tr>
+             </tbody>
+        </table>
+        
+        <button id="btnGetDetailedInfo" style="margin-left:2px;margin-top:5px;border: 1px solid;width:392px; font-size: medium; font-weight: bold; font-style: inherit;color:white;background-image:url(img/24bitPNG40px/BlueBar.png);">Hent Mere Info Om Markerede</button>
+        <button id="btnejendom" style="margin-left:2px;margin-top:15px;border: 1px solid ; width:392px; font-size: medium; font-weight: bold; font-style: inherit;color:white;background-image:url(img/24bitPNG40px/BlueBar.png); ">Offentlige Ejendomsvurdering</button>
+        <button id="btnbbr" style="margin-left:2px;margin-top:15px;border: 1px solid ; width:392px; font-size: medium; font-weight: bold; font-style: inherit;color:white;background-image:url(img/24bitPNG40px/BlueBar.png);">BBR-meddelelse</button>
+        <button id="btnsogne" style="margin-left:2px;margin-top:15px;border: 1px solid ; width:392px; font-size: medium; font-weight: bold; font-style: inherit;color:white;background-image:url(img/24bitPNG40px/BlueBar.png);">Sogneinformation</button>
+        <button id="btnPrintInformation" style="margin-left:2px;margin-top:20px;border: 1px solid ; width:392px; font-size: medium; font-weight: bold; font-style: inherit;color:white;background-image:url(img/24bitPNG40px/BlueBar.png);">Udskriv alle Informationer</button>
+    
+    </div>
+
+        <div id="divDetailedInformation" title=""></div>
+        <div id="divPrintingInformation" title=""></div>
+
+
+
+</body>
+</html>

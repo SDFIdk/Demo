@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+  <Document>
+    <name>KML Samples</name>
+    <open>1</open>
+    <description>Unleash your creativity with the help of these examples!</description>
+    <Style id="com">
+      <IconStyle>
+        <Icon>
+          <href>../lib/OpenLayers/2.11/img/marker-blue.png</href>
+          <w>21</w>
+          <h>25</h>
+        </Icon>  
+      </IconStyle>
+    </Style>
+    <Folder>
+      <name>Paths</name>
+      <visibility>0</visibility>
+      <description></description>
+        <Placemark>
+            <name>Grontmij</name>
+            <address>Granskoven 8, 2600 Glostrup</address>
+            <logo>images/grontmij.png</logo>
+            <description>Kerneudvikler</description>
+            <styleUrl>#com</styleUrl>
+            <Point>
+                <coordinates>12.413638485125,55.6821392069234,630</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>KMS</name>
+            <address>Rentemestervej 8, 2400 København NV</address>
+            <logo>images/kms.png</logo>
+            <description>Kerneudvikler</description>
+            <styleUrl>#com</styleUrl>
+            <Point>
+                <coordinates>12.5356151646887,55.7047948290444,630</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark>
+            <name>Atkins</name>
+            <address>Arne Jacobsens Allé 17, 2300 København S</address>
+            <logo>images/atkins.png</logo>
+            <description>Kerneudvikler</description>
+            <styleUrl>#com</styleUrl>
+            <Point>
+                <coordinates>12.5793066139895,55.631638078851,630</coordinates>
+            </Point>
+        </Placemark>
+    </Folder>
+  </Document>
+</kml>

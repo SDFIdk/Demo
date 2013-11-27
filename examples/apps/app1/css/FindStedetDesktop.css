@@ -1,0 +1,288 @@
+html ,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-size: 8pt;
+}
+.findplaceDiv
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;    
+    background-color:#DEEDFF;
+}
+.ui-content {
+    padding: 0;
+}
+.ui-footer {
+    text-align: left;
+    padding: 5px 0 0 5px;
+}
+.portrait, .portrait #mappage {
+    min-height: 0;
+}
+
+#mappage, #mappage .ui-content, #map {
+    width: 100%;
+    height: 90%;
+}
+.olControlAttribution {
+    font-size: 10px;
+    bottom: 5px;
+    right: 5px;
+}
+#navigation {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    z-index: 1000;
+}
+#navigation .ui-btn-icon-notext {
+    display: block;
+    padding: 7px 6px 7px 8px;
+}
+#title, #tags, #shortdesc {
+    display: none;
+}
+.ui-icon-check {
+    opacity: 0.3;
+}
+.checked .ui-icon-check {
+    opacity: 1;
+}
+
+.ui-icon-search2
+{
+    background-image: url(../img/SearchBtn.JPG);
+}
+.ui-icon-locate  {
+    background-image: url(../img/GotoBtn.JPG);
+   
+}
+.ui-icon-layers {
+    background-image: url(../img/LayerBtn.JPG);
+}
+.footerBtn /*ui-btn-icon-notext*/
+{
+    width:50px;
+    height:40px; 
+}
+.footerBtn .ui-btn-corner-all {
+    -moz-border-radius: 0 0 0 0;
+     padding: 0px 0px 0px 0px;
+}
+.footerBtn .ui-btn-inner {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top: 0 solid rgba(255, 255, 255, 0.3);
+     padding: 0px 0px 0px 0px;
+}
+.footerBtn .ui-icon
+{
+    width:50px;
+    height:40px; 
+}
+
+.footerBtn .ui-btn-icon-notext .ui-btn-inner {
+    padding: 0px 0px 0px 0px;
+}
+.ui-content .ui-listview-inset, #search_results {
+    margin: 1em;
+}
+.ui-content .ui-listview {
+    margin: 0px;
+}
+#details-list li{
+	padding:15px 10px;
+}
+
+.dialogOpacity
+{
+    display: block;
+    opacity: 0.70;  /* FF */
+	filter: alpha(opacity=70);  /* IE5-7 */ 
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";  /* IE8 */
+	
+}
+
+.ui-icon-layer {
+    background-repeat: no-repeat;
+    display: inline;
+   float: right;
+    overflow: hidden;
+    /*text-indent: -99999px;*/
+}
+
+.ui-widget-contentLayer {
+    background: url("images/ui-bg_flat_75_ffffff_40x100.png") repeat-x scroll 50% 50% #FFFFFF;
+    border: 1px solid #AAAAAA;
+    color: #222222;
+         
+}
+.layerLinkstyle
+{
+    float:left;
+     /*IE7*/
+    #display:inline-block;
+}
+
+
+#layerslist .ui-selecting { background: #FECA40; }
+#layerslist .ui-selected { background: #F39814; color: white; }
+#layerslist { list-style-type: none; margin: 0; padding: 0; width: 100%;}
+#layerslist li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px;cursor: pointer;   #display:inline-block; }
+
+#mapmenu
+{
+    z-index:500;
+    height:45px;
+    width: 100%;/*800px*/
+    background-image:url(../img/24bitPNG40px/BlueBar.png);
+}
+.button {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-right:4px;
+    z-index: 1200;
+}
+
+
+#mapmenu_table {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    border-collapse:collapse;
+}
+
+.mapmenu_table_call {
+    padding-top: 11px;
+    /*IE7*/
+    #padding-top:0px;
+}
+ 
+#querydiv {
+    position: relative;
+    top:0px;
+    right:0px;
+    z-index: 1000;
+    
+}
+#query {
+    margin: 11px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 300px;/*240px*/
+}
+     
+ 
+button#layerPopup
+{
+    margin-top:2px;
+    margin-left:2px;
+    height: 42px;
+    width:50px;
+
+}
+button#locate
+{
+    margin-top:2px;
+    margin-left:2px;
+    height: 42px;
+    width:50px;
+}
+button#search_address
+{
+    margin-top:2px;
+    margin-left:2px;
+    height: 42px;
+    width:50px;
+}
+button#search_place
+{
+    margin-top:2px;
+    margin-left:2px;
+    height: 42px;
+    width:50px;
+}
+button#search_cadastral
+{
+    margin-top:2px;
+    margin-left:2px;
+    height: 42px;
+    width:50px;
+}
+
+
+.ui-autocomplete {
+    max-width: 282px;
+    max-height: 250px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 20px;
+}
+
+#plus
+{
+    position:absolute;
+    top:10px;
+}
+#minus
+{
+    position:absolute;
+    top:35px;
+}
+
+#minus.ui-button-icon-only{
+    height: 16px;
+    padding-bottom: 20px;
+    width: 2.4em;
+    opacity: 0.60;  /* FF */
+	filter: alpha(opacity=60);  /* IE5-7 */ 
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";  /* IE8 */
+}
+
+#plus.ui-button-icon-only{
+    height: 16px;
+    padding-bottom: 20px;
+    width: 2.4em;
+    opacity: 0.60;  /* FF */
+	filter: alpha(opacity=60);  /* IE5-7 */ 
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";  /* IE8 */
+}
+
+
+
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 20px;
+}
+/* IE 6 doesn't support max-height
+ * we use height instead, but this forces the menu to always be this tall
+ */
+* html .ui-autocomplete {
+    height: 300px;
+}
+
+#copyrightDiv
+{
+    position:absolute;
+    left: 2px;
+    bottom: 0px;
+    font-size:small;
+    font-family:Arial;
+    z-index: 10000;  
+}
+
+
+

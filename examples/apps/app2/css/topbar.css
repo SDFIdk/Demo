@@ -1,0 +1,120 @@
+#topDiv, #topmenu {
+	position: fixed;
+	top:0;
+    width: 100%;
+    z-index: 200;
+    height: 46px;
+    
+/* Sort som bund-menuen */
+    background-color: black;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#444444', EndColorStr='black');
+    background: -moz-linear-gradient(bottom, black, #444444);
+    background: -ms-linear-gradient(bottom, black, #444444);
+    background: -o-linear-gradient(bottom, black, #444444);
+    background: -webkit-linear-gradient(bottom, black, #444444);
+    background: linear-gradient(bottom, black, #444444);
+
+/* Grøn-ish */
+/*     background-color: #004E4C; */
+/*     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#36848A', EndColorStr='#004E4C'); */
+/*     background: -moz-linear-gradient(bottom, #004E4C, #36848A); */
+/*     background: -ms-linear-gradient(bottom, #004E4C, #36848A); */
+/*     background: -o-linear-gradient(bottom, #004E4C, #36848A); */
+/*     background: -webkit-linear-gradient(bottom, #004E4C, #36848A); */
+/*     background: linear-gradient(top, bottom, #004E4C, #36848A); */
+/* 	   border-bottom: 1px solid #004241; */
+}
+
+#topDiv * {
+/* 	border: 1px solid #f00; */
+}
+
+#topDiv li {
+	list-style: none;
+}
+
+#searchBtn{	
+	position: fixed;
+	left: 8px;
+	margin-top: 2px;
+	width: 17px;
+	height: 17px;
+	border: 1px solid #555;
+	border-radius: 4px;
+	background-color: #000000;
+	background-image: url("../img/search.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+    padding: 10px;
+    
+}
+
+
+#searchinput {
+    float:left;
+    width: 200px;
+    margin: 8px 8px 8px 60px;
+}
+
+#searchinput div{
+    background-color: #fff;
+}
+
+#searchinput div input {
+    height: 28px;
+    padding: 0 4px;
+    border: 0;
+}
+#searchinput div.loader {
+	background-position: center center;
+	background-repeat:no-repeat;
+	width: 28px;
+	height: 26px;
+	float: right;
+}
+
+#searchinput div.loader.show {
+	background-image: url("../img/loading.gif");
+}
+
+#searchselect {  
+	display:none;
+    left: 59px;
+    position: absolute;
+    top: 36px;
+    width: auto;
+    border: 1px solid;
+    background-color: #fff;
+    z-index: 200;
+}
+
+#searchselect .resultdiv {
+	border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    line-height: 1.4em;
+    padding: 8px 5px;
+	}
+
+
+#topDiv h1 {
+	height: 34px;
+	color: white;
+	font-size: 16px;
+	font-style: normal;
+	padding-top: 10px;
+	margin: 0 auto;
+	width: 320px;
+	white-space:nowrap;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .35);
+}
+
+#infoBtn {
+	position: fixed;
+	right: 8px;
+	margin-left: 106px;
+	margin-top: -42px;
+	width: 40px;
+	height: 40px;
+	background-image: url("../img/info_btn.png");
+}

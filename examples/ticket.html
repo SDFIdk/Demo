@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>VisStedet - Ticket</title>
+        	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+        <script type="text/javascript" src="../server/Ticket/kfticket.php"></script>
+        <script type="text/javascript" src="../lib/VisStedet/Utils.js"></script>
+        <script type="text/javascript" src="../lib/VisStedet/Ticket.js"></script>
+
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+
+        <script type="text/javascript">
+        function init () {
+        	var ticket = new VisStedet.Ticket ();
+        	alert('Ticket: '+ticket);
+        }
+        </script>
+    </head>
+    <body onload="init();">
+        <h1 id="title">Ticket fra Kortforsyningen</h1>
+        <p id="shortdesc">
+            Demonstrerer hvordan et ticket hentes ind i applikationen.
+        </p>
+        <div id="tags">
+            ticket
+        </div>
+        <div id="docs">
+        Som default hentes en ticket fra en cookie, der er gennereret på serveren. Navnet på den cookie, der er sat, er "kfticket". 
+        For at få adgang til den satte ticket benyttes:             
+        <pre class="code">
+        var ticket = new VisStedet.Ticket ();
+        </pre>
+        Hvis navnet på den anvendte cookie er noget andet, kan det styres med en option til instatieringen af VisStedet.Ticket objektet:
+        <pre class="code">
+        var ticket = new VisStedet.Ticket ({cookieName: 'MitCookieNavn'});
+        </pre>
+        </div>
+    </body>
+</html>

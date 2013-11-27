@@ -1,0 +1,221 @@
+
+#dragUpSlideDiv {
+    bottom: 0px;
+    display: none;
+    position: fixed;
+    width: 100%;
+    z-index: 200;
+}
+
+#dragUpMapDiv {
+    text-align: center;
+    border-bottom-width: 0px;
+    z-index: 200;
+}
+
+#dragUpCollapsedDiv {
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle;
+    border: 0px none;
+    z-index: 200;
+}
+
+#dragUpExpandIcon {
+    border: 0px none;
+    bottom: 0px;
+    vertical-align: bottom;
+    height: 25px;
+}
+
+#dragUpCollapseIconDiv {
+    border: 0px none;
+}
+
+#dragUpCollapseIcon {
+    border: 0px none;
+    vertical-align:bottom; 
+    height: 25px;
+}
+
+#dragUpFrontpageBtn,
+#dragUpAboutBtn {
+    border: 1px solid black;
+}
+
+#dragUpMapDisable {
+    opacity: 0.6;
+    background-color: #fff;
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 0px hidden none;
+    z-index: 100;
+}
+
+#dragUpMapSelectorDiv {
+    width:100%;
+    background-color:grey;
+    border-top: 5px solid grey;
+
+}
+
+#dragUpBottomDiv {
+/*  grey */
+    border-top: 1px solid #383838;
+    background-color: black;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#444444', EndColorStr='black');
+    background: -moz-linear-gradient(bottom, black, #444444);
+    background: -ms-linear-gradient(bottom, black, #444444);
+    background: -o-linear-gradient(bottom, black, #444444);
+    background: -webkit-linear-gradient(bottom, black, #444444);
+    background: linear-gradient(bottom, black, #444444);
+    text-align:center;
+
+    width: 320px;
+    height: 46px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#dragUpButtonKatalog,
+#dragUpButtonKort,
+#dragUpButtonOmKMS {
+    color: white;
+    display:inline-block;
+    width: 104px;
+    height: 44px;
+/*     font: normal 14px georgia; */
+    padding-top: 12px;
+}
+
+#dragUpButtonKatalog a,
+#dragUpButtonKort a,
+#dragUpButtonOmKMS a {
+	text-decoration: none;
+	color: white;
+}
+
+.dragUpButtonSelected {
+	
+	background-color:#555;
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='grey', EndColorStr='black');
+    background: -moz-linear-gradient(bottom, black, grey);
+    background: -ms-linear-gradient(bottom, black, grey);
+    background: -o-linear-gradient(bottom, black, grey);
+    background: -webkit-linear-gradient(bottom, black, grey);
+    background: linear-gradient(top, bottom, black, grey);
+}
+
+
+/* CUSTOM ID's */
+#gallery {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#slider {
+    padding: 10px 0 0 0;
+     overflow: hidden; 
+     visibility: visible;
+}
+
+#slider ul {
+	padding-left: 0px;	
+/* 	margin-left: 100px; */
+}	
+
+#slider li {
+/*     text-align: center; */
+/*     border-left: 5px solid #fff; */
+/*     border-right: 5px solid #fff; */
+}
+
+#slider li .slideelement {
+	background-color: #FFF;
+    color: #23282C;
+    font-size: 1em;
+    line-height: 1em;
+    padding: 5px;
+    margin: 0 auto 2px;
+    
+    -webkit-box-shadow: 2px 2px 1px #222;
+    -moz-box-shadow: 2px 2px 1px #222;
+    box-shadow: 2px 2px 1px #222;
+}
+
+#slider li .slideelement.selected {
+	box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0 0 10px rgba(255, 255, 255, 1); 
+    -moz-box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    border:1px solid rgba(255, 255, 255, 0.8); 
+}
+
+#slider.index li .slideelement img {
+	width: 180px;
+}
+
+#slider.index li .slideelement h2 {
+	margin: 10px 0;
+}
+
+/* dragup (mindre) */
+#dragUpMapDiv .slideelement {
+	width:160px;
+}
+
+#dragUpMapDiv .slideelement h3 {
+    font-size: 11px;
+    margin: 2px;
+}
+
+/* katalog (større) */
+#catalogDiv .slideelement {
+	width:180px;
+}
+
+#catalogDiv .slideelement h2 {
+    font-size: 12px;
+    margin: 2px 0;
+    text-align: left;
+}
+
+#catalogDiv .slideelement p {
+	margin: 0px;
+	text-align: left;
+}
+
+/* navigation */
+#gallery nav {
+    height: 20px;
+    position: relative;
+}
+
+#position {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -81px;
+    cursor: pointer;
+}
+
+#position .bullet {
+    display: inline-block;
+    background-image: url('../img/bullet.png');
+    background-repeat:no-repeat;
+	background-position:center; 
+    width: 16px;
+    height: 16px;
+}
+
+#position .bullet.on {
+    background-image: url('../img/bullet_active.png');
+}

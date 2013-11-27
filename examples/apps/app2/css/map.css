@@ -1,0 +1,48 @@
+html, body {
+    margin  : 0;
+    padding : 0;
+    height  : 100%;
+    width   : 100%;
+    overflow: hidden;
+    font: 13px/1.4 sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+    html, body {
+        height  : 117%;
+    }
+}
+
+#map {
+    width    : 100%;
+    position : relative;
+    height   : 100%;
+}
+
+#map div{
+	border: 0px solid #f00;
+}
+
+#infoBtn {
+	display: none;
+}
+
+#locate {
+	position: fixed;
+	margin: 10px;
+	bottom:0;
+	top: auto;
+	z-index: 1000;
+	cursor: pointer;
+}
+
+#locate a {
+	border-radius: 4px;
+	background-color: #000000;
+	background-image: url("../img/pil_position.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+    padding: 10px;
+}
+

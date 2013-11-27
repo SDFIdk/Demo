@@ -1,0 +1,83 @@
+div.olControlZoomPanel {
+    height: 108px;
+    width: 36px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+#navigation {
+    position: fixed;
+    bottom: 40px;
+    right: 15px;
+    z-index: 1000;
+}
+div.olControlZoomPanel div {
+    width: 36px;
+    height: 36px;
+    left: 0;
+}
+
+div.olControlZoomPanel .olControlZoomInItemInactive {
+    top: 0;
+    background-position: 0 0;
+}
+div.olControlZoomPanel .olControlZoomToMaxExtentItemInactive {
+    top: 360px;
+    background-position: 0 -360px;
+}
+div.olControlZoomPanel .olControlZoomOutItemInactive {
+    top: 72px;
+    background-position: 0 -72px;
+}
+
+.footer_div {
+    height: 37px;
+}
+
+.ui-footer {
+    padding-top: 0;
+}
+
+.ui-footer
+{
+    /*background: -moz-linear-gradient(#81A8CE, #5E87B0) repeat scroll 0 0 #5E87B0;*/
+    background-image: url('../img/24bitPNG40px/BlueBar.png');
+    background-repeat:repeat;
+    border: 1px solid #456F9A;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 0 -1px 1px #254F7A;
+}
+
+.button {
+    padding-bottom: 22px;
+    padding-left: 48px;
+    margin-right:4px;
+}
+
+#searchcontent {
+    padding-right: 36px;
+}
+
+#filterimg {
+    cursor: pointer;
+    position:absolute;
+    top:1px;
+    right:1px;
+    width: 33px;
+    height: 32px;
+    
+    background-image: url(../img/24bitPNG40px/Filter.png);
+    background-repeat:no-repeat;
+    
+}
+
+#copyrightDiv
+{
+    position:absolute;
+    left: 2px;
+    bottom: 50px;
+    font-size:small;
+    font-family:Arial;
+    z-index: 10000;  
+}

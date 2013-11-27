@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <script>
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+            if (agentID) {
+                if (agentID.indexOf("iphone") >= 0 || agentID.indexOf("ipod") >= 0 || agentID.indexOf("ipad") >= 0 || agentID.indexOf("android") >= 0) {
+                	window.location = 'Mobile.html';
+                } else {
+                    window.location = 'Desktop.html';
+                }
+            } else {
+                window.location = 'Desktop.html';
+            }
+	</script>
+    <title>Vis Stedet App</title>
+</head>
+<body>
+</body>
+</html>

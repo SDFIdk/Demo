@@ -1,0 +1,36 @@
+html, body {
+    margin  : 0 auto;
+    padding : 0;
+    height  : 100%;
+    width   : 100%;
+    font: 13px/1.4 sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+}
+@media only screen and (max-width: 600px) {
+    html, body {
+        height  : 117%;
+    }
+}
+
+/* body { */
+/* 	background-image: url('../img/bg.png'); */
+/* 	background-repeat: repeat; */
+/* } */
+
+#aboutDiv {
+    width: 100%;
+}
+
+#aboutDiv p {
+	margin: 0 auto;
+	width: 300px;
+	padding: 60px 10px 50px 10px;
+	overflow-y: auto;
+}
+
+#bottomDiv {
+	bottom: 0px;
+	position: fixed;
+	z-index: 200;
+	width: 100%;
+}

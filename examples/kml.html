@@ -1,0 +1,150 @@
+<html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+
+<!-- Her kan du benytte Vis Stedets stylesheet eller henter dit eget ind --> 
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    
+<!-- Her hentes Open Layers JavaScript bibliotek som muligøre visning af kort, opsætning af kontroller mv. --> 
+    <script src="../lib/OpenLayers/2.11/OpenLayers.js" type="text/javascript" ></script>
+
+<!-- Her kaldes Kortforsyningens ticketservice - den findes også i en Java og ashx udgave --> 
+    <script type="text/javascript" src="../server/Ticket/kfticket.jsp"></script>
+
+<!-- Her hentes en række utillities der skal bruges til visning af Kortforsyningens kort -->    
+    <script type="text/javascript" src="../lib/VisStedet/Utils.js"></script>
+
+<!-- Her kaldes kfticket.php og ticket gemmes --> 
+    <script type="text/javascript" src="../lib/VisStedet/Ticket.js"></script>   
+
+<!-- Her hentes proj4 for at transformere fra 4326 til 25832 --> 
+    <script type="text/javascript" src="../lib/proj4js/proj4js-compressed.js"></script>
+
+    <script type="text/javascript" src="../lib/OpenLayers/Controls/VisStedet.Popup/VisStedet.Popup.js"></script>
+    <link rel="stylesheet" href="../lib/OpenLayers/Controls/VisStedet.Popup/VisStedet.Popup.css" type="text/css" media="screen" />
+
+    <title>VisStedet Kort med KML data</title>
+
+<script>
+var selectedFeature;
+var selectControl;
+function init() {
+
+	var kmsticket = new VisStedet.Ticket();
+
+<!-- Her får open Layers info om projektion, boundingbox etc. -->   
+    var map = new OpenLayers.Map({
+        div: 'mapTag',
+        projection: 'EPSG:25832',
+        units: 'm',
+        maxExtent: new OpenLayers.Bounds(120000.0, 5661139.2, 1000000, 6500000.0),
+        maxResolution: 1638.4,
+        numZoomLevels: 12,
+        controls : []
+    });
+
+    var wmts = new OpenLayers.Layer.WMTS({
+        name: "WMTS",
+        url: ["http://a.kortforsyningen.kms.dk/topo_skaermkort", "http://b.kortforsyningen.kms.dk/topo_skaermkort", "http://c.kortforsyningen.kms.dk/topo_skaermkort"],
+        style: "default",
+        layer: "dtk_skaermkort",
+        matrixSet: "View1",
+        format: "image/jpeg",
+        params: {
+            ticket: kmsticket
+        },
+        matrixIds: [
+            {identifier: "L00", scaleDenominator: 1638.4/0.00028},
+            {identifier: "L01", scaleDenominator: 819.2/0.00028},
+            {identifier: "L02", scaleDenominator: 409.6/0.00028},
+            {identifier: "L03", scaleDenominator: 204.8/0.00028},
+            {identifier: "L04", scaleDenominator: 102.4/0.00028},
+            {identifier: "L05", scaleDenominator: 51.2/0.00028},
+            {identifier: "L06", scaleDenominator: 25.6/0.00028},
+            {identifier: "L07", scaleDenominator: 12.8/0.00028},
+            {identifier: "L08", scaleDenominator: 6.4/0.00028},
+            {identifier: "L09", scaleDenominator: 3.2/0.00028},
+            {identifier: "L10", scaleDenominator: 1.6/0.00028},
+            {identifier: "L11", scaleDenominator: 0.8/0.00028}
+        ],
+        isBaseLayer : true,
+        displayInLayerSwitcher : true,
+        transitionEffect : 'resize'
+    });
+    
+    map.addLayer(wmts);
+    
+    var defaultStyle = new OpenLayers.Style({
+    	externalGraphic: '../lib/OpenLayers/2.11/img/marker-blue.png',
+    	graphicWidth: 20, 
+    	graphicHeight: 24, 
+    	graphicYOffset: -24,
+    	cursor: 'pointer'
+	});
+    var selectStyle = new OpenLayers.Style({
+        pointRadius: 5,
+        fillColor: '#f00',
+        cursor: 'pointer'
+    });
+
+    var kml = new OpenLayers.Layer.Vector("KML", {
+        strategies: [new OpenLayers.Strategy.Fixed()],
+        styleMap: new OpenLayers.StyleMap({
+        	'default': defaultStyle,
+            'select': selectStyle
+        }),
+        protocol: new OpenLayers.Protocol.HTTP({
+            url: "community.kml",
+            format: new OpenLayers.Format.KML({
+                internalProjection: new OpenLayers.Projection('EPSG:25832'),
+                externalProjection: new OpenLayers.Projection('EPSG:4326'),
+                extractStyles: false, 
+                extractAttributes: true,
+                maxDepth: 2
+            })
+        })
+    })
+
+    map.addLayer(kml);
+
+<!-- Her sættes Open Layers controller, map center etc --> 
+    map.addControl(new OpenLayers.Control.PanZoomBar());
+    map.addControl(new OpenLayers.Control.Navigation());
+    
+    selectControl = new OpenLayers.Control.SelectFeature(kml,{
+    	onSelect: function (feature) {
+    		selectedFeature = feature;
+    	    var popup = new VisStedet.Popup ("popup",
+                OpenLayers.LonLat.fromString(feature.geometry.toShortString()),
+                "<img src='" + feature.attributes.logo +"'/>",
+                feature.attributes.address.replace(',','<br>'),
+                onPopupClose
+	        );
+	        feature.popup = popup;
+	        map.addPopup(popup,true);
+        }, 
+    	onUnselect: function (feature) {
+    		map.removePopup(feature.popup);
+            feature.popup.destroy();
+            feature.popup = null;
+        }
+    });
+    map.addControl(selectControl);
+    selectControl.activate();
+
+    map.setCenter(new OpenLayers.LonLat(722110, 6178883));
+    map.zoomTo(5);
+}
+
+function onPopupClose(evt) {
+	selectControl.unselect(selectedFeature);
+}
+
+
+</script>
+</head>
+<body onload="init()">
+        <h2>Visning af punkter i kortet med KML</h2>
+        <div id="mapTag" style="width: 600px; height: 600px"></div>
+    </body>
+</html>

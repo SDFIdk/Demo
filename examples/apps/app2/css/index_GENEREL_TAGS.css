@@ -1,0 +1,209 @@
+
+/* GENERAL TAGS */
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,del,dfn,em,img,ins,kbd,q,samp,small,strong,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,table,tbody,tfoot,thead,tr,th,td,article,aside,footer,header,nav,section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+	display: block;
+}
+
+select,input,textarea,button {
+	font: 99% sans-serif;
+}
+
+img {
+	border: 0;
+	max-width: 100%;
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+.nocallout {
+	-webkit-touch-callout: none;
+} /* prevent callout */
+
+table {
+	margin: 0;
+	padding: 0;
+	clear: left;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table td {
+	vertical-align: top;
+	margin: 0;
+}
+
+html {
+	height: 100%;
+	background: #191D1F;
+}
+
+body {
+	font: 13px/1.4 sans-serif;
+	*font-size: small;
+	word-wrap: break-word;
+	margin: 0 auto;
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	color: #3c3c3c;
+	max-width: 320px;
+/* 	background: #fff; */
+	font-family: 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	/*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+	-ms-user-select: none;
+	user-select: none;
+	height: 100%;
+}
+
+
+#catalogDiv {
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+}
+
+/* CUSTOM ID's */
+
+/*
+#gallery {
+	background: #23282C;
+}
+
+#slider {
+	padding: 13px 0;
+	background-image: -moz-linear-gradient(top, #292F34, #23282C);
+}
+
+#slider li {
+	text-align: center;
+	border: 0px solid #ff0;
+}
+
+#slider li div {
+	background-color: white;
+	color: #23282C;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 5px 2px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 160px;
+}
+
+#slider li img {
+	margin: 0 13px;
+	padding: 2px;
+	border-radius: 2px;
+	background: #fff;
+	
+	-webkit-box-shadow: 0px 1px 2px #000;
+	-moz-box-shadow: 0px 1px 2px #000;
+	box-shadow: 0px 1px 2px #000;
+}
+
+#gallery nav {
+	border-top: 1px #3A4146 solid;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#292F34),
+		to(#23282C) );
+	background-image: -webkit-linear-gradient(top, #292F34, #23282C);
+	background-image: -moz-linear-gradient(top, #292F34, #23282C);
+	background-image: -ms-linear-gradient(top, #292F34, #23282C);
+	background-image: -o-linear-gradient(top, #292F34, #23282C);
+	background-image: linear-gradient(top, #292F34, #23282C);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#292F34',
+		EndColorStr='#23282C' );
+	height: 36px;
+	position: relative;
+}
+
+#position {
+	text-align: center;
+	font-size: 27px;
+	line-height: 1.8;
+	color: #697279;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -75px;
+	cursor: pointer;
+}
+
+#position em {
+	display: inline-block;
+	padding: 0 3px;
+	font-style: normal;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .35);
+	font-family: sans-serif;
+}
+
+#position em.on {
+	color: #fff;
+}
+
+#prev {
+	border-right: 1px #232628 solid;
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#prev em {
+	display: block;
+	border-right: 1px #30373C solid;
+	padding: 10px 13px 8px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 13px;
+	text-transform: uppercase;
+	color: #697279;
+	letter-spacing: 1px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .35);
+}
+
+#next {
+	border-left: 1px #232628 solid;
+	display: inline-block;
+	text-decoration: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+}
+
+#next em {
+	display: block;
+	border-left: 1px #30373C solid;
+	padding: 10px 13px 8px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 13px;
+	text-transform: uppercase;
+	color: #697279;
+	letter-spacing: 1px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .35);
+}*/

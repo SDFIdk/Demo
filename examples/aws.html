@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>VisStedet - Search.AWS</title>
+        	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+        <script type="text/javascript" src="../lib/VisStedet/Utils.js"></script>
+        <script type="text/javascript" src="../lib/VisStedet/Search.js"></script>
+        <script type="text/javascript" src="../lib/VisStedet/Search/AWS.js"></script>
+
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+
+        <script type="text/javascript">
+        function init () {
+        	var aws = new VisStedet.Search.AWS ({url: '../server/search/aws.ashx'});
+        	aws.search('rente 8',myCallback);
+        }
+        
+        function myCallback (object) {
+        	var html = '';
+        	for (var i=0;i<object.data.length;i++) {
+        		html += object.data[i].presentationString+'<br/>';
+        	}
+        	document.getElementById('list').innerHTML = html;
+        }
+        
+        </script>
+    </head>
+    <body onload="init();">
+        <h1 id="title">Search - AWS</h1>
+        <p id="shortdesc">
+            Få adgang til en simpel adresse søgnings funktion. Implementeret ved brug af AWS.
+        </p>
+        <div id="tags">
+            search, AWS
+        </div>
+        <div id="docs">
+        </div>
+        <pre class="code">
+        </pre>
+        <div id="docs">
+            <span id="list"></span>
+        </div>
+        </div>
+    </body>
+    <!-- Edit -->
+</html>
