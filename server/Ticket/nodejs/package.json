@@ -1,0 +1,9 @@
+{
+  "name": "eksempler_aka_visstedet",
+  "description": "Geodatastyrelsen",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x"
+  }
+}
