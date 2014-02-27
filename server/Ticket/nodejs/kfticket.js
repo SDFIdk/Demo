@@ -12,6 +12,7 @@ app.get('/kfticket', function (req, res) {
             str += chunk;
         });
         response.on('end', function () {
+            console.log("ticket: " + str);
             res.cookie('kfticket',str);
             res.send();
         });
