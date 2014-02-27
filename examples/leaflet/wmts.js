@@ -65,7 +65,7 @@ map.on('baselayerchange', function (e) {
         matrikelkort.setParams({
             styles: 'sorte_centroider,sorte_skel,default'
         });
-    } else if (e.name === 'Ortofoto') {
+    } else if (e.name === 'Flyfoto') {
         matrikelkort.setParams({
             styles: 'gule_centroider,gule_skel,Gul_OptagetVej,default'
         });
