@@ -50,7 +50,7 @@ var skaermkort = L.tileLayer('http://{s}.kortforsyningen.kms.dk/topo_skaermkort?
 
 var baselayers = {
     "Skærmkort": skaermkort,
-    "Ortofoto": ortofoto
+    "Flyfoto": ortofoto
 };
 
 var overlays = {
