@@ -41,7 +41,7 @@ FindStedet.Search = VisStedet.Utils.Class({
         if (this.service === null) {
             this.service = new VisStedet.Search.GeoSearch (VisStedet.Utils.extend ({},this.serviceOptions));
         }
-        //['Adresser','Kommuner','Opstillingskredse','Politikredse','Postdistrikter','Regioner','Retskredse','Stednavne'],
+        //['Adresser','Kommuner','Sogne','Opstillingskredse','Politikredse','Postdistrikter','Regioner','Retskredse','Stednavne'],
         this.service.resources = [];
         if (this.types['address'] === true) {
             this.service.resources.push ('Adresser');
@@ -52,6 +52,7 @@ FindStedet.Search = VisStedet.Utils.Class({
         if (this.types['place'] === true) {
             this.service.resources.push ('Stednavne');
             this.service.resources.push ('Kommuner');
+            this.service.resources.push ('Sogne');
             this.service.resources.push ('Opstillingskredse');
             this.service.resources.push ('Politikredse');
             this.service.resources.push ('Postdistrikter');
