@@ -171,8 +171,7 @@ FindStedet.Map = VisStedet.Utils.Class({
         this.vector = new OpenLayers.Layer.Vector('geolokation');
         this.vector.displayInLayerSwitcher = false;
         map.addLayer(this.vector);
-
-
+        
         var addressStyle = new OpenLayers.StyleMap({
             "default": new OpenLayers.Style({
                 externalGraphic: 'img/marker.png',
@@ -180,7 +179,19 @@ FindStedet.Map = VisStedet.Utils.Class({
                 graphicHeight: 24,
                 graphicOpacity: 1,
                 graphicXOffset: -24,
-                graphicYOffset: -24
+                graphicYOffset: -24,
+                cursor: 'pointer'
+            }),
+            "select": new OpenLayers.Style({
+                label: '${text}',
+                labelAlign: "tr",
+                fontSize: "14px",
+                fontFamily: "Verdana",
+                fontWeight: "bold",
+                labelXOffset: 10,
+                labelYOffset: 10,
+                labelOutlineColor: "white",
+                labelOutlineWidth: 5
             })
         });
 
@@ -192,6 +203,9 @@ FindStedet.Map = VisStedet.Utils.Class({
         this.pointlayer.displayInLayerSwitcher = false;
         map.addLayer(this.pointlayer);
 
+        var select = new OpenLayers.Control.SelectFeature(this.pointlayer, {hover: true, clickout: true, toggle: true, highlightOnly: true});
+        map.addControl(select);
+        select.activate();
 
         map.zoomToExtent(this.startExt, true);
     },

@@ -96,13 +96,34 @@ FindStedet.Search = VisStedet.Utils.Class({
         if (this.map !== null) {
             findstedet.pointlayer.destroyFeatures();
             if (ui.item.data.x && ui.item.data.y) {
-                var feature = new OpenLayers.Feature.Vector(
-                    new OpenLayers.Geometry.Point(ui.item.data.x,ui.item.data.y), {
-                        type: 3
-                    }
-                );
-                findstedet.pointlayer.addFeatures([feature]);
-                this.map.zoomToExtent(feature.geometry.bounds);
+                
+                jQuery.ajax({
+                    url: 'http://kortforsyningen.kms.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+ui.item.data.x+','+ui.item.data.y,
+                    type: 'GET',
+                    data: {ticket: this.serviceOptions.ticket.toString()},
+                    dataType: 'jsonp',
+                    success: VisStedet.Utils.bind(function (ui, data) {
+                        var feature = new OpenLayers.Feature.Vector(
+                            new OpenLayers.Geometry.Point(ui.item.data.x,ui.item.data.y), {
+                                type: 3,
+                                text: ui.item.data.x+','+ui.item.data.y+','+data.hoejde.toFixed(1)
+                            }
+                        );
+                        findstedet.pointlayer.addFeatures([feature]);
+                        this.map.zoomToExtent(feature.geometry.bounds);
+                    },this,ui),
+                    error: VisStedet.Utils.bind(function (ui) {
+                    var feature = new OpenLayers.Feature.Vector(
+                            new OpenLayers.Geometry.Point(ui.item.data.x,ui.item.data.y), {
+                                type: 3,
+                                text: ui.item.data.x+','+ui.item.data.y
+                            }
+                        );
+                        findstedet.pointlayer.addFeatures([feature]);
+                        this.map.zoomToExtent(feature.geometry.bounds);
+                    },this,ui)
+                });
+                
             } else if (ui.item.data.geometryWkt) {
                 var a = ui.item.data.geometryWkt.split ('(');
                 a = a[a.length-1].split(')')[0];
