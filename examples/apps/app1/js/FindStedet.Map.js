@@ -180,18 +180,15 @@ FindStedet.Map = VisStedet.Utils.Class({
                 graphicOpacity: 1,
                 graphicXOffset: -24,
                 graphicYOffset: -24,
-                cursor: 'pointer'
-            }),
-            "select": new OpenLayers.Style({
                 label: '${text}',
                 labelAlign: "tr",
-                fontSize: "14px",
+                fontSize: "12px",
                 fontFamily: "Verdana",
                 fontWeight: "bold",
-                labelXOffset: 10,
-                labelYOffset: 10,
+                labelXOffset: 5,
+                labelYOffset: 20,
                 labelOutlineColor: "white",
-                labelOutlineWidth: 5
+                labelOutlineWidth: 3
             })
         });
 
@@ -202,10 +199,6 @@ FindStedet.Map = VisStedet.Utils.Class({
         });
         this.pointlayer.displayInLayerSwitcher = false;
         map.addLayer(this.pointlayer);
-
-        var select = new OpenLayers.Control.SelectFeature(this.pointlayer, {hover: true, clickout: true, toggle: true, highlightOnly: true});
-        map.addControl(select);
-        select.activate();
 
         map.zoomToExtent(this.startExt, true);
     },
