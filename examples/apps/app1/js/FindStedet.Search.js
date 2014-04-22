@@ -106,7 +106,7 @@ FindStedet.Search = VisStedet.Utils.Class({
                         var feature = new OpenLayers.Feature.Vector(
                             new OpenLayers.Geometry.Point(ui.item.data.x,ui.item.data.y), {
                                 type: 3,
-                                text: ui.item.data.presentationString+'\nHøjde: '+data.hoejde.toFixed(1)+'m\nKoordinat: x='+ui.item.data.x+', y='+ui.item.data.y
+                                text: ui.item.data.presentationString+'\nHøjde: '+data.hoejde.toFixed(1)+' meter\nKoordinat: x='+ui.item.data.x+', y='+ui.item.data.y
                             }
                         );
                         findstedet.pointlayer.addFeatures([feature]);
