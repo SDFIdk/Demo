@@ -95,6 +95,7 @@ FindStedet.Search = VisStedet.Utils.Class({
     select: function(event, ui) {
         if (this.map !== null) {
             findstedet.pointlayer.destroyFeatures();
+            findstedet.matrikellayer.destroyFeatures();
             if (ui.item.data.x && ui.item.data.y) {
                 
                 jQuery.ajax({
@@ -125,6 +126,50 @@ FindStedet.Search = VisStedet.Utils.Class({
                 });
                 
             } else if (ui.item.data.geometryWkt) {
+                
+                if (ui.item.data.type === 'matrikelnummer') {
+                    
+                    jQuery.ajax({
+                        url: 'http://kortforsyningen.kms.dk/?servicename=RestGeokeys_v2&f=jsonp&method=matrikelnr&geometry=true&ejkode='+ui.item.data.elavskode+'&matnr='+ui.item.data.matrnr,
+                        type: 'GET',
+                        data: {ticket: this.serviceOptions.ticket.toString()},
+                        dataType: 'jsonp',
+                        success: VisStedet.Utils.bind(function (ui, data) {
+                            
+                            var geojson_format = new OpenLayers.Format.GeoJSON();
+                            var features = geojson_format.read(data);
+                            findstedet.matrikellayer.addFeatures(features);
+                            
+                            for (var i=0;i<features.length;i++) {
+                            
+                                var wkt = new jsts.io.WKTReader();
+                                var geo = wkt.read(features[i].geometry.toString());
+                                //http://bjornharrtell.github.io/jsts/doc/api/symbols/jsts.geom.Geometry.html#getInteriorPoint
+                                var cen = geo.getInteriorPoint();
+                                var centroid = cen.coordinate;
+    
+                                jQuery.ajax({
+                                    url: 'http://kortforsyningen.kms.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+centroid.x+','+centroid.y,
+                                    type: 'GET',
+                                    data: {ticket: this.serviceOptions.ticket.toString()},
+                                    dataType: 'jsonp',
+                                    success: VisStedet.Utils.bind(function (ui, centroid, data) {
+                                        var feature = new OpenLayers.Feature.Vector(
+                                            new OpenLayers.Geometry.Point(centroid.x,centroid.y), {
+                                                type: 3,
+                                                text: ui.item.data.presentationString+'\nHøjde (centroiden): '+data.hoejde.toFixed(1)+'m'
+                                            }
+                                        );
+                                        findstedet.pointlayer.addFeatures([feature]);
+                                    },this,ui,centroid)
+                                });
+                            }
+                            
+                        },this,ui)
+                    });
+                    
+                }
+                
                 var a = ui.item.data.geometryWkt.split ('(');
                 a = a[a.length-1].split(')')[0];
                 a = a.split (',');

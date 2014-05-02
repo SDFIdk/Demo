@@ -172,6 +172,23 @@ FindStedet.Map = VisStedet.Utils.Class({
         this.vector.displayInLayerSwitcher = false;
         map.addLayer(this.vector);
         
+
+        var matrikelStyle = new OpenLayers.StyleMap({
+            "default": new OpenLayers.Style({
+                fillOpacity: 0.3,
+                fillColor: '#fff',
+                strokeColor: '#f00'
+            })
+        });
+        this.matrikellayer = new OpenLayers.Layer.Vector("Matrikelnumre", {
+            styleMap: matrikelStyle,
+            rendererOptions: { zIndexing: true }
+        });
+        this.matrikellayer.displayInLayerSwitcher = false;
+        map.addLayer(this.matrikellayer);
+        
+        
+        
         var addressStyle = new OpenLayers.StyleMap({
             "default": new OpenLayers.Style({
                 externalGraphic: 'img/marker.png',
@@ -199,7 +216,7 @@ FindStedet.Map = VisStedet.Utils.Class({
         });
         this.pointlayer.displayInLayerSwitcher = false;
         map.addLayer(this.pointlayer);
-
+        
         map.zoomToExtent(this.startExt, true);
     },
 

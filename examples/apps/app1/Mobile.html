@@ -34,6 +34,8 @@
 	</script>
     <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>    
     <script type="text/javascript" src="../../../lib/OpenLayers/2.12/OpenLayers.mobile.js" ></script>
+    <script type="text/javascript" src="../../../lib/jsts/javascript.util.js" ></script>
+    <script type="text/javascript" src="../../../lib/jsts/jsts.js" ></script>
     <script type="text/javascript" src="../../../server/Ticket/kfticket.php"></script>
     <script type="text/javascript" src="../../../lib/VisStedet/Utils.js"></script>
     <script type="text/javascript" src="../../../lib/VisStedet/Ticket.js"></script>
@@ -57,15 +59,15 @@
           <div data-role="content">
             <div id="map">
             </div>
-            <div id="copyrightDiv" >© Geodatastyrelsen - BETA</div>
+            <div id="copyrightDiv" >ï¿½ Geodatastyrelsen - BETA</div>
           </div>
 
 
           <div data-role="footer" data-theme="b">
            <div class="footer_div">
-            <span id="searchpageBtn" class="button searchBtn" title="Søg"></span>
+            <span id="searchpageBtn" class="button searchBtn" title="Sï¿½g"></span>
             <span id="locate" class="button locateBtn" title="Min placering"></span>
-            <span id="layerspageBtn" class="button layerBtn" title="Kortvælger"></span>
+            <span id="layerspageBtn" class="button layerBtn" title="Kortvï¿½lger"></span>
             <span id="morepageBtn" class="button moreBtn" title="Mere"></span>
            </div>
           </div>
@@ -81,19 +83,19 @@
         <!--Searchpage-->
         <div data-role="page" id="searchpage">
           <div data-role="header" style="display:none;">
-            <h1>Søg</h1>
+            <h1>Sï¿½g</h1>
           </div>
           <div data-role="content" id="searchcontent">
             <input type="search" name="query" id="query"
-                   value="" placeholder="Søg" autocomplete="off"/>
+                   value="" placeholder="Sï¿½g" autocomplete="off"/>
             <ul data-role="listview" data-inset="true" id="search_results"></ul> 
             <div id="filterimg"></div>
           </div>
           <div data-role="footer" data-theme="b">
            <div class="footer_div">
-            <span id="search_address" class="button search_address" title="Søg en adresse"></span>
-            <span id="search_place" class="button search_place" title="Søg et stednavn"></span>
-            <span id="search_cadastral" class="button search_cadastral" title="Søg en matrikkel"></span>
+            <span id="search_address" class="button search_address" title="Sï¿½g en adresse"></span>
+            <span id="search_place" class="button search_place" title="Sï¿½g et stednavn"></span>
+            <span id="search_cadastral" class="button search_cadastral" title="Sï¿½g en matrikkel"></span>
             <span id="footer_back" class="button backBtn" title="Tilbage til kortet"></span>
            </div>
           </div>
