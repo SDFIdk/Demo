@@ -85,8 +85,7 @@ FindStedet.Map = VisStedet.Utils.Class({
                 timeout: 7000
             }
         });
-
-
+        
         this.mapControls = [
             new OpenLayers.Control.Attribution(),
             new OpenLayers.Control.TouchNavigation({
@@ -97,7 +96,6 @@ FindStedet.Map = VisStedet.Utils.Class({
             geolocate
         ];
 
-   
 
         VisStedet.Utils.extend(this, options);
 
@@ -163,7 +161,7 @@ FindStedet.Map = VisStedet.Utils.Class({
 
 
         map = new OpenLayers.Map('map', mapoptions);
-
+        
         for (var i = 0; i < this.findStedet_layers.length; i++) {
             this.addLayer(this.findStedet_layers[i]);
         }
@@ -218,6 +216,42 @@ FindStedet.Map = VisStedet.Utils.Class({
         map.addLayer(this.pointlayer);
         
         map.zoomToExtent(this.startExt, true);
+        
+        
+        var clickcontrol = new VisStedet.Click({}, VisStedet.Utils.bind(function (e) {
+            findstedet.pointlayer.destroyFeatures();
+            findstedet.matrikellayer.destroyFeatures();
+
+            var point = map.getLonLatFromViewPortPx(e.xy);
+            jQuery.ajax({
+                url: 'http://kortforsyningen.kms.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+point.lon+','+point.lat,
+                type: 'GET',
+                data: {ticket: this.kmsticket.toString()},
+                dataType: 'jsonp',
+                success: VisStedet.Utils.bind(function (point, data) {
+                    var h = (data.hoejde > -1000 ? 'Højde: '+data.hoejde.toFixed(1)+' meter\n' : '');
+                    var feature = new OpenLayers.Feature.Vector(
+                            new OpenLayers.Geometry.Point(point.lon, point.lat), {
+                            type: 3,
+                            text: h+'Koordinat: x='+point.lon+', y='+point.lat
+                        }
+                    );
+                    findstedet.pointlayer.addFeatures([feature]);
+                },this,point),
+                error: VisStedet.Utils.bind(function (point) {
+                    var feature = new OpenLayers.Feature.Vector(
+                            new OpenLayers.Geometry.Point(point.lon, point.lat), {
+                                type: 3,
+                                text: 'Koordinat: x='+point.lon+', y='+point.lat
+                        }
+                    );
+                    findstedet.pointlayer.addFeatures([feature]);
+                },this,point)
+            });
+        },this));
+        map.addControl(clickcontrol);
+        clickcontrol.activate();
+        
     },
 
     addLayer: function (layerConfig) {
