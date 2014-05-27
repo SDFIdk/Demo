@@ -1,7 +1,7 @@
 findStedet_layers = [
 { layerid: 1, type: "WMTS", name: "Sk\u00E6rmkort", url: "http://kortforsyningen.kms.dk/topo_skaermkort", params: { service: 'WMTS', version: '1.0.0',
     request: 'GetTile', format: 'image/jpeg', layer: 'dtk_skaermkort', style: 'default', BGCOLOR: '0xDCF0F9',
-    matrixSet: 'View1', matrixIds: 'L00,L01,L02,L03,L04,L05,L06,L07,L08,L09,L10,L11,L12,13', info_format: 'text/plain',
+    matrixSet: 'View1', matrixIds: 'L00,L01,L02,L03,L04,L05,L06,L07,L08,L09,L10,L11,L12,L13', info_format: 'text/plain',
     transparent: true, ticket: ""
 }, options: { isBaseLayer: true, visibility: false, requestEncoding: 'kvp',layerid: 1 }
 }

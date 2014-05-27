@@ -22,7 +22,7 @@ FindStedet.Map = VisStedet.Utils.Class({
     * Property: zoomlevels
     * {<Number>} Number of zoom levels available on the map
     */
-    zoomlevels: 14,
+    zoomlevels: 13,
 
     /**
     * Property: resolutions
