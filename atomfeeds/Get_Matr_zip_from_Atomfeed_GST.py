@@ -10,7 +10,7 @@
 #               scriptet ikke hente nogen opdateringer første gang det bliver kørt.
 #
 #               for at sciptet kan kører skal du installere python http://www.python.org/getit/
-#               Dernæst skal du udfylde brugnavn og password til kortfosyningen,
+#               Dernæst skal du udfylde brugnavn og password til kortforsyningen,
 #               samt listen med ejerlav der skal opdateres.
 #
 #
@@ -53,8 +53,8 @@ def skriv_log(filepath, tekst):# opdatere logfil
 def hent_matr_zipfiler(ejerlav,Outputfolder, lastupdate):
     try:
         ftp = ftplib.FTP('ftp.kortforsyningen.dk', Brugernavn, Password)
-        ftp.cwd('atomfeeds/MATRIKELKORT/DELTA/GML')
-        tree=ET.parse(urllib.urlopen("http://schemas.kms.dk/kf_dwl/gst/feed/MINIMAKS_GML.xml"))
+        ftp.cwd('atomfeeds/MATRIKELKORT/ATOM/GML')
+        tree=ET.parse(urllib.urlopen("http://download.kortforsyningen.dk/feeds/MINIMAKS_GML.xml"))
         entries = tree.findall('{http://www.w3.org/2005/Atom}entry')
         for node in entries:
              id = node.find('{http://www.w3.org/2005/Atom}id')
