@@ -1,5 +1,5 @@
 ﻿#-------------------------------------------------------------------------------
-# Name:         Get_Matr_zip_from_Atomfeed
+# Name:         Get_Matr_zip_from_Atomfeed 
 # Purpose:      Henter matrikelopdateringer fra kortforsyningens atomfeed til en
 #               forudbestemt mappe.
 #
@@ -23,6 +23,12 @@
 #               vedlagte python script Set_log_modifydate.py til at tilbagedatere tidsstemplet på
 #               MatrikelDownload mhp at fremprovokere en download. Datoen kan ændres - er default sat
 #               til '2014-08-24 18:00:00'
+# Update        03-12-2014:
+# Name:         Nyt navn: Get_GML_Matr_zip_from_Atomfeed
+#               Denne version et tilpasset til at hente matrikeldata i GML formattet.
+#               Til ArcGIS brugere findes scriptet Get_SHAPE_Matr_zip_from_Atomfeed_GST.py
+#	            Til MapInfo brugere findes scriptet Get_MAPINFO_Matr_zip_from_Atomfeed_GST.py 
+#
 # Author:       Poul Toft Laustsen, Geodatastyrelsen - potla@gst.dk
 #-------------------------------------------------------------------------------
 import urllib
@@ -35,9 +41,9 @@ import traceback, sys
 Ejerlav = [ '990551','2005059' ]
 init_folder =  os.path.dirname(os.path.realpath(__file__)) # finder mappen hvor dette script er placeret
 Output_folder =  init_folder + os.sep + "Til_Opdatering" # mappe hvor zipfiler downloades til
-logfil = init_folder + os.sep +"MatrikelDownload.log" # logfil bruges ogs? til at se hvorn?r scriptet sidst har downloadet en zipfil
-Brugernavn = "Brugernavn" # brugernavn til kortforsyningen
-Password = "********"  #password til kortforsyningen
+logfil = init_folder + os.sep + "MatrikelDownload.log" # logfil bruges ogs? til at se hvorn?r scriptet sidst har downloadet en zipfil
+Brugernavn = "potla" # brugernavn til kortforsyningen
+Password = "Marius24"  #password til kortforsyningen
 
 def read_Lastupdate(filepath):# hvornår er logfilen sidst opdateret
 	return datetime.datetime.fromtimestamp(os.path.getmtime(filepath))
@@ -73,6 +79,9 @@ def hent_matr_zipfiler(ejerlav,Outputfolder, lastupdate):
         print tbinfo + "\n" + str(sys.exc_type)+ ": " + str(sys.exc_value)
 
 try:
+    if not os.path.isfile(logfil):
+        file = open(logfil, 'w+')
+		#file.close
     Lastupdate =read_Lastupdate(logfil) # Tjekker dato for hvornår logfil sidst er opdateret
     if not os.path.exists(Output_folder): # opretter output mappen hvis den ikke findes
         os.makedirs(Output_folder)
