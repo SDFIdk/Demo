@@ -25,7 +25,7 @@ var matrikelkort = L.tileLayer.wms('http://{s}.kortforsyningen.kms.dk/service', 
 var ortofoto = L.tileLayer('http://{s}.kortforsyningen.kms.dk/orto_foraar?ticket=' + kmsticket + '&request=GetTile&version=1.0.0&service=WMTS&Layer=orto_foraar&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
     attribution: 'Geodatastyrelsen',
     continuousWorld: true,
-    maxZoom: 13,
+    maxZoom: 14,
     zoom: function () {
         var zoom = map.getZoom();
         if (zoom < 10)
@@ -38,7 +38,7 @@ var ortofoto = L.tileLayer('http://{s}.kortforsyningen.kms.dk/orto_foraar?ticket
 var skaermkort = L.tileLayer('http://{s}.kortforsyningen.kms.dk/topo_skaermkort?ticket=' + kmsticket + '&request=GetTile&version=1.0.0&service=WMTS&Layer=dtk_skaermkort&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
     attribution: 'Geodatastyrelsen',
     continuousWorld: true,
-    maxZoom: 13,
+    maxZoom: 14,
     zoom: function () {
         var zoom = map.getZoom();
         if (zoom < 10)

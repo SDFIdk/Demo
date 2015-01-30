@@ -71,7 +71,7 @@ FindStedet.Map = VisStedet.Utils.Class({
         this.kmsticket = new VisStedet.Ticket();
 
         this.internalprojection = "EPSG:25832";
-        this.resolutions = new Array(0.8, 1.6, 3.2, 6.4, 12.8, 25.6, 51.2, 102.4, 204.8, 409.6, 819.2, 1638.4);
+        this.resolutions = new Array(0.2,0.4,0.8, 1.6, 3.2, 6.4, 12.8, 25.6, 51.2, 102.4, 204.8, 409.6, 819.2, 1638.4);
         this.startExt = new OpenLayers.Bounds(420000, 6025000, 905000, 6450000);
         this.maxExt = new OpenLayers.Bounds(120000, 5661139.2, 958860.8, 6500000);
         this.maxResolution = (this.maxExt.top - this.maxExt.bottom) / 256;

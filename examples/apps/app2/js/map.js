@@ -182,11 +182,11 @@ VisStedet.App = {
 		this.mapOptions = {
         	div: 'map',
             projection: 'EPSG:25832',
-            resolutions: [0.8, 1.6, 3.2, 6.4, 12.8, 25.6, 51.2, 102.4, 204.8, 409.6, 819.2, 1638.4],
+            resolutions: [0.2,0.4,0.8, 1.6, 3.2, 6.4, 12.8, 25.6, 51.2, 102.4, 204.8, 409.6, 819.2, 1638.4],
             units: "m",
             maxResolution: 1638.4,
             maxExtent: new OpenLayers.Bounds(120000, 5661139.2, 958860.8, 6500000),
-            numZoomLevels: 12,
+            numZoomLevels: 14,
             controls: [
                        new OpenLayers.Control.Attribution(),
                        new OpenLayers.Control.TouchNavigation({

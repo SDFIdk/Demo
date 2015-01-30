@@ -17,7 +17,7 @@ function addMap (elementID, params) {
         units: 'm',
         maxExtent: new OpenLayers.Bounds(120000,5900000,1000000,6500000),
         maxResolution: 1638.4,
-        numZoomLevels: 13
+        numZoomLevels: 14
     });
 
     //Layer definition
@@ -42,7 +42,9 @@ function addMap (elementID, params) {
             {identifier: "L09", scaleDenominator: 3.2 / 0.00028},
             {identifier: "L10", scaleDenominator: 1.6 / 0.00028},
             {identifier: "L11", scaleDenominator: 0.8 / 0.00028},
-            {identifier: "L12", scaleDenominator: 0.4 / 0.00028}
+            {identifier: "L12", scaleDenominator: 0.4 / 0.00028},
+			{identifier: "L12", scaleDenominator: 0.4/0.00028},
+			{identifier: "L13", scaleDenominator: 0.2/0.00028}
         ],
         isBaseLayer: true,
         displayInLayerSwitcher: true,
