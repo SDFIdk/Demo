@@ -4,8 +4,15 @@ findStedet_layers = [
     matrixSet: 'View1', matrixIds: 'L00,L01,L02,L03,L04,L05,L06,L07,L08,L09,L10,L11,L12,L13', info_format: 'text/plain',
     transparent: true, ticket: ""
 }, options: { isBaseLayer: true, visibility: false, requestEncoding: 'kvp',layerid: 1 }
-}
-,
+},
+
+{ layerid: 5, type: "WMTS", name: "Sk\u00E6rmkort", url: "http://kortforsyningen.kms.dk/topo_skaermkort_daempet", params: { service: 'WMTS', version: '1.0.0',
+    request: 'GetTile', format: 'image/jpeg', layer: 'dtk_skaermkort_daempet', style: 'default', BGCOLOR: '0xDCF0F9',
+    matrixSet: 'View1', matrixIds: 'L00,L01,L02,L03,L04,L05,L06,L07,L08,L09,L10,L11,L12,L13', info_format: 'text/plain',
+    transparent: true, ticket: ""
+}, options: { isBaseLayer: true, visibility: false, requestEncoding: 'kvp',layerid: 5 }
+},
+
 { layerid: 2, type: "WMTS", name: "Flyfoto", url: "http://kortforsyningen.kms.dk/orto_foraar", params: { service: 'WMTS', version: '1.0.0',
     request: 'GetTile', format: 'image/jpeg', layer: 'orto_foraar', style: 'default', BGCOLOR: '0xDCF0F9',
     matrixSet: 'View1', matrixIds: 'L00,L01,L02,L03,L04,L05,L06,L07,L08,L09,L10,L11,L12,L13', info_format: 'text/plain',
