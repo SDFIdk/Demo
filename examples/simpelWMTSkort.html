@@ -5,7 +5,7 @@
     <script src="http://openlayers.org/api/2.11/OpenLayers.js" type="text/javascript" ></script>
     <script type="text/javascript" src="../server/Ticket/kfticket.php"></script>
 	<script type="text/javascript" src="../lib/VisStedet/Utils.js"></script>
-    <script type="text/javascript" src="../lib/VisStedet/Ticket.js"></script>   
+    <script type="text/javascript" src="../lib/VisStedet/Ticket.js"></script>  
     <title>VisStedet Basic map</title>
 
 <script>
@@ -13,9 +13,9 @@
             {
 
 
-    kmsticket: '',
+    ticket: '',
 	  
-    kmsticket = new VisStedet.Ticket();
+    kfticket = new VisStedet.Ticket();
 	
     var map = new OpenLayers.Map(
         'mapTag',
@@ -37,7 +37,7 @@
 		matrixSet: "View1",
 		format: "image/jpeg",
 		params: {
-			ticket: kmsticket
+			ticket: kfticket
 		},
 		matrixIds: [
 			{identifier: "L00", scaleDenominator: 1638.4/0.00028},

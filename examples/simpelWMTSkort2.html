@@ -14,9 +14,9 @@
             {
 
 
-    kmsticket: '',
+    ticket: '',
 	  
-    kmsticket = new VisStedet.Ticket();
+    kfticket = new VisStedet.Ticket();
 	
     var map = new OpenLayers.Map(
         'mapTag',
@@ -46,7 +46,7 @@
 		matrixSet: "View1",
 		format: "image/jpeg",
 		params: {
-			ticket: kmsticket
+			ticket: kfticket
 		},
 		matrixIds: [
 			{identifier: "L00", scaleDenominator: 1638.4/0.00028},
@@ -85,7 +85,7 @@
 		matrixSet: "View1",
 		format: "image/jpeg",
 		params: {
-			ticket: kmsticket
+			ticket: kfticket
 		},
 		matrixIds: [
 			{identifier: "L00", scaleDenominator: 1638.4/0.00028},
@@ -122,7 +122,7 @@
 		format: "image/jpeg",
 		visibility: true,
 		params: {
-			ticket: kmsticket
+			ticket: kfticket
 		},
 		matrixIds: [
 			{identifier: "L00", scaleDenominator: 1638.4/0.00028},

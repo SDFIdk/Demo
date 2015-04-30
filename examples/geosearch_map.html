@@ -48,12 +48,12 @@
         </style>
 
         <script>
-var vector, map, geosearch, kmsticket;
+var vector, map, geosearch, kfticket;
 function init() {
-    kmsticket = new VisStedet.Ticket();
+    kfticket = new VisStedet.Ticket();
     
     geosearch = new VisStedet.Search.GeoSearch ({
-        ticket: kmsticket,
+        ticket: kfticket,
         resources: ['Adresser','Matrikelnumre','Kommuner','Opstillingskredse','Politikredse','Postdistrikter','Regioner','Retskredse','Stednavne'],
     });
     
@@ -128,7 +128,7 @@ function init() {
         matrixSet: "View1",
         format: "image/jpeg",
         params: {
-            ticket: kmsticket
+            ticket: kfticket
         },
         matrixIds: [
             {identifier: "L00", scaleDenominator: 1638.4/0.00028},
@@ -170,7 +170,7 @@ function init() {
         </script>
     </head>
     <body onload="init()">
-        <h2>GeoSearch med valgliste og kort</h2>
+        <h2>GeoSearch - søgning i adresser, stednavne og administrative enheder</h2>
         <div style="z-index:10000;position:absolute;">
             <input id="geosearch" style="width:350px;" placeholder="Søg her"/>
         </div>

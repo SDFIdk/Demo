@@ -19,6 +19,6 @@
 				"http://kortforsyningen.kms.dk/service?request=GetTicket&login=VisStedet&password=VisStedet");
 		setcookie("kfticket", $ticket, time()+60*60*24, '/', $domain); 
 	}
-	// Print out the ticket in the HTML for easier reference and debugging:
+	//Print out the ticket in the HTML for easier reference and debugging:
 	echo "kfticket= ".$_COOKIE['kfticket'];
 ?>
