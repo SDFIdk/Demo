@@ -50,7 +50,7 @@ FindStedet.Search = VisStedet.Utils.Class({
             this.service.resources.push ('Matrikelnumre');
         }
         if (this.types['place'] === true) {
-            this.service.resources.push ('Stednavne');
+            this.service.resources.push ('Stednavne_v2');
             this.service.resources.push ('Kommuner');
             this.service.resources.push ('Sogne');
             this.service.resources.push ('Opstillingskredse');
