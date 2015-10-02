@@ -30,6 +30,9 @@ findStedet_layers = [
 { type: "WMS", name: "Matrikelkort", url: "http://kortforsyningen.kms.dk/service", params: { service: 'WMS', Transparent: true, servicename: 'mat', layers: 'Centroide,MatrikelSkel,OptagetVej',
     version: '1.1.0', ticket: "", styles: 'sorte_centroider,sorte_skel,default'
 }, options: { isBaseLayer: false, maxResolution: 3.2, visibility: false, layerid: 3 }
-}
-
+},
+//{ type: "WMS", name: "Forvaltning beta", url: "http://kortforsyningen.kms.dk/service", params: { service: 'WMS', Transparent: true, servicename: 'forvaltning_beta', layers: 'basis_ortofoto,basiskort,teknik,natur,brugsgraense,trafiksikkerhed,hoejspaendingsledning,matrikel',
+  //  version: '1.1.0', ticket: "", styles: 'default'
+//}, options: { isBaseLayer: false, visibility: false, layerid: 6 }
+//}
 ];
