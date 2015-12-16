@@ -8,7 +8,7 @@ var map = new L.Map('map', {
     crs: crs
 });
 
-var matrikelkort = L.tileLayer.wms('http://{s}.services.kortforsyningen.dk/service', {
+var matrikelkort = L.tileLayer.wms('http://{s}.kortforsyningen.kms.dk/service', {
     service: 'WMS',
     transparent: true,
     servicename: 'mat',
@@ -22,7 +22,7 @@ var matrikelkort = L.tileLayer.wms('http://{s}.services.kortforsyningen.dk/servi
     minZoom: 9
 }).addTo(map);
 
-var ortofoto = L.tileLayer('http://{s}.services.kortforsyningen.dk/orto_foraar?ticket=' + kmsticket + '&request=GetTile&version=1.0.0&service=WMTS&Layer=orto_foraar&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
+var ortofoto = L.tileLayer('http://{s}.kortforsyningen.kms.dk/orto_foraar?ticket=' + kmsticket + '&request=GetTile&version=1.0.0&service=WMTS&Layer=orto_foraar&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
     attribution: 'Geodatastyrelsen',
     continuousWorld: true,
     maxZoom: 14,
@@ -35,7 +35,7 @@ var ortofoto = L.tileLayer('http://{s}.services.kortforsyningen.dk/orto_foraar?t
     }
 });
 
-var skaermkort = L.tileLayer('http://{s}.services.kortforsyningen.dk/topo_skaermkort?ticket=' + kmsticket + '&request=GetTile&version=1.0.0&service=WMTS&Layer=dtk_skaermkort&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
+var skaermkort = L.tileLayer('http://{s}.kortforsyningen.kms.dk/topo_skaermkort?ticket=' + kmsticket + '&request=GetTile&version=1.0.0&service=WMTS&Layer=dtk_skaermkort&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
     attribution: 'Geodatastyrelsen',
     continuousWorld: true,
     maxZoom: 14,

@@ -40,7 +40,7 @@
 
 	var wmts = new OpenLayers.Layer.WMTS({
 		name: "Skærmkort",
-		url: ["http://a.kortforsyningen.kms.dk/topo_skaermkort", "http://b.kortforsyningen.kms.dk/topo_skaermkort", "http://c.kortforsyningen.kms.dk/topo_skaermkort"],
+		url: ["http://a.services.kortforsyningen.dk/topo_skaermkort", "http://b.services.kortforsyningen.dk/topo_skaermkort", "http://c.services.kortforsyningen.dk/topo_skaermkort"],
 		style: "default",
 		layer: "dtk_skaermkort",
 		matrixSet: "View1",
@@ -79,7 +79,7 @@
 
 	var ortofoto = new OpenLayers.Layer.WMTS({
 		name: "Fly foto",
-		url: ["http://a.kortforsyningen.kms.dk/orto_foraar", "http://b.kortforsyningen.kms.dk/orto_foraar", "http://c.kortforsyningen.kms.dk/orto_foraar"],
+		url: ["http://a.services.kortforsyningen.dk/orto_foraar", "http://b.services.kortforsyningen.dk/orto_foraar", "http://c.services.kortforsyningen.dk/orto_foraar"],
 		style: "default",
 		layer: "orto_foraar",
 		matrixSet: "View1",
@@ -115,7 +115,7 @@
 
 	var dhm = new OpenLayers.Layer.WMTS({
 		name: "Hill shade",
-		url: ["http://a.kortforsyningen.kms.dk/dhm", "http://b.kortforsyningen.kms.dk/dhm", "http://c.kortforsyningen.kms.dk/dhm"],
+		url: ["http://a.services.kortforsyningen.dk/dhm", "http://b.services.kortforsyningen.dk/dhm", "http://c.services.kortforsyningen.dk/dhm"],
 		style: "default",
 		layer: "hillshade_1_6m",
 		matrixSet: "View1",

@@ -99,7 +99,7 @@ function LoadMap()
 	    // Adding kommune layer to show kommune boundries
 	    var kommuneLayer = new OpenLayers.Layer.WMS
 	    						(
-	    							"Kommune","http://kortforsyningen.kms.dk/adm_500_2008_r",
+	    							"Kommune","http://services.kortforsyningen.dk/adm_500_2008_r",
 	                            	{ 'layers': 'KOM500_2008', 'styles': 'default', transparent: true, format: "image/png", ignoreillegallayers:true,login: "demo", password: "demo" },
 	                            	{ isBaseLayer: true, displayInLayerSwitcher: true }
 	                            );

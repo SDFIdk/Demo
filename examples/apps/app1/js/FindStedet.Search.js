@@ -99,7 +99,7 @@ FindStedet.Search = VisStedet.Utils.Class({
             if (ui.item.data.x && ui.item.data.y) {
                 
                 jQuery.ajax({
-                    url: 'http://kortforsyningen.kms.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+ui.item.data.x+','+ui.item.data.y,
+                    url: 'http://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+ui.item.data.x+','+ui.item.data.y,
                     type: 'GET',
                     data: {ticket: this.serviceOptions.ticket.toString()},
                     dataType: 'jsonp',
@@ -130,7 +130,7 @@ FindStedet.Search = VisStedet.Utils.Class({
                 if (ui.item.data.type === 'matrikelnummer') {
                     
                     jQuery.ajax({
-                        url: 'http://kortforsyningen.kms.dk/?servicename=RestGeokeys_v2&f=jsonp&method=matrikelnr&geometry=true&ejkode='+ui.item.data.elavskode+'&matnr='+ui.item.data.matrnr,
+                        url: 'http://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&f=jsonp&method=matrikelnr&geometry=true&ejkode='+ui.item.data.elavskode+'&matnr='+ui.item.data.matrnr,
                         type: 'GET',
                         data: {ticket: this.serviceOptions.ticket.toString()},
                         dataType: 'jsonp',
@@ -149,7 +149,7 @@ FindStedet.Search = VisStedet.Utils.Class({
                                 var centroid = cen.coordinate;
     
                                 jQuery.ajax({
-                                    url: 'http://kortforsyningen.kms.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+centroid.x+','+centroid.y,
+                                    url: 'http://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+centroid.x+','+centroid.y,
                                     type: 'GET',
                                     data: {ticket: this.serviceOptions.ticket.toString()},
                                     dataType: 'jsonp',

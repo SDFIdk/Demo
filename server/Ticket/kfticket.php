@@ -16,7 +16,7 @@
         $domain = $matches[0];
 
 		$ticket = file_get_contents(
-				"http://kortforsyningen.kms.dk/service?request=GetTicket&login=VisStedet&password=VisStedet");
+				"http://services.kortforsyningen.dk/service?request=GetTicket&login=VisStedet&password=VisStedet");
 		setcookie("kfticket", $ticket, time()+60*60*24, '/', $domain); 
 	}
 	//Print out the ticket in the HTML for easier reference and debugging:

@@ -224,7 +224,7 @@ FindStedet.Map = VisStedet.Utils.Class({
 
             var point = map.getLonLatFromViewPortPx(e.xy);
             jQuery.ajax({
-                url: 'http://kortforsyningen.kms.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+point.lon+','+point.lat,
+                url: 'http://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+point.lon+','+point.lat,
                 type: 'GET',
                 data: {ticket: this.kmsticket.toString()},
                 dataType: 'jsonp',

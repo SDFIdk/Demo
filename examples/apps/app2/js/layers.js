@@ -15,7 +15,7 @@ VisStedet.App.LAYERS = {
 	        smallImg: "img/map1_small.png",
 	        layers: [
 	            {
-	                type: "WMTS", name: "Ortofoto - forår", url: "http://kortforsyningen.kms.dk/orto_foraar",
+	                type: "WMTS", name: "Ortofoto - forår", url: "http://services.kortforsyningen.dk/orto_foraar",
 	                params: {
 	                    service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 	                    layer: 'orto_foraar', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -37,7 +37,7 @@ VisStedet.App.LAYERS = {
 	        smallImg: "img/map2_small.png",
 	        layers: [
 			    {
-	                type: "WMS", name: "Matrikler", url: "http://kortforsyningen.kms.dk/mat",
+	                type: "WMS", name: "Matrikler", url: "http://services.kortforsyningen.dk/mat",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'Jordstykke',
@@ -50,7 +50,7 @@ VisStedet.App.LAYERS = {
 	                }
 	            },
 			    {
-	                type: "WMTS", name: "Ortofoto - forår", url: "http://kortforsyningen.kms.dk/orto_foraar",
+	                type: "WMTS", name: "Ortofoto - forår", url: "http://services.kortforsyningen.dk/orto_foraar",
 	                params: {
 	                    service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 	                    layer: 'orto_foraar', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -74,7 +74,7 @@ VisStedet.App.LAYERS = {
 	        smallImg: "img/map3_small.png",
 	        layers: [
 			    {
-			        type: "WMTS", name: "Skærmkort", url: "http://kortforsyningen.kms.dk/topo_skaermkort",
+			        type: "WMTS", name: "Skærmkort", url: "http://services.kortforsyningen.dk/topo_skaermkort",
 			        params: {
 			            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 			            layer: 'dtk_skaermkort', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -96,7 +96,7 @@ VisStedet.App.LAYERS = {
 	        smallImg: "img/map4_small.png",
 	        layers: [
 	            {
-	                type: "WMS", name: "Matrikler", url: "http://kortforsyningen.kms.dk/mat",
+	                type: "WMS", name: "Matrikler", url: "http://services.kortforsyningen.dk/mat",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'Jordstykke',
@@ -108,7 +108,7 @@ VisStedet.App.LAYERS = {
 	                }
 	            },
 			    {
-			        type: "WMTS", name: "Skærmkort", url: "http://kortforsyningen.kms.dk/topo_skaermkort",
+			        type: "WMTS", name: "Skærmkort", url: "http://services.kortforsyningen.dk/topo_skaermkort",
 			        params: {
 			            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 			            layer: 'dtk_skaermkort', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -130,7 +130,7 @@ VisStedet.App.LAYERS = {
 	        smallImg: "img/map5_small.png",
 	        layers: [
 	            {
-	                type: "WMS", name: "Kort 50", url: "http://kortforsyningen.kms.dk/topo50",
+	                type: "WMS", name: "Kort 50", url: "http://services.kortforsyningen.dk/topo50",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'dtk_2cm',
@@ -153,7 +153,7 @@ VisStedet.App.LAYERS = {
 	        smallImg: "img/map6_small.png",
 	        layers: [
 	            {
-	                type: "WMS", name: "Kort 100", url: "http://kortforsyningen.kms.dk/topo100",
+	                type: "WMS", name: "Kort 100", url: "http://services.kortforsyningen.dk/topo100",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'dtk_1cm',
@@ -176,7 +176,7 @@ VisStedet.App.LAYERS = {
 	        smallImg: "img/map7_small.png",
 	        layers: [
 				{
-			        type: "WMTS", name: "Hill shade", url: "http://kortforsyningen.kms.dk/dhm",
+			        type: "WMTS", name: "Hill shade", url: "http://services.kortforsyningen.dk/dhm",
 			        params: {
 			            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 			            layer: 'hillshade_1_6m', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -188,7 +188,7 @@ VisStedet.App.LAYERS = {
 			        }
 			    },
 				{
-	                type: "WMS", name: "DTK/Kort25", url: "http://kortforsyningen.kms.dk/topo25",
+	                type: "WMS", name: "DTK/Kort25", url: "http://services.kortforsyningen.dk/topo25",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'topo25_klassisk', 
@@ -209,7 +209,7 @@ VisStedet.App.LAYERS = {
 	        smallImg: "img/map8_small.png",
 	        layers: [
 	            {
-	                type: "WMS", name: "Høje målebordsblade", url: "http://kortforsyningen.kms.dk/topo20_hoeje_maalebordsblade",
+	                type: "WMS", name: "Høje målebordsblade", url: "http://services.kortforsyningen.dk/topo20_hoeje_maalebordsblade",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'dtk_hoeje_maalebordsblade',
@@ -230,7 +230,7 @@ VisStedet.App.LAYERS = {
 	        smallImg: "img/map9_small.png",
 	        layers: [
 	            {
-	                type: "WMS", name: "Lave målebordsblade", url: "http://kortforsyningen.kms.dk/topo20_lave_maalebordsblade",
+	                type: "WMS", name: "Lave målebordsblade", url: "http://services.kortforsyningen.dk/topo20_lave_maalebordsblade",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'dtk_lave_maalebordsblade',
@@ -252,7 +252,7 @@ VisStedet.App.LAYERS = {
 	        smallImg: "img/map10_small.png",
 	        layers: [
 	                 {
-	 	                type: "WMS", name: "Matrikler", url: "http://kortforsyningen.kms.dk/mat",
+	 	                type: "WMS", name: "Matrikler", url: "http://services.kortforsyningen.dk/mat",
 	 	                params: {
 	 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	 	                    layers: 'Jordstykke',
@@ -275,7 +275,7 @@ VisStedet.App.LAYERS = {
 //        smallImg: "img/map5.png",
 //        layers: [
 //		    {
-//		        type: "WMTS", name: "Hill shade", url: "http://kortforsyningen.kms.dk/dhm",
+//		        type: "WMTS", name: "Hill shade", url: "http://services.kortforsyningen.dk/dhm",
 //		        params: {
 //		            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 //		            layer: 'hillshade_1_6m', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -287,7 +287,7 @@ VisStedet.App.LAYERS = {
 //		        }
 //		    },
 //		    {
-//		        type: "WMTS", name: "Skærmkort", url: "http://kortforsyningen.kms.dk/topo_skaermkort",
+//		        type: "WMTS", name: "Skærmkort", url: "http://services.kortforsyningen.dk/topo_skaermkort",
 //		        params: {
 //		            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 //		            layer: 'dtk_skaermkort', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -308,7 +308,7 @@ VisStedet.App.LAYERS = {
 //        smallImg: "img/map6.png",
 //        layers: [
 //		    {
-//		        type: "WMTS", name: "Hill shade", url: "http://kortforsyningen.kms.dk/dhm",
+//		        type: "WMTS", name: "Hill shade", url: "http://services.kortforsyningen.dk/dhm",
 //		        params: {
 //		            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 //		            layer: 'hillshade_1_6m', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -320,7 +320,7 @@ VisStedet.App.LAYERS = {
 //		        }
 //		    },
 //		    {
-//                type: "WMTS", name: "Ortofoto - forår", url: "http://kortforsyningen.kms.dk/orto_foraar",
+//                type: "WMTS", name: "Ortofoto - forår", url: "http://services.kortforsyningen.dk/orto_foraar",
 //                params: {
 //                    service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 //                    layer: 'orto_foraar', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -341,7 +341,7 @@ VisStedet.App.LAYERS = {
 //        smallImg: "img/map7.png",
 //        layers: [
 //            {
-//                type: "WMS", name: "DTK/Kort25", url: "http://kortforsyningen.kms.dk/topo25",
+//                type: "WMS", name: "DTK/Kort25", url: "http://services.kortforsyningen.dk/topo25",
 //                params: {
 //                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 //                    layers: 'topo25_klassisk', 

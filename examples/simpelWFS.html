@@ -32,7 +32,7 @@
 	
 	var wmts = new OpenLayers.Layer.WMTS({
 		name: "WMTS",
-		url: ["http://a.kortforsyningen.kms.dk/topo_skaermkort", "http://b.kortforsyningen.kms.dk/topo_skaermkort", "http://c.kortforsyningen.kms.dk/topo_skaermkort"],
+		url: ["http://a.services.kortforsyningen.dk/topo_skaermkort", "http://b.services.kortforsyningen.dk/topo_skaermkort", "http://c.services.kortforsyningen.dk/topo_skaermkort"],
 		style: "default",
 		layer: "dtk_skaermkort",
 		matrixSet: "View1",
@@ -64,7 +64,7 @@
     // Old way depre
     /*
     var wfsLayer = new OpenLayers.Layer.WFS("testwfs",
-    "http://kortforsyningen.kms.dk/topo_geo3p_gml2",
+    "http://services.kortforsyningen.dk/topo_geo3p_gml2",
     { 
         request:"GetFeature",
         typename: "kms:Forlystelse",
@@ -82,7 +82,7 @@
                 strategies : [new OpenLayers.Strategy.BBOX()],
                 protocol : new OpenLayers.Protocol.WFS({
                     version: "1.0.0",
-                    url: "http://kortforsyningen.kms.dk/topo_geo3p_gml2?ticket="+kmsticket,
+                    url: "http://services.kortforsyningen.dk/topo_geo3p_gml2?ticket="+kmsticket,
                     featurePrefix: "kms",
                     featureType: "Forlystelse",
                     featureNS: "http://schemas.kms.dk/wfs",
