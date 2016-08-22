@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+  	<meta charset="utf-8">
+ 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+ 	<meta name="viewport" content="user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="js/openlayers/ol.css" type="text/css" media="screen" />
+    <script src="js/openlayers/ol.js" type="text/javascript" ></script>
+	
+	<!-- Server site get and set ticket in cookie -->	
+	<script type="text/javascript" src="ticket/kfticket.php"></script>
+	<!--<script type="text/javascript" src="ticket/kfticket.jsp"></script>-->
+	<!--<script type="text/javascript" src="ticket/	kfticket.ashx"></script>-->
+	
+	<script type="text/javascript" src="js/Utils.js"></script>
+    <script type="text/javascript" src="js/Ticket.js"></script>
+	<script type="text/javascript" src="js/proj/proj4.js"></script>
+    <title>Openlayers 3 WMS kort eksempel</title>
+
+<script>
+	<!-- Needs to include this openlayers 3 does not pr default support EPSG:25832-->
+	proj4.defs("EPSG:25832","+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs"); 
+	function init()
+    {
+		// Get ticket from kortforsyningen
+		ticket: '',
+		kfticket = new VisStedet.Ticket();
+		
+		 var dkProjection = new ol.proj.Projection({
+			code: 'EPSG:25832',
+			extent: [120000, 5661139.2, 958860.8, 6500000],
+			units: 'm'
+		 });
+		 ol.proj.addProjection(dkProjection);
+		 
+		var projection=ol.proj.get("EPSG:25832");
+
+		var layers = [];
+		var basemap =  new ol.layer.Image({
+			opacity: 1.0,
+			extent: [420000, 6025000, 905000, 6450000],
+			source: new ol.source.ImageWMS({
+				url: 'http://kortforsyningen.kms.dk/topo_skaermkort?',
+				params: {
+					'LAYERS': 'dtk_skaermkort_daempet', 
+					'TICKET': kfticket,
+					'TRANSPARENT': 'TRUE',
+					'SERVICE':'WMS',
+					'VERSION':'1.1.1'
+				}
+			  })
+		});
+		layers.push(basemap);
+		
+		// Create map vith wms as background layer
+		var map = new ol.Map({
+			target: 'mapTag',
+			layers: layers,
+			logo: false, // don't display google logo
+			controls: ol.control.defaults({}),
+			view: new ol.View({
+			  center: [724500, 6176450],
+			  zoom: 2,
+			  minZoom: 1,
+			  maxZoom: 14,
+			  projection: projection
+			})
+		});
+	}
+</script>
+</head>
+<body onload="init()">
+        <h2>Openlayers 3 eksempel med WMS baggrundskort</h2>
+        <div id="mapTag" style="width: 85%; height: 85%"></div>
+    </body>
+</html>
