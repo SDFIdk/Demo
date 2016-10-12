@@ -38,6 +38,9 @@
 		            controls : []
                 }
             );
+			
+			/* maxExtent parameteren skal bibeholdes i de definerede koordinatpar, 
+			for at undgå en geografisk forskydning mellem WMTS-lag og WMS-lag */
 	
 	        var wmts = new OpenLayers.Layer.WMTS({
 		        name: "WMTS",

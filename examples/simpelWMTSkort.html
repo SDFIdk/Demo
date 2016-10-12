@@ -29,6 +29,9 @@
         }
     );
 	
+	/* maxExtent parameteren skal bibeholdes i de definerede koordinatpar, 
+	for at undgå en geografisk forskydning mellem WMTS-lag og WMS-lag */
+	
 	var wmts = new OpenLayers.Layer.WMTS({
 		name: "WMTS",
 		url: ["http://a.services.kortforsyningen.dk/topo_skaermkort", "http://b.services.kortforsyningen.dk/topo_skaermkort", "http://c.services.kortforsyningen.dk/topo_skaermkort"],
