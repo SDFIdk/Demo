@@ -65,10 +65,10 @@
             layers.push(wmts);
 
             // WMS layer 
-            var wms = new ol.layer.Image({
+            var wms = new ol.layer.Tile({
                 opacity: 1.0,
                 extent: [420000, 6025000, 905000, 6450000],
-                source: new ol.source.ImageWMS({
+                source: new ol.source.TileWMS({
                     url: 'http://kortforsyningen.kms.dk/topo_skaermkort?',
                     params: {
                         'LAYERS': 'dtk_skaermkort_daempet', 
