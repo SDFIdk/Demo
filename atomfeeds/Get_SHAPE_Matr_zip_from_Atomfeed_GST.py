@@ -47,8 +47,8 @@ Ejerlav = ['120251','120252','120253','120254','120255','120256','120257','12045
 init_folder =  os.path.dirname(os.path.realpath(__file__)) # finder mappen hvor dette script er placeret
 Output_folder =  init_folder + os.sep + "Til_Opdatering" # mappe hvor zipfiler downloades til
 logfil = init_folder + os.sep + "MatrikelDownload.log" # logfil bruges ogs? til at se hvorn?r scriptet sidst har downloadet en zipfil
-Brugernavn = "Kommune217" # brugernavn til kortforsyningen
-Password = "Tyuiopa10"  #password til kortforsyningen
+Brugernavn = "brugernavn" #brugernavn til kortforsyningen
+Password = "password"  #password til kortforsyningen
 
 def read_Lastupdate(filepath):# hvornår er logfilen sidst opdateret
 	return datetime.datetime.fromtimestamp(os.path.getmtime(filepath))
