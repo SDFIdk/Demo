@@ -1,6 +1,6 @@
 <html>
   <head>
-  	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+  	<meta https-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
 
 <!-- Her kan du benytte Vis Stedets stylesheet eller henter dit eget ind --> 
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -48,7 +48,7 @@ function init() {
 
     var wmts = new OpenLayers.Layer.WMTS({
         name: "WMTS",
-        url: ["http://a.services.kortforsyningen.dk/topo_skaermkort", "http://b.services.kortforsyningen.dk/topo_skaermkort", "http://c.services.kortforsyningen.dk/topo_skaermkort"],
+        url: ["https://a.services.kortforsyningen.dk/topo_skaermkort", "https://b.services.kortforsyningen.dk/topo_skaermkort", "https://c.services.kortforsyningen.dk/topo_skaermkort"],
         style: "default",
         layer: "dtk_skaermkort",
         matrixSet: "View1",
@@ -98,7 +98,7 @@ function init() {
         	'default': defaultStyle,
             'select': selectStyle
         }),
-        protocol: new OpenLayers.Protocol.HTTP({
+        protocol: new OpenLayers.Protocol.https({
             url: "community.kml",
             format: new OpenLayers.Format.KML({
                 internalProjection: new OpenLayers.Projection('EPSG:25832'),

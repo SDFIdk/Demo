@@ -8,7 +8,7 @@ var map = new L.Map('map', {
     crs: crs
 });
 
-var matrikelkort = L.tileLayer.wms('http://{s}.services.kortforsyningen.dk/service', {
+var matrikelkort = L.tileLayer.wms('https://{s}.services.kortforsyningen.dk/service', {
     service: 'WMS',
     transparent: true,
     servicename: 'mat',
@@ -17,13 +17,13 @@ var matrikelkort = L.tileLayer.wms('http://{s}.services.kortforsyningen.dk/servi
     ticket: kmsticket,
     styles: 'sorte_centroider,sorte_skel,default',
     format: 'image/png',
-    attribution: "Geodatastyrelsen",
+    attribution: "Styrelsen for Dataforsyning og Effektivisering",
     continuousWorld: true,
     minZoom: 9
 }).addTo(map);
 
-var ortofoto = L.tileLayer('http://{s}.services.kortforsyningen.dk/orto_foraar?ticket=' + kmsticket + '&request=GetTile&version=1.0.0&service=WMTS&Layer=orto_foraar&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
-    attribution: 'Geodatastyrelsen',
+var ortofoto = L.tileLayer('https://{s}.services.kortforsyningen.dk/orto_foraar?ticket=' + kmsticket + '&request=GetTile&version=1.0.0&service=WMTS&Layer=orto_foraar&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
+    attribution: 'Styrelsen for Dataforsyning og Effektivisering',
     continuousWorld: true,
     maxZoom: 14,
     zoom: function () {
@@ -35,8 +35,8 @@ var ortofoto = L.tileLayer('http://{s}.services.kortforsyningen.dk/orto_foraar?t
     }
 });
 
-var skaermkort = L.tileLayer('http://{s}.services.kortforsyningen.dk/topo_skaermkort?ticket=' + kmsticket + '&request=GetTile&version=1.0.0&service=WMTS&Layer=dtk_skaermkort&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
-    attribution: 'Geodatastyrelsen',
+var skaermkort = L.tileLayer('https://{s}.services.kortforsyningen.dk/topo_skaermkort?ticket=' + kmsticket + '&request=GetTile&version=1.0.0&service=WMTS&Layer=dtk_skaermkort&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
+    attribution: 'Styrelsen for Dataforsyning og Effektivisering',
     continuousWorld: true,
     maxZoom: 14,
     zoom: function () {

@@ -21,7 +21,7 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 The NuSOAP project home is:
-http://sourceforge.net/projects/nusoap/
+https://sourceforge.net/projects/nusoap/
 
 The primary support for NuSOAP is the mailing list:
 nusoap-general@lists.sourceforge.net
@@ -30,10 +30,10 @@ If you have any questions or comments, please email:
 
 Dietrich Ayala
 dietrich@ganx4.com
-http://dietrich.ganx4.com/nusoap
+https://dietrich.ganx4.com/nusoap
 
 NuSphere Corporation
-http://www.nusphere.com
+https://www.nusphere.com
 
 */
 
@@ -44,7 +44,7 @@ require_once('Mail/mimePart.php');
 
 /**
 * nusoap_client_mime client supporting MIME attachments defined at
-* http://www.w3.org/TR/SOAP-attachments.  It depends on the PEAR Mail_MIME library.
+* https://www.w3.org/TR/SOAP-attachments.  It depends on the PEAR Mail_MIME library.
 *
 * @author   Scott Nichol <snichol@users.sourceforge.net>
 * @author	Thanks to Guillaume and Henning Reich for posting great attachment code to the mail list
@@ -124,13 +124,13 @@ class nusoap_client_mime extends nusoap_client {
 	}
 
 	/**
-	* gets the HTTP body for the current request.
+	* gets the https body for the current request.
 	*
 	* @param string $soapmsg The SOAP payload
-	* @return string The HTTP body, which includes the SOAP payload
+	* @return string The https body, which includes the SOAP payload
 	* @access private
 	*/
-	function getHTTPBody($soapmsg) {
+	function gethttpsBody($soapmsg) {
 		if (count($this->requestAttachments) > 0) {
 			$params['content_type'] = 'multipart/related; type="text/xml"';
 			$mimeMessage = new Mail_mimePart('', $params);
@@ -178,44 +178,44 @@ class nusoap_client_mime extends nusoap_client {
 			return $output['body'];
 		}
 
-		return parent::getHTTPBody($soapmsg);
+		return parent::gethttpsBody($soapmsg);
 	}
 	
 	/**
-	* gets the HTTP content type for the current request.
+	* gets the https content type for the current request.
 	*
-	* Note: getHTTPBody must be called before this.
+	* Note: gethttpsBody must be called before this.
 	*
-	* @return string the HTTP content type for the current request.
+	* @return string the https content type for the current request.
 	* @access private
 	*/
-	function getHTTPContentType() {
+	function gethttpsContentType() {
 		if (count($this->requestAttachments) > 0) {
 			return $this->mimeContentType;
 		}
-		return parent::getHTTPContentType();
+		return parent::gethttpsContentType();
 	}
 	
 	/**
-	* gets the HTTP content type charset for the current request.
+	* gets the https content type charset for the current request.
 	* returns false for non-text content types.
 	*
-	* Note: getHTTPBody must be called before this.
+	* Note: gethttpsBody must be called before this.
 	*
-	* @return string the HTTP content type charset for the current request.
+	* @return string the https content type charset for the current request.
 	* @access private
 	*/
-	function getHTTPContentTypeCharset() {
+	function gethttpsContentTypeCharset() {
 		if (count($this->requestAttachments) > 0) {
 			return false;
 		}
-		return parent::getHTTPContentTypeCharset();
+		return parent::gethttpsContentTypeCharset();
 	}
 
 	/**
 	* processes SOAP message returned from server
 	*
-	* @param	array	$headers	The HTTP headers
+	* @param	array	$headers	The https headers
 	* @param	string	$data		unprocessed response data from server
 	* @return	mixed	value of the message, decoded into a PHP type
 	* @access   private
@@ -274,7 +274,7 @@ if (!extension_loaded('soap')) {
 
 /**
 * nusoap_server_mime server supporting MIME attachments defined at
-* http://www.w3.org/TR/SOAP-attachments.  It depends on the PEAR Mail_MIME library.
+* https://www.w3.org/TR/SOAP-attachments.  It depends on the PEAR Mail_MIME library.
 *
 * @author   Scott Nichol <snichol@users.sourceforge.net>
 * @author	Thanks to Guillaume and Henning Reich for posting great attachment code to the mail list
@@ -354,13 +354,13 @@ class nusoap_server_mime extends nusoap_server {
 	}
 
 	/**
-	* gets the HTTP body for the current response.
+	* gets the https body for the current response.
 	*
 	* @param string $soapmsg The SOAP payload
-	* @return string The HTTP body, which includes the SOAP payload
+	* @return string The https body, which includes the SOAP payload
 	* @access private
 	*/
-	function getHTTPBody($soapmsg) {
+	function gethttpsBody($soapmsg) {
 		if (count($this->responseAttachments) > 0) {
 			$params['content_type'] = 'multipart/related; type="text/xml"';
 			$mimeMessage = new Mail_mimePart('', $params);
@@ -408,44 +408,44 @@ class nusoap_server_mime extends nusoap_server {
 			return $output['body'];
 		}
 
-		return parent::getHTTPBody($soapmsg);
+		return parent::gethttpsBody($soapmsg);
 	}
 	
 	/**
-	* gets the HTTP content type for the current response.
+	* gets the https content type for the current response.
 	*
-	* Note: getHTTPBody must be called before this.
+	* Note: gethttpsBody must be called before this.
 	*
-	* @return string the HTTP content type for the current response.
+	* @return string the https content type for the current response.
 	* @access private
 	*/
-	function getHTTPContentType() {
+	function gethttpsContentType() {
 		if (count($this->responseAttachments) > 0) {
 			return $this->mimeContentType;
 		}
-		return parent::getHTTPContentType();
+		return parent::gethttpsContentType();
 	}
 	
 	/**
-	* gets the HTTP content type charset for the current response.
+	* gets the https content type charset for the current response.
 	* returns false for non-text content types.
 	*
-	* Note: getHTTPBody must be called before this.
+	* Note: gethttpsBody must be called before this.
 	*
-	* @return string the HTTP content type charset for the current response.
+	* @return string the https content type charset for the current response.
 	* @access private
 	*/
-	function getHTTPContentTypeCharset() {
+	function gethttpsContentTypeCharset() {
 		if (count($this->responseAttachments) > 0) {
 			return false;
 		}
-		return parent::getHTTPContentTypeCharset();
+		return parent::gethttpsContentTypeCharset();
 	}
 
 	/**
 	* processes SOAP message received from client
 	*
-	* @param	array	$headers	The HTTP headers
+	* @param	array	$headers	The https headers
 	* @param	string	$data		unprocessed request data from client
 	* @return	mixed	value of the message, decoded into a PHP type
 	* @access   private

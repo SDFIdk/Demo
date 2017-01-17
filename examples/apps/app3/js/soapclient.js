@@ -3,7 +3,7 @@
  Javascript "SOAP Client" library
  
  @version: 2.4 - 2007.12.21
- @author: Matteo Casati - http://www.guru4.net/
+ @author: Matteo Casati - https://www.guru4.net/
  
 \*****************************************************************************/
 
@@ -132,19 +132,19 @@ SOAPClient._loadWsdl = function(url, method, parameters, async, callback)
 	if(wsdl + "" != "" && wsdl + "" != "undefined")
 		return SOAPClient._sendSoapRequest(url, method, parameters, async, callback, wsdl);
 	// get wsdl
-	var xmlHttp = SOAPClient._getXmlHttp();
-	xmlHttp.open("GET", url + "?wsdl", async);
+	var xmlhttps = SOAPClient._getXmlhttps();
+	xmlhttps.open("GET", url + "?wsdl", async);
 	if(async) 
 	{
-		xmlHttp.onreadystatechange = function() 
+		xmlhttps.onreadystatechange = function() 
 		{
-			if(xmlHttp.readyState == 4)
-				SOAPClient._onLoadWsdl(url, method, parameters, async, callback, xmlHttp);
+			if(xmlhttps.readyState == 4)
+				SOAPClient._onLoadWsdl(url, method, parameters, async, callback, xmlhttps);
 		}
 	}
-	xmlHttp.send(null);
+	xmlhttps.send(null);
 	if (!async)
-		return SOAPClient._onLoadWsdl(url, method, parameters, async, callback, xmlHttp);
+		return SOAPClient._onLoadWsdl(url, method, parameters, async, callback, xmlhttps);
 }
 SOAPClient._onLoadWsdl = function(url, method, parameters, async, callback, req)
 {
@@ -160,36 +160,36 @@ SOAPClient._sendSoapRequest = function(url, method, parameters, async, callback,
 	var sr = 
 				"<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
 				"<soap:Envelope " +
-				"xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " +
-				"xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" " +
-				"xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">" +
+				"xmlns:xsi=\"https://www.w3.org/2001/XMLSchema-instance\" " +
+				"xmlns:xsd=\"https://www.w3.org/2001/XMLSchema\" " +
+				"xmlns:soap=\"https://schemas.xmlsoap.org/soap/envelope/\">" +
 				"<soap:Body>" +
 				"<" + method + " xmlns=\"" + ns + "\">" +
 				parameters.toXml() +
 				"</" + method + "></soap:Body></soap:Envelope>";
 	// send request
-	var xmlHttp = SOAPClient._getXmlHttp();
+	var xmlhttps = SOAPClient._getXmlhttps();
 	if (SOAPClient.userName && SOAPClient.password){
-		xmlHttp.open("POST", url, async, SOAPClient.userName, SOAPClient.password);
-		// Some WS implementations (i.e. BEA WebLogic Server 10.0 JAX-WS) don't support Challenge/Response HTTP BASIC, so we send authorization headers in the first request
-		xmlHttp.setRequestHeader("Authorization", "Basic " + SOAPClient._toBase64(SOAPClient.userName + ":" + SOAPClient.password));
+		xmlhttps.open("POST", url, async, SOAPClient.userName, SOAPClient.password);
+		// Some WS implementations (i.e. BEA WebLogic Server 10.0 JAX-WS) don't support Challenge/Response https BASIC, so we send authorization headers in the first request
+		xmlhttps.setRequestHeader("Authorization", "Basic " + SOAPClient._toBase64(SOAPClient.userName + ":" + SOAPClient.password));
 	}
 	else
-		xmlHttp.open("POST", url, async);
+		xmlhttps.open("POST", url, async);
 	var soapaction = ((ns.lastIndexOf("/") != ns.length - 1) ? ns + "/" : ns) + method;
-	xmlHttp.setRequestHeader("SOAPAction", soapaction);
-	xmlHttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+	xmlhttps.setRequestHeader("SOAPAction", soapaction);
+	xmlhttps.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
 	if(async) 
 	{
-		xmlHttp.onreadystatechange = function() 
+		xmlhttps.onreadystatechange = function() 
 		{
-			if(xmlHttp.readyState == 4)
-				SOAPClient._onSendSoapRequest(method, async, callback, wsdl, xmlHttp);
+			if(xmlhttps.readyState == 4)
+				SOAPClient._onSendSoapRequest(method, async, callback, wsdl, xmlhttps);
 		}
 	}
-	xmlHttp.send(sr);
+	xmlhttps.send(sr);
 	if (!async)
-		return SOAPClient._onSendSoapRequest(method, async, callback, wsdl, xmlHttp);
+		return SOAPClient._onSendSoapRequest(method, async, callback, wsdl, xmlhttps);
 }
 
 SOAPClient._onSendSoapRequest = function(method, async, callback, wsdl, req) 
@@ -330,14 +330,14 @@ SOAPClient._getElementsByTagName = function(document, tagName)
 	// old XML parser support
 	return document.getElementsByTagName(tagName);
 }
-// private: xmlhttp factory
-SOAPClient._getXmlHttp = function() 
+// private: xmlhttps factory
+SOAPClient._getXmlhttps = function() 
 {
 	try
 	{
-		if(window.XMLHttpRequest) 
+		if(window.XMLhttpsRequest) 
 		{
-			var req = new XMLHttpRequest();
+			var req = new XMLhttpsRequest();
 			// some versions of Moz do not support the readyState property and the onreadystate event so we patch it!
 			if(req.readyState == null) 
 			{
@@ -354,23 +354,23 @@ SOAPClient._getXmlHttp = function()
 			return req;
 		}
 		if(window.ActiveXObject) 
-			return new ActiveXObject(SOAPClient._getXmlHttpProgID());
+			return new ActiveXObject(SOAPClient._getXmlhttpsProgID());
 	}
 	catch (ex) {}
-	throw new Error("Your browser does not support XmlHttp objects");
+	throw new Error("Your browser does not support Xmlhttps objects");
 }
-SOAPClient._getXmlHttpProgID = function()
+SOAPClient._getXmlhttpsProgID = function()
 {
-	if(SOAPClient._getXmlHttpProgID.progid)
-		return SOAPClient._getXmlHttpProgID.progid;
-	var progids = ["Msxml2.XMLHTTP.5.0", "Msxml2.XMLHTTP.4.0", "MSXML2.XMLHTTP.3.0", "MSXML2.XMLHTTP", "Microsoft.XMLHTTP"];
+	if(SOAPClient._getXmlhttpsProgID.progid)
+		return SOAPClient._getXmlhttpsProgID.progid;
+	var progids = ["Msxml2.XMLhttps.5.0", "Msxml2.XMLhttps.4.0", "MSXML2.XMLhttps.3.0", "MSXML2.XMLhttps", "Microsoft.XMLhttps"];
 	var o;
 	for(var i = 0; i < progids.length; i++)
 	{
 		try
 		{
 			o = new ActiveXObject(progids[i]);
-			return SOAPClient._getXmlHttpProgID.progid = progids[i];
+			return SOAPClient._getXmlhttpsProgID.progid = progids[i];
 		}
 		catch (ex) {};
 	}

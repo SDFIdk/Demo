@@ -26,9 +26,9 @@ public class aws : IHttpHandler
 
         if (ParseAddressInput(addressInput, out street, out housenumber, out postcode, out postaldistrict))
         {
-            string url = "http://aws.hvm.dk/FindAddressService/FindAddressService.asmx";
+            string url = "https://aws.hvm.dk/FindAddressService/FindAddressService.asmx";
             string soapXml = String.Format(findAddressAccessRequest, street, housenumber, postcode, postaldistrict);
-            string soapAction = "http://aws.oio.dk/aws/webservice/3/FindAddressAccess";
+            string soapAction = "https://aws.oio.dk/aws/webservice/3/FindAddressAccess";
 
             try
             {

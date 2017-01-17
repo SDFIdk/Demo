@@ -73,15 +73,15 @@ class nusoap_parser extends nusoap_base {
 				if (preg_match("/encoding=[\"']([^\"']*)[\"']/", $xml_decl, $res)) {
 					$xml_encoding = $res[1];
 					if (strtoupper($xml_encoding) != $encoding) {
-						$err = "Charset from HTTP Content-Type '" . $encoding . "' does not match encoding from XML declaration '" . $xml_encoding . "'";
+						$err = "Charset from https Content-Type '" . $encoding . "' does not match encoding from XML declaration '" . $xml_encoding . "'";
 						$this->debug($err);
 						if ($encoding != 'ISO-8859-1' || strtoupper($xml_encoding) != 'UTF-8') {
 							$this->setError($err);
 							return;
 						}
-						// when HTTP says ISO-8859-1 (the default) and XML says UTF-8 (the typical), assume the other endpoint is just sloppy and proceed
+						// when https says ISO-8859-1 (the default) and XML says UTF-8 (the typical), assume the other endpoint is just sloppy and proceed
 					} else {
-						$this->debug('Charset from HTTP Content-Type matches encoding from XML declaration');
+						$this->debug('Charset from https Content-Type matches encoding from XML declaration');
 					}
 				} else {
 					$this->debug('No encoding specified in XML declaration');
@@ -209,7 +209,7 @@ class nusoap_parser extends nusoap_base {
 			$key_localpart = $this->getLocalPart($key);
 			// if ns declarations, add to class level array of valid namespaces
             if($key_prefix == 'xmlns'){
-				if(preg_match('/^http:\/\/www.w3.org\/[0-9]{4}\/XMLSchema$/',$value)){
+				if(preg_match('/^https:\/\/www.w3.org\/[0-9]{4}\/XMLSchema$/',$value)){
 					$this->XMLSchemaVersion = $value;
 					$this->namespaces['xsd'] = $this->XMLSchemaVersion;
 					$this->namespaces['xsi'] = $this->XMLSchemaVersion.'-instance';
@@ -555,7 +555,7 @@ class nusoap_parser extends nusoap_base {
                 	$params[] = &$this->message[$child_pos]['result'];
                 }
             // apache Map type: java hashtable
-            } elseif($this->message[$pos]['type'] == 'Map' && $this->message[$pos]['type_namespace'] == 'http://xml.apache.org/xml-soap'){
+            } elseif($this->message[$pos]['type'] == 'Map' && $this->message[$pos]['type_namespace'] == 'https://xml.apache.org/xml-soap'){
                 $this->debug('in buildVal, Java Map '.$this->message[$pos]['name']);
                 foreach($children as $child_pos){
                 	$kv = explode("|",$this->message[$child_pos]['children']);
@@ -566,7 +566,7 @@ class nusoap_parser extends nusoap_base {
 		    } else {
 	    		// Apache Vector type: treat as an array
                 $this->debug('in buildVal, adding Java Vector or generic compound type '.$this->message[$pos]['name']);
-				if ($this->message[$pos]['type'] == 'Vector' && $this->message[$pos]['type_namespace'] == 'http://xml.apache.org/xml-soap') {
+				if ($this->message[$pos]['type'] == 'Vector' && $this->message[$pos]['type_namespace'] == 'https://xml.apache.org/xml-soap') {
 					$notstruct = 1;
 				} else {
 					$notstruct = 0;

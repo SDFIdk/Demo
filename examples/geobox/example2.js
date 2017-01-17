@@ -86,7 +86,7 @@ function getAddress (row,exit) {
     
     //Call GeoRest service to get the correct coordinate for the address
     $.ajax({
-        url: 'http://services.kortforsyningen.dk',
+        url: 'https://services.kortforsyningen.dk',
         dataType: 'jsonp',
         contentType: 'application/json; charset=utf-8',
         data: {

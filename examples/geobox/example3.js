@@ -4,7 +4,7 @@ var x=[],y=[];
 function showData (vejnavn, husnr, postnr, text) {
     
     $.ajax({
-        url: 'http://services.kortforsyningen.dk',
+        url: 'https://services.kortforsyningen.dk',
         dataType: 'jsonp',
         contentType: 'application/json; charset=utf-8',
         data: {

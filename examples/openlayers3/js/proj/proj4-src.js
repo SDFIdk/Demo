@@ -2290,7 +2290,7 @@ var asinz = _dereq_('../common/asinz');
 /*
   reference:
     Wolfram Mathworld "Gnomonic Projection"
-    http://mathworld.wolfram.com/GnomonicProjection.html
+    https://mathworld.wolfram.com/GnomonicProjection.html
     Accessed: 12th November 2009
   */
 exports.init = function() {
@@ -3152,9 +3152,9 @@ var SEC_TO_RAD = 4.84813681109535993589914102357e-6;
 /*
   reference
     Department of Land and Survey Technical Circular 1973/32
-      http://www.linz.govt.nz/docs/miscellaneous/nz-map-definition.pdf
+      https://www.linz.govt.nz/docs/miscellaneous/nz-map-definition.pdf
     OSG Technical Report 4.1
-      http://www.linz.govt.nz/docs/miscellaneous/nzmg.pdf
+      https://www.linz.govt.nz/docs/miscellaneous/nzmg.pdf
   */
 
 /**
@@ -3778,7 +3778,7 @@ exports.names = ["Sinusoidal", "sinu"];
     Formules et constantes pour le Calcul pour la
     projection cylindrique conforme à axe oblique et pour la transformation entre
     des systèmes de référence.
-    http://www.swisstopo.admin.ch/internet/swisstopo/fr/home/topics/survey/sys/refsys/switzerland.parsysrelated1.31216.downloadList.77004.DownloadFile.tmp/swissprojectionfr.pdf
+    https://www.swisstopo.admin.ch/internet/swisstopo/fr/home/topics/survey/sys/refsys/switzerland.parsysrelated1.31216.downloadList.77004.DownloadFile.tmp/swissprojectionfr.pdf
   */
 exports.init = function() {
   var phy0 = this.lat0;

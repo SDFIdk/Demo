@@ -15,13 +15,13 @@
 */
 class nusoap_server extends nusoap_base {
 	/**
-	 * HTTP headers of request
+	 * https headers of request
 	 * @var array
 	 * @access private
 	 */
 	var $headers = array();
 	/**
-	 * HTTP request
+	 * https request
 	 * @var string
 	 * @access private
 	 */
@@ -88,13 +88,13 @@ class nusoap_server extends nusoap_base {
     var $decode_utf8 = true;
 
 	/**
-	 * HTTP headers of response
+	 * https headers of response
 	 * @var array
 	 * @access public
 	 */
 	var $outgoing_headers = array();
 	/**
-	 * HTTP response
+	 * https response
 	 * @var string
 	 * @access private
 	 */
@@ -174,16 +174,16 @@ class nusoap_server extends nusoap_base {
 		parent::nusoap_base();
 		// turn on debugging?
 		global $debug;
-		global $HTTP_SERVER_VARS;
+		global $https_SERVER_VARS;
 
 		if (isset($_SERVER)) {
 			$this->debug("_SERVER is defined:");
 			$this->appendDebug($this->varDump($_SERVER));
-		} elseif (isset($HTTP_SERVER_VARS)) {
-			$this->debug("HTTP_SERVER_VARS is defined:");
-			$this->appendDebug($this->varDump($HTTP_SERVER_VARS));
+		} elseif (isset($https_SERVER_VARS)) {
+			$this->debug("https_SERVER_VARS is defined:");
+			$this->appendDebug($this->varDump($https_SERVER_VARS));
 		} else {
-			$this->debug("Neither _SERVER nor HTTP_SERVER_VARS is defined.");
+			$this->debug("Neither _SERVER nor https_SERVER_VARS is defined.");
 		}
 
 		if (isset($debug)) {
@@ -197,8 +197,8 @@ class nusoap_server extends nusoap_base {
 					$this->debug_flag = substr($v, 6);
 				}
 			}
-		} elseif (isset($HTTP_SERVER_VARS['QUERY_STRING'])) {
-			$qs = explode('&', $HTTP_SERVER_VARS['QUERY_STRING']);
+		} elseif (isset($https_SERVER_VARS['QUERY_STRING'])) {
+			$qs = explode('&', $https_SERVER_VARS['QUERY_STRING']);
 			foreach ($qs as $v) {
 				if (substr($v, 0, 6) == 'debug=') {
 					$this->debug("In nusoap_server, set debug_flag=" . substr($v, 6) . " based on query string #2");
@@ -230,24 +230,24 @@ class nusoap_server extends nusoap_base {
 	/**
 	* processes request and returns response
 	*
-	* @param    string $data usually is the value of $HTTP_RAW_POST_DATA
+	* @param    string $data usually is the value of $https_RAW_POST_DATA
 	* @access   public
 	*/
 	function service($data){
-		global $HTTP_SERVER_VARS;
+		global $https_SERVER_VARS;
 
 		if (isset($_SERVER['REQUEST_METHOD'])) {
 			$rm = $_SERVER['REQUEST_METHOD'];
-		} elseif (isset($HTTP_SERVER_VARS['REQUEST_METHOD'])) {
-			$rm = $HTTP_SERVER_VARS['REQUEST_METHOD'];
+		} elseif (isset($https_SERVER_VARS['REQUEST_METHOD'])) {
+			$rm = $https_SERVER_VARS['REQUEST_METHOD'];
 		} else {
 			$rm = '';
 		}
 
 		if (isset($_SERVER['QUERY_STRING'])) {
 			$qs = $_SERVER['QUERY_STRING'];
-		} elseif (isset($HTTP_SERVER_VARS['QUERY_STRING'])) {
-			$qs = $HTTP_SERVER_VARS['QUERY_STRING'];
+		} elseif (isset($https_SERVER_VARS['QUERY_STRING'])) {
+			$qs = $https_SERVER_VARS['QUERY_STRING'];
 		} else {
 			$qs = '';
 		}
@@ -266,7 +266,7 @@ class nusoap_server extends nusoap_base {
 		} elseif (preg_match('/wsdl/', $qs) ){
 			$this->debug("In service, this is a request for WSDL");
 			if ($this->externalWSDLURL){
-              if (strpos($this->externalWSDLURL, "http://") !== false) { // assume URL
+              if (strpos($this->externalWSDLURL, "https://") !== false) { // assume URL
 				$this->debug("In service, re-direct for WSDL");
 				header('Location: '.$this->externalWSDLURL);
               } else { // assume file
@@ -306,7 +306,7 @@ class nusoap_server extends nusoap_base {
 	}
 
 	/**
-	* parses HTTP request headers.
+	* parses https request headers.
 	*
 	* The following fields are set by this function (when successful)
 	*
@@ -317,13 +317,13 @@ class nusoap_server extends nusoap_base {
 	*
 	* @access   private
 	*/
-	function parse_http_headers() {
-		global $HTTP_SERVER_VARS;
+	function parse_https_headers() {
+		global $https_SERVER_VARS;
 
 		$this->request = '';
 		$this->SOAPAction = '';
 		if(function_exists('getallheaders')){
-			$this->debug("In parse_http_headers, use getallheaders");
+			$this->debug("In parse_https_headers, use getallheaders");
 			$headers = getallheaders();
 			foreach($headers as $k=>$v){
 				$k = strtolower($k);
@@ -344,13 +344,13 @@ class nusoap_server extends nusoap_base {
 					$this->xml_encoding = 'US-ASCII';
 				}
 			} else {
-				// should be US-ASCII for HTTP 1.0 or ISO-8859-1 for HTTP 1.1
+				// should be US-ASCII for https 1.0 or ISO-8859-1 for https 1.1
 				$this->xml_encoding = 'ISO-8859-1';
 			}
 		} elseif(isset($_SERVER) && is_array($_SERVER)){
-			$this->debug("In parse_http_headers, use _SERVER");
+			$this->debug("In parse_https_headers, use _SERVER");
 			foreach ($_SERVER as $k => $v) {
-				if (substr($k, 0, 5) == 'HTTP_') {
+				if (substr($k, 0, 5) == 'https_') {
 					$k = str_replace(' ', '-', strtolower(str_replace('_', ' ', substr($k, 5))));
 				} else {
 					$k = str_replace(' ', '-', strtolower(str_replace('_', ' ', $k)));
@@ -373,7 +373,7 @@ class nusoap_server extends nusoap_base {
 							$this->xml_encoding = 'US-ASCII';
 						}
 					} else {
-						// should be US-ASCII for HTTP 1.0 or ISO-8859-1 for HTTP 1.1
+						// should be US-ASCII for https 1.0 or ISO-8859-1 for https 1.1
 						$this->xml_encoding = 'ISO-8859-1';
 					}
 				}
@@ -381,10 +381,10 @@ class nusoap_server extends nusoap_base {
 				$this->request .= "$k: $v\r\n";
 				$this->debug("$k: $v");
 			}
-		} elseif (is_array($HTTP_SERVER_VARS)) {
-			$this->debug("In parse_http_headers, use HTTP_SERVER_VARS");
-			foreach ($HTTP_SERVER_VARS as $k => $v) {
-				if (substr($k, 0, 5) == 'HTTP_') {
+		} elseif (is_array($https_SERVER_VARS)) {
+			$this->debug("In parse_https_headers, use https_SERVER_VARS");
+			foreach ($https_SERVER_VARS as $k => $v) {
+				if (substr($k, 0, 5) == 'https_') {
 					$k = str_replace(' ', '-', strtolower(str_replace('_', ' ', substr($k, 5)))); 	                                         $k = strtolower(substr($k, 5));
 				} else {
 					$k = str_replace(' ', '-', strtolower(str_replace('_', ' ', $k))); 	                                         $k = strtolower($k);
@@ -407,7 +407,7 @@ class nusoap_server extends nusoap_base {
 							$this->xml_encoding = 'US-ASCII';
 						}
 					} else {
-						// should be US-ASCII for HTTP 1.0 or ISO-8859-1 for HTTP 1.1
+						// should be US-ASCII for https 1.0 or ISO-8859-1 for https 1.1
 						$this->xml_encoding = 'ISO-8859-1';
 					}
 				}
@@ -416,8 +416,8 @@ class nusoap_server extends nusoap_base {
 				$this->debug("$k: $v");
 			}
 		} else {
-			$this->debug("In parse_http_headers, HTTP headers not accessible");
-			$this->setError("HTTP headers not accessible");
+			$this->debug("In parse_https_headers, https headers not accessible");
+			$this->setError("https headers not accessible");
 		}
 	}
 
@@ -445,7 +445,7 @@ class nusoap_server extends nusoap_base {
 	*/
 	function parse_request($data='') {
 		$this->debug('entering parse_request()');
-		$this->parse_http_headers();
+		$this->parse_https_headers();
 		$this->debug('got character encoding: '.$this->xml_encoding);
 		// uncompress if necessary
 		if (isset($this->headers['content-encoding']) && $this->headers['content-encoding'] != '') {
@@ -698,7 +698,7 @@ class nusoap_server extends nusoap_base {
 			if ($this->opData['style'] == 'rpc') {
 				$this->debug('style is rpc for serialization: use is ' . $this->opData['output']['use']);
 				if ($this->opData['output']['use'] == 'literal') {
-					// http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html R2735 says rpc/literal accessor elements should not be in a namespace
+					// https://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html R2735 says rpc/literal accessor elements should not be in a namespace
 					if ($this->methodURI) {
 						$payload = '<ns1:'.$this->methodname.'Response xmlns:ns1="'.$this->methodURI.'">'.$return_val.'</ns1:'.$this->methodname."Response>";
 					} else {
@@ -738,7 +738,7 @@ class nusoap_server extends nusoap_base {
 	}
 
 	/**
-	* sends an HTTP response
+	* sends an https response
 	*
 	* The following fields are set by this function (when successful)
 	*
@@ -751,14 +751,14 @@ class nusoap_server extends nusoap_base {
 		$this->debug('Enter send_response');
 		if ($this->fault) {
 			$payload = $this->fault->serialize();
-			$this->outgoing_headers[] = "HTTP/1.0 500 Internal Server Error";
+			$this->outgoing_headers[] = "https/1.0 500 Internal Server Error";
 			$this->outgoing_headers[] = "Status: 500 Internal Server Error";
 		} else {
 			$payload = $this->responseSOAP;
 			// Some combinations of PHP+Web server allow the Status
 			// to come through as a header.  Since OK is the default
 			// just do nothing.
-			// $this->outgoing_headers[] = "HTTP/1.0 200 OK";
+			// $this->outgoing_headers[] = "https/1.0 200 OK";
 			// $this->outgoing_headers[] = "Status: 200 OK";
 		}
         // add debug data if in debug mode
@@ -770,9 +770,9 @@ class nusoap_server extends nusoap_base {
 		$this->outgoing_headers[] = "X-SOAP-Server: $this->title/$this->version (".$rev[1].")";
 		// Let the Web server decide about this
 		//$this->outgoing_headers[] = "Connection: Close\r\n";
-		$payload = $this->getHTTPBody($payload);
-		$type = $this->getHTTPContentType();
-		$charset = $this->getHTTPContentTypeCharset();
+		$payload = $this->gethttpsBody($payload);
+		$type = $this->gethttpsContentType();
+		$charset = $this->gethttpsContentTypeCharset();
 		$this->outgoing_headers[] = "Content-Type: $type" . ($charset ? '; charset=' . $charset : '');
 		//begin code to compress payload - by John
 		// NOTE: there is no way to know whether the Web server will also compress
@@ -793,7 +793,7 @@ class nusoap_server extends nusoap_base {
 			} elseif (strstr($this->headers['accept-encoding'], 'deflate')) {
 				// Note: MSIE requires gzdeflate output (no Zlib header and checksum),
 				// instead of gzcompress output,
-				// which conflicts with HTTP 1.1 spec (http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.5)
+				// which conflicts with https 1.1 spec (https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.5)
 				if (function_exists('gzdeflate')) {
 					if (isset($this->debug_flag) && $this->debug_flag) {
 						$payload .= "<!-- Content being deflated -->";
@@ -840,7 +840,7 @@ class nusoap_server extends nusoap_base {
 	/**
 	* processes SOAP message received from client
 	*
-	* @param	array	$headers	The HTTP headers
+	* @param	array	$headers	The https headers
 	* @param	string	$data		unprocessed request data from client
 	* @return	mixed	value of the message, decoded into a PHP type
 	* @access   private
@@ -865,7 +865,7 @@ class nusoap_server extends nusoap_base {
 				$this->xml_encoding = 'US-ASCII';
 			}
 		} else {
-			// should be US-ASCII for HTTP 1.0 or ISO-8859-1 for HTTP 1.1
+			// should be US-ASCII for https 1.0 or ISO-8859-1 for https 1.1
 			$this->xml_encoding = 'ISO-8859-1';
 		}
 		$this->debug('Use encoding: ' . $this->xml_encoding . ' when creating nusoap_parser');
@@ -895,38 +895,38 @@ class nusoap_server extends nusoap_base {
 	 }
 
 	/**
-	* gets the HTTP body for the current response.
+	* gets the https body for the current response.
 	*
 	* @param string $soapmsg The SOAP payload
-	* @return string The HTTP body, which includes the SOAP payload
+	* @return string The https body, which includes the SOAP payload
 	* @access private
 	*/
-	function getHTTPBody($soapmsg) {
+	function gethttpsBody($soapmsg) {
 		return $soapmsg;
 	}
 	
 	/**
-	* gets the HTTP content type for the current response.
+	* gets the https content type for the current response.
 	*
-	* Note: getHTTPBody must be called before this.
+	* Note: gethttpsBody must be called before this.
 	*
-	* @return string the HTTP content type for the current response.
+	* @return string the https content type for the current response.
 	* @access private
 	*/
-	function getHTTPContentType() {
+	function gethttpsContentType() {
 		return 'text/xml';
 	}
 	
 	/**
-	* gets the HTTP content type charset for the current response.
+	* gets the https content type charset for the current response.
 	* returns false for non-text content types.
 	*
-	* Note: getHTTPBody must be called before this.
+	* Note: gethttpsBody must be called before this.
 	*
-	* @return string the HTTP content type charset for the current response.
+	* @return string the https content type charset for the current response.
 	* @access private
 	*/
-	function getHTTPContentTypeCharset() {
+	function gethttpsContentTypeCharset() {
 		return $this->soap_defencoding;
 	}
 
@@ -954,11 +954,11 @@ class nusoap_server extends nusoap_base {
 	* @param	mixed $style optional (rpc|document) or false Note: when 'document' is specified, parameter and return wrappers are created for you automatically
 	* @param	mixed $use optional (encoded|literal) or false
 	* @param	string $documentation optional Description to include in WSDL
-	* @param	string $encodingStyle optional (usually 'http://schemas.xmlsoap.org/soap/encoding/' for encoded)
+	* @param	string $encodingStyle optional (usually 'https://schemas.xmlsoap.org/soap/encoding/' for encoded)
 	* @access   public
 	*/
 	function register($name,$in=array(),$out=array(),$namespace=false,$soapaction=false,$style=false,$use=false,$documentation='',$encodingStyle=''){
-		global $HTTP_SERVER_VARS;
+		global $https_SERVER_VARS;
 
 		if($this->externalWSDLURL){
 			die('You cannot bind to an external WSDL file, and register methods outside of it! Please choose either WSDL or no WSDL.');
@@ -978,18 +978,18 @@ class nusoap_server extends nusoap_base {
 			if (isset($_SERVER)) {
 				$SERVER_NAME = $_SERVER['SERVER_NAME'];
 				$SCRIPT_NAME = isset($_SERVER['PHP_SELF']) ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME'];
-				$HTTPS = isset($_SERVER['HTTPS']) ? $_SERVER['HTTPS'] : (isset($HTTP_SERVER_VARS['HTTPS']) ? $HTTP_SERVER_VARS['HTTPS'] : 'off');
-			} elseif (isset($HTTP_SERVER_VARS)) {
-				$SERVER_NAME = $HTTP_SERVER_VARS['SERVER_NAME'];
-				$SCRIPT_NAME = isset($HTTP_SERVER_VARS['PHP_SELF']) ? $HTTP_SERVER_VARS['PHP_SELF'] : $HTTP_SERVER_VARS['SCRIPT_NAME'];
-				$HTTPS = isset($HTTP_SERVER_VARS['HTTPS']) ? $HTTP_SERVER_VARS['HTTPS'] : 'off';
+				$httpsS = isset($_SERVER['httpsS']) ? $_SERVER['httpsS'] : (isset($https_SERVER_VARS['httpsS']) ? $https_SERVER_VARS['httpsS'] : 'off');
+			} elseif (isset($https_SERVER_VARS)) {
+				$SERVER_NAME = $https_SERVER_VARS['SERVER_NAME'];
+				$SCRIPT_NAME = isset($https_SERVER_VARS['PHP_SELF']) ? $https_SERVER_VARS['PHP_SELF'] : $https_SERVER_VARS['SCRIPT_NAME'];
+				$httpsS = isset($https_SERVER_VARS['httpsS']) ? $https_SERVER_VARS['httpsS'] : 'off';
 			} else {
-				$this->setError("Neither _SERVER nor HTTP_SERVER_VARS is available");
+				$this->setError("Neither _SERVER nor https_SERVER_VARS is available");
 			}
-        	if ($HTTPS == '1' || $HTTPS == 'on') {
-        		$SCHEME = 'https';
+        	if ($httpsS == '1' || $httpsS == 'on') {
+        		$SCHEME = 'httpss';
         	} else {
-        		$SCHEME = 'http';
+        		$SCHEME = 'https';
         	}
 			$soapaction = "$SCHEME://$SERVER_NAME$SCRIPT_NAME/$name";
 		}
@@ -1000,7 +1000,7 @@ class nusoap_server extends nusoap_base {
 			$use = "encoded";
 		}
 		if ($use == 'encoded' && $encodingStyle == '') {
-			$encodingStyle = 'http://schemas.xmlsoap.org/soap/encoding/';
+			$encodingStyle = 'https://schemas.xmlsoap.org/soap/encoding/';
 		}
 
 		$this->operations[$name] = array(
@@ -1045,24 +1045,24 @@ class nusoap_server extends nusoap_base {
     * @param string $transport optional SOAP transport
     * @param mixed $schemaTargetNamespace optional 'types' targetNamespace for service schema or false
     */
-    function configureWSDL($serviceName,$namespace = false,$endpoint = false,$style='rpc', $transport = 'http://schemas.xmlsoap.org/soap/http', $schemaTargetNamespace = false)
+    function configureWSDL($serviceName,$namespace = false,$endpoint = false,$style='rpc', $transport = 'https://schemas.xmlsoap.org/soap/https', $schemaTargetNamespace = false)
     {
-    	global $HTTP_SERVER_VARS;
+    	global $https_SERVER_VARS;
 
 		if (isset($_SERVER)) {
 			$SERVER_NAME = $_SERVER['SERVER_NAME'];
 			$SERVER_PORT = $_SERVER['SERVER_PORT'];
 			$SCRIPT_NAME = isset($_SERVER['PHP_SELF']) ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME'];
-			$HTTPS = isset($_SERVER['HTTPS']) ? $_SERVER['HTTPS'] : (isset($HTTP_SERVER_VARS['HTTPS']) ? $HTTP_SERVER_VARS['HTTPS'] : 'off');
-		} elseif (isset($HTTP_SERVER_VARS)) {
-			$SERVER_NAME = $HTTP_SERVER_VARS['SERVER_NAME'];
-			$SERVER_PORT = $HTTP_SERVER_VARS['SERVER_PORT'];
-			$SCRIPT_NAME = isset($HTTP_SERVER_VARS['PHP_SELF']) ? $HTTP_SERVER_VARS['PHP_SELF'] : $HTTP_SERVER_VARS['SCRIPT_NAME'];
-			$HTTPS = isset($HTTP_SERVER_VARS['HTTPS']) ? $HTTP_SERVER_VARS['HTTPS'] : 'off';
+			$httpsS = isset($_SERVER['httpsS']) ? $_SERVER['httpsS'] : (isset($https_SERVER_VARS['httpsS']) ? $https_SERVER_VARS['httpsS'] : 'off');
+		} elseif (isset($https_SERVER_VARS)) {
+			$SERVER_NAME = $https_SERVER_VARS['SERVER_NAME'];
+			$SERVER_PORT = $https_SERVER_VARS['SERVER_PORT'];
+			$SCRIPT_NAME = isset($https_SERVER_VARS['PHP_SELF']) ? $https_SERVER_VARS['PHP_SELF'] : $https_SERVER_VARS['SCRIPT_NAME'];
+			$httpsS = isset($https_SERVER_VARS['httpsS']) ? $https_SERVER_VARS['httpsS'] : 'off';
 		} else {
-			$this->setError("Neither _SERVER nor HTTP_SERVER_VARS is available");
+			$this->setError("Neither _SERVER nor https_SERVER_VARS is available");
 		}
-		// If server name has port number attached then strip it (else port number gets duplicated in WSDL output) (occurred using lighttpd and FastCGI)
+		// If server name has port number attached then strip it (else port number gets duplicated in WSDL output) (occurred using lighttpsd and FastCGI)
 		$colon = strpos($SERVER_NAME,":");
 		if ($colon) {
 		    $SERVER_NAME = substr($SERVER_NAME, 0, $colon);
@@ -1073,14 +1073,14 @@ class nusoap_server extends nusoap_base {
 			$SERVER_PORT = ':' . $SERVER_PORT;
 		}
         if(false == $namespace) {
-            $namespace = "http://$SERVER_NAME/soap/$serviceName";
+            $namespace = "https://$SERVER_NAME/soap/$serviceName";
         }
         
         if(false == $endpoint) {
-        	if ($HTTPS == '1' || $HTTPS == 'on') {
-        		$SCHEME = 'https';
+        	if ($httpsS == '1' || $httpsS == 'on') {
+        		$SCHEME = 'httpss';
         	} else {
-        		$SCHEME = 'http';
+        		$SCHEME = 'https';
         	}
             $endpoint = "$SCHEME://$SERVER_NAME$SERVER_PORT$SCRIPT_NAME";
         }
@@ -1093,8 +1093,8 @@ class nusoap_server extends nusoap_base {
 		$this->wsdl->serviceName = $serviceName;
         $this->wsdl->endpoint = $endpoint;
 		$this->wsdl->namespaces['tns'] = $namespace;
-		$this->wsdl->namespaces['soap'] = 'http://schemas.xmlsoap.org/wsdl/soap/';
-		$this->wsdl->namespaces['wsdl'] = 'http://schemas.xmlsoap.org/wsdl/';
+		$this->wsdl->namespaces['soap'] = 'https://schemas.xmlsoap.org/wsdl/soap/';
+		$this->wsdl->namespaces['wsdl'] = 'https://schemas.xmlsoap.org/wsdl/';
 		if ($schemaTargetNamespace != $namespace) {
 			$this->wsdl->namespaces['types'] = $schemaTargetNamespace;
 		}
@@ -1103,8 +1103,8 @@ class nusoap_server extends nusoap_base {
 	        $this->wsdl->schemas[$schemaTargetNamespace][0]->schemaInfo['elementFormDefault'] = 'qualified';
         }
         $this->wsdl->schemas[$schemaTargetNamespace][0]->schemaTargetNamespace = $schemaTargetNamespace;
-        $this->wsdl->schemas[$schemaTargetNamespace][0]->imports['http://schemas.xmlsoap.org/soap/encoding/'][0] = array('location' => '', 'loaded' => true);
-        $this->wsdl->schemas[$schemaTargetNamespace][0]->imports['http://schemas.xmlsoap.org/wsdl/'][0] = array('location' => '', 'loaded' => true);
+        $this->wsdl->schemas[$schemaTargetNamespace][0]->imports['https://schemas.xmlsoap.org/soap/encoding/'][0] = array('location' => '', 'loaded' => true);
+        $this->wsdl->schemas[$schemaTargetNamespace][0]->imports['https://schemas.xmlsoap.org/wsdl/'][0] = array('location' => '', 'loaded' => true);
         $this->wsdl->bindings[$serviceName.'Binding'] = array(
         	'name'=>$serviceName.'Binding',
             'style'=>$style,
@@ -1113,7 +1113,7 @@ class nusoap_server extends nusoap_base {
         $this->wsdl->ports[$serviceName.'Port'] = array(
         	'binding'=>$serviceName.'Binding',
             'location'=>$endpoint,
-            'bindingType'=>'http://schemas.xmlsoap.org/wsdl/soap/');
+            'bindingType'=>'https://schemas.xmlsoap.org/wsdl/soap/');
     }
 }
 

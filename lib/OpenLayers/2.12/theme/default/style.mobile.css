@@ -51,7 +51,7 @@ div.olControlZoom a:hover {
 }
 /* Enable 3d acceleration when operating on tiles, this is
    known to yield better performance on IOS Safari.
-   http://osgeo-org.1803224.n2.nabble.com/Harware-accelerated-CSS3-animations-for-iOS-td6255560.html
+   https://osgeo-org.1803224.n2.nabble.com/Harware-accelerated-CSS3-animations-for-iOS-td6255560.html
 
    It also prevents tile blinking effects in iOS 5.
    See https://github.com/openlayers/openlayers/issues/511

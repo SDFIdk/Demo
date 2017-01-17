@@ -1,5 +1,5 @@
-// OpenLayers 3. See http://openlayers.org/
-// License: https://raw.githubusercontent.com/openlayers/ol3/master/LICENSE.md
+// OpenLayers 3. See https://openlayers.org/
+// License: httpss://raw.githubusercontent.com/openlayers/ol3/master/LICENSE.md
 // Version: v3.17.1
 
 (function (root, factory) {
@@ -20,7 +20,7 @@ this.CLOSURE_NO_DEPS = true;
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -211,12 +211,12 @@ goog.define('goog.DEBUG', true);
  * There are few examples: pt-BR, en, en-US, sr-Latin-BO, zh-Hans-CN.
  *
  * See more info about locale codes here:
- * http://www.unicode.org/reports/tr35/#Unicode_Language_and_Locale_Identifiers
+ * https://www.unicode.org/reports/tr35/#Unicode_Language_and_Locale_Identifiers
  *
  * For language codes you should use values defined by ISO 693-1. See it here
- * http://www.w3.org/WAI/ER/IG/ert/iso639.htm. There is only one exception from
+ * https://www.w3.org/WAI/ER/IG/ert/iso639.htm. There is only one exception from
  * this rule: the Hebrew language. For legacy reasons the old code (iw) should
- * be used instead of the new code (he), see http://wiki/Main/IIISynonyms.
+ * be used instead of the new code (he), see https://wiki/Main/IIISynonyms.
  */
 goog.define('goog.LOCALE', 'en');  // default to en
 
@@ -240,7 +240,7 @@ goog.define('goog.TRUSTED_SITE', true);
  *
  * This define can be used to trigger alternate implementations compatible with
  * running in EcmaScript Strict mode or warn about unavailable functionality.
- * @see https://goo.gl/PudQ4y
+ * @see httpss://goo.gl/PudQ4y
  *
  */
 goog.define('goog.STRICT_MODE_COMPATIBLE', false);
@@ -357,7 +357,7 @@ goog.VALID_MODULE_RE_ = /^[a-zA-Z_$][a-zA-Z0-9._$]*$/;
  * goog.module.declareLegacyNamespace().
  *
  *
- * See the public goog.module proposal: http://goo.gl/Va1hin
+ * See the public goog.module proposal: https://goo.gl/Va1hin
  *
  * @param {string} name Namespace provided by this file in the form
  *     "goog.package.part", is expected but not required.
@@ -503,7 +503,7 @@ goog.forwardDeclare = function(name) {};
  */
 goog.forwardDeclare('Document');
 goog.forwardDeclare('HTMLScriptElement');
-goog.forwardDeclare('XMLHttpRequest');
+goog.forwardDeclare('XMLhttpsRequest');
 
 
 if (!COMPILED) {
@@ -625,7 +625,7 @@ goog.addDependency = function(relPath, provides, requires, opt_loadFlags) {
 //
 // User-defined namespaces may need their own deps file. For a reference on
 // creating a deps file, see:
-// Externally: https://developers.google.com/closure/library/docs/depswriter
+// Externally: httpss://developers.google.com/closure/library/docs/depswriter
 //
 // Because of legacy clients, the DOM loader can't be easily removed from
 // base.js.  Work is being done to make it disableable or replaceable for
@@ -1506,11 +1506,11 @@ goog.loadFileSync_ = function(src) {
     return goog.global.CLOSURE_LOAD_FILE_SYNC(src);
   } else {
     try {
-      /** @type {XMLHttpRequest} */
-      var xhr = new goog.global['XMLHttpRequest']();
+      /** @type {XMLhttpsRequest} */
+      var xhr = new goog.global['XMLhttpsRequest']();
       xhr.open('get', src, false);
       xhr.send();
-      // NOTE: Successful http: requests have a status of 200, but successful
+      // NOTE: Successful https: requests have a status of 200, but successful
       // file: requests may have a status of zero.  Any other status, or a
       // thrown exception (particularly in case of file: requests) indicates
       // some sort of error, which we treat as a missing or unavailable file.
@@ -2467,7 +2467,7 @@ goog.base = function(me, opt_methodName, var_args) {
     throw Error(
         'arguments.caller not defined.  goog.base() cannot be used ' +
         'with strict mode code. See ' +
-        'http://www.ecma-international.org/ecma-262/5.1/#sec-C');
+        'https://www.ecma-international.org/ecma-262/5.1/#sec-C');
   }
 
   if (caller.superClass_) {
@@ -2760,7 +2760,7 @@ ol.ASSUME_TOUCH = false;
 
 /**
  * TODO: rename this to something having to do with tile grids
- * see https://github.com/openlayers/ol3/issues/2076
+ * see httpss://github.com/openlayers/ol3/issues/2076
  * @define {number} Default maximum zoom for default tile grids.
  */
 ol.DEFAULT_MAX_ZOOM = 42;
@@ -3027,7 +3027,7 @@ ol.global = Function('return this')();
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -3091,7 +3091,7 @@ goog.debug.Error.prototype.name = 'CustomError';
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -3116,7 +3116,7 @@ goog.provide('goog.dom.NodeType');
  * In some browsers (early IEs), these are not defined on the Node object,
  * so they are provided here.
  *
- * See http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1950641247
+ * See https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1950641247
  * @enum {number}
  */
 goog.dom.NodeType = {
@@ -3140,7 +3140,7 @@ goog.dom.NodeType = {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -4098,7 +4098,7 @@ goog.string.specialEscapeChars_ = {
   // tags, we have to make sure HTML comments and opening/closing script tags do
   // not appear in the resulting string. The specific strings that must be
   // escaped are documented at:
-  // http://www.w3.org/TR/html51/semantics.html#restrictions-for-contents-of-script-elements
+  // https://www.w3.org/TR/html51/semantics.html#restrictions-for-contents-of-script-elements
   '<': '\x3c'
 };
 
@@ -4505,7 +4505,7 @@ goog.string.toNumber = function(str) {
  * Returns whether the given string is lower camel case (e.g. "isFooBar").
  *
  * Note that this assumes the string is entirely letters.
- * @see http://en.wikipedia.org/wiki/CamelCase#Variations_and_synonyms
+ * @see https://en.wikipedia.org/wiki/CamelCase#Variations_and_synonyms
  *
  * @param {string} str String to test.
  * @return {boolean} Whether the string is lower camel case.
@@ -4519,7 +4519,7 @@ goog.string.isLowerCamelCase = function(str) {
  * Returns whether the given string is upper camel case (e.g. "FooBarBaz").
  *
  * Note that this assumes the string is entirely letters.
- * @see http://en.wikipedia.org/wiki/CamelCase#Variations_and_synonyms
+ * @see https://en.wikipedia.org/wiki/CamelCase#Variations_and_synonyms
  *
  * @param {string} str String to test.
  * @return {boolean} Whether the string is upper camel case.
@@ -4623,14 +4623,14 @@ goog.string.capitalize = function(str) {
  * Parse a string in decimal or hexidecimal ('0xFFFF') form.
  *
  * To parse a particular radix, please use parseInt(string, radix) directly. See
- * https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseInt
+ * httpss://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseInt
  *
  * This is a wrapper for the built-in parseInt function that will only parse
  * numbers as base 10 or base 16.  Some JS implementations assume strings
  * starting with "0" are intended to be octal. ES3 allowed but discouraged
  * this behavior. ES5 forbids it.  This function emulates the ES5 behavior.
  *
- * For more information, see Mozilla JS Reference: http://goo.gl/8RiFj
+ * For more information, see Mozilla JS Reference: https://goo.gl/8RiFj
  *
  * @param {string|number|null|undefined} value The value to be parsed.
  * @return {number} The number, parsed. If the string failed to parse, this
@@ -4658,9 +4658,9 @@ goog.string.parseInt = function(value) {
  * parameter specifies the maximum number of splits rather than truncating
  * the number of results.
  *
- * See http://docs.python.org/2/library/stdtypes.html#str.split
- * See JavaDoc: http://goo.gl/F2AsY
- * See Mozilla reference: http://goo.gl/dZdZs
+ * See https://docs.python.org/2/library/stdtypes.html#str.split
+ * See JavaDoc: https://goo.gl/F2AsY
+ * See Mozilla reference: https://goo.gl/dZdZs
  *
  * @param {string} str String to split.
  * @param {string} separator The separator.
@@ -4772,7 +4772,7 @@ goog.string.editDistance = function(a, b) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -5415,7 +5415,7 @@ goog.provide('ol.object');
  * Polyfill for Object.assign().  Assigns enumerable and own properties from
  * one or more source objects to a target object.
  *
- * @see https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+ * @see httpss://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  * @param {!Object} target The target object.
  * @param {...Object} var_sources The source object(s).
  * @return {!Object} The modified target object.
@@ -5646,7 +5646,7 @@ ol.events.removeListeners_ = function(target, type) {
 
 /**
  * Registers an event listener on an event target. Inspired by
- * {@link https://google.github.io/closure-library/api/source/closure/goog/events/events.js.src.html}
+ * {@link httpss://google.github.io/closure-library/api/source/closure/goog/events/events.js.src.html}
  *
  * This function efficiently binds a `listener` to a `this` object, and returns
  * a key for use with {@link ol.events.unlistenByKey}.
@@ -5690,7 +5690,7 @@ ol.events.listen = function(target, type, listener, opt_this, opt_once) {
 
 /**
  * Registers a one-off event listener on an event target. Inspired by
- * {@link https://google.github.io/closure-library/api/source/closure/goog/events/events.js.src.html}
+ * {@link httpss://google.github.io/closure-library/api/source/closure/goog/events/events.js.src.html}
  *
  * This function efficiently binds a `listener` as self-unregistering listener
  * to a `this` object, and returns a key for use with
@@ -5715,7 +5715,7 @@ ol.events.listenOnce = function(target, type, listener, opt_this) {
 
 /**
  * Unregisters an event listener on an event target. Inspired by
- * {@link https://google.github.io/closure-library/api/source/closure/goog/events/events.js.src.html}
+ * {@link httpss://google.github.io/closure-library/api/source/closure/goog/events/events.js.src.html}
  *
  * To return a listener, this function needs to be called with the exact same
  * arguments that were used for a previous {@link ol.events.listen} call.
@@ -5740,7 +5740,7 @@ ol.events.unlisten = function(target, type, listener, opt_this) {
 
 /**
  * Unregisters event listeners on an event target. Inspired by
- * {@link https://google.github.io/closure-library/api/source/closure/goog/events/events.js.src.html}
+ * {@link httpss://google.github.io/closure-library/api/source/closure/goog/events/events.js.src.html}
  *
  * The argument passed to this function is the key returned from
  * {@link ol.events.listen} or {@link ol.events.listenOnce}.
@@ -5767,7 +5767,7 @@ ol.events.unlistenByKey = function(key) {
 
 /**
  * Unregisters all event listeners on an event target. Inspired by
- * {@link https://google.github.io/closure-library/api/source/closure/goog/events/events.js.src.html}
+ * {@link httpss://google.github.io/closure-library/api/source/closure/goog/events/events.js.src.html}
  *
  * @param {ol.EventTargetLike} target Target.
  */
@@ -5817,7 +5817,7 @@ goog.provide('ol.events.Event');
 /**
  * @classdesc
  * Stripped down implementation of the W3C DOM Level 2 Event interface.
- * @see {@link https://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-interface}
+ * @see {@link httpss://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-interface}
  *
  * This implementation only provides `type` and `target` properties, and
  * `stopPropagation` and `preventDefault` methods. It is meant as base class
@@ -5896,7 +5896,7 @@ goog.require('ol.events.Event');
 /**
  * @classdesc
  * A simplified implementation of the W3C DOM Level 2 EventTarget interface.
- * @see {@link https://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-EventTarget}
+ * @see {@link httpss://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-EventTarget}
  *
  * There are two important simplifications compared to the specification:
  *
@@ -6467,7 +6467,7 @@ goog.require('goog.asserts');
 
 /**
  * Performs a binary search on the provided sorted list and returns the index of the item if found. If it can't be found it'll return -1.
- * https://github.com/darkskyapp/binary-search
+ * httpss://github.com/darkskyapp/binary-search
  *
  * @param {Array.<*>} haystack Items to search through.
  * @param {*} needle The item to look for.
@@ -6929,7 +6929,7 @@ ol.string.padNumber = function(number, width, opt_precision) {
 };
 
 /**
- * Adapted from https://github.com/omichelsen/compare-versions/blob/master/index.js
+ * Adapted from httpss://github.com/omichelsen/compare-versions/blob/master/index.js
  * @param {string|number} v1 First version
  * @param {string|number} v2 Second version
  * @returns {number} Value
@@ -8185,7 +8185,7 @@ ol.functions.FALSE = function() {
 /**
  * @license
  * Latitude/longitude spherical geodesy formulae taken from
- * http://www.movable-type.co.uk/scripts/latlong.html
+ * https://www.movable-type.co.uk/scripts/latlong.html
  * Licensed under CC-BY-3.0.
  */
 
@@ -8223,7 +8223,7 @@ ol.Sphere = function(radius) {
 /**
  * Returns the geodesic area for a list of coordinates.
  *
- * [Reference](http://trs-new.jpl.nasa.gov/dspace/handle/2014/40409)
+ * [Reference](https://trs-new.jpl.nasa.gov/dspace/handle/2014/40409)
  * Robert. G. Chamberlain and William H. Duquette, "Some Algorithms for
  * Polygons on a Sphere", JPL Publication 07-03, Jet Propulsion
  * Laboratory, Pasadena, CA, June 2007
@@ -8360,14 +8360,14 @@ ol.proj.METERS_PER_UNIT[ol.proj.Units.USFEET] = 1200 / 3937;
  * with the following aliases:
  * * `EPSG:4326`: CRS:84, urn:ogc:def:crs:EPSG:6.6:4326,
  *     urn:ogc:def:crs:OGC:1.3:CRS84, urn:ogc:def:crs:OGC:2:84,
- *     http://www.opengis.net/gml/srs/epsg.xml#4326,
+ *     https://www.opengis.net/gml/srs/epsg.xml#4326,
  *     urn:x-ogc:def:crs:EPSG:4326
  * * `EPSG:3857`: EPSG:102100, EPSG:102113, EPSG:900913,
  *     urn:ogc:def:crs:EPSG:6.18:3:3857,
- *     http://www.opengis.net/gml/srs/epsg.xml#3857
+ *     https://www.opengis.net/gml/srs/epsg.xml#3857
  *
  * If you use proj4js, aliases can be added using `proj4.defs()`; see
- * [documentation](https://github.com/proj4js/proj4js). To set an alternative
+ * [documentation](httpss://github.com/proj4js/proj4js). To set an alternative
  * namespace for proj4, use {@link ol.proj.setProj4}.
  *
  * @constructor
@@ -9332,7 +9332,7 @@ ol.geom.Geometry.prototype.rotate = goog.abstractMethod;
 /**
  * Create a simplified version of this geometry.  For linestrings, this uses
  * the the {@link
- * https://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm
+ * httpss://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm
  * Douglas Peucker} algorithm.  For polygons, a quantization-based
  * simplification is used to preserve topology.
  * @function
@@ -9349,7 +9349,7 @@ ol.geom.Geometry.prototype.simplify = function(tolerance) {
 /**
  * Create a simplified version of this geometry using the Douglas Peucker
  * algorithm.
- * @see https://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm
+ * @see httpss://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm
  * @function
  * @param {number} squaredTolerance Squared tolerance.
  * @return {ol.geom.Geometry} Simplified geometry.
@@ -9425,7 +9425,7 @@ ol.geom.Geometry.prototype.transform = function(source, destination) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -9542,7 +9542,7 @@ if (typeof Float32Array == 'undefined') {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -9666,7 +9666,7 @@ if (typeof Float64Array == 'undefined') {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -9740,7 +9740,7 @@ goog.vec.EPSILON = 1e-6;
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -10283,7 +10283,7 @@ goog.vec.Vec3.equals = function(v0, v1) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -10763,7 +10763,7 @@ goog.vec.Vec4.equals = function(v0, v1) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -13408,7 +13408,7 @@ ol.geom.flat.inflate.coordinatesss = function(flatCoordinates, offset, endss, st
   return coordinatesss;
 };
 
-// Based on simplify-js https://github.com/mourner/simplify-js
+// Based on simplify-js httpss://github.com/mourner/simplify-js
 // Copyright (c) 2012, Vladimir Agafonkin
 // All rights reserved.
 //
@@ -14127,7 +14127,7 @@ ol.geom.flat.contains.linearRingContainsExtent = function(flatCoordinates, offse
  * @return {boolean} Contains (x, y).
  */
 ol.geom.flat.contains.linearRingContainsXY = function(flatCoordinates, offset, end, stride, x, y) {
-  // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
+  // https://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
   var contains = false;
   var x1 = flatCoordinates[end - stride];
   var y1 = flatCoordinates[end - stride + 1];
@@ -14516,8 +14516,8 @@ goog.require('ol.geom.flat.reverse');
  * @return {boolean} Is clockwise.
  */
 ol.geom.flat.orient.linearRingIsClockwise = function(flatCoordinates, offset, end, stride) {
-  // http://tinyurl.com/clockwise-method
-  // https://github.com/OSGeo/gdal/blob/trunk/gdal/ogr/ogrlinearring.cpp
+  // https://tinyurl.com/clockwise-method
+  // httpss://github.com/OSGeo/gdal/blob/trunk/gdal/ogr/ogrlinearring.cpp
   var edge = 0;
   var x1 = flatCoordinates[end - stride];
   var y1 = flatCoordinates[end - stride + 1];
@@ -15821,7 +15821,7 @@ ol.View.createResolutionConstraint_ = function(options) {
   var minResolution;
 
   // TODO: move these to be ol constants
-  // see https://github.com/openlayers/ol3/issues/2076
+  // see httpss://github.com/openlayers/ol3/issues/2076
   var defaultMaxZoom = 28;
   var defaultZoomFactor = 2;
 
@@ -16350,7 +16350,7 @@ goog.require('ol.math');
  *       attributions: [
  *         new ol.Attribution({
  *           html: 'All maps &copy; ' +
- *               '<a href="http://www.opencyclemap.org/">OpenCycleMap</a>'
+ *               '<a href="https://www.opencyclemap.org/">OpenCycleMap</a>'
  *         }),
  *         ol.source.OSM.ATTRIBUTION
  *       ],
@@ -16433,7 +16433,7 @@ ol.Attribution.prototype.intersectsAnyTileRange = function(tileRanges, tileGrid,
 
 /**
  * An implementation of Google Maps' MVCArray.
- * @see https://developers.google.com/maps/documentation/javascript/reference
+ * @see httpss://developers.google.com/maps/documentation/javascript/reference
  */
 
 goog.provide('ol.Collection');
@@ -16716,7 +16716,7 @@ ol.Collection.prototype.updateLength_ = function() {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -16895,7 +16895,7 @@ goog.color.names = {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -16973,7 +16973,7 @@ goog.array.last = goog.array.peek;
  * Returns the index of the first element of an array with a specified value, or
  * -1 if the element is not present in the array.
  *
- * See {@link http://tinyurl.com/developer-mozilla-org-array-indexof}
+ * See {@link https://tinyurl.com/developer-mozilla-org-array-indexof}
  *
  * @param {IArrayLike<T>|string} arr The array to be searched.
  * @param {T} obj The object for which we are searching.
@@ -17014,7 +17014,7 @@ goog.array.indexOf = goog.NATIVE_ARRAY_PROTOTYPES &&
  * Returns the index of the last element of an array with a specified value, or
  * -1 if the element is not present in the array.
  *
- * See {@link http://tinyurl.com/developer-mozilla-org-array-lastindexof}
+ * See {@link https://tinyurl.com/developer-mozilla-org-array-lastindexof}
  *
  * @param {!IArrayLike<T>|string} arr The array to be searched.
  * @param {T} obj The object for which we are searching.
@@ -17057,7 +17057,7 @@ goog.array.lastIndexOf = goog.NATIVE_ARRAY_PROTOTYPES &&
 
 /**
  * Calls a function for each element in an array. Skips holes in the array.
- * See {@link http://tinyurl.com/developer-mozilla-org-array-foreach}
+ * See {@link https://tinyurl.com/developer-mozilla-org-array-foreach}
  *
  * @param {IArrayLike<T>|string} arr Array or array like object over
  *     which to iterate.
@@ -17114,7 +17114,7 @@ goog.array.forEachRight = function(arr, f, opt_obj) {
  * Calls a function for each element in an array, and if the function returns
  * true adds the element to a new array.
  *
- * See {@link http://tinyurl.com/developer-mozilla-org-array-filter}
+ * See {@link https://tinyurl.com/developer-mozilla-org-array-filter}
  *
  * @param {IArrayLike<T>|string} arr Array or array
  *     like object over which to iterate.
@@ -17157,7 +17157,7 @@ goog.array.filter = goog.NATIVE_ARRAY_PROTOTYPES &&
  * Calls a function for each element in an array and inserts the result into a
  * new array.
  *
- * See {@link http://tinyurl.com/developer-mozilla-org-array-map}
+ * See {@link https://tinyurl.com/developer-mozilla-org-array-map}
  *
  * @param {IArrayLike<VALUE>|string} arr Array or array like object
  *     over which to iterate.
@@ -17192,7 +17192,7 @@ goog.array.map = goog.NATIVE_ARRAY_PROTOTYPES &&
 /**
  * Passes every element of an array into a function and accumulates the result.
  *
- * See {@link http://tinyurl.com/developer-mozilla-org-array-reduce}
+ * See {@link https://tinyurl.com/developer-mozilla-org-array-reduce}
  *
  * For example:
  * var a = [1, 2, 3, 4];
@@ -17235,7 +17235,7 @@ goog.array.reduce = goog.NATIVE_ARRAY_PROTOTYPES &&
  * Passes every element of an array into a function and accumulates the result,
  * starting from the last element and working towards the first.
  *
- * See {@link http://tinyurl.com/developer-mozilla-org-array-reduceright}
+ * See {@link https://tinyurl.com/developer-mozilla-org-array-reduceright}
  *
  * For example:
  * var a = ['a', 'b', 'c'];
@@ -17281,7 +17281,7 @@ goog.array.reduceRight = goog.NATIVE_ARRAY_PROTOTYPES &&
  * returns true (without checking the remaining elements). If all calls
  * return false, some() returns false.
  *
- * See {@link http://tinyurl.com/developer-mozilla-org-array-some}
+ * See {@link https://tinyurl.com/developer-mozilla-org-array-some}
  *
  * @param {IArrayLike<T>|string} arr Array or array
  *     like object over which to iterate.
@@ -17317,7 +17317,7 @@ goog.array.some = goog.NATIVE_ARRAY_PROTOTYPES &&
  * returns true. If any call returns false, every() returns false and
  * does not continue to check the remaining elements.
  *
- * See {@link http://tinyurl.com/developer-mozilla-org-array-every}
+ * See {@link https://tinyurl.com/developer-mozilla-org-array-every}
  *
  * @param {IArrayLike<T>|string} arr Array or array
  *     like object over which to iterate.
@@ -17672,7 +17672,7 @@ goog.array.removeAllIf = function(arr, f, opt_obj) {
  * This corruption only affects the concat method which will start throwing
  * Catastrophic Errors (#-2147418113).
  *
- * See http://endoflow.com/scratch/corrupted-arrays.html for a test case.
+ * See https://endoflow.com/scratch/corrupted-arrays.html for a test case.
  *
  * Internally goog.array should use this, so that all methods will continue to
  * work on these broken array objects.
@@ -18463,7 +18463,7 @@ goog.array.moveItem = function(arr, fromIndex, toIndex) {
  * the result of zipping [1, 2] and [3, 4, 5] is [[1,3], [2, 4]].
  *
  * This is similar to the zip() function in Python.  See {@link
- * http://docs.python.org/library/functions.html#zip}
+ * https://docs.python.org/library/functions.html#zip}
  *
  * @param {...!IArrayLike<?>} var_args Arrays to be combined.
  * @return {!Array<!Array<?>>} A new array of arrays created from
@@ -18561,7 +18561,7 @@ goog.array.concatMap = function(arr, f, opt_obj) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -18790,7 +18790,7 @@ goog.math.sign = Math.sign || function(x) {
 
 /**
  * JavaScript implementation of Longest Common Subsequence problem.
- * http://en.wikipedia.org/wiki/Longest_common_subsequence
+ * https://en.wikipedia.org/wiki/Longest_common_subsequence
  *
  * Returns the longest possible array that is subarray of both of given arrays.
  *
@@ -18885,7 +18885,7 @@ goog.math.average = function(var_args) {
 
 /**
  * Returns the unbiased sample variance of the arguments. For a definition,
- * see e.g. http://en.wikipedia.org/wiki/Variance
+ * see e.g. https://en.wikipedia.org/wiki/Variance
  * @param {...number} var_args Number samples to analyze.
  * @return {number} The unbiased sample variance of the arguments (0 if fewer
  *     than two samples were provided, or {@code NaN} if any of the samples is
@@ -18910,7 +18910,7 @@ goog.math.sampleVariance = function(var_args) {
 /**
  * Returns the sample standard deviation of the arguments.  For a definition of
  * sample standard deviation, see e.g.
- * http://en.wikipedia.org/wiki/Standard_deviation
+ * https://en.wikipedia.org/wiki/Standard_deviation
  * @param {...number} var_args Number samples to analyze.
  * @return {number} The sample standard deviation of the arguments (0 if fewer
  *     than two samples were provided, or {@code NaN} if any of the samples is
@@ -19009,7 +19009,7 @@ goog.math.safeCeil = function(num, opt_epsilon) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -19209,7 +19209,7 @@ goog.color.rgbArrayToHex = function(rgb) {
 
 /**
  * Converts a color from RGB color space to HSL color space.
- * Modified from {@link http://en.wikipedia.org/wiki/HLS_color_space}.
+ * Modified from {@link https://en.wikipedia.org/wiki/HLS_color_space}.
  * @param {number} r Value of red, in [0, 255].
  * @param {number} g Value of green, in [0, 255].
  * @param {number} b Value of blue, in [0, 255].
@@ -19288,7 +19288,7 @@ goog.color.hueToRgb_ = function(v1, v2, vH) {
 
 /**
  * Converts a color from HSL color space to RGB color space.
- * Modified from {@link http://www.easyrgb.com/math.html}
+ * Modified from {@link https://www.easyrgb.com/math.html}
  * @param {number} h Hue, in [0, 360].
  * @param {number} s Saturation, in [0, 1].
  * @param {number} l Luminosity, in [0, 1].
@@ -19633,7 +19633,7 @@ goog.color.hsvArrayToHex = function(hsv) {
 /**
  * Calculates the Euclidean distance between two color vectors on an HSL sphere.
  * A demo of the sphere can be found at:
- * http://en.wikipedia.org/wiki/HSL_color_space
+ * https://en.wikipedia.org/wiki/HSL_color_space
  * In short, a vector for color (H, S, L) in this system can be expressed as
  * (S*L'*cos(2*PI*H), S*L'*sin(2*PI*H), L), where L' = abs(L - 0.5), and we
  * simply calculate the 1-2 distance using these coordinates
@@ -19715,7 +19715,7 @@ goog.color.lighten = function(rgb, factor) {
 /**
  * Find the "best" (highest-contrast) of the suggested colors for the prime
  * color. Uses W3C formula for judging readability and visual accessibility:
- * http://www.w3.org/TR/AERT#color-contrast
+ * https://www.w3.org/TR/AERT#color-contrast
  * @param {goog.color.Rgb} prime Color represented as a rgb array.
  * @param {Array<goog.color.Rgb>} suggestions Array of colors,
  *     each representing a rgb array.
@@ -19737,7 +19737,7 @@ goog.color.highContrast = function(prime, suggestions) {
 
 /**
  * Calculate brightness of a color according to YIQ formula (brightness is Y).
- * More info on YIQ here: http://en.wikipedia.org/wiki/YIQ. Helper method for
+ * More info on YIQ here: https://en.wikipedia.org/wiki/YIQ. Helper method for
  * goog.color.highContrast()
  * @param {goog.color.Rgb} rgb Color represented by a rgb array.
  * @return {number} brightness (Y).
@@ -20045,7 +20045,7 @@ ol.colorlike.isColorLike = function(color) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -20193,7 +20193,7 @@ goog.labs.userAgent.util.extractVersionTuples = function(userAgent) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -20219,7 +20219,7 @@ goog.provide('goog.object');
  * @param {*} v The first value to compare.
  * @param {*} v2 The second value to compare.
  * @return {boolean} Whether two values are not observably distinguishable.
- * @see http://wiki.ecmascript.org/doku.php?id=harmony:egal
+ * @see https://wiki.ecmascript.org/doku.php?id=harmony:egal
  */
 goog.object.is = function(v, v2) {
   if (v === v2) {
@@ -20899,7 +20899,7 @@ goog.object.isImmutableView = function(obj) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -20909,7 +20909,7 @@ goog.object.isImmutableView = function(obj) {
 
 /**
  * @fileoverview Closure user agent detection (Browser).
- * @see <a href="http://www.useragentstring.com/">User agent strings</a>
+ * @see <a href="https://www.useragentstring.com/">User agent strings</a>
  * For more information on rendering engine, platform, or device see the other
  * sub-namespaces in goog.labs.userAgent, goog.labs.userAgent.platform,
  * goog.labs.userAgent.device respectively.)
@@ -21095,7 +21095,7 @@ goog.labs.userAgent.browser.isAndroidBrowser =
 
 /**
  * For more information, see:
- * http://docs.aws.amazon.com/silk/latest/developerguide/user-agent.html
+ * https://docs.aws.amazon.com/silk/latest/developerguide/user-agent.html
  * @return {boolean} Whether the user's browser is Silk.
  */
 goog.labs.userAgent.browser.isSilk = function() {
@@ -21109,7 +21109,7 @@ goog.labs.userAgent.browser.isSilk = function() {
  *     the browser, not the version of the rendering engine. (IE 8 in
  *     compatibility mode will return 8.0 rather than 7.0. To determine the
  *     rendering engine version, look at document.documentMode instead. See
- *     http://msdn.microsoft.com/en-us/library/cc196988(v=vs.85).aspx for more
+ *     https://msdn.microsoft.com/en-us/library/cc196988(v=vs.85).aspx for more
  *     details.)
  */
 goog.labs.userAgent.browser.getVersion = function() {
@@ -21143,7 +21143,7 @@ goog.labs.userAgent.browser.getVersion = function() {
 
   // Check Opera before Chrome since Opera 15+ has "Chrome" in the string.
   // See
-  // http://my.opera.com/ODIN/blog/2013/07/15/opera-user-agent-strings-opera-15-and-beyond
+  // https://my.opera.com/ODIN/blog/2013/07/15/opera-user-agent-strings-opera-15-and-beyond
   if (goog.labs.userAgent.browser.isOpera()) {
     // Opera 10 has Version/10.0 but Opera/9.8, so look for "Version" first.
     // Opera uses 'OPR' for more recent UAs.
@@ -21179,10 +21179,10 @@ goog.labs.userAgent.browser.isVersionOrHigher = function(version) {
 
 /**
  * Determines IE version. More information:
- * http://msdn.microsoft.com/en-us/library/ie/bg182625(v=vs.85).aspx#uaString
- * http://msdn.microsoft.com/en-us/library/hh869301(v=vs.85).aspx
- * http://blogs.msdn.com/b/ie/archive/2010/03/23/introducing-ie9-s-user-agent-string.aspx
- * http://blogs.msdn.com/b/ie/archive/2009/01/09/the-internet-explorer-8-user-agent-string-updated-edition.aspx
+ * https://msdn.microsoft.com/en-us/library/ie/bg182625(v=vs.85).aspx#uaString
+ * https://msdn.microsoft.com/en-us/library/hh869301(v=vs.85).aspx
+ * https://blogs.msdn.com/b/ie/archive/2010/03/23/introducing-ie9-s-user-agent-string.aspx
+ * https://blogs.msdn.com/b/ie/archive/2009/01/09/the-internet-explorer-8-user-agent-string-updated-edition.aspx
  *
  * @param {string} userAgent the User-Agent.
  * @return {string}
@@ -21193,7 +21193,7 @@ goog.labs.userAgent.browser.getIEVersion_ = function(userAgent) {
   // bug. Example UA:
   // Mozilla/5.0 (MSIE 9.0; Windows NT 6.1; WOW64; Trident/7.0; rv:11.0)
   // like Gecko.
-  // See http://www.whatismybrowser.com/developers/unknown-user-agent-fragments.
+  // See https://www.whatismybrowser.com/developers/unknown-user-agent-fragments.
   var rv = /rv: *([\d\.]*)/.exec(userAgent);
   if (rv && rv[1]) {
     return rv[1];
@@ -21238,7 +21238,7 @@ goog.labs.userAgent.browser.getIEVersion_ = function(userAgent) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -21248,7 +21248,7 @@ goog.labs.userAgent.browser.getIEVersion_ = function(userAgent) {
 
 /**
  * @fileoverview Closure user agent detection.
- * @see http://en.wikipedia.org/wiki/User_agent
+ * @see https://en.wikipedia.org/wiki/User_agent
  * For more information on browser brand, platform, or device see the other
  * sub-namespaces in goog.labs.userAgent (browser, platform, and device).
  *
@@ -21320,7 +21320,7 @@ goog.labs.userAgent.engine.getVersion = function() {
     if (engineTuple) {
       // In Gecko, the version string is either in the browser info or the
       // Firefox version.  See Gecko user agent string reference:
-      // http://goo.gl/mULqa
+      // https://goo.gl/mULqa
       if (engineTuple[0] == 'Gecko') {
         return goog.labs.userAgent.engine.getVersionForKey_(tuples, 'Firefox');
       }
@@ -21395,7 +21395,7 @@ goog.labs.userAgent.engine.getVersionForKey_ = function(tuples, key) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -21405,7 +21405,7 @@ goog.labs.userAgent.engine.getVersionForKey_ = function(tuples, key) {
 
 /**
  * @fileoverview Closure user agent platform detection.
- * @see <a href="http://www.useragentstring.com/">User agent strings</a>
+ * @see <a href="https://www.useragentstring.com/">User agent strings</a>
  * For more information on browser brand, rendering engine, or device see the
  * other sub-namespaces in goog.labs.userAgent (browser, engine, and device
  * respectively).
@@ -21556,7 +21556,7 @@ goog.labs.userAgent.platform.isVersionOrHigher = function(version) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -21566,7 +21566,7 @@ goog.labs.userAgent.platform.isVersionOrHigher = function(version) {
 
 /**
  * @fileoverview Rendering engine detection.
- * @see <a href="http://www.useragentstring.com/">User agent strings</a>
+ * @see <a href="https://www.useragentstring.com/">User agent strings</a>
  * For information on the browser brand (such as Safari versus Chrome), see
  * goog.userAgent.product.
  * @author arv@google.com (Erik Arvidsson)
@@ -22050,9 +22050,9 @@ goog.userAgent.isVersionOrHigherCache_ = {};
  * use the engine's version, not the browser's version number.  For example,
  * Firefox 3.0 corresponds to Gecko 1.9 and Safari 3.0 to Webkit 522.11.
  * Opera and Internet Explorer versions match the product release number.<br>
- * @see <a href="http://en.wikipedia.org/wiki/Safari_version_history">
+ * @see <a href="https://en.wikipedia.org/wiki/Safari_version_history">
  *     Webkit</a>
- * @see <a href="http://en.wikipedia.org/wiki/Gecko_engine">Gecko</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Gecko_engine">Gecko</a>
  *
  * @param {string|number} version The version to check.
  * @return {boolean} Whether the user agent version is higher or the same as
@@ -22147,8 +22147,8 @@ ol.dom.createCanvasContext2D = function(opt_width, opt_height) {
 
 /**
  * Detect 2d transform.
- * Adapted from http://stackoverflow.com/q/5661671/130442
- * http://caniuse.com/#feat=transforms2d
+ * Adapted from https://stackoverflow.com/q/5661671/130442
+ * https://caniuse.com/#feat=transforms2d
  * @return {boolean}
  */
 ol.dom.canUseCssTransform = (function() {
@@ -22188,8 +22188,8 @@ ol.dom.canUseCssTransform = (function() {
 
 /**
  * Detect 3d transform.
- * Adapted from http://stackoverflow.com/q/5661671/130442
- * http://caniuse.com/#feat=transforms3d
+ * Adapted from https://stackoverflow.com/q/5661671/130442
+ * https://caniuse.com/#feat=transforms3d
  * @return {boolean}
  */
 ol.dom.canUseCssTransform3D = (function() {
@@ -25267,7 +25267,7 @@ goog.require('ol.css');
  * element introduced using this parameter will be displayed in full screen.
  *
  * When in full screen mode, a close button is shown to exit full screen mode.
- * The [Fullscreen API](http://www.w3.org/TR/fullscreen/) is used to
+ * The [Fullscreen API](https://www.w3.org/TR/fullscreen/) is used to
  * toggle the map in full screen mode.
  *
  *
@@ -25763,7 +25763,7 @@ ol.control.MousePosition.prototype.updateHTML_ = function(pixel) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -25923,7 +25923,7 @@ goog.debug.entryPointRegistry.unmonitorAllIfPossible = function(monitor) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -25937,8 +25937,8 @@ goog.debug.entryPointRegistry.unmonitorAllIfPossible = function(monitor) {
  * elements or the HTML5 draft specification.
  *
  * References:
- * http://www.w3.org/TR/html401/index/elements.html
- * http://dev.w3.org/html5/spec/section-index.html
+ * https://www.w3.org/TR/html401/index/elements.html
+ * https://dev.w3.org/html5/spec/section-index.html
  *
  */
 goog.provide('goog.dom.TagName');
@@ -26084,7 +26084,7 @@ goog.dom.TagName = {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -26094,7 +26094,7 @@ goog.dom.TagName = {
 
 /**
  * @fileoverview Utilities for creating functions. Loosely inspired by the
- * java classes: http://goo.gl/GM0Hmu and http://goo.gl/6k7nI8.
+ * java classes: https://goo.gl/GM0Hmu and https://goo.gl/6k7nI8.
  *
  * @author nicksantos@google.com (Nick Santos)
  */
@@ -26541,7 +26541,7 @@ goog.functions.throttle = function(f, interval, opt_scope) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -26632,7 +26632,7 @@ goog.async.nextTick = function(callback, opt_context, opt_useSetImmediate) {
  * because that indicates that it has been replaced by goog.testing.MockClock
  * which we do want to support.
  * See
- * http://connect.microsoft.com/IE/feedback/details/801823/setimmediate-and-messagechannel-are-broken-in-ie10
+ * https://connect.microsoft.com/IE/feedback/details/801823/setimmediate-and-messagechannel-are-broken-in-ie10
  *
  * @return {boolean} Whether to use the implementation of setImmediate defined
  *     on Window.
@@ -26650,7 +26650,7 @@ goog.async.nextTick.useSetImmediate_ = function() {
   // code]" when using toString. Therefore, just always use
   // goog.global.setImmediate for Edge. It's unclear if it suffers the same
   // issues as IE10/11, but based on
-  // https://dev.modern.ie/testdrive/demos/setimmediatesorting/
+  // httpss://dev.modern.ie/testdrive/demos/setimmediatesorting/
   // it seems they've been working to ensure it's WAI.
   if (goog.labs.userAgent.browser.isEdge() ||
       goog.global.Window.prototype.setImmediate != goog.global.setImmediate) {
@@ -26732,7 +26732,7 @@ goog.async.nextTick.getSetImmediateEmulator_ = function() {
   }
   if (typeof Channel !== 'undefined' && (!goog.labs.userAgent.browser.isIE())) {
     // Exclude all of IE due to
-    // http://codeforhire.com/2013/09/21/setimmediate-and-messagechannel-broken-on-internet-explorer-10/
+    // https://codeforhire.com/2013/09/21/setimmediate-and-messagechannel-broken-on-internet-explorer-10/
     // which allows starving postMessage with a busy setTimeout loop.
     // This currently affects IE10 and IE11 which would otherwise be able
     // to use the postMessage based fallbacks.
@@ -26798,7 +26798,7 @@ goog.debug.entryPointRegistry.register(
      */
     function(transformer) { goog.async.nextTick.wrapCallback_ = transformer; });
 
-// Based on https://github.com/Polymer/PointerEvents
+// Based on httpss://github.com/Polymer/PointerEvents
 
 // Copyright (c) 2013 The Polymer Authors. All rights reserved.
 //
@@ -27002,7 +27002,7 @@ ol.inherits(ol.pointer.PointerEvent, ol.events.Event);
  */
 ol.pointer.PointerEvent.prototype.getButtons_ = function(eventDict) {
   // According to the w3c spec,
-  // http://www.w3.org/TR/DOM-Level-3-Events/#events-MouseEvent-button
+  // https://www.w3.org/TR/DOM-Level-3-Events/#events-MouseEvent-button
   // MouseEvent.button == 0 can mean either no mouse button depressed, or the
   // left mouse button depressed.
   //
@@ -27341,7 +27341,7 @@ ol.pointer.EventSource.prototype.getHandlerForEvent = function(eventType) {
   return this.mapping_[eventType];
 };
 
-// Based on https://github.com/Polymer/PointerEvents
+// Based on httpss://github.com/Polymer/PointerEvents
 
 // Copyright (c) 2013 The Polymer Authors. All rights reserved.
 //
@@ -27502,7 +27502,7 @@ ol.pointer.MouseSource.prepareEvent = function(inEvent, dispatcher) {
 ol.pointer.MouseSource.prototype.mousedown = function(inEvent) {
   if (!this.isEventSimulatedFromTouch_(inEvent)) {
     // TODO(dfreedman) workaround for some elements not sending mouseup
-    // http://crbug/149091
+    // https://crbug/149091
     if (ol.pointer.MouseSource.POINTER_ID.toString() in this.pointerMap) {
       this.cancel(inEvent);
     }
@@ -27589,7 +27589,7 @@ ol.pointer.MouseSource.prototype.cleanupMouse = function() {
   delete this.pointerMap[ol.pointer.MouseSource.POINTER_ID.toString()];
 };
 
-// Based on https://github.com/Polymer/PointerEvents
+// Based on httpss://github.com/Polymer/PointerEvents
 
 // Copyright (c) 2013 The Polymer Authors. All rights reserved.
 //
@@ -27783,7 +27783,7 @@ ol.pointer.MsSource.prototype.msGotPointerCapture = function(inEvent) {
   this.dispatcher.dispatchEvent(e);
 };
 
-// Based on https://github.com/Polymer/PointerEvents
+// Based on httpss://github.com/Polymer/PointerEvents
 
 // Copyright (c) 2013 The Polymer Authors. All rights reserved.
 //
@@ -27918,7 +27918,7 @@ ol.pointer.NativeSource.prototype.gotPointerCapture = function(inEvent) {
   this.dispatcher.fireNativeEvent(inEvent);
 };
 
-// Based on https://github.com/Polymer/PointerEvents
+// Based on httpss://github.com/Polymer/PointerEvents
 
 // Copyright (c) 2013 The Polymer Authors. All rights reserved.
 //
@@ -28367,7 +28367,7 @@ ol.pointer.TouchSource.prototype.dedupSynthMouse_ = function(inEvent) {
   }
 };
 
-// Based on https://github.com/Polymer/PointerEvents
+// Based on httpss://github.com/Polymer/PointerEvents
 
 // Copyright (c) 2013 The Polymer Authors. All rights reserved.
 //
@@ -28896,7 +28896,7 @@ ol.inherits(ol.MapBrowserEvent, ol.MapEvent);
 
 /**
  * Prevents the default browser action.
- * @see https://developer.mozilla.org/en-US/docs/Web/API/event.preventDefault
+ * @see httpss://developer.mozilla.org/en-US/docs/Web/API/event.preventDefault
  * @override
  * @api stable
  */
@@ -28908,7 +28908,7 @@ ol.MapBrowserEvent.prototype.preventDefault = function() {
 
 /**
  * Prevents further propagation of the current event.
- * @see https://developer.mozilla.org/en-US/docs/Web/API/event.stopPropagation
+ * @see httpss://developer.mozilla.org/en-US/docs/Web/API/event.stopPropagation
  * @override
  * @api stable
  */
@@ -29097,7 +29097,7 @@ ol.MapBrowserEventHandler.prototype.handlePointerUp_ = function(pointerEvent) {
   // We emulate click events on left mouse button click, touch contact, and pen
   // contact. isMouseActionButton returns true in these cases (evt.button is set
   // to 0).
-  // See http://www.w3.org/TR/pointerevents/#button-states
+  // See https://www.w3.org/TR/pointerevents/#button-states
   if (!this.dragging_ && this.isMouseActionButton_(pointerEvent)) {
     goog.asserts.assert(this.down_, 'this.down_ must be truthy');
     this.emulateClick_(this.down_);
@@ -29193,8 +29193,8 @@ ol.MapBrowserEventHandler.prototype.handlePointerMove_ = function(pointerEvent) 
   }
 
   // Some native android browser triggers mousemove events during small period
-  // of time. See: https://code.google.com/p/android/issues/detail?id=5491 or
-  // https://code.google.com/p/android/issues/detail?id=19827
+  // of time. See: httpss://code.google.com/p/android/issues/detail?id=5491 or
+  // httpss://code.google.com/p/android/issues/detail?id=19827
   // ex: Galaxy Tab P3110 + Android 4.1.1
   pointerEvent.preventDefault();
 };
@@ -31886,8 +31886,8 @@ goog.require('ol.object');
  * The implementation is inspired from the Closure Library's Heap class and
  * Python's heapq module.
  *
- * @see http://closure-library.googlecode.com/svn/docs/closure_goog_structs_heap.js.source.html
- * @see http://hg.python.org/cpython/file/2.7/Lib/heapq.py
+ * @see https://closure-library.googlecode.com/svn/docs/closure_goog_structs_heap.js.source.html
+ * @see https://hg.python.org/cpython/file/2.7/Lib/heapq.py
  *
  * @constructor
  * @param {function(T): number} priorityFunction Priority function.
@@ -32973,7 +32973,7 @@ ol.events.condition.targetNotEditable = function(mapBrowserEvent) {
  * @api stable
  */
 ol.events.condition.mouseOnly = function(mapBrowserEvent) {
-  // see http://www.w3.org/TR/pointerevents/#widl-PointerEvent-pointerType
+  // see https://www.w3.org/TR/pointerevents/#widl-PointerEvent-pointerType
   goog.asserts.assertInstanceof(mapBrowserEvent, ol.MapBrowserPointerEvent,
       'Requires an ol.MapBrowserPointerEvent to work.');
   return mapBrowserEvent.pointerEvent.pointerType == 'mouse';
@@ -32983,7 +32983,7 @@ ol.events.condition.mouseOnly = function(mapBrowserEvent) {
 /**
  * Return `true` if the event originates from a primary pointer in
  * contact with the surface or if the left mouse button is pressed.
- * @see http://www.w3.org/TR/pointerevents/#button-states
+ * @see https://www.w3.org/TR/pointerevents/#button-states
  *
  * @param {ol.MapBrowserEvent} mapBrowserEvent Map browser event.
  * @return {boolean} True if the event originates from a primary pointer.
@@ -34277,7 +34277,7 @@ ol.interaction.MouseWheelZoom.handleEvent = function(mapBrowserEvent) {
     }
 
     // Delta normalisation inspired by
-    // https://github.com/mapbox/mapbox-gl-js/blob/001c7b9/js/ui/handler/scroll_zoom.js
+    // httpss://github.com/mapbox/mapbox-gl-js/blob/001c7b9/js/ui/handler/scroll_zoom.js
     //TODO There's more good stuff in there for inspiration to improve this interaction.
     var delta;
     if (mapBrowserEvent.type == ol.events.EventType.WHEEL) {
@@ -35113,7 +35113,7 @@ ol.proj.EPSG3857.CODES = [
   'EPSG:900913',
   'urn:ogc:def:crs:EPSG:6.18:3:3857',
   'urn:ogc:def:crs:EPSG::3857',
-  'http://www.opengis.net/gml/srs/epsg.xml#3857'
+  'https://www.opengis.net/gml/srs/epsg.xml#3857'
 ];
 
 
@@ -35274,7 +35274,7 @@ ol.proj.EPSG4326.PROJECTIONS = [
   new ol.proj.EPSG4326_('urn:ogc:def:crs:EPSG:6.6:4326', 'neu'),
   new ol.proj.EPSG4326_('urn:ogc:def:crs:OGC:1.3:CRS84'),
   new ol.proj.EPSG4326_('urn:ogc:def:crs:OGC:2:84'),
-  new ol.proj.EPSG4326_('http://www.opengis.net/gml/srs/epsg.xml#4326', 'neu'),
+  new ol.proj.EPSG4326_('https://www.opengis.net/gml/srs/epsg.xml#4326', 'neu'),
   new ol.proj.EPSG4326_('urn:x-ogc:def:crs:EPSG:4326', 'neu')
 ];
 
@@ -35602,7 +35602,7 @@ ol.style.Fill.prototype.getChecksum = function() {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -35658,7 +35658,7 @@ goog.crypt.byteArrayToString = function(bytes) {
 
   // The remaining logic splits conversion by chunks since
   // Function#apply() has a maximum parameter count.
-  // See discussion: http://goo.gl/LrWmZ9
+  // See discussion: https://goo.gl/LrWmZ9
 
   var str = '';
   for (var i = 0; i < bytes.length; i += CHUNK_SIZE) {
@@ -35797,7 +35797,7 @@ goog.crypt.xorByteArray = function(bytes1, bytes2) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -35867,7 +35867,7 @@ goog.crypt.Hash.prototype.digest = goog.abstractMethod;
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -35877,8 +35877,8 @@ goog.crypt.Hash.prototype.digest = goog.abstractMethod;
 
 /**
  * @fileoverview MD5 cryptographic hash.
- * Implementation of http://tools.ietf.org/html/rfc1321 with common
- * optimizations and tweaks (see http://en.wikipedia.org/wiki/MD5).
+ * Implementation of https://tools.ietf.org/html/rfc1321 with common
+ * optimizations and tweaks (see https://en.wikipedia.org/wiki/MD5).
  *
  * Usage:
  *   var md5 = new goog.crypt.Md5();
@@ -36452,7 +36452,7 @@ ol.style.Stroke.prototype.setLineCap = function(lineCap) {
  * `setLineDash` method on the `CanvasRenderingContext2D` and therefore this
  * property will have no visual effect in these browsers.
  *
- * [mdn]: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash#Browser_compatibility
+ * [mdn]: httpss://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash#Browser_compatibility
  *
  * @param {Array.<number>} lineDash Line dash.
  * @api
@@ -38655,12 +38655,12 @@ ol.renderer.canvas.Layer.prototype.composeFrame = function(frameState, layerStat
     var imageTransform = this.getImageTransform();
     // for performance reasons, context.save / context.restore is not used
     // to save and restore the transformation matrix and the opacity.
-    // see http://jsperf.com/context-save-restore-versus-variable
+    // see https://jsperf.com/context-save-restore-versus-variable
     var alpha = context.globalAlpha;
     context.globalAlpha = layerState.opacity;
 
     // for performance reasons, context.setTransform is only used
-    // when the view is rotated. see http://jsperf.com/canvas-transform
+    // when the view is rotated. see https://jsperf.com/canvas-transform
     var dx = goog.vec.Mat4.getElement(imageTransform, 0, 3);
     var dy = goog.vec.Mat4.getElement(imageTransform, 1, 3);
     var dw = image.width * goog.vec.Mat4.getElement(imageTransform, 0, 0);
@@ -38832,7 +38832,7 @@ ol.render.IReplayGroup = function() {
 
 /* eslint-disable valid-jsdoc */
 // TODO: enable valid-jsdoc for @interface methods when this issue is resolved
-// https://github.com/eslint/eslint/issues/4887
+// httpss://github.com/eslint/eslint/issues/4887
 
 
 /**
@@ -41548,13 +41548,13 @@ goog.require('ol.proj');
  * if the web browser antialiases clipping edges on canvas.
  *
  * Currently only Chrome does not antialias the edges, but this is probably
- * going to be "fixed" in the future: http://crbug.com/424291
+ * going to be "fixed" in the future: https://crbug.com/424291
  *
  * @type {boolean}
  * @private
  */
 ol.reproj.browserAntialiasesClip_ = (function(winNav, winChrome) {
-  // Adapted from http://stackoverflow.com/questions/4565112/javascript-how-to-find-out-if-the-user-browser-is-chrome
+  // Adapted from https://stackoverflow.com/questions/4565112/javascript-how-to-find-out-if-the-user-browser-is-chrome
   var isOpera = winNav.userAgent.indexOf('OPR') > -1;
   var isIEedge = winNav.userAgent.indexOf('Edge') > -1;
   return !(
@@ -43746,7 +43746,7 @@ ol.featureloader.loadFeaturesXhr = function(url, format, success, failure) {
        * @this {ol.source.Vector|ol.VectorTile}
        */
       function(extent, resolution, projection) {
-        var xhr = new XMLHttpRequest();
+        var xhr = new XMLhttpsRequest();
         xhr.open('GET',
             typeof url === 'function' ? url(extent, resolution, projection) : url,
             true);
@@ -44554,7 +44554,7 @@ goog.require('ol.object');
  *
  * @constructor
  * @param {number=} opt_maxEntries Max entries.
- * @see https://github.com/mourner/rbush
+ * @see httpss://github.com/mourner/rbush
  * @struct
  * @template T
  */
@@ -46485,7 +46485,7 @@ ol.renderer.canvas.TileLayer.prototype.renderTileImages = function(context, fram
   }
   // for performance reasons, context.save / context.restore is not used
   // to save and restore the transformation matrix and the opacity.
-  // see http://jsperf.com/context-save-restore-versus-variable
+  // see https://jsperf.com/context-save-restore-versus-variable
   var alpha = renderContext.globalAlpha;
   renderContext.globalAlpha = layerState.opacity;
 
@@ -46711,7 +46711,7 @@ ol.renderer.canvas.VectorLayer.prototype.composeFrame = function(frameState, lay
     }
     // for performance reasons, context.save / context.restore is not used
     // to save and restore the transformation matrix and the opacity.
-    // see http://jsperf.com/context-save-restore-versus-variable
+    // see https://jsperf.com/context-save-restore-versus-variable
     var alpha = replayContext.globalAlpha;
     replayContext.globalAlpha = layerState.opacity;
 
@@ -47086,7 +47086,7 @@ goog.require('ol.source.TileEvent');
 
 /**
  * @classdesc
- * Base class for sources providing tiles divided into a tile grid over http.
+ * Base class for sources providing tiles divided into a tile grid over https.
  *
  * @constructor
  * @fires ol.source.TileEvent
@@ -47505,7 +47505,7 @@ ol.renderer.canvas.VectorTileLayer.prototype.renderTileReplays_ = function(
   }
   // for performance reasons, context.save / context.restore is not used
   // to save and restore the transformation matrix and the opacity.
-  // see http://jsperf.com/context-save-restore-versus-variable
+  // see https://jsperf.com/context-save-restore-versus-variable
   var alpha = replayContext.globalAlpha;
   replayContext.globalAlpha = layerState.opacity;
 
@@ -49278,7 +49278,7 @@ ol.renderer.dom.Map.prototype.renderFrame = function(frameState) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -49297,7 +49297,7 @@ ol.renderer.dom.Map.prototype.renderFrame = function(frameState) {
  * property access.
  *
  * Values are taken from the WebGL Spec:
- * https://www.khronos.org/registry/webgl/specs/1.0/#WEBGLRENDERINGCONTEXT
+ * httpss://www.khronos.org/registry/webgl/specs/1.0/#WEBGLRENDERINGCONTEXT
  */
 
 goog.provide('goog.webgl');
@@ -51371,7 +51371,7 @@ goog.webgl.BROWSER_DEFAULT_WEBGL = 0x9244;
 
 /**
  * From the OES_texture_half_float extension.
- * http://www.khronos.org/registry/webgl/extensions/OES_texture_half_float/
+ * https://www.khronos.org/registry/webgl/extensions/OES_texture_half_float/
  * @const
  * @type {number}
  */
@@ -51380,7 +51380,7 @@ goog.webgl.HALF_FLOAT_OES = 0x8D61;
 
 /**
  * From the OES_standard_derivatives extension.
- * http://www.khronos.org/registry/webgl/extensions/OES_standard_derivatives/
+ * https://www.khronos.org/registry/webgl/extensions/OES_standard_derivatives/
  * @const
  * @type {number}
  */
@@ -51389,7 +51389,7 @@ goog.webgl.FRAGMENT_SHADER_DERIVATIVE_HINT_OES = 0x8B8B;
 
 /**
  * From the OES_vertex_array_object extension.
- * http://www.khronos.org/registry/webgl/extensions/OES_vertex_array_object/
+ * https://www.khronos.org/registry/webgl/extensions/OES_vertex_array_object/
  * @const
  * @type {number}
  */
@@ -51398,7 +51398,7 @@ goog.webgl.VERTEX_ARRAY_BINDING_OES = 0x85B5;
 
 /**
  * From the WEBGL_debug_renderer_info extension.
- * http://www.khronos.org/registry/webgl/extensions/WEBGL_debug_renderer_info/
+ * https://www.khronos.org/registry/webgl/extensions/WEBGL_debug_renderer_info/
  * @const
  * @type {number}
  */
@@ -51407,7 +51407,7 @@ goog.webgl.UNMASKED_VENDOR_WEBGL = 0x9245;
 
 /**
  * From the WEBGL_debug_renderer_info extension.
- * http://www.khronos.org/registry/webgl/extensions/WEBGL_debug_renderer_info/
+ * https://www.khronos.org/registry/webgl/extensions/WEBGL_debug_renderer_info/
  * @const
  * @type {number}
  */
@@ -51416,7 +51416,7 @@ goog.webgl.UNMASKED_RENDERER_WEBGL = 0x9246;
 
 /**
  * From the WEBGL_compressed_texture_s3tc extension.
- * http://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc/
+ * https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc/
  * @const
  * @type {number}
  */
@@ -51425,7 +51425,7 @@ goog.webgl.COMPRESSED_RGB_S3TC_DXT1_EXT = 0x83F0;
 
 /**
  * From the WEBGL_compressed_texture_s3tc extension.
- * http://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc/
+ * https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc/
  * @const
  * @type {number}
  */
@@ -51434,7 +51434,7 @@ goog.webgl.COMPRESSED_RGBA_S3TC_DXT1_EXT = 0x83F1;
 
 /**
  * From the WEBGL_compressed_texture_s3tc extension.
- * http://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc/
+ * https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc/
  * @const
  * @type {number}
  */
@@ -51443,7 +51443,7 @@ goog.webgl.COMPRESSED_RGBA_S3TC_DXT3_EXT = 0x83F2;
 
 /**
  * From the WEBGL_compressed_texture_s3tc extension.
- * http://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc/
+ * https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc/
  * @const
  * @type {number}
  */
@@ -51452,7 +51452,7 @@ goog.webgl.COMPRESSED_RGBA_S3TC_DXT5_EXT = 0x83F3;
 
 /**
  * From the EXT_texture_filter_anisotropic extension.
- * http://www.khronos.org/registry/webgl/extensions/EXT_texture_filter_anisotropic/
+ * https://www.khronos.org/registry/webgl/extensions/EXT_texture_filter_anisotropic/
  * @const
  * @type {number}
  */
@@ -51461,7 +51461,7 @@ goog.webgl.TEXTURE_MAX_ANISOTROPY_EXT = 0x84FE;
 
 /**
  * From the EXT_texture_filter_anisotropic extension.
- * http://www.khronos.org/registry/webgl/extensions/EXT_texture_filter_anisotropic/
+ * https://www.khronos.org/registry/webgl/extensions/EXT_texture_filter_anisotropic/
  * @const
  * @type {number}
  */
@@ -53944,8 +53944,8 @@ ol.inherits(ol.renderer.webgl.ImageLayer, ol.renderer.webgl.Layer);
 ol.renderer.webgl.ImageLayer.prototype.createTexture_ = function(image) {
 
   // We meet the conditions to work with non-power of two textures.
-  // http://www.khronos.org/webgl/wiki/WebGL_and_OpenGL_Differences#Non-Power_of_Two_Texture_Support
-  // http://learningwebgl.com/blog/?p=2101
+  // https://www.khronos.org/webgl/wiki/WebGL_and_OpenGL_Differences#Non-Power_of_Two_Texture_Support
+  // https://learningwebgl.com/blog/?p=2101
 
   var imageElement = image.getImage();
   var gl = this.mapRenderer.getGL();
@@ -55712,7 +55712,7 @@ goog.require('ol.vec.Mat4');
  * @const
  * @type {string}
  */
-ol.OL3_URL = 'http://openlayers.org/';
+ol.OL3_URL = 'https://openlayers.org/';
 
 
 /**
@@ -59154,7 +59154,7 @@ ol.DeviceOrientationProperty = {
  * @classdesc
  * The ol.DeviceOrientation class provides access to information from
  * DeviceOrientation events.  See the [HTML 5 DeviceOrientation Specification](
- * http://www.w3.org/TR/orientation-event/) for more details.
+ * https://www.w3.org/TR/orientation-event/) for more details.
  *
  * Many new computers, and especially mobile phones
  * and tablets, provide hardware support for device orientation. Web
@@ -59198,7 +59198,7 @@ ol.DeviceOrientationProperty = {
  * To get notified of device orientation changes, register a listener for the
  * generic `change` event on your `ol.DeviceOrientation` instance.
  *
- * @see {@link http://www.w3.org/TR/orientation-event/}
+ * @see {@link https://www.w3.org/TR/orientation-event/}
  *
  * @constructor
  * @extends {ol.Object}
@@ -61323,7 +61323,7 @@ ol.format.EsriJSON.readGeometry_ = function(object, opt_options) {
  * Determines inner and outer rings.
  * Checks if any polygons in this array contain any other polygons in this
  * array. It is used for checking for holes.
- * Logic inspired by: https://github.com/Esri/terraformer-arcgis-parser
+ * Logic inspired by: httpss://github.com/Esri/terraformer-arcgis-parser
  * @param {Array.<!Array.<!Array.<number>>>} rings Rings.
  * @param {ol.geom.GeometryLayout} layout Geometry layout.
  * @private
@@ -62235,7 +62235,7 @@ ol.geom.GeometryCollection.prototype.disposeInternal = function() {
 };
 
 // TODO: serialize dataProjection as crs member when writing
-// see https://github.com/openlayers/ol3/issues/2078
+// see httpss://github.com/openlayers/ol3/issues/2078
 
 goog.provide('ol.format.GeoJSON');
 
@@ -62726,7 +62726,7 @@ ol.format.GeoJSON.prototype.readProjectionFromObject = function(object) {
     } else if (crs.type == 'EPSG') {
       // 'EPSG' is not part of the GeoJSON specification, but is generated by
       // GeoServer.
-      // TODO: remove this when http://jira.codehaus.org/browse/GEOS-5996
+      // TODO: remove this when https://jira.codehaus.org/browse/GEOS-5996
       // is fixed and widely deployed.
       return ol.proj.get('EPSG:' + crs.properties.code);
     } else {
@@ -63196,7 +63196,7 @@ ol.inherits(ol.format.GMLBase, ol.format.XMLFeature);
  * @const
  * @type {string}
  */
-ol.format.GMLBase.GMLNS = 'http://www.opengis.net/gml';
+ol.format.GMLBase.GMLNS = 'https://www.opengis.net/gml';
 
 
 /**
@@ -63205,7 +63205,7 @@ ol.format.GMLBase.GMLNS = 'http://www.opengis.net/gml';
  * space (0xa0) is explicitly included as IE doesn't include it in its
  * definition of `\s`.
  *
- * Information from `goog.string.isEmptyOrWhitespace`: https://github.com/google/closure-library/blob/e877b1e/closure/goog/string/string.js#L156-L160
+ * Information from `goog.string.isEmptyOrWhitespace`: httpss://github.com/google/closure-library/blob/e877b1e/closure/goog/string/string.js#L156-L160
  *
  * @const
  * @type {RegExp}
@@ -63225,7 +63225,7 @@ ol.format.GMLBase.prototype.readFeaturesInternal = function(node, objectStack) {
   var localName = node.localName;
   var features = null;
   if (localName == 'FeatureCollection') {
-    if (node.namespaceURI === 'http://www.opengis.net/wfs') {
+    if (node.namespaceURI === 'https://www.opengis.net/wfs') {
       features = ol.xml.pushParseAndPop([],
           this.FEATURE_COLLECTION_PARSERS, node,
           objectStack, this);
@@ -63622,7 +63622,7 @@ ol.format.GMLBase.prototype.readFlatCoordinatesFromNode_ = function(node, object
  * @private
  */
 ol.format.GMLBase.prototype.MULTIPOINT_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'pointMember': ol.xml.makeArrayPusher(
         ol.format.GMLBase.prototype.pointMemberParser_),
     'pointMembers': ol.xml.makeArrayPusher(
@@ -63637,7 +63637,7 @@ ol.format.GMLBase.prototype.MULTIPOINT_PARSERS_ = {
  * @private
  */
 ol.format.GMLBase.prototype.MULTILINESTRING_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'lineStringMember': ol.xml.makeArrayPusher(
         ol.format.GMLBase.prototype.lineStringMemberParser_),
     'lineStringMembers': ol.xml.makeArrayPusher(
@@ -63652,7 +63652,7 @@ ol.format.GMLBase.prototype.MULTILINESTRING_PARSERS_ = {
  * @private
  */
 ol.format.GMLBase.prototype.MULTIPOLYGON_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'polygonMember': ol.xml.makeArrayPusher(
         ol.format.GMLBase.prototype.polygonMemberParser_),
     'polygonMembers': ol.xml.makeArrayPusher(
@@ -63667,7 +63667,7 @@ ol.format.GMLBase.prototype.MULTIPOLYGON_PARSERS_ = {
  * @private
  */
 ol.format.GMLBase.prototype.POINTMEMBER_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'Point': ol.xml.makeArrayPusher(
         ol.format.GMLBase.prototype.readFlatCoordinatesFromNode_)
   }
@@ -63680,7 +63680,7 @@ ol.format.GMLBase.prototype.POINTMEMBER_PARSERS_ = {
  * @private
  */
 ol.format.GMLBase.prototype.LINESTRINGMEMBER_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'LineString': ol.xml.makeArrayPusher(
         ol.format.GMLBase.prototype.readLineString)
   }
@@ -63693,7 +63693,7 @@ ol.format.GMLBase.prototype.LINESTRINGMEMBER_PARSERS_ = {
  * @private
  */
 ol.format.GMLBase.prototype.POLYGONMEMBER_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'Polygon': ol.xml.makeArrayPusher(
         ol.format.GMLBase.prototype.readPolygon)
   }
@@ -63706,7 +63706,7 @@ ol.format.GMLBase.prototype.POLYGONMEMBER_PARSERS_ = {
  * @protected
  */
 ol.format.GMLBase.prototype.RING_PARSERS = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'LinearRing': ol.xml.makeReplacer(
         ol.format.GMLBase.prototype.readFlatLinearRing_)
   }
@@ -63771,7 +63771,7 @@ goog.require('ol.string');
  * @const
  * @type {string}
  */
-ol.format.XSD.NAMESPACE_URI = 'http://www.w3.org/2001/XMLSchema';
+ol.format.XSD.NAMESPACE_URI = 'https://www.w3.org/2001/XMLSchema';
 
 
 /**
@@ -63989,7 +63989,7 @@ ol.inherits(ol.format.GML2, ol.format.GMLBase);
  * @private
  */
 ol.format.GML2.schemaLocation_ = ol.format.GMLBase.GMLNS +
-    ' http://schemas.opengis.net/gml/2.1.2/feature.xsd';
+    ' https://schemas.opengis.net/gml/2.1.2/feature.xsd';
 
 
 /**
@@ -64114,7 +64114,7 @@ ol.format.GML2.prototype.outerBoundaryIsParser_ = function(node, objectStack) {
  * @private
  */
 ol.format.GML2.prototype.GEOMETRY_FLAT_COORDINATES_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'coordinates': ol.xml.makeReplacer(
         ol.format.GML2.prototype.readFlatCoordinates_)
   }
@@ -64127,7 +64127,7 @@ ol.format.GML2.prototype.GEOMETRY_FLAT_COORDINATES_PARSERS_ = {
  * @private
  */
 ol.format.GML2.prototype.FLAT_LINEAR_RINGS_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'innerBoundaryIs': ol.format.GML2.prototype.innerBoundaryIsParser_,
     'outerBoundaryIs': ol.format.GML2.prototype.outerBoundaryIsParser_
   }
@@ -64140,7 +64140,7 @@ ol.format.GML2.prototype.FLAT_LINEAR_RINGS_PARSERS_ = {
  * @private
  */
 ol.format.GML2.prototype.BOX_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'coordinates': ol.xml.makeArrayPusher(
         ol.format.GML2.prototype.readFlatCoordinates_)
   }
@@ -64153,7 +64153,7 @@ ol.format.GML2.prototype.BOX_PARSERS_ = {
  * @private
  */
 ol.format.GML2.prototype.GEOMETRY_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'Point': ol.xml.makeReplacer(ol.format.GMLBase.prototype.readPoint),
     'MultiPoint': ol.xml.makeReplacer(
         ol.format.GMLBase.prototype.readMultiPoint),
@@ -64254,7 +64254,7 @@ ol.inherits(ol.format.GML3, ol.format.GMLBase);
  * @private
  */
 ol.format.GML3.schemaLocation_ = ol.format.GMLBase.GMLNS +
-    ' http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/' +
+    ' https://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/' +
     '1.0.0/gmlsf.xsd';
 
 
@@ -64625,7 +64625,7 @@ ol.format.GML3.prototype.readFlatPosList_ = function(node, objectStack) {
  * @private
  */
 ol.format.GML3.prototype.GEOMETRY_FLAT_COORDINATES_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'pos': ol.xml.makeReplacer(ol.format.GML3.prototype.readFlatPos_),
     'posList': ol.xml.makeReplacer(ol.format.GML3.prototype.readFlatPosList_)
   }
@@ -64638,7 +64638,7 @@ ol.format.GML3.prototype.GEOMETRY_FLAT_COORDINATES_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.FLAT_LINEAR_RINGS_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'interior': ol.format.GML3.prototype.interiorParser_,
     'exterior': ol.format.GML3.prototype.exteriorParser_
   }
@@ -64651,7 +64651,7 @@ ol.format.GML3.prototype.FLAT_LINEAR_RINGS_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.GEOMETRY_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'Point': ol.xml.makeReplacer(ol.format.GMLBase.prototype.readPoint),
     'MultiPoint': ol.xml.makeReplacer(
         ol.format.GMLBase.prototype.readMultiPoint),
@@ -64681,7 +64681,7 @@ ol.format.GML3.prototype.GEOMETRY_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.MULTICURVE_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'curveMember': ol.xml.makeArrayPusher(
         ol.format.GML3.prototype.curveMemberParser_),
     'curveMembers': ol.xml.makeArrayPusher(
@@ -64696,7 +64696,7 @@ ol.format.GML3.prototype.MULTICURVE_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.MULTISURFACE_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'surfaceMember': ol.xml.makeArrayPusher(
         ol.format.GML3.prototype.surfaceMemberParser_),
     'surfaceMembers': ol.xml.makeArrayPusher(
@@ -64711,7 +64711,7 @@ ol.format.GML3.prototype.MULTISURFACE_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.CURVEMEMBER_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'LineString': ol.xml.makeArrayPusher(
         ol.format.GMLBase.prototype.readLineString),
     'Curve': ol.xml.makeArrayPusher(ol.format.GML3.prototype.readCurve_)
@@ -64725,7 +64725,7 @@ ol.format.GML3.prototype.CURVEMEMBER_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.SURFACEMEMBER_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'Polygon': ol.xml.makeArrayPusher(ol.format.GMLBase.prototype.readPolygon),
     'Surface': ol.xml.makeArrayPusher(ol.format.GML3.prototype.readSurface_)
   }
@@ -64738,7 +64738,7 @@ ol.format.GML3.prototype.SURFACEMEMBER_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.SURFACE_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'patches': ol.xml.makeReplacer(ol.format.GML3.prototype.readPatch_)
   }
 };
@@ -64750,7 +64750,7 @@ ol.format.GML3.prototype.SURFACE_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.CURVE_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'segments': ol.xml.makeReplacer(ol.format.GML3.prototype.readSegment_)
   }
 };
@@ -64762,7 +64762,7 @@ ol.format.GML3.prototype.CURVE_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.ENVELOPE_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'lowerCorner': ol.xml.makeArrayPusher(
         ol.format.GML3.prototype.readFlatPosList_),
     'upperCorner': ol.xml.makeArrayPusher(
@@ -64777,7 +64777,7 @@ ol.format.GML3.prototype.ENVELOPE_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.PATCHES_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'PolygonPatch': ol.xml.makeReplacer(
         ol.format.GML3.prototype.readPolygonPatch_)
   }
@@ -64790,7 +64790,7 @@ ol.format.GML3.prototype.PATCHES_PARSERS_ = {
  * @private
  */
 ol.format.GML3.prototype.SEGMENTS_PARSERS_ = {
-  'http://www.opengis.net/gml' : {
+  'https://www.opengis.net/gml' : {
     'LineStringSegment': ol.xml.makeReplacer(
         ol.format.GML3.prototype.readLineStringSegment_)
   }
@@ -64887,7 +64887,7 @@ ol.format.GML3.prototype.writePoint_ = function(node, geometry, objectStack) {
  * @private
  */
 ol.format.GML3.ENVELOPE_SERIALIZERS_ = {
-  'http://www.opengis.net/gml': {
+  'https://www.opengis.net/gml': {
     'lowerCorner': ol.xml.makeChildAppender(ol.format.XSD.writeStringTextNode),
     'upperCorner': ol.xml.makeChildAppender(ol.format.XSD.writeStringTextNode)
   }
@@ -65275,7 +65275,7 @@ ol.format.GML3.prototype.writeFeatureMembers_ = function(node, features, objectS
  * @private
  */
 ol.format.GML3.SURFACEORPOLYGONMEMBER_SERIALIZERS_ = {
-  'http://www.opengis.net/gml': {
+  'https://www.opengis.net/gml': {
     'surfaceMember': ol.xml.makeChildAppender(
         ol.format.GML3.prototype.writeSurfaceOrPolygonMember_),
     'polygonMember': ol.xml.makeChildAppender(
@@ -65289,7 +65289,7 @@ ol.format.GML3.SURFACEORPOLYGONMEMBER_SERIALIZERS_ = {
  * @private
  */
 ol.format.GML3.POINTMEMBER_SERIALIZERS_ = {
-  'http://www.opengis.net/gml': {
+  'https://www.opengis.net/gml': {
     'pointMember': ol.xml.makeChildAppender(
         ol.format.GML3.prototype.writePointMember_)
   }
@@ -65301,7 +65301,7 @@ ol.format.GML3.POINTMEMBER_SERIALIZERS_ = {
  * @private
  */
 ol.format.GML3.LINESTRINGORCURVEMEMBER_SERIALIZERS_ = {
-  'http://www.opengis.net/gml': {
+  'https://www.opengis.net/gml': {
     'lineStringMember': ol.xml.makeChildAppender(
         ol.format.GML3.prototype.writeLineStringOrCurveMember_),
     'curveMember': ol.xml.makeChildAppender(
@@ -65315,7 +65315,7 @@ ol.format.GML3.LINESTRINGORCURVEMEMBER_SERIALIZERS_ = {
  * @private
  */
 ol.format.GML3.RING_SERIALIZERS_ = {
-  'http://www.opengis.net/gml': {
+  'https://www.opengis.net/gml': {
     'exterior': ol.xml.makeChildAppender(ol.format.GML3.prototype.writeRing_),
     'interior': ol.xml.makeChildAppender(ol.format.GML3.prototype.writeRing_)
   }
@@ -65327,7 +65327,7 @@ ol.format.GML3.RING_SERIALIZERS_ = {
  * @private
  */
 ol.format.GML3.GEOMETRY_SERIALIZERS_ = {
-  'http://www.opengis.net/gml': {
+  'https://www.opengis.net/gml': {
     'Curve': ol.xml.makeChildAppender(
         ol.format.GML3.prototype.writeCurveOrLineString_),
     'MultiCurve': ol.xml.makeChildAppender(
@@ -65380,7 +65380,7 @@ ol.format.GML3.prototype.MULTIGEOMETRY_MEMBER_NODE_FACTORY_ = function(value, ob
   var parentNode = objectStack[objectStack.length - 1].node;
   goog.asserts.assert(ol.xml.isNode(parentNode),
       'parentNode should be a node');
-  return ol.xml.createElementNS('http://www.opengis.net/gml',
+  return ol.xml.createElementNS('https://www.opengis.net/gml',
       ol.format.GML3.MULTIGEOMETRY_TO_MEMBER_NODENAME_[parentNode.nodeName]);
 };
 
@@ -65420,7 +65420,7 @@ ol.format.GML3.prototype.GEOMETRY_NODE_FACTORY_ = function(value, objectStack, o
   } else {
     nodeName = 'Envelope';
   }
-  return ol.xml.createElementNS('http://www.opengis.net/gml',
+  return ol.xml.createElementNS('https://www.opengis.net/gml',
       nodeName);
 };
 
@@ -65435,7 +65435,7 @@ ol.format.GML3.prototype.GEOMETRY_NODE_FACTORY_ = function(value, objectStack, o
  */
 ol.format.GML3.prototype.writeGeometryNode = function(geometry, opt_options) {
   opt_options = this.adaptOptions(opt_options);
-  var geom = ol.xml.createElementNS('http://www.opengis.net/gml', 'geom');
+  var geom = ol.xml.createElementNS('https://www.opengis.net/gml', 'geom');
   var context = {node: geom, srsName: this.srsName,
     curve: this.curve_, surface: this.surface_,
     multiSurface: this.multiSurface_, multiCurve: this.multiCurve_};
@@ -65469,9 +65469,9 @@ ol.format.GML3.prototype.writeFeatures;
  */
 ol.format.GML3.prototype.writeFeaturesNode = function(features, opt_options) {
   opt_options = this.adaptOptions(opt_options);
-  var node = ol.xml.createElementNS('http://www.opengis.net/gml',
+  var node = ol.xml.createElementNS('https://www.opengis.net/gml',
       'featureMembers');
-  ol.xml.setAttributeNS(node, 'http://www.w3.org/2001/XMLSchema-instance',
+  ol.xml.setAttributeNS(node, 'https://www.w3.org/2001/XMLSchema-instance',
       'xsi:schemaLocation', this.schemaLocation);
   var context = {
     srsName: this.srsName,
@@ -65580,8 +65580,8 @@ ol.inherits(ol.format.GPX, ol.format.XMLFeature);
  */
 ol.format.GPX.NAMESPACE_URIS_ = [
   null,
-  'http://www.topografix.com/GPX/1/0',
-  'http://www.topografix.com/GPX/1/1'
+  'https://www.topografix.com/GPX/1/0',
+  'https://www.topografix.com/GPX/1/1'
 ];
 
 
@@ -65590,8 +65590,8 @@ ol.format.GPX.NAMESPACE_URIS_ = [
  * @type {string}
  * @private
  */
-ol.format.GPX.SCHEMA_LOCATION_ = 'http://www.topografix.com/GPX/1/1 ' +
-    'http://www.topografix.com/GPX/1/1/gpx.xsd';
+ol.format.GPX.SCHEMA_LOCATION_ = 'https://www.topografix.com/GPX/1/1 ' +
+    'https://www.topografix.com/GPX/1/1/gpx.xsd';
 
 
 /**
@@ -66448,9 +66448,9 @@ ol.format.GPX.prototype.writeFeatures;
 ol.format.GPX.prototype.writeFeaturesNode = function(features, opt_options) {
   opt_options = this.adaptOptions(opt_options);
   //FIXME Serialize metadata
-  var gpx = ol.xml.createElementNS('http://www.topografix.com/GPX/1/1', 'gpx');
-  var xmlnsUri = 'http://www.w3.org/2000/xmlns/';
-  var xmlSchemaInstanceUri = 'http://www.w3.org/2001/XMLSchema-instance';
+  var gpx = ol.xml.createElementNS('https://www.topografix.com/GPX/1/1', 'gpx');
+  var xmlnsUri = 'https://www.w3.org/2000/xmlns/';
+  var xmlSchemaInstanceUri = 'https://www.w3.org/2001/XMLSchema-instance';
   ol.xml.setAttributeNS(gpx, xmlnsUri, 'xmlns:xsi', xmlSchemaInstanceUri);
   ol.xml.setAttributeNS(gpx, xmlSchemaInstanceUri, 'xsi:schemaLocation',
       ol.format.GPX.SCHEMA_LOCATION_);
@@ -66870,7 +66870,7 @@ ol.format.IGC.prototype.readProjection;
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -67226,7 +67226,7 @@ goog.structs.every = function(col, f, opt_obj) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -67646,7 +67646,7 @@ goog.iter.chain = function(var_args) {
 /**
  * Takes a single iterable containing zero or more iterables and returns one
  * iterator that will iterate over each one in the order given.
- * @see https://goo.gl/5NRp5d
+ * @see httpss://goo.gl/5NRp5d
  * @param {goog.iter.Iterable} iterable The iterable of iterables to chain.
  * @return {!goog.iter.Iterator<VALUE>} Returns a new iterator that will
  *     iterate over all the contents of the iterables contained within
@@ -67811,7 +67811,7 @@ goog.iter.nextOrValue = function(iterable, defaultValue) {
  * Cartesian product of zero or more sets.  Gives an iterator that gives every
  * combination of one element chosen from each set.  For example,
  * ([1, 2], [3, 4]) gives ([1, 3], [1, 4], [2, 3], [2, 4]).
- * @see http://docs.python.org/library/itertools.html#itertools.product
+ * @see https://docs.python.org/library/itertools.html#itertools.product
  * @param {...!IArrayLike<VALUE>} var_args Zero or more sets, as
  *     arrays.
  * @return {!goog.iter.Iterator<!Array<VALUE>>} An iterator that gives each
@@ -67874,7 +67874,7 @@ goog.iter.product = function(var_args) {
 /**
  * Create an iterator to cycle over the iterable's elements indefinitely.
  * For example, ([1, 2, 3]) would return : 1, 2, 3, 1, 2, 3, ...
- * @see: http://docs.python.org/library/itertools.html#itertools.cycle.
+ * @see: https://docs.python.org/library/itertools.html#itertools.cycle.
  * @param {!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} iterable The
  *     iterable object.
  * @return {!goog.iter.Iterator<VALUE>} An iterator that iterates indefinitely
@@ -67931,7 +67931,7 @@ goog.iter.cycle = function(iterable) {
 
 /**
  * Creates an iterator that counts indefinitely from a starting value.
- * @see http://docs.python.org/2/library/itertools.html#itertools.count
+ * @see https://docs.python.org/2/library/itertools.html#itertools.count
  * @param {number=} opt_start The starting value. Default is 0.
  * @param {number=} opt_step The number to increment with between each call to
  *     next. Negative and floating point numbers are allowed. Default is 1.
@@ -67973,7 +67973,7 @@ goog.iter.repeat = function(value) {
  * Creates an iterator that returns running totals from the numbers in
  * {@code iterable}. For example, the array {@code [1, 2, 3, 4, 5]} yields
  * {@code 1 -> 3 -> 6 -> 10 -> 15}.
- * @see http://docs.python.org/3.2/library/itertools.html#itertools.accumulate
+ * @see https://docs.python.org/3.2/library/itertools.html#itertools.accumulate
  * @param {!goog.iter.Iterable<number>} iterable The iterable of numbers to
  *     accumulate.
  * @return {!goog.iter.Iterator<number>} A new iterator that returns the
@@ -67999,7 +67999,7 @@ goog.iter.accumulate = function(iterable) {
  * of iterables given in {@code var_args}. Once the shortest iterable is
  * exhausted, subsequent calls to {@code next()} will throw
  * {@code goog.iter.StopIteration}.
- * @see http://docs.python.org/2/library/itertools.html#itertools.izip
+ * @see https://docs.python.org/2/library/itertools.html#itertools.izip
  * @param {...!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} var_args Any
  *     number of iterable objects.
  * @return {!goog.iter.Iterator<!Array<VALUE>>} A new iterator that returns
@@ -68028,7 +68028,7 @@ goog.iter.zip = function(var_args) {
  * of iterables given in {@code var_args}. Shorter iterables will be extended
  * with {@code fillValue}. Once the longest iterable is exhausted, subsequent
  * calls to {@code next()} will throw {@code goog.iter.StopIteration}.
- * @see http://docs.python.org/2/library/itertools.html#itertools.izip_longest
+ * @see https://docs.python.org/2/library/itertools.html#itertools.izip_longest
  * @param {VALUE} fillValue The object or value used to fill shorter iterables.
  * @param {...!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} var_args Any
  *     number of iterable objects.
@@ -68080,7 +68080,7 @@ goog.iter.zipLongest = function(fillValue, var_args) {
  * Otherwise, it is skipped. Once either {@code iterable} or {@code selectors}
  * is exhausted, subsequent calls to {@code next()} will throw
  * {@code goog.iter.StopIteration}.
- * @see http://docs.python.org/2/library/itertools.html#itertools.compress
+ * @see https://docs.python.org/2/library/itertools.html#itertools.compress
  * @param {!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} iterable The
  *     iterable to filter.
  * @param {!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} selectors An
@@ -68191,7 +68191,7 @@ goog.iter.GroupByIterator_.prototype.groupItems_ = function(targetKey) {
  * has a {@code uniq}-like effect. For example, grouping the array:
  * {@code [A, B, B, C, C, A]} produces
  * {@code [A, [A]], [B, [B, B]], [C, [C, C]], [A, [A]]}.
- * @see http://docs.python.org/2/library/itertools.html#itertools.groupby
+ * @see https://docs.python.org/2/library/itertools.html#itertools.groupby
  * @param {!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} iterable The
  *     iterable to group.
  * @param {function(VALUE): KEY=} opt_keyFunc  Optional function for
@@ -68244,7 +68244,7 @@ goog.iter.starMap = function(iterable, f, opt_obj) {
 /**
  * Returns an array of iterators each of which can iterate over the values in
  * {@code iterable} without advancing the others.
- * @see http://docs.python.org/2/library/itertools.html#itertools.tee
+ * @see https://docs.python.org/2/library/itertools.html#itertools.tee
  * @param {!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} iterable The
  *     iterable to tee.
  * @param {number=} opt_num  The number of iterators to create. Default is 2.
@@ -68288,7 +68288,7 @@ goog.iter.tee = function(iterable, opt_num) {
 /**
  * Creates an iterator that returns arrays containing a count and an element
  * obtained from the given {@code iterable}.
- * @see http://docs.python.org/2/library/functions.html#enumerate
+ * @see https://docs.python.org/2/library/functions.html#enumerate
  * @param {!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} iterable The
  *     iterable to enumerate.
  * @param {number=} opt_start  Optional starting value. Default is 0.
@@ -68305,7 +68305,7 @@ goog.iter.enumerate = function(iterable, opt_start) {
  * Creates an iterator that returns the first {@code limitSize} elements from an
  * iterable. If this number is greater than the number of elements in the
  * iterable, all the elements are returned.
- * @see http://goo.gl/V0sihp Inspired by the limit iterator in Guava.
+ * @see https://goo.gl/V0sihp Inspired by the limit iterator in Guava.
  * @param {!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} iterable The
  *     iterable to limit.
  * @param {number} limitSize  The maximum number of elements to return.
@@ -68407,7 +68407,7 @@ goog.iter.hasDuplicates_ = function(arr) {
  * {@code opt_length} iterables and filtering out those with repeated
  * elements. For example, the permutations of {@code [1,2,3]} are
  * {@code [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]}.
- * @see http://docs.python.org/2/library/itertools.html#itertools.permutations
+ * @see https://docs.python.org/2/library/itertools.html#itertools.permutations
  * @param {!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} iterable The
  *     iterable from which to generate permutations.
  * @param {number=} opt_length Length of each permutation. If omitted, defaults
@@ -68436,7 +68436,7 @@ goog.iter.permutations = function(iterable, opt_length) {
  * {@code iterable} and filtering those whose elements appear in the order they
  * are encountered in {@code iterable}. For example, the 3-length combinations
  * of {@code [0,1,2,3]} are {@code [[0,1,2], [0,1,3], [0,2,3], [1,2,3]]}.
- * @see http://docs.python.org/2/library/itertools.html#itertools.combinations
+ * @see https://docs.python.org/2/library/itertools.html#itertools.combinations
  * @param {!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} iterable The
  *     iterable from which to generate combinations.
  * @param {number} length The length of each combination.
@@ -68473,8 +68473,8 @@ goog.iter.combinations = function(iterable, length) {
  * iterables and filtering those whose elements appear in the order they are
  * encountered in {@code iterable}. For example, the 2-length combinations of
  * {@code [1,2,3]} are {@code [[1,1], [1,2], [1,3], [2,2], [2,3], [3,3]]}.
- * @see https://goo.gl/C0yXe4
- * @see https://goo.gl/djOCsk
+ * @see httpss://goo.gl/C0yXe4
+ * @see httpss://goo.gl/djOCsk
  * @param {!goog.iter.Iterator<VALUE>|!goog.iter.Iterable} iterable The
  *     iterable to combine.
  * @param {number} length The length of each combination.
@@ -68511,7 +68511,7 @@ goog.iter.combinationsWithReplacement = function(iterable, length) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -68969,7 +68969,7 @@ goog.structs.Map.hasKey_ = function(obj, key) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -69004,7 +69004,7 @@ goog.structs.Map.hasKey_ = function(obj, key) {
  * then re-encoding.
  *
  * Uses features of RFC 3986 for parsing/formatting URIs:
- *   http://www.ietf.org/rfc/rfc3986.txt
+ *   https://www.ietf.org/rfc/rfc3986.txt
  *
  * @author gboyer@google.com (Garrett Boyer) - The "lightened" design.
  */
@@ -69038,7 +69038,7 @@ goog.uri.utils.CharCode_ = {
  * No encoding is performed.  Any component may be omitted as either null or
  * undefined.
  *
- * @param {?string=} opt_scheme The scheme such as 'http'.
+ * @param {?string=} opt_scheme The scheme such as 'https'.
  * @param {?string=} opt_userInfo The user name before the '@'.
  * @param {?string=} opt_domain The domain such as 'www.google.com', already
  *     URI-encoded.
@@ -69091,7 +69091,7 @@ goog.uri.utils.buildFromEncodedParts = function(
 /**
  * A regular expression for breaking a URI into its component parts.
  *
- * {@link http://www.ietf.org/rfc/rfc3986.txt} says in Appendix B
+ * {@link https://www.ietf.org/rfc/rfc3986.txt} says in Appendix B
  * As the "first-match-wins" algorithm is identical to the "greedy"
  * disambiguation method used by POSIX regular expressions, it is natural and
  * commonplace to use a regular expression for parsing the potential five
@@ -69110,12 +69110,12 @@ goog.uri.utils.buildFromEncodedParts = function(
  * parenthesis). We refer to the value matched for subexpression <n> as $<n>.
  * For example, matching the above expression to
  * <pre>
- *     http://www.ics.uci.edu/pub/ietf/uri/#Related
+ *     https://www.ics.uci.edu/pub/ietf/uri/#Related
  * </pre>
  * results in the following subexpression matches:
  * <pre>
- *    $1 = http:
- *    $2 = http
+ *    $1 = https:
+ *    $2 = https
  *    $3 = //www.ics.uci.edu
  *    $4 = www.ics.uci.edu
  *    $5 = /pub/ietf/uri/
@@ -69139,7 +69139,7 @@ goog.uri.utils.buildFromEncodedParts = function(
  * userInfo, domain, and port separately from the authority.
  * The modified version yields
  * <pre>
- *    $1 = http              scheme
+ *    $1 = https              scheme
  *    $2 = <undefined>       userInfo -\
  *    $3 = www.ics.uci.edu   domain     | authority
  *    $4 = <undefined>       port     -/
@@ -69703,12 +69703,12 @@ goog.uri.utils.buildQueryDataFromMap = function(map) {
  * assumed to be already URI encoded.  The values should not be URI-encoded,
  * and will instead be encoded by this function.
  * <pre>
- * appendParams('http://www.foo.com?existing=true',
+ * appendParams('https://www.foo.com?existing=true',
  *     'key1', 'value1',
  *     'key2', 'value?willBeEncoded',
  *     'key3', ['valueA', 'valueB', 'valueC'],
  *     'key4', null);
- * result: 'http://www.foo.com?existing=true&' +
+ * result: 'https://www.foo.com?existing=true&' +
  *     'key1=value1&' +
  *     'key2=value%3FwillBeEncoded&' +
  *     'key3=valueA&key3=valueB&key3=valueC'
@@ -70039,7 +70039,7 @@ goog.uri.utils.makeUnique = function(uri) {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,
@@ -70056,7 +70056,7 @@ goog.uri.utils.makeUnique = function(uri) {
  * e.g: <code>var myUri = new goog.Uri(window.location);</code>
  *
  * Implements RFC 3986 for parsing/formatting URIs.
- * http://www.ietf.org/rfc/rfc3986.txt
+ * https://www.ietf.org/rfc/rfc3986.txt
  *
  * Some changes have been made to the interface (more like .NETs), though the
  * internal representation is now of un-encoded parts, this will change the
@@ -70110,7 +70110,7 @@ goog.require('goog.uri.utils.StandardQueryParam');
  */
 goog.Uri = function(opt_uri, opt_ignoreCase) {
   /**
-   * Scheme such as "http".
+   * Scheme such as "https".
    * @private {string}
    */
   this.scheme_ = '';
@@ -71860,7 +71860,7 @@ ol.style.Text.prototype.setTextBaseline = function(textBaseline) {
   this.textBaseline_ = textBaseline;
 };
 
-// FIXME http://earth.google.com/kml/1.0 namespace?
+// FIXME https://earth.google.com/kml/1.0 namespace?
 // FIXME why does node.getAttribute return an unknown type?
 // FIXME serialize arbitrary feature properties
 // FIXME don't parse style if extractStyles is false
@@ -71974,7 +71974,7 @@ ol.format.KML.EXTENSIONS_ = ['.kml'];
  * @private
  */
 ol.format.KML.GX_NAMESPACE_URIS_ = [
-  'http://www.google.com/kml/ext/2.2'
+  'https://www.google.com/kml/ext/2.2'
 ];
 
 
@@ -71985,10 +71985,10 @@ ol.format.KML.GX_NAMESPACE_URIS_ = [
  */
 ol.format.KML.NAMESPACE_URIS_ = [
   null,
-  'http://earth.google.com/kml/2.0',
-  'http://earth.google.com/kml/2.1',
-  'http://earth.google.com/kml/2.2',
-  'http://www.opengis.net/kml/2.2'
+  'https://earth.google.com/kml/2.0',
+  'https://earth.google.com/kml/2.1',
+  'https://earth.google.com/kml/2.2',
+  'https://www.opengis.net/kml/2.2'
 ];
 
 
@@ -71997,8 +71997,8 @@ ol.format.KML.NAMESPACE_URIS_ = [
  * @type {string}
  * @private
  */
-ol.format.KML.SCHEMA_LOCATION_ = 'http://www.opengis.net/kml/2.2 ' +
-    'https://developers.google.com/kml/schema/kml22gx.xsd';
+ol.format.KML.SCHEMA_LOCATION_ = 'https://www.opengis.net/kml/2.2 ' +
+    'httpss://developers.google.com/kml/schema/kml22gx.xsd';
 
 
 /**
@@ -72059,7 +72059,7 @@ ol.format.KML.DEFAULT_IMAGE_STYLE_SIZE_ = [64, 64];
  * @private
  */
 ol.format.KML.DEFAULT_IMAGE_STYLE_SRC_ =
-    'https://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png';
+    'httpss://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png';
 
 
 /**
@@ -72431,7 +72431,7 @@ ol.format.KML.IconStyleParser_ = function(node, objectStack) {
   // FIXME viewRefreshTime
   // FIXME viewBoundScale
   // FIXME viewFormat
-  // FIXME httpQuery
+  // FIXME httpsQuery
   var object = ol.xml.pushParseAndPop(
       {}, ol.format.KML.ICON_STYLE_PARSERS_, node, objectStack);
   if (!object) {
@@ -72460,7 +72460,7 @@ ol.format.KML.IconStyleParser_ = function(node, objectStack) {
     anchor = ol.format.KML.DEFAULT_IMAGE_STYLE_ANCHOR_;
     anchorXUnits = ol.format.KML.DEFAULT_IMAGE_STYLE_ANCHOR_X_UNITS_;
     anchorYUnits = ol.format.KML.DEFAULT_IMAGE_STYLE_ANCHOR_Y_UNITS_;
-  } else if (/^http:\/\/maps\.(?:google|gstatic)\.com\//.test(src)) {
+  } else if (/^https:\/\/maps\.(?:google|gstatic)\.com\//.test(src)) {
     anchor = [0.5, 0];
     anchorXUnits = ol.style.IconAnchorUnits.FRACTION;
     anchorYUnits = ol.style.IconAnchorUnits.FRACTION;
@@ -74835,8 +74835,8 @@ ol.format.KML.prototype.writeFeatures;
 ol.format.KML.prototype.writeFeaturesNode = function(features, opt_options) {
   opt_options = this.adaptOptions(opt_options);
   var kml = ol.xml.createElementNS(ol.format.KML.NAMESPACE_URIS_[4], 'kml');
-  var xmlnsUri = 'http://www.w3.org/2000/xmlns/';
-  var xmlSchemaInstanceUri = 'http://www.w3.org/2001/XMLSchema-instance';
+  var xmlnsUri = 'https://www.w3.org/2000/xmlns/';
+  var xmlSchemaInstanceUri = 'https://www.w3.org/2001/XMLSchema-instance';
   ol.xml.setAttributeNS(kml, xmlnsUri, 'xmlns:gx',
       ol.format.KML.GX_NAMESPACE_URIS_[0]);
   ol.xml.setAttributeNS(kml, xmlnsUri, 'xmlns:xsi', xmlSchemaInstanceUri);
@@ -75657,7 +75657,7 @@ VectorTileFeature.prototype.loadGeometry = function() {
 
         } else if (cmd === 7) {
 
-            // Workaround for https://github.com/mapbox/mapnik-vector-tile/issues/90
+            // Workaround for httpss://github.com/mapbox/mapnik-vector-tile/issues/90
             if (line) {
                 line.push(line[0].clone()); // closePolygon
             }
@@ -76932,7 +76932,7 @@ goog.require('ol.xml');
 /**
  * @classdesc
  * Feature format for reading data in the
- * [OSMXML format](http://wiki.openstreetmap.org/wiki/OSM_XML).
+ * [OSMXML format](https://wiki.openstreetmap.org/wiki/OSM_XML).
  *
  * @constructor
  * @extends {ol.format.XMLFeature}
@@ -77160,7 +77160,7 @@ goog.provide('ol.format.XLink');
  * @const
  * @type {string}
  */
-ol.format.XLink.NAMESPACE_URI = 'http://www.w3.org/1999/xlink';
+ol.format.XLink.NAMESPACE_URI = 'https://www.w3.org/1999/xlink';
 
 
 /**
@@ -77375,13 +77375,13 @@ ol.format.OWS.readGet_ = function(node, objectStack) {
  * @param {Node} node Node.
  * @param {Array.<*>} objectStack Object stack.
  * @private
- * @return {Object|undefined} The HTTP object.
+ * @return {Object|undefined} The https object.
  */
-ol.format.OWS.readHttp_ = function(node, objectStack) {
+ol.format.OWS.readhttps_ = function(node, objectStack) {
   goog.asserts.assert(node.nodeType == Node.ELEMENT_NODE,
       'node.nodeType should be ELEMENT');
-  goog.asserts.assert(node.localName == 'HTTP', 'localName should be HTTP');
-  return ol.xml.pushParseAndPop({}, ol.format.OWS.HTTP_PARSERS_,
+  goog.asserts.assert(node.localName == 'https', 'localName should be https');
+  return ol.xml.pushParseAndPop({}, ol.format.OWS.https_PARSERS_,
       node, objectStack);
 };
 
@@ -77517,7 +77517,7 @@ ol.format.OWS.readValue_ = function(node, objectStack) {
  */
 ol.format.OWS.NAMESPACE_URIS_ = [
   null,
-  'http://www.opengis.net/ows/1.1'
+  'https://www.opengis.net/ows/1.1'
 ];
 
 
@@ -77598,7 +77598,7 @@ ol.format.OWS.CONTACT_INFO_PARSERS_ = ol.xml.makeStructureNS(
  */
 ol.format.OWS.DCP_PARSERS_ = ol.xml.makeStructureNS(
     ol.format.OWS.NAMESPACE_URIS_, {
-      'HTTP': ol.xml.makeObjectPropertySetter(ol.format.OWS.readHttp_)
+      'https': ol.xml.makeObjectPropertySetter(ol.format.OWS.readhttps_)
     });
 
 
@@ -77607,7 +77607,7 @@ ol.format.OWS.DCP_PARSERS_ = ol.xml.makeStructureNS(
  * @type {Object.<string, Object.<string, ol.XmlParser>>}
  * @private
  */
-ol.format.OWS.HTTP_PARSERS_ = ol.xml.makeStructureNS(
+ol.format.OWS.https_PARSERS_ = ol.xml.makeStructureNS(
     ol.format.OWS.NAMESPACE_URIS_, {
       'Get': ol.xml.makeObjectPropertyPusher(ol.format.OWS.readGet_),
       'Post': undefined // TODO
@@ -78633,15 +78633,15 @@ ol.format.WFS.FEATURE_PREFIX = 'feature';
  * @const
  * @type {string}
  */
-ol.format.WFS.XMLNS = 'http://www.w3.org/2000/xmlns/';
+ol.format.WFS.XMLNS = 'https://www.w3.org/2000/xmlns/';
 
 
 /**
  * @const
  * @type {string}
  */
-ol.format.WFS.SCHEMA_LOCATION = 'http://www.opengis.net/wfs ' +
-    'http://schemas.opengis.net/wfs/1.1.0/wfs.xsd';
+ol.format.WFS.SCHEMA_LOCATION = 'https://www.opengis.net/wfs ' +
+    'https://schemas.opengis.net/wfs/1.1.0/wfs.xsd';
 
 
 /**
@@ -78751,7 +78751,7 @@ ol.format.WFS.prototype.readFeatureCollectionMetadataFromDocument = function(doc
  * @private
  */
 ol.format.WFS.FEATURE_COLLECTION_PARSERS_ = {
-  'http://www.opengis.net/gml': {
+  'https://www.opengis.net/gml': {
     'boundedBy': ol.xml.makeObjectPropertySetter(
         ol.format.GMLBase.prototype.readGeometryElement, 'bounds')
   }
@@ -78784,7 +78784,7 @@ ol.format.WFS.prototype.readFeatureCollectionMetadataFromNode = function(node) {
  * @private
  */
 ol.format.WFS.TRANSACTION_SUMMARY_PARSERS_ = {
-  'http://www.opengis.net/wfs': {
+  'https://www.opengis.net/wfs': {
     'totalInserted': ol.xml.makeObjectPropertySetter(
         ol.format.XSD.readNonNegativeInteger),
     'totalUpdated': ol.xml.makeObjectPropertySetter(
@@ -78813,7 +78813,7 @@ ol.format.WFS.readTransactionSummary_ = function(node, objectStack) {
  * @private
  */
 ol.format.WFS.OGC_FID_PARSERS_ = {
-  'http://www.opengis.net/ogc': {
+  'https://www.opengis.net/ogc': {
     'FeatureId': ol.xml.makeArrayPusher(function(node, objectStack) {
       return node.getAttribute('fid');
     })
@@ -78837,7 +78837,7 @@ ol.format.WFS.fidParser_ = function(node, objectStack) {
  * @private
  */
 ol.format.WFS.INSERT_RESULTS_PARSERS_ = {
-  'http://www.opengis.net/wfs': {
+  'https://www.opengis.net/wfs': {
     'Feature': ol.format.WFS.fidParser_
   }
 };
@@ -78861,7 +78861,7 @@ ol.format.WFS.readInsertResults_ = function(node, objectStack) {
  * @private
  */
 ol.format.WFS.TRANSACTION_RESPONSE_PARSERS_ = {
-  'http://www.opengis.net/wfs': {
+  'https://www.opengis.net/wfs': {
     'TransactionSummary': ol.xml.makeObjectPropertySetter(
         ol.format.WFS.readTransactionSummary_, 'transactionSummary'),
     'InsertResults': ol.xml.makeObjectPropertySetter(
@@ -78906,7 +78906,7 @@ ol.format.WFS.prototype.readTransactionResponseFromNode = function(node) {
  * @private
  */
 ol.format.WFS.QUERY_SERIALIZERS_ = {
-  'http://www.opengis.net/wfs': {
+  'https://www.opengis.net/wfs': {
     'PropertyName': ol.xml.makeChildAppender(ol.format.XSD.writeStringTextNode)
   }
 };
@@ -78936,8 +78936,8 @@ ol.format.WFS.writeFeature_ = function(node, feature, objectStack) {
  * @private
  */
 ol.format.WFS.writeOgcFidFilter_ = function(node, fid, objectStack) {
-  var filter = ol.xml.createElementNS('http://www.opengis.net/ogc', 'Filter');
-  var child = ol.xml.createElementNS('http://www.opengis.net/ogc', 'FeatureId');
+  var filter = ol.xml.createElementNS('https://www.opengis.net/ogc', 'Filter');
+  var child = ol.xml.createElementNS('https://www.opengis.net/ogc', 'FeatureId');
   filter.appendChild(child);
   child.setAttribute('fid', fid);
   node.appendChild(filter);
@@ -79014,11 +79014,11 @@ ol.format.WFS.writeUpdate_ = function(node, feature, objectStack) {
  * @private
  */
 ol.format.WFS.writeProperty_ = function(node, pair, objectStack) {
-  var name = ol.xml.createElementNS('http://www.opengis.net/wfs', 'Name');
+  var name = ol.xml.createElementNS('https://www.opengis.net/wfs', 'Name');
   node.appendChild(name);
   ol.format.XSD.writeStringTextNode(name, pair.name);
   if (pair.value !== undefined && pair.value !== null) {
-    var value = ol.xml.createElementNS('http://www.opengis.net/wfs', 'Value');
+    var value = ol.xml.createElementNS('https://www.opengis.net/wfs', 'Value');
     node.appendChild(value);
     if (pair.value instanceof ol.geom.Geometry) {
       ol.format.GML3.prototype.writeGeometryElement(value,
@@ -79055,7 +79055,7 @@ ol.format.WFS.writeNative_ = function(node, nativeElement, objectStack) {
  * @private
  */
 ol.format.WFS.TRANSACTION_SERIALIZERS_ = {
-  'http://www.opengis.net/wfs': {
+  'https://www.opengis.net/wfs': {
     'Insert': ol.xml.makeChildAppender(ol.format.WFS.writeFeature_),
     'Update': ol.xml.makeChildAppender(ol.format.WFS.writeUpdate_),
     'Delete': ol.xml.makeChildAppender(ol.format.WFS.writeDelete_),
@@ -79095,7 +79095,7 @@ ol.format.WFS.writeQuery_ = function(node, featureType, objectStack) {
       objectStack);
   var filter = context['filter'];
   if (filter) {
-    var child = ol.xml.createElementNS('http://www.opengis.net/ogc', 'Filter');
+    var child = ol.xml.createElementNS('https://www.opengis.net/ogc', 'Filter');
     node.appendChild(child);
     ol.format.WFS.writeFilterCondition_(child, filter, objectStack);
   }
@@ -79252,7 +79252,7 @@ ol.format.WFS.writeIsLikeFilter_ = function(node, filter, objectStack) {
  * @private
  */
 ol.format.WFS.writeOgcExpression_ = function(tagName, node, value) {
-  var property = ol.xml.createElementNS('http://www.opengis.net/ogc', tagName);
+  var property = ol.xml.createElementNS('https://www.opengis.net/ogc', tagName);
   ol.format.XSD.writeStringTextNode(property, value);
   node.appendChild(property);
 };
@@ -79283,10 +79283,10 @@ ol.format.WFS.writeOgcLiteral_ = function(node, value) {
  * @private
  */
 ol.format.WFS.GETFEATURE_SERIALIZERS_ = {
-  'http://www.opengis.net/wfs': {
+  'https://www.opengis.net/wfs': {
     'Query': ol.xml.makeChildAppender(ol.format.WFS.writeQuery_)
   },
-  'http://www.opengis.net/ogc': {
+  'https://www.opengis.net/ogc': {
     'And': ol.xml.makeChildAppender(ol.format.WFS.writeLogicalFilter_),
     'Or': ol.xml.makeChildAppender(ol.format.WFS.writeLogicalFilter_),
     'Not': ol.xml.makeChildAppender(ol.format.WFS.writeNotFilter_),
@@ -79330,7 +79330,7 @@ ol.format.WFS.writeGetFeature_ = function(node, featureTypes, objectStack) {
  * @api stable
  */
 ol.format.WFS.prototype.writeGetFeature = function(options) {
-  var node = ol.xml.createElementNS('http://www.opengis.net/wfs',
+  var node = ol.xml.createElementNS('https://www.opengis.net/wfs',
       'GetFeature');
   node.setAttribute('service', 'WFS');
   node.setAttribute('version', '1.1.0');
@@ -79368,7 +79368,7 @@ ol.format.WFS.prototype.writeGetFeature = function(options) {
       }
     }
   }
-  ol.xml.setAttributeNS(node, 'http://www.w3.org/2001/XMLSchema-instance',
+  ol.xml.setAttributeNS(node, 'https://www.w3.org/2001/XMLSchema-instance',
       'xsi:schemaLocation', this.schemaLocation_);
   /** @type {ol.XmlNodeStackItem} */
   var context = {
@@ -79400,7 +79400,7 @@ ol.format.WFS.prototype.writeGetFeature = function(options) {
 ol.format.WFS.prototype.writeTransaction = function(inserts, updates, deletes,
     options) {
   var objectStack = [];
-  var node = ol.xml.createElementNS('http://www.opengis.net/wfs',
+  var node = ol.xml.createElementNS('https://www.opengis.net/wfs',
       'Transaction');
   node.setAttribute('service', 'WFS');
   node.setAttribute('version', '1.1.0');
@@ -79413,7 +79413,7 @@ ol.format.WFS.prototype.writeTransaction = function(inserts, updates, deletes,
       node.setAttribute('handle', options.handle);
     }
   }
-  ol.xml.setAttributeNS(node, 'http://www.w3.org/2001/XMLSchema-instance',
+  ol.xml.setAttributeNS(node, 'https://www.w3.org/2001/XMLSchema-instance',
       'xsi:schemaLocation', this.schemaLocation_);
   if (inserts) {
     obj = {node: node, 'featureNS': options.featureNS,
@@ -80802,14 +80802,14 @@ ol.format.WMSCapabilities.readDCPType_ = function(node, objectStack) {
  * @private
  * @param {Node} node Node.
  * @param {Array.<*>} objectStack Object stack.
- * @return {Object|undefined} HTTP object.
+ * @return {Object|undefined} https object.
  */
-ol.format.WMSCapabilities.readHTTP_ = function(node, objectStack) {
+ol.format.WMSCapabilities.readhttps_ = function(node, objectStack) {
   goog.asserts.assert(node.nodeType == Node.ELEMENT_NODE,
       'node.nodeType should be ELEMENT');
-  goog.asserts.assert(node.localName == 'HTTP', 'localName should be HTTP');
+  goog.asserts.assert(node.localName == 'https', 'localName should be https');
   return ol.xml.pushParseAndPop(
-      {}, ol.format.WMSCapabilities.HTTP_PARSERS_, node, objectStack);
+      {}, ol.format.WMSCapabilities.https_PARSERS_, node, objectStack);
 };
 
 
@@ -80930,7 +80930,7 @@ ol.format.WMSCapabilities.readKeywordList_ = function(node, objectStack) {
  */
 ol.format.WMSCapabilities.NAMESPACE_URIS_ = [
   null,
-  'http://www.opengis.net/wms'
+  'https://www.opengis.net/wms'
 ];
 
 
@@ -81166,8 +81166,8 @@ ol.format.WMSCapabilities.OPERATIONTYPE_PARSERS_ = ol.xml.makeStructureNS(
  */
 ol.format.WMSCapabilities.DCPTYPE_PARSERS_ = ol.xml.makeStructureNS(
     ol.format.WMSCapabilities.NAMESPACE_URIS_, {
-      'HTTP': ol.xml.makeObjectPropertySetter(
-          ol.format.WMSCapabilities.readHTTP_)
+      'https': ol.xml.makeObjectPropertySetter(
+          ol.format.WMSCapabilities.readhttps_)
     });
 
 
@@ -81176,7 +81176,7 @@ ol.format.WMSCapabilities.DCPTYPE_PARSERS_ = ol.xml.makeStructureNS(
  * @type {Object.<string, Object.<string, ol.XmlParser>>}
  * @private
  */
-ol.format.WMSCapabilities.HTTP_PARSERS_ = ol.xml.makeStructureNS(
+ol.format.WMSCapabilities.https_PARSERS_ = ol.xml.makeStructureNS(
     ol.format.WMSCapabilities.NAMESPACE_URIS_, {
       'Get': ol.xml.makeObjectPropertySetter(
           ol.format.WMSCapabilities.readFormatOnlineresource_),
@@ -81255,7 +81255,7 @@ ol.format.WMSGetFeatureInfo = function(opt_options) {
    * @private
    * @type {string}
    */
-  this.featureNS_ = 'http://mapserver.gis.umn.edu/mapserver';
+  this.featureNS_ = 'https://mapserver.gis.umn.edu/mapserver';
 
 
   /**
@@ -81645,7 +81645,7 @@ ol.format.WMTSCapabilities.readTileMatrix_ = function(node, objectStack) {
  */
 ol.format.WMTSCapabilities.NAMESPACE_URIS_ = [
   null,
-  'http://www.opengis.net/wmts/1.0'
+  'https://www.opengis.net/wmts/1.0'
 ];
 
 
@@ -81656,7 +81656,7 @@ ol.format.WMTSCapabilities.NAMESPACE_URIS_ = [
  */
 ol.format.WMTSCapabilities.OWS_NAMESPACE_URIS_ = [
   null,
-  'http://www.opengis.net/ows/1.1'
+  'https://www.opengis.net/ows/1.1'
 ];
 
 
@@ -81853,7 +81853,7 @@ ol.GeolocationProperty = {
 /**
  * @classdesc
  * Helper class for providing HTML5 Geolocation capabilities.
- * The [Geolocation API](http://www.w3.org/TR/geolocation-API/)
+ * The [Geolocation API](https://www.w3.org/TR/geolocation-API/)
  * is used to locate a user's position.
  *
  * To get notified of position changes, register a listener for the generic
@@ -82129,10 +82129,10 @@ ol.Geolocation.prototype.getTracking = function() {
 
 /**
  * Get the tracking options.
- * @see http://www.w3.org/TR/geolocation-API/#position-options
+ * @see https://www.w3.org/TR/geolocation-API/#position-options
  * @return {GeolocationPositionOptions|undefined} PositionOptions as defined by
  *     the [HTML5 Geolocation spec
- *     ](http://www.w3.org/TR/geolocation-API/#position_options_interface).
+ *     ](https://www.w3.org/TR/geolocation-API/#position_options_interface).
  * @observable
  * @api stable
  */
@@ -82167,10 +82167,10 @@ ol.Geolocation.prototype.setTracking = function(tracking) {
 
 /**
  * Set the tracking options.
- * @see http://www.w3.org/TR/geolocation-API/#position-options
+ * @see https://www.w3.org/TR/geolocation-API/#position-options
  * @param {GeolocationPositionOptions} options PositionOptions as defined by the
  *     [HTML5 Geolocation spec
- *     ](http://www.w3.org/TR/geolocation-API/#position_options_interface).
+ *     ](https://www.w3.org/TR/geolocation-API/#position_options_interface).
  * @observable
  * @api stable
  */
@@ -88275,9 +88275,9 @@ ol.source.BingMaps = function(options) {
    */
   this.maxZoom_ = options.maxZoom !== undefined ? options.maxZoom : -1;
 
-  var url = 'https://dev.virtualearth.net/REST/v1/Imagery/Metadata/' +
+  var url = 'httpss://dev.virtualearth.net/REST/v1/Imagery/Metadata/' +
       options.imagerySet +
-      '?uriScheme=https&include=ImageryProviders&key=' + options.key;
+      '?uriScheme=httpss&include=ImageryProviders&key=' + options.key;
 
   ol.net.jsonp(url, this.handleImageryMetadataResponse.bind(this), undefined,
       'jsonp');
@@ -88295,7 +88295,7 @@ ol.inherits(ol.source.BingMaps, ol.source.TileImage);
  */
 ol.source.BingMaps.TOS_ATTRIBUTION = new ol.Attribution({
   html: '<a class="ol-attribution-bing-tos" ' +
-      'href="http://www.microsoft.com/maps/product/terms.html">' +
+      'href="https://www.microsoft.com/maps/product/terms.html">' +
       'Terms of Use</a>'
 });
 
@@ -88315,8 +88315,8 @@ ol.source.BingMaps.prototype.handleImageryMetadataResponse = function(response) 
   }
 
   var brandLogoUri = response.brandLogoUri;
-  if (brandLogoUri.indexOf('https') == -1) {
-    brandLogoUri = brandLogoUri.replace('http', 'https');
+  if (brandLogoUri.indexOf('httpss') == -1) {
+    brandLogoUri = brandLogoUri.replace('https', 'httpss');
   }
   //var copyright = response.copyright;  // FIXME do we need to display this?
   var resource = response.resourceSets[0].resources[0];
@@ -88419,7 +88419,7 @@ goog.require('ol.source.TileImage');
  * such as:
  *
  *  tileUrlFunction: function(coordinate) {
- *    return 'http://mapserver.com/' + coordinate[0] + '/' +
+ *    return 'https://mapserver.com/' + coordinate[0] + '/' +
  *        coordinate[1] + '/' + coordinate[2] + '.png';
  *    }
  *
@@ -88565,13 +88565,13 @@ ol.source.CartoDB.prototype.initializeMap_ = function() {
     this.applyTemplate_(this.templateCache_[paramHash]);
     return;
   }
-  var mapUrl = 'https://' + this.account_ + '.cartodb.com/api/v1/map';
+  var mapUrl = 'httpss://' + this.account_ + '.cartodb.com/api/v1/map';
 
   if (this.mapId_) {
     mapUrl += '/named/' + this.mapId_;
   }
 
-  var client = new XMLHttpRequest();
+  var client = new XMLhttpsRequest();
   client.addEventListener('load', this.handleInitResponse_.bind(this, paramHash));
   client.addEventListener('error', this.handleInitError_.bind(this));
   client.open('POST', mapUrl);
@@ -88588,7 +88588,7 @@ ol.source.CartoDB.prototype.initializeMap_ = function() {
  * @private
  */
 ol.source.CartoDB.prototype.handleInitResponse_ = function(paramHash, event) {
-  var client = /** @type {XMLHttpRequest} */ (event.target);
+  var client = /** @type {XMLhttpsRequest} */ (event.target);
   if (client.status >= 200 && client.status < 300) {
     var response;
     try {
@@ -88621,7 +88621,7 @@ ol.source.CartoDB.prototype.handleInitError_ = function(event) {
  * @private
  */
 ol.source.CartoDB.prototype.applyTemplate_ = function(data) {
-  var tilesUrl = 'https://' + data.cdn_url.https + '/' + this.account_ +
+  var tilesUrl = 'httpss://' + data.cdn_url.httpss + '/' + this.account_ +
       '/api/v1/map/' + data.layergroupid + '/{z}/{x}/{y}.png';
   this.setUrl(tilesUrl);
 };
@@ -89418,7 +89418,7 @@ ol.source.ImageStatic.prototype.handleImageChange = function(evt) {
       imageHeight = this.imageSize_[1];
     } else {
       // TODO: remove the type cast when a closure-compiler > 20160315 is used.
-      // see: https://github.com/google/closure-compiler/pull/1664
+      // see: httpss://github.com/google/closure-compiler/pull/1664
       imageWidth = /** @type {number} */ (image.width);
       imageHeight = /** @type {number} */ (image.height);
     }
@@ -89858,7 +89858,7 @@ ol.source.OSM = function(opt_options) {
       options.crossOrigin : 'anonymous';
 
   var url = options.url !== undefined ?
-      options.url : 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      options.url : 'httpss://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 
   ol.source.XYZ.call(this, {
     attributions: attributions,
@@ -89885,7 +89885,7 @@ ol.inherits(ol.source.OSM, ol.source.XYZ);
  */
 ol.source.OSM.ATTRIBUTION = new ol.Attribution({
   html: '&copy; ' +
-      '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> ' +
+      '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ' +
       'contributors.'
 });
 
@@ -90825,7 +90825,7 @@ ol.source.Stamen = function(options) {
   var layerConfig = ol.source.StamenLayerConfig[options.layer];
 
   var url = options.url !== undefined ? options.url :
-      'https://stamen-tiles-{a-d}.a.ssl.fastly.net/' + options.layer +
+      'httpss://stamen-tiles-{a-d}.a.ssl.fastly.net/' + options.layer +
       '/{z}/{x}/{y}.' + layerConfig.extension;
 
   ol.source.XYZ.call(this, {
@@ -90850,8 +90850,8 @@ ol.inherits(ol.source.Stamen, ol.source.XYZ);
  */
 ol.source.Stamen.ATTRIBUTIONS = [
   new ol.Attribution({
-    html: 'Map tiles by <a href="http://stamen.com/">Stamen Design</a>, ' +
-        'under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY' +
+    html: 'Map tiles by <a href="https://stamen.com/">Stamen Design</a>, ' +
+        'under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY' +
         ' 3.0</a>.'
   }),
   ol.source.OSM.ATTRIBUTION
@@ -91153,7 +91153,7 @@ ol.source.TileDebug.prototype.getTile = function(z, x, y) {
 // FIXME check order of async callbacks
 
 /**
- * @see http://mapbox.com/developers/api/
+ * @see https://mapbox.com/developers/api/
  */
 
 goog.provide('ol.source.TileJSON');
@@ -91202,7 +91202,7 @@ ol.source.TileJSON = function(options) {
     ol.net.jsonp(options.url, this.handleTileJSONResponse.bind(this),
         this.handleTileJSONError.bind(this));
   } else {
-    var client = new XMLHttpRequest();
+    var client = new XMLhttpsRequest();
     client.addEventListener('load', this.onXHRLoad_.bind(this));
     client.addEventListener('error', this.onXHRError_.bind(this));
     client.open('GET', options.url);
@@ -91218,7 +91218,7 @@ ol.inherits(ol.source.TileJSON, ol.source.TileImage);
  * @param {Event} event The load event.
  */
 ol.source.TileJSON.prototype.onXHRLoad_ = function(event) {
-  var client = /** @type {XMLHttpRequest} */ (event.target);
+  var client = /** @type {XMLhttpsRequest} */ (event.target);
   if (client.status >= 200 && client.status < 300) {
     var response;
     try {
@@ -91376,7 +91376,7 @@ ol.source.TileUTFGrid = function(options) {
       ol.net.jsonp(options.url, this.handleTileJSONResponse.bind(this),
           this.handleTileJSONError.bind(this));
     } else {
-      var client = new XMLHttpRequest();
+      var client = new XMLhttpsRequest();
       client.addEventListener('load', this.onXHRLoad_.bind(this));
       client.addEventListener('error', this.onXHRError_.bind(this));
       client.open('GET', options.url);
@@ -91396,7 +91396,7 @@ ol.inherits(ol.source.TileUTFGrid, ol.source.Tile);
  * @param {Event} event The load event.
  */
 ol.source.TileUTFGrid.prototype.onXHRLoad_ = function(event) {
-  var client = /** @type {XMLHttpRequest} */ (event.target);
+  var client = /** @type {XMLhttpsRequest} */ (event.target);
   if (client.status >= 200 && client.status < 300) {
     var response;
     try {
@@ -91757,7 +91757,7 @@ ol.source.TileUTFGridTile_.prototype.loadInternal_ = function() {
       ol.net.jsonp(this.src_, this.handleLoad_.bind(this),
           this.handleError_.bind(this));
     } else {
-      var client = new XMLHttpRequest();
+      var client = new XMLhttpsRequest();
       client.addEventListener('load', this.onXHRLoad_.bind(this));
       client.addEventListener('error', this.onXHRError_.bind(this));
       client.open('GET', this.src_);
@@ -91772,7 +91772,7 @@ ol.source.TileUTFGridTile_.prototype.loadInternal_ = function() {
  * @param {Event} event The load event.
  */
 ol.source.TileUTFGridTile_.prototype.onXHRLoad_ = function(event) {
-  var client = /** @type {XMLHttpRequest} */ (event.target);
+  var client = /** @type {XMLhttpsRequest} */ (event.target);
   if (client.status >= 200 && client.status < 300) {
     var response;
     try {
@@ -92749,7 +92749,7 @@ ol.source.WMTS.optionsFromCapabilities = function(wmtsCap, config) {
       requestEncoding);
 
   if ('OperationsMetadata' in wmtsCap && 'GetTile' in wmtsCap['OperationsMetadata']) {
-    var gets = wmtsCap['OperationsMetadata']['GetTile']['DCP']['HTTP']['Get'];
+    var gets = wmtsCap['OperationsMetadata']['GetTile']['DCP']['https']['Get'];
     goog.asserts.assert(gets.length >= 1);
 
     for (var i = 0, ii = gets.length; i < ii; ++i) {
@@ -93223,7 +93223,7 @@ ol.style.AtlasManager.prototype.add_ = function(isHitAtlas, id, width, height,
  * Images added to an atlas will be rendered onto a single
  * atlas canvas. The distribution of images on the canvas is
  * managed with the bin packing algorithm described in:
- * http://www.blackpawn.com/texts/lightmaps/
+ * https://www.blackpawn.com/texts/lightmaps/
  *
  * @constructor
  * @struct
@@ -93926,7 +93926,7 @@ ol.style.RegularShape.prototype.getChecksum = function() {
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//      http://www.apache.org/licenses/LICENSE-2.0
+//      https://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS-IS" BASIS,

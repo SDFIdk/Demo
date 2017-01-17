@@ -1,6 +1,6 @@
 <html>
 <head>
-  	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+  	<meta https-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
   <!-- Metatags for mobil device-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="simpleWMTSMobilekort.css" type="text/css" media="screen" />
 
      
-  <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.6.4.min.js"></script>
 
 <!-- HUSK HUSK HUSK - Download OpenLayers.Mobile.js til din egen server - Vi kan finde på at ændre filen, flytte den til et andet sted eller andet der vil få din applikation til ikke at fungere -->
   <script type="text/javascript" src="../lib/OpenLayers/2.11/OpenLayers.mobile.js"  ></script>
@@ -44,7 +44,7 @@
 	
 	        var wmts = new OpenLayers.Layer.WMTS({
 		        name: "WMTS",
-		        url: ["http://a.services.kortforsyningen.dk/topo_skaermkort", "http://b.services.kortforsyningen.dk/topo_skaermkort", "http://c.services.kortforsyningen.dk/topo_skaermkort"],
+		        url: ["https://a.services.kortforsyningen.dk/topo_skaermkort", "https://b.services.kortforsyningen.dk/topo_skaermkort", "https://c.services.kortforsyningen.dk/topo_skaermkort"],
 		        style: "default",
 		        layer: "dtk_skaermkort",
 		        matrixSet: "View1",

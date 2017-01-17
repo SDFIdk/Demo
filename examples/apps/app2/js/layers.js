@@ -10,12 +10,12 @@ VisStedet.App.LAYERS = {
 		"ortofoto": {
 	        title: "Ortofoto - forår",
 	        text: "Flyfotos optaget i forbindelse med FOT-kortlægningen. Hvert år dækkes 1/3 – 2/3 af landet. Billederne bliver taget om foråret fra midten af marts til starten af maj og er efterfølgende geometrisk oprettede og sat sammen.",
-			link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+			link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 	        largeImg: "img/map1_small.png",
 	        smallImg: "img/map1_small.png",
 	        layers: [
 	            {
-	                type: "WMTS", name: "Ortofoto - forår", url: "http://services.kortforsyningen.dk/orto_foraar",
+	                type: "WMTS", name: "Ortofoto - forår", url: "https://services.kortforsyningen.dk/orto_foraar",
 	                params: {
 	                    service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 	                    layer: 'orto_foraar', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -32,12 +32,12 @@ VisStedet.App.LAYERS = {
 	    "matrikler_ortofoto": {
 	        title: "Matrikler på Ortofoto - forår",
 	        text: "En kombination af Matrikelkortet og Flyfoto der viser hvordan ejendomskellene er placeret i forhold til hinanden i en topografisk sammenhæng.",
-			link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+			link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 	        largeImg: "img/map2_small.png",
 	        smallImg: "img/map2_small.png",
 	        layers: [
 			    {
-	                type: "WMS", name: "Matrikler", url: "http://services.kortforsyningen.dk/mat",
+	                type: "WMS", name: "Matrikler", url: "https://services.kortforsyningen.dk/mat",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'Jordstykke',
@@ -50,7 +50,7 @@ VisStedet.App.LAYERS = {
 	                }
 	            },
 			    {
-	                type: "WMTS", name: "Ortofoto - forår", url: "http://services.kortforsyningen.dk/orto_foraar",
+	                type: "WMTS", name: "Ortofoto - forår", url: "https://services.kortforsyningen.dk/orto_foraar",
 	                params: {
 	                    service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 	                    layer: 'orto_foraar', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -69,12 +69,12 @@ VisStedet.App.LAYERS = {
 	    "skaermkort": {
 	        title: "Skærmkort",
 	        text: "Topografisk kort over Danmark som er designet til visning på skærm. Kortet har zoomfunktion som ”sømløst” går på tværs af målestoksforhold.",
-			link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+			link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 	        largeImg: "img/map3_small.png",
 	        smallImg: "img/map3_small.png",
 	        layers: [
 			    {
-			        type: "WMTS", name: "Skærmkort", url: "http://services.kortforsyningen.dk/topo_skaermkort",
+			        type: "WMTS", name: "Skærmkort", url: "https://services.kortforsyningen.dk/topo_skaermkort",
 			        params: {
 			            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 			            layer: 'dtk_skaermkort', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -91,12 +91,12 @@ VisStedet.App.LAYERS = {
 	    "matrikler": {
 	        title: "Matrikler på skærmkort",
 	        text: "Kombination af Matrikelkortet og Skærmkort, der viser hvordan ejendomskellene er placeret i forhold til hinanden i en topografisk sammenhæng.",
-			link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+			link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 	        largeImg: "img/map4_small.png",
 	        smallImg: "img/map4_small.png",
 	        layers: [
 	            {
-	                type: "WMS", name: "Matrikler", url: "http://services.kortforsyningen.dk/mat",
+	                type: "WMS", name: "Matrikler", url: "https://services.kortforsyningen.dk/mat",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'Jordstykke',
@@ -108,7 +108,7 @@ VisStedet.App.LAYERS = {
 	                }
 	            },
 			    {
-			        type: "WMTS", name: "Skærmkort", url: "http://services.kortforsyningen.dk/topo_skaermkort",
+			        type: "WMTS", name: "Skærmkort", url: "https://services.kortforsyningen.dk/topo_skaermkort",
 			        params: {
 			            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 			            layer: 'dtk_skaermkort', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -125,12 +125,12 @@ VisStedet.App.LAYERS = {
 	    "kort50": {
 	        title: "Kort 50",
 	        text: "Topografisk kort over Danmark i målestoksforholdet 1:50.000.",
-			link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+			link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 	        largeImg: "img/map5_small.png",
 	        smallImg: "img/map5_small.png",
 	        layers: [
 	            {
-	                type: "WMS", name: "Kort 50", url: "http://services.kortforsyningen.dk/topo50",
+	                type: "WMS", name: "Kort 50", url: "https://services.kortforsyningen.dk/topo50",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'dtk_2cm',
@@ -148,12 +148,12 @@ VisStedet.App.LAYERS = {
 	    "kort100": {
 	        title: "Kort 100",
 	        text: "Topografisk kort over Danmark i målestoksforholdet 1:100.000.",
-			link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+			link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 	        largeImg: "img/map6_small.png",
 	        smallImg: "img/map6_small.png",
 	        layers: [
 	            {
-	                type: "WMS", name: "Kort 100", url: "http://services.kortforsyningen.dk/topo100",
+	                type: "WMS", name: "Kort 100", url: "https://services.kortforsyningen.dk/topo100",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'dtk_1cm',
@@ -171,12 +171,12 @@ VisStedet.App.LAYERS = {
 	    "skyggekort_dtk_kort25": {
 	        title: "Skyggekort på DTK/Kort25",
 	        text: "Kombination af et topografisk kort over Danmark i målestoksforholdet 1:25.000 med et skyggekort, der fremhæver landskabets højdeforskelle. Skyggekortet er baseret på Danmarks Højdemodel.",
-			link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+			link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 	        largeImg: "img/map7_small.png",
 	        smallImg: "img/map7_small.png",
 	        layers: [
 				{
-			        type: "WMTS", name: "Hill shade", url: "http://services.kortforsyningen.dk/dhm",
+			        type: "WMTS", name: "Hill shade", url: "https://services.kortforsyningen.dk/dhm",
 			        params: {
 			            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 			            layer: 'hillshade_1_6m', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -188,7 +188,7 @@ VisStedet.App.LAYERS = {
 			        }
 			    },
 				{
-	                type: "WMS", name: "DTK/Kort25", url: "http://services.kortforsyningen.dk/topo25",
+	                type: "WMS", name: "DTK/Kort25", url: "https://services.kortforsyningen.dk/topo25",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'topo25_klassisk', 
@@ -204,12 +204,12 @@ VisStedet.App.LAYERS = {
 	    "hoeje_maalebord": {
 	        title: "Høje målebordsblade (opmålt 1862-1899)",
 	        text: "Topografiske kort i målestoksforholdet 1:20.000 udgivet i anden halvdel af 1800-tallet dækkende Danmark minus Slesvig. De enkelte kortblade ”står på højkant”, deraf navnet.",
-			link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+			link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 	        largeImg: "img/map8_small.png",
 	        smallImg: "img/map8_small.png",
 	        layers: [
 	            {
-	                type: "WMS", name: "Høje målebordsblade", url: "http://services.kortforsyningen.dk/topo20_hoeje_maalebordsblade",
+	                type: "WMS", name: "Høje målebordsblade", url: "https://services.kortforsyningen.dk/topo20_hoeje_maalebordsblade",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'dtk_hoeje_maalebordsblade',
@@ -225,12 +225,12 @@ VisStedet.App.LAYERS = {
 	    "lave_maalebord": {
 	        title: "Lave målebordsblade (opmålt 1928-1945)",
 	        text: "Topografiske kort i målestoksforholdet 1:20.000 udgivet i perioden 1901-1971 dækkende Danmark. De enkelte kortblade ”ligger ned”, deraf navnet.",
-			link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+			link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 	        largeImg: "img/map9_small.png",
 	        smallImg: "img/map9_small.png",
 	        layers: [
 	            {
-	                type: "WMS", name: "Lave målebordsblade", url: "http://services.kortforsyningen.dk/topo20_lave_maalebordsblade",
+	                type: "WMS", name: "Lave målebordsblade", url: "https://services.kortforsyningen.dk/topo20_lave_maalebordsblade",
 	                params: {
 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	                    layers: 'dtk_lave_maalebordsblade',
@@ -247,12 +247,12 @@ VisStedet.App.LAYERS = {
 	    "matrikelkort": {
 	        title: "Matrikelkort",
 	        text: "Kort der viser ejendomsforholdene i Danmark. Kortet viser hvordan ejendomsskellene er placeret i forhold til hinanden og ajourføres løbende på baggrund af oplysninger fra privatpraktiserende landinspektører.",
-			link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+			link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 	        largeImg: "img/map10_small.png",
 	        smallImg: "img/map10_small.png",
 	        layers: [
 	                 {
-	 	                type: "WMS", name: "Matrikler", url: "http://services.kortforsyningen.dk/mat",
+	 	                type: "WMS", name: "Matrikler", url: "https://services.kortforsyningen.dk/mat",
 	 	                params: {
 	 	                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 	 	                    layers: 'Jordstykke',
@@ -270,12 +270,12 @@ VisStedet.App.LAYERS = {
 //	"hoejdekort_skaermkort": {
 //        title: "Skyggekort på Skærmkort",
 //        text: "En beskrivelse af dette kort",
-//		link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+//		link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 //        largeImg: "img/map5.png",
 //        smallImg: "img/map5.png",
 //        layers: [
 //		    {
-//		        type: "WMTS", name: "Hill shade", url: "http://services.kortforsyningen.dk/dhm",
+//		        type: "WMTS", name: "Hill shade", url: "https://services.kortforsyningen.dk/dhm",
 //		        params: {
 //		            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 //		            layer: 'hillshade_1_6m', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -287,7 +287,7 @@ VisStedet.App.LAYERS = {
 //		        }
 //		    },
 //		    {
-//		        type: "WMTS", name: "Skærmkort", url: "http://services.kortforsyningen.dk/topo_skaermkort",
+//		        type: "WMTS", name: "Skærmkort", url: "https://services.kortforsyningen.dk/topo_skaermkort",
 //		        params: {
 //		            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 //		            layer: 'dtk_skaermkort', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -303,12 +303,12 @@ VisStedet.App.LAYERS = {
 //	"hoejdekort_ortofoto": {
 //        title: "Skyggekort på Ortofoto - forår",
 //        text: "En beskrivelse af dette kort",
-//		link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+//		link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 //        largeImg: "img/map6.png",
 //        smallImg: "img/map6.png",
 //        layers: [
 //		    {
-//		        type: "WMTS", name: "Hill shade", url: "http://services.kortforsyningen.dk/dhm",
+//		        type: "WMTS", name: "Hill shade", url: "https://services.kortforsyningen.dk/dhm",
 //		        params: {
 //		            service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 //		            layer: 'hillshade_1_6m', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -320,7 +320,7 @@ VisStedet.App.LAYERS = {
 //		        }
 //		    },
 //		    {
-//                type: "WMTS", name: "Ortofoto - forår", url: "http://services.kortforsyningen.dk/orto_foraar",
+//                type: "WMTS", name: "Ortofoto - forår", url: "https://services.kortforsyningen.dk/orto_foraar",
 //                params: {
 //                    service: 'WMTS', version: '1.0.0', request: 'GetTile', format: 'image/jpeg',
 //                    layer: 'orto_foraar', style: 'default', BGCOLOR: '0xDCF0F9', matrixSet: 'View1',
@@ -336,12 +336,12 @@ VisStedet.App.LAYERS = {
 //    "dtk_kort25": {
 //        title: "DTK/Kort25",
 //        text: "En beskrivelse af dette kort",
-//		link: "http://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
+//		link: "https://www.geodata-info.dk/Portal/ShowMetadata.aspx?id=127149f7-978c-4971-a4cb-85dd963ce559",
 //        largeImg: "img/map7.png",
 //        smallImg: "img/map7.png",
 //        layers: [
 //            {
-//                type: "WMS", name: "DTK/Kort25", url: "http://services.kortforsyningen.dk/topo25",
+//                type: "WMS", name: "DTK/Kort25", url: "https://services.kortforsyningen.dk/topo25",
 //                params: {
 //                    service: 'WMS', version: '1.1.1', request: 'GetMap', format: 'image/jpeg',
 //                    layers: 'topo25_klassisk', 

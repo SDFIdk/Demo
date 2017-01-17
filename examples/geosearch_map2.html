@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>VisStedet - Search.GeoSearch</title>
-        <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+        <meta https-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
 
         <!-- Her kan du benytte Vis Stedets stylesheet eller henter dit eget ind --> 
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -114,7 +114,7 @@ function init() {
 
     var wmts = new OpenLayers.Layer.WMTS({
         name: "Skærmkort",
-        url: ["http://a.services.kortforsyningen.dk/topo_skaermkort", "http://b.services.kortforsyningen.dk/topo_skaermkort", "http://c.services.kortforsyningen.dk/topo_skaermkort"],
+        url: ["https://a.services.kortforsyningen.dk/topo_skaermkort", "https://b.services.kortforsyningen.dk/topo_skaermkort", "https://c.services.kortforsyningen.dk/topo_skaermkort"],
         style: "default",
         layer: "dtk_skaermkort",
         matrixSet: "View1",
@@ -204,7 +204,7 @@ function setPopup (feature,pos) {
             'Kort & Matrikelstyrelsen',
             'Rentemestervej 8<br>'+
             '2400 København NV<br>'+
-            '<a href="http://kms.dk" target="blank">KMS hjemmeside</a>'
+            '<a href="https://kms.dk" target="blank">KMS hjemmeside</a>'
     );
     feature.popup = popup;
     map.addPopup(popup,true);

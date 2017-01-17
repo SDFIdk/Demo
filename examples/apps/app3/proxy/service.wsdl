@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://kortforsyningen.kms.dk/" xmlns:intf="http://kortforsyningen.kms.dk/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://kortforsyningen.kms.dk/">
+<wsdl:definitions xmlns:apachesoap="https://xml.apache.org/xml-soap" xmlns:impl="https://services.kortforsyningen.dk/" xmlns:intf="https://services.kortforsyningen.dk/" xmlns:soapenc="https://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="https://www.w3.org/2001/XMLSchema" targetNamespace="https://services.kortforsyningen.dk/">
   <wsdl:types>
-    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://kortforsyningen.kms.dk/">
-      <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <schema xmlns="https://www.w3.org/2001/XMLSchema" targetNamespace="https://services.kortforsyningen.dk/">
+      <import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
       <complexType name="PointVO">
         <sequence>
           <element name="SRS" nillable="true" type="xsd:string"/>
@@ -31,20 +31,20 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="heightSoapBinding" type="impl:HeightModel">
-    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdlsoap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/https"/>
     <wsdl:operation name="getHeightForCoordinate">
       <wsdlsoap:operation soapAction=""/>
       <wsdl:input name="getHeightForCoordinateRequest">
-        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://kortforsyningen.kms.dk/" use="encoded"/>
+        <wsdlsoap:body encodingStyle="https://schemas.xmlsoap.org/soap/encoding/" namespace="https://services.kortforsyningen.dk/" use="encoded"/>
       </wsdl:input>
       <wsdl:output name="getHeightForCoordinateResponse">
-        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://kortforsyningen.kms.dk/" use="encoded"/>
+        <wsdlsoap:body encodingStyle="https://schemas.xmlsoap.org/soap/encoding/" namespace="https://services.kortforsyningen.dk/" use="encoded"/>
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="HeightModelService">
     <wsdl:port binding="impl:heightSoapBinding" name="height">
-      <wsdlsoap:address location="http://kortforsyningen.kms.dk/dhm_t?service=GEO&amp;request=SOAP&amp;login=demo&amp;password=demo"/>
+      <wsdlsoap:address location="https://services.kortforsyningen.dk/dhm_t?service=GEO&amp;request=SOAP&amp;login=xxxx&amp;password=yyyy"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

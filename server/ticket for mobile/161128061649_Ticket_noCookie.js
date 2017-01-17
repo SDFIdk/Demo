@@ -12,7 +12,6 @@
  * 
  * To use a ticket (<VisStedet.Ticket>) you probably need some kind of a server component
  * to create the actual ticket string. For this purpose you can use the examples 
- * provided with this API. Read more on http://visstedet.kortforsyningen.dk. 
  */
 
 /* Version History:

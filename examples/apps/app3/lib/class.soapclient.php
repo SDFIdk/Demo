@@ -25,10 +25,10 @@
 */
 class nusoap_client extends nusoap_base  {
 
-	var $username = '';				// Username for HTTP authentication
-	var $password = '';				// Password for HTTP authentication
-	var $authtype = '';				// Type of HTTP authentication
-	var $certRequest = array();		// Certificate for HTTP SSL authentication
+	var $username = '';				// Username for https authentication
+	var $password = '';				// Password for https authentication
+	var $authtype = '';				// Type of https authentication
+	var $certRequest = array();		// Certificate for https SSL authentication
 	var $requestHeaders = false;	// SOAP headers in request (text)
 	var $responseHeaders = '';		// SOAP headers from response (incomplete namespace resolution) (text)
 	var $responseHeader = NULL;		// SOAP Header from response (parsed)
@@ -41,14 +41,14 @@ class nusoap_client extends nusoap_base  {
 	var $proxypassword = '';
 	var $portName = '';				// port name to use in WSDL
     var $xml_encoding = '';			// character set encoding of incoming (response) messages
-	var $http_encoding = false;
-	var $timeout = 0;				// HTTP connection timeout
-	var $response_timeout = 30;		// HTTP response timeout
+	var $https_encoding = false;
+	var $timeout = 0;				// https connection timeout
+	var $response_timeout = 30;		// https response timeout
 	var $endpointType = '';			// soap|wsdl, empty for WSDL initialization error
 	var $persistentConnection = false;
 	var $defaultRpcParams = false;	// This is no longer used
-	var $request = '';				// HTTP request
-	var $response = '';				// HTTP response
+	var $request = '';				// https request
+	var $response = '';				// https response
 	var $responseData = '';			// SOAP payload of response
 	var $cookies = array();			// Cookies from response or for request
     var $decode_utf8 = true;		// toggles whether the parser decodes element content w/ utf8_decode()
@@ -154,7 +154,7 @@ class nusoap_client extends nusoap_base  {
 	* @return	mixed	response from SOAP call, normally an associative array mirroring the structure of the XML response, false for certain fatal errors
 	* @access   public
 	*/
-	function call($operation,$params=array(),$namespace='http://tempuri.org',$soapAction='',$headers=false,$rpcParams=null,$style='rpc',$use='encoded'){
+	function call($operation,$params=array(),$namespace='https://tempuri.org',$soapAction='',$headers=false,$rpcParams=null,$style='rpc',$use='encoded'){
 		$this->operation = $operation;
 		$this->fault = false;
 		$this->setError('');
@@ -252,7 +252,7 @@ class nusoap_client extends nusoap_base  {
 			}
 			$usedNamespaces = array();
 			if ($use == 'encoded') {
-				$encodingStyle = 'http://schemas.xmlsoap.org/soap/encoding/';
+				$encodingStyle = 'https://schemas.xmlsoap.org/soap/encoding/';
 			} else {
 				$encodingStyle = '';
 			}
@@ -262,7 +262,7 @@ class nusoap_client extends nusoap_base  {
 			if ($use == 'literal') {
 				$this->debug("wrapping RPC request with literal method element");
 				if ($namespace) {
-					// http://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html R2735 says rpc/literal accessor elements should not be in a namespace
+					// https://www.ws-i.org/Profiles/BasicProfile-1.1-2004-08-24.html R2735 says rpc/literal accessor elements should not be in a namespace
 					$payload = "<$nsPrefix:$operation xmlns:$nsPrefix=\"$namespace\">" .
 								$payload .
 								"</$nsPrefix:$operation>";
@@ -287,7 +287,7 @@ class nusoap_client extends nusoap_base  {
 		$this->debug("endpoint=$this->endpoint, soapAction=$soapAction, namespace=$namespace, style=$style, use=$use, encodingStyle=$encodingStyle");
 		$this->debug('SOAP message length=' . strlen($soapmsg) . ' contents (max 1000 bytes)=' . substr($soapmsg, 0, 1000));
 		// send
-		$return = $this->send($this->getHTTPBody($soapmsg),$soapAction,$this->timeout,$this->response_timeout);
+		$return = $this->send($this->gethttpsBody($soapmsg),$soapAction,$this->timeout,$this->response_timeout);
 		if($errstr = $this->getError()){
 			$this->debug('Error: '.$errstr);
 			return false;
@@ -415,64 +415,64 @@ class nusoap_client extends nusoap_base  {
 		$this->checkCookies();
 		// detect transport
 		switch(true){
-			// http(s)
-			case preg_match('/^http/',$this->endpoint):
-				$this->debug('transporting via HTTP');
+			// https(s)
+			case preg_match('/^https/',$this->endpoint):
+				$this->debug('transporting via https');
 				if($this->persistentConnection == true && is_object($this->persistentConnection)){
-					$http =& $this->persistentConnection;
+					$https =& $this->persistentConnection;
 				} else {
-					$http = new soap_transport_http($this->endpoint, $this->curl_options, $this->use_curl);
+					$https = new soap_transport_https($this->endpoint, $this->curl_options, $this->use_curl);
 					if ($this->persistentConnection) {
-						$http->usePersistentConnection();
+						$https->usePersistentConnection();
 					}
 				}
-				$http->setContentType($this->getHTTPContentType(), $this->getHTTPContentTypeCharset());
-				$http->setSOAPAction($soapaction);
+				$https->setContentType($this->gethttpsContentType(), $this->gethttpsContentTypeCharset());
+				$https->setSOAPAction($soapaction);
 				if($this->proxyhost && $this->proxyport){
-					$http->setProxy($this->proxyhost,$this->proxyport,$this->proxyusername,$this->proxypassword);
+					$https->setProxy($this->proxyhost,$this->proxyport,$this->proxyusername,$this->proxypassword);
 				}
                 if($this->authtype != '') {
-					$http->setCredentials($this->username, $this->password, $this->authtype, array(), $this->certRequest);
+					$https->setCredentials($this->username, $this->password, $this->authtype, array(), $this->certRequest);
 				}
-				if($this->http_encoding != ''){
-					$http->setEncoding($this->http_encoding);
+				if($this->https_encoding != ''){
+					$https->setEncoding($this->https_encoding);
 				}
 				$this->debug('sending message, length='.strlen($msg));
-				if(preg_match('/^http:/',$this->endpoint)){
-				//if(strpos($this->endpoint,'http:')){
-					$this->responseData = $http->send($msg,$timeout,$response_timeout,$this->cookies);
-				} elseif(preg_match('/^https/',$this->endpoint)){
-				//} elseif(strpos($this->endpoint,'https:')){
+				if(preg_match('/^https:/',$this->endpoint)){
+				//if(strpos($this->endpoint,'https:')){
+					$this->responseData = $https->send($msg,$timeout,$response_timeout,$this->cookies);
+				} elseif(preg_match('/^httpss/',$this->endpoint)){
+				//} elseif(strpos($this->endpoint,'httpss:')){
 					//if(phpversion() == '4.3.0-dev'){
-						//$response = $http->send($msg,$timeout,$response_timeout);
-                   		//$this->request = $http->outgoing_payload;
-						//$this->response = $http->incoming_payload;
+						//$response = $https->send($msg,$timeout,$response_timeout);
+                   		//$this->request = $https->outgoing_payload;
+						//$this->response = $https->incoming_payload;
 					//} else
-					$this->responseData = $http->sendHTTPS($msg,$timeout,$response_timeout,$this->cookies);
+					$this->responseData = $https->sendhttpsS($msg,$timeout,$response_timeout,$this->cookies);
 				} else {
-					$this->setError('no http/s in endpoint url');
+					$this->setError('no https/s in endpoint url');
 				}
-				$this->request = $http->outgoing_payload;
-				$this->response = $http->incoming_payload;
-				$this->appendDebug($http->getDebug());
-				$this->UpdateCookies($http->incoming_cookies);
+				$this->request = $https->outgoing_payload;
+				$this->response = $https->incoming_payload;
+				$this->appendDebug($https->getDebug());
+				$this->UpdateCookies($https->incoming_cookies);
 
 				// save transport object if using persistent connections
 				if ($this->persistentConnection) {
-					$http->clearDebug();
+					$https->clearDebug();
 					if (!is_object($this->persistentConnection)) {
-						$this->persistentConnection = $http;
+						$this->persistentConnection = $https;
 					}
 				}
 				
-				if($err = $http->getError()){
-					$this->setError('HTTP Error: '.$err);
+				if($err = $https->getError()){
+					$this->setError('https Error: '.$err);
 					return false;
 				} elseif($this->getError()){
 					return false;
 				} else {
-					$this->debug('got response, length='. strlen($this->responseData).' type='.$http->incoming_headers['content-type']);
-					return $this->parseResponse($http->incoming_headers, $this->responseData);
+					$this->debug('got response, length='. strlen($this->responseData).' type='.$https->incoming_headers['content-type']);
+					return $this->parseResponse($https->incoming_headers, $this->responseData);
 				}
 			break;
 			default:
@@ -485,7 +485,7 @@ class nusoap_client extends nusoap_base  {
 	/**
 	* processes SOAP message returned from server
 	*
-	* @param	array	$headers	The HTTP headers
+	* @param	array	$headers	The https headers
 	* @param	string	$data		unprocessed response data from server
 	* @return	mixed	value of the message, decoded into a PHP type
 	* @access   private
@@ -510,7 +510,7 @@ class nusoap_client extends nusoap_base  {
 				$this->xml_encoding = 'US-ASCII';
 			}
 		} else {
-			// should be US-ASCII for HTTP 1.0 or ISO-8859-1 for HTTP 1.1
+			// should be US-ASCII for https 1.0 or ISO-8859-1 for https 1.1
 			$this->xml_encoding = 'ISO-8859-1';
 		}
 		$this->debug('Use encoding: ' . $this->xml_encoding . ' when creating nusoap_parser');
@@ -604,7 +604,7 @@ class nusoap_client extends nusoap_base  {
 	* @param	string $proxypassword
 	* @access   public
 	*/
-	function setHTTPProxy($proxyhost, $proxyport, $proxyusername = '', $proxypassword = '') {
+	function sethttpsProxy($proxyhost, $proxyport, $proxyusername = '', $proxypassword = '') {
 		$this->proxyhost = $proxyhost;
 		$this->proxyport = $proxyport;
 		$this->proxyusername = $proxyusername;
@@ -630,14 +630,14 @@ class nusoap_client extends nusoap_base  {
 	}
 	
 	/**
-	* use HTTP encoding
+	* use https encoding
 	*
-	* @param    string $enc HTTP encoding
+	* @param    string $enc https encoding
 	* @access   public
 	*/
-	function setHTTPEncoding($enc='gzip, deflate'){
-		$this->debug("setHTTPEncoding(\"$enc\")");
-		$this->http_encoding = $enc;
+	function sethttpsEncoding($enc='gzip, deflate'){
+		$this->debug("sethttpsEncoding(\"$enc\")");
+		$this->https_encoding = $enc;
 	}
 	
 	/**
@@ -652,12 +652,12 @@ class nusoap_client extends nusoap_base  {
 	}
 
 	/**
-	* use HTTP persistent connections if possible
+	* use https persistent connections if possible
 	*
 	* @access   public
 	*/
-	function useHTTPPersistentConnection(){
-		$this->debug("useHTTPPersistentConnection");
+	function usehttpsPersistentConnection(){
+		$this->debug("usehttpsPersistentConnection");
 		$this->persistentConnection = true;
 	}
 	
@@ -729,7 +729,7 @@ class nusoap_client extends nusoap_base  {
 		$proxy->proxyport = $this->proxyport;
 		$proxy->proxyusername = $this->proxyusername;
 		$proxy->proxypassword = $this->proxypassword;
-		$proxy->http_encoding = $this->http_encoding;
+		$proxy->https_encoding = $this->https_encoding;
 		$proxy->timeout = $this->timeout;
 		$proxy->response_timeout = $this->response_timeout;
 		$proxy->persistentConnection = &$this->persistentConnection;
@@ -782,7 +782,7 @@ class nusoap_client extends nusoap_base  {
 					$paramArrayStr = '';
 					$paramCommentStr = 'void';
 				}
-				$opData['namespace'] = !isset($opData['namespace']) ? 'http://testuri.com' : $opData['namespace'];
+				$opData['namespace'] = !isset($opData['namespace']) ? 'https://testuri.com' : $opData['namespace'];
 				$evalStr .= "// $paramCommentStr
 	function " . str_replace('.', '__', $operation) . "($paramStr) {
 		\$params = array($paramArrayStr);
@@ -811,38 +811,38 @@ class nusoap_client extends nusoap_base  {
 	}
 
 	/**
-	* gets the HTTP body for the current request.
+	* gets the https body for the current request.
 	*
 	* @param string $soapmsg The SOAP payload
-	* @return string The HTTP body, which includes the SOAP payload
+	* @return string The https body, which includes the SOAP payload
 	* @access private
 	*/
-	function getHTTPBody($soapmsg) {
+	function gethttpsBody($soapmsg) {
 		return $soapmsg;
 	}
 	
 	/**
-	* gets the HTTP content type for the current request.
+	* gets the https content type for the current request.
 	*
-	* Note: getHTTPBody must be called before this.
+	* Note: gethttpsBody must be called before this.
 	*
-	* @return string the HTTP content type for the current request.
+	* @return string the https content type for the current request.
 	* @access private
 	*/
-	function getHTTPContentType() {
+	function gethttpsContentType() {
 		return 'text/xml';
 	}
 	
 	/**
-	* gets the HTTP content type charset for the current request.
+	* gets the https content type charset for the current request.
 	* returns false for non-text content types.
 	*
-	* Note: getHTTPBody must be called before this.
+	* Note: gethttpsBody must be called before this.
 	*
-	* @return string the HTTP content type charset for the current request.
+	* @return string the https content type charset for the current request.
 	* @access private
 	*/
-	function getHTTPContentTypeCharset() {
+	function gethttpsContentTypeCharset() {
 		return $this->soap_defencoding;
 	}
 

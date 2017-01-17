@@ -2,7 +2,7 @@
 <html>
     <head>
   	<meta charset="utf-8">
- 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 	<meta https-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="">
  	<meta name="viewport" content="user-scalable=no, width=device-width">
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -50,7 +50,7 @@
             var wmts = new ol.layer.Tile({
                 opacity: 1.0,
                 source: new ol.source.WMTS({
-                    url:"https://services.kortforsyningen.dk/topo_skaermkort_daempet?TICKET="+kfticket,
+                    url:"httpss://services.kortforsyningen.dk/topo_skaermkort_daempet?TICKET="+kfticket,
                     format: 'image/jpeg',
                     matrixSet: 'View1',
                     layer: 'dtk_skaermkort_daempet',
@@ -69,7 +69,7 @@
                 opacity: 1.0,
                 extent: [420000, 6025000, 905000, 6450000],
                 source: new ol.source.TileWMS({
-                    url: 'http://services.kortforsyningen.dk/topo_skaermkort?',
+                    url: 'https://services.kortforsyningen.dk/topo_skaermkort?',
                     params: {
                         'LAYERS': 'dtk_skaermkort_daempet', 
                         'TICKET': kfticket,

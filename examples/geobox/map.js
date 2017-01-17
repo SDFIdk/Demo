@@ -23,7 +23,7 @@ function addMap (elementID, params) {
     //Layer definition
     var layer = new OpenLayers.Layer.WMTS({
         name: "WMTS",
-        url: ["http://a.services.kortforsyningen.dk/topo_skaermkort", "http://b.services.kortforsyningen.dk/topo_skaermkort", "http://c.services.kortforsyningen.dk/topo_skaermkort"],
+        url: ["https://a.services.kortforsyningen.dk/topo_skaermkort", "https://b.services.kortforsyningen.dk/topo_skaermkort", "https://c.services.kortforsyningen.dk/topo_skaermkort"],
         style: "default",
         layer: "dtk_skaermkort",
         matrixSet: "View1",

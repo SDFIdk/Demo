@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://earth.google.com/kml/2.2">
+<kml xmlns="https://earth.google.com/kml/2.2">
 <Document>
   <name>test</name>
   <description><![CDATA[]]></description>
   <Style id="style2">
     <IconStyle>
       <Icon>
-        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+        <href>https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
       </Icon>
     </IconStyle>
   </Style>
   <Style id="style1">
     <IconStyle>
       <Icon>
-        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+        <href>https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
       </Icon>
     </IconStyle>
   </Style>
   <Style id="style3">
     <IconStyle>
       <Icon>
-        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+        <href>https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
       </Icon>
     </IconStyle>
   </Style>
   <Placemark>
     <name>Kort &amp; Matrikelstyrelsen</name>
-    <description><![CDATA[<span>Rentemestervej</span><br><span>2400 København</span><span><br><br></span><img src="https://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=55.704915,12.535406&amp;thumb=0"><br><a href="http://www.kms.dk" target="_blank"><span>www.kms.dk</span></a>]]></description>
+    <description><![CDATA[<span>Rentemestervej</span><br><span>2400 København</span><span><br><br></span><img src="httpss://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=55.704915,12.535406&amp;thumb=0"><br><a href="https://www.kms.dk" target="_blank"><span>www.kms.dk</span></a>]]></description>
     <styleUrl>#style2</styleUrl>
     <Point>
       <coordinates>12.535406,55.704914,0.000000</coordinates>
@@ -34,7 +34,7 @@
   </Placemark>
   <Placemark>
     <name>Grontmij A/S</name>
-    <description><![CDATA[<div dir="ltr">Granskoven 8<br>2600 Glostrup, Danmark<br>43 48 60 60<br><br><img src="https://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=55.682072,12.413588&amp;panoid=YOXIS0Ue-AJv1WG7GxcfJA&amp;yaw=86.139999&amp;pitch=-4.450000&amp;thumb=0"><br><a href="http://www.grontmij.dk" target="_blank">www.grontmij.dk</a></div>]]></description>
+    <description><![CDATA[<div dir="ltr">Granskoven 8<br>2600 Glostrup, Danmark<br>43 48 60 60<br><br><img src="httpss://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=55.682072,12.413588&amp;panoid=YOXIS0Ue-AJv1WG7GxcfJA&amp;yaw=86.139999&amp;pitch=-4.450000&amp;thumb=0"><br><a href="https://www.grontmij.dk" target="_blank">www.grontmij.dk</a></div>]]></description>
     <styleUrl>#style1</styleUrl>
     <Point>
       <coordinates>12.413435,55.681999,0.000000</coordinates>
@@ -42,7 +42,7 @@
   </Placemark>
   <Placemark>
     <name>Atkins Danmark A/S</name>
-    <description><![CDATA[<span>Arne Jacobsens Allé 17</span><br><span>2300 København S, Danmark</span><br><span>52 51 90 00<br><br></span><img src="https://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=55.631644,12.579271&amp;thumb=0"><br><a href="http://www.atkins.dk" target="_blank"><span>www.atkins.dk</span></a>]]></description>
+    <description><![CDATA[<span>Arne Jacobsens Allé 17</span><br><span>2300 København S, Danmark</span><br><span>52 51 90 00<br><br></span><img src="httpss://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=55.631644,12.579271&amp;thumb=0"><br><a href="https://www.atkins.dk" target="_blank"><span>www.atkins.dk</span></a>]]></description>
     <styleUrl>#style3</styleUrl>
     <Point>
       <coordinates>12.579271,55.631645,0.000000</coordinates>

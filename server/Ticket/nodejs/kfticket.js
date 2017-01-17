@@ -6,7 +6,7 @@ app.use(express.static(__dirname + '/../../..'));
 app.get('/kfticket', function (req, res) {
     // Replace the VisStedet login information with your own login
 	// Fetch a ticket from Kortforsyningen, using your organization's login
-    http.get('http://services.kortforsyningen.dk/service?request=GetTicket&login=VisStedet&password=VisStedet', function (response) {
+    http.get('https://services.kortforsyningen.dk/service?request=GetTicket&login=xxxx&password=yyyy', function (response) {
         var str = ''
         response.on('data', function (chunk) {
             str += chunk;

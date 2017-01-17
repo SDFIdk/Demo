@@ -20,7 +20,7 @@ public class kfticket : IHttpHandler
 	// Replace the XXXXX login information with your own login
 	// Fetch a ticket from Kortforsyningen, using your organization's login
 
-            WebRequest kfticketRequest = WebRequest.Create("http://kortforsyningen.kms.dk/service?request=GetTicket&login=VisStedet&password=VisStedet");
+            WebRequest kfticketRequest = WebRequest.Create("https://services.kortforsyningen.dk/service?request=GetTicket&login=xxxx&password=yyyy");
             WebResponse kfticketResponse = kfticketRequest.GetResponse();
 
             using (StreamReader sr = new StreamReader(kfticketResponse.GetResponseStream()))

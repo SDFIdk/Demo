@@ -131,19 +131,19 @@ $('#btnejendom').click(function (){
 	
 	var komnr = $('body').data('KMNR').substr(1);
 	var ejendomnr = $('body').data('EJDNR').substr(3);
-	var url = 'http://www.vurdering.skat.dk/Ejendomsvurdering?KMNR='+ komnr +'&EJDNR='+ ejendomnr +'&sideNavn=vstartp';
+	var url = 'https://www.vurdering.skat.dk/Ejendomsvurdering?KMNR='+ komnr +'&EJDNR='+ ejendomnr +'&sideNavn=vstartp';
 	window.open(url,'mywindow','width=400,height=200,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,resizable=yes');	
 });
 
 $('#btnbbr').click(function (){
 	var komnr = $('body').data('KMNR').substr(1);
 	var ejendomnr = $('body').data('EJDNR').substr(3);
-	var url = 'http://www.ois.dk/ui/linkpartner/linkpartner.aspx?CBKORT=TRUE&komnr='+ komnr+'&ejdnr='+ ejendomnr;
+	var url = 'https://www.ois.dk/ui/linkpartner/linkpartner.aspx?CBKORT=TRUE&komnr='+ komnr+'&ejdnr='+ ejendomnr;
 	window.open(url,'mywindow','width=400,height=200,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,resizable=yes');	
 });
 	
 $('#btnsogne').click(function (){
-	var url = 'http://sogn.dk/index.html?road=' + $('body').data('road') +'&number='+ $('body').data('number') + '&zip='+ $('body').data('zip') +'&city='+ $('body').data('city') +'&type=sba';
+	var url = 'https://sogn.dk/index.html?road=' + $('body').data('road') +'&number='+ $('body').data('number') + '&zip='+ $('body').data('zip') +'&city='+ $('body').data('city') +'&type=sba';
 	window.open(url,'mywindow','width=400,height=200,toolbar=yes,location=yes,directories=yes,status=yes,menubar=yes,scrollbars=yes,copyhistory=yes,resizable=yes');	
 });
 	
@@ -152,49 +152,49 @@ $('#btnsogne').click(function (){
 function RequiredLayers()
 {
     var adresseLayer = new OpenLayers.Layer.WMS("Address",
-                                        "http://services.kortforsyningen.dk/service",
+                                        "https://services.kortforsyningen.dk/service",
                                         {servicename:'topomat','layers': 'OSAK-ADRESSE','styles': 'default',transparent: true,format: "image/png",login:"demo",password:"demo"},
                                         {displayInLayerSwitcher : false,isBaseLayer: false});
 
     var jordstykkeLayer = new OpenLayers.Layer.WMS("JordStykke",
-                                        "http://services.kortforsyningen.dk/service",
+                                        "https://services.kortforsyningen.dk/service",
                                         {servicename:'topomat','layers': 'JORDSTYKKE','styles': 'default',transparent: true,format: "image/png",login:"demo",password:"demo"},
                                         {displayInLayerSwitcher : false,isBaseLayer: false,visibility:false});
 
     var bygningLayer = new OpenLayers.Layer.WMS("Bygning",
-                                        "http://services.kortforsyningen.dk/service",
+                                        "https://services.kortforsyningen.dk/service",
                                         {servicename:'topomat','layers': 'BYGNING','styles': 'default',transparent: true,format: "image/png",login:"demo",password:"demo"},
                                         {displayInLayerSwitcher : false,isBaseLayer: false,visibility:false});
 
     // DAGI Layers
 
     var regionLayer = new OpenLayers.Layer.WMS("Region",
-                                        "http://services.kortforsyningen.dk/service",
+                                        "https://services.kortforsyningen.dk/service",
                                         {servicename:'dagi','layers': 'region','styles': 'default',transparent: true,format: "image/png",login:"demo",password:"demo"},
                                         {displayInLayerSwitcher : false,isBaseLayer: false,visibility:false});
 
     var kommuneLayer = new OpenLayers.Layer.WMS("Kommune",
-                                        "http://services.kortforsyningen.dk/service",
+                                        "https://services.kortforsyningen.dk/service",
                                         {servicename:'dagi','layers': 'kommune','styles': 'default',transparent: true,format: "image/png",login:"demo",password:"demo"},
                                         {displayInLayerSwitcher : false,isBaseLayer: false,visibility:false});
 
     var sognLayer = new OpenLayers.Layer.WMS("Sogn",
-                                        "http://services.kortforsyningen.dk/service",
+                                        "https://services.kortforsyningen.dk/service",
                                         {servicename:'dagi','layers': 'sogn','styles': 'default',transparent: true,format: "image/png",login:"demo",password:"demo"},
                                         {displayInLayerSwitcher : false,isBaseLayer: false,visibility:false});
 
     var politikredsLayer = new OpenLayers.Layer.WMS("Politikreds",
-                                        "http://services.kortforsyningen.dk/service",
+                                        "https://services.kortforsyningen.dk/service",
                                         {servicename:'dagi','layers': 'politikreds','styles': 'default',transparent: true,format: "image/png",login:"demo",password:"demo"},
                                         {displayInLayerSwitcher : false,isBaseLayer: false,visibility:false});
 
     var retskredsLayer = new OpenLayers.Layer.WMS("Retskreds",
-                                        "http://services.kortforsyningen.dk/service",
+                                        "https://services.kortforsyningen.dk/service",
                                         {servicename:'dagi','layers': 'retskreds','styles': 'default',transparent: true,format: "image/png",login:"demo",password:"demo"},
                                         {displayInLayerSwitcher : false,isBaseLayer: false,visibility:false});
 
     var opstillingskredsLayer = new OpenLayers.Layer.WMS("Opstillingkreds",
-                                        "http://services.kortforsyningen.dk/service",
+                                        "https://services.kortforsyningen.dk/service",
                                         {servicename:'dagi','layers': 'opstillingskreds','styles': 'default',transparent: true,format: "image/png",login:"demo",password:"demo"},
                                         {displayInLayerSwitcher : false,isBaseLayer: false,visibility:false});
 
@@ -213,7 +213,7 @@ function RequiredLayers()
         	serviceName =   'dagi';
         }
          info =  new OpenLayers.Control.WMSGetFeatureInfo({
-                url: 'http://services.kortforsyningen.dk/service', 
+                url: 'https://services.kortforsyningen.dk/service', 
                 id:i,
                 vendorParams:{servicename:serviceName,login:"demo",password:"demo"},
                 layers: [layersNames[i]],

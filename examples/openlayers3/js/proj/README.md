@@ -1,8 +1,8 @@
-# PROJ4JS [![Build Status](https://travis-ci.org/proj4js/proj4js.svg)](https://travis-ci.org/proj4js/proj4js)
+# PROJ4JS [![Build Status](httpss://travis-ci.org/proj4js/proj4js.svg)](httpss://travis-ci.org/proj4js/proj4js)
 
 Proj4js is a JavaScript library to transform point coordinates from one coordinate system to another, including datum transformations.
-Originally a port of [PROJ.4](http://trac.osgeo.org/proj/) and [GCTCP C](http://edcftp.cr.usgs.gov/pub//software/gctpc) it is
-a part of the [MetaCRS](http://wiki.osgeo.org/wiki/MetaCRS) group of projects.
+Originally a port of [PROJ.4](https://trac.osgeo.org/proj/) and [GCTCP C](https://edcftp.cr.usgs.gov/pub//software/gctpc) it is
+a part of the [MetaCRS](https://wiki.osgeo.org/wiki/MetaCRS) group of projects.
 
 ## Installing
 
@@ -15,9 +15,9 @@ jam install proj4
 component install proj4js/proj4js
 ```
 
-or just manually grab the file `proj4.js` from the [latest release](https://github.com/proj4js/proj4js/releases).
+or just manually grab the file `proj4.js` from the [latest release](httpss://github.com/proj4js/proj4js/releases).
 
-if you do not want to download anything, Proj4js is also hosted on [cdnjs](http://www.cdnjs.com/libraries/proj4js) for direct use in your browser applications.
+if you do not want to download anything, Proj4js is also hosted on [cdnjs](https://www.cdnjs.com/libraries/proj4js) for direct use in your browser applications.
 
 ## Using
 

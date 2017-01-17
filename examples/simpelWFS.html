@@ -1,8 +1,8 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+	<meta https-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-    <script src="http://openlayers.org/api/2.12/OpenLayers.js" type="text/javascript" ></script>
+    <script src="https://openlayers.org/api/2.12/OpenLayers.js" type="text/javascript" ></script>
     <script type="text/javascript" src="../server/Ticket/kfticket.php"></script>
 	<script type="text/javascript" src="../lib/VisStedet/Utils.js"></script>
     <script type="text/javascript" src="../lib/VisStedet/Ticket.js"></script>   
@@ -14,7 +14,7 @@
         kmsticket:'';
         kmsticket = new VisStedet.Ticket();
 
-        // http://trac.osgeo.org/openlayers/wiki/FrequentlyAskedQuestions#ProxyHost
+        // https://trac.osgeo.org/openlayers/wiki/FrequentlyAskedQuestions#ProxyHost
         // Use a proxy handler for getting wfs to work
         OpenLayers.ProxyHost = "../server/proxy/Proxy.ashx?url=";
         
@@ -32,7 +32,7 @@
 	
 	var wmts = new OpenLayers.Layer.WMTS({
 		name: "WMTS",
-		url: ["http://a.services.kortforsyningen.dk/topo_skaermkort", "http://b.services.kortforsyningen.dk/topo_skaermkort", "http://c.services.kortforsyningen.dk/topo_skaermkort"],
+		url: ["https://a.services.kortforsyningen.dk/topo_skaermkort", "https://b.services.kortforsyningen.dk/topo_skaermkort", "https://c.services.kortforsyningen.dk/topo_skaermkort"],
 		style: "default",
 		layer: "dtk_skaermkort",
 		matrixSet: "View1",
@@ -64,7 +64,7 @@
     // Old way depre
     /*
     var wfsLayer = new OpenLayers.Layer.WFS("testwfs",
-    "http://services.kortforsyningen.dk/topo_geo3p_gml2",
+    "https://services.kortforsyningen.dk/topo_geo3p_gml2",
     { 
         request:"GetFeature",
         typename: "kms:Forlystelse",
@@ -82,10 +82,10 @@
                 strategies : [new OpenLayers.Strategy.BBOX()],
                 protocol : new OpenLayers.Protocol.WFS({
                     version: "1.0.0",
-                    url: "http://services.kortforsyningen.dk/topo_geo3p_gml2?ticket="+kmsticket,
+                    url: "https://services.kortforsyningen.dk/topo_geo3p_gml2?ticket="+kmsticket,
                     featurePrefix: "kms",
                     featureType: "Forlystelse",
-                    featureNS: "http://schemas.kms.dk/wfs",
+                    featureNS: "https://schemas.kms.dk/wfs",
                     geometryName: "geometri"  // Needs to be added as name of geom column (Default is the_geom)
     })
     });

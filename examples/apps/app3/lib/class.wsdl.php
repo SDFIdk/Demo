@@ -49,11 +49,11 @@ class wsdl extends nusoap_base {
 	var $response_timeout = 30;
 	var $curl_options = array();	// User-specified cURL options
 	var $use_curl = false;			// whether to always try to use cURL
-	// for HTTP authentication
-	var $username = '';				// Username for HTTP authentication
-	var $password = '';				// Password for HTTP authentication
-	var $authtype = '';				// Type of HTTP authentication
-	var $certRequest = array();		// Certificate for HTTP SSL authentication
+	// for https authentication
+	var $username = '';				// Username for https authentication
+	var $password = '';				// Password for https authentication
+	var $authtype = '';				// Type of https authentication
+	var $certRequest = array();		// Certificate for https SSL authentication
 
     /**
      * constructor
@@ -204,10 +204,10 @@ class wsdl extends nusoap_base {
         // parse $wsdl for url format
         $wsdl_props = parse_url($wsdl);
 
-        if (isset($wsdl_props['scheme']) && ($wsdl_props['scheme'] == 'http' || $wsdl_props['scheme'] == 'https')) {
-            $this->debug('getting WSDL http(s) URL ' . $wsdl);
+        if (isset($wsdl_props['scheme']) && ($wsdl_props['scheme'] == 'https' || $wsdl_props['scheme'] == 'httpss')) {
+            $this->debug('getting WSDL https(s) URL ' . $wsdl);
         	// get wsdl
-	        $tr = new soap_transport_http($wsdl, $this->curl_options, $this->use_curl);
+	        $tr = new soap_transport_https($wsdl, $this->curl_options, $this->use_curl);
 			$tr->request_method = 'GET';
 			$tr->useSOAPAction = false;
 			if($this->proxyhost && $this->proxyport){
@@ -223,7 +223,7 @@ class wsdl extends nusoap_base {
 			$this->appendDebug($tr->getDebug());
 			// catch errors
 			if($err = $tr->getError() ){
-				$errstr = 'Getting ' . $wsdl . ' - HTTP ERROR: '.$err;
+				$errstr = 'Getting ' . $wsdl . ' - https ERROR: '.$err;
 				$this->debug($errstr);
 	            $this->setError($errstr);
 				unset($tr);
@@ -232,7 +232,7 @@ class wsdl extends nusoap_base {
 			unset($tr);
 			$this->debug("got WSDL URL");
         } else {
-            // $wsdl is not http(s), so treat it as a file URL or plain file path
+            // $wsdl is not https(s), so treat it as a file URL or plain file path
         	if (isset($wsdl_props['scheme']) && ($wsdl_props['scheme'] == 'file') && isset($wsdl_props['path'])) {
         		$path = isset($wsdl_props['host']) ? ($wsdl_props['host'] . ':' . $wsdl_props['path']) : $wsdl_props['path'];
         	} else {
@@ -327,7 +327,7 @@ class wsdl extends nusoap_base {
                         } else {
                             $this->namespaces['ns' . (count($this->namespaces) + 1)] = $v;
                         } 
-                        if ($v == 'http://www.w3.org/2001/XMLSchema' || $v == 'http://www.w3.org/1999/XMLSchema' || $v == 'http://www.w3.org/2000/10/XMLSchema') {
+                        if ($v == 'https://www.w3.org/2001/XMLSchema' || $v == 'https://www.w3.org/1999/XMLSchema' || $v == 'https://www.w3.org/2000/10/XMLSchema') {
                             $this->XMLSchemaVersion = $v;
                             $this->namespaces['xsi'] = $v . '-instance';
                         } 
@@ -586,9 +586,9 @@ class wsdl extends nusoap_base {
 	function getOperations($portName = '', $bindingType = 'soap') {
 		$ops = array();
 		if ($bindingType == 'soap') {
-			$bindingType = 'http://schemas.xmlsoap.org/wsdl/soap/';
+			$bindingType = 'https://schemas.xmlsoap.org/wsdl/soap/';
 		} elseif ($bindingType == 'soap12') {
-			$bindingType = 'http://schemas.xmlsoap.org/wsdl/soap12/';
+			$bindingType = 'https://schemas.xmlsoap.org/wsdl/soap12/';
 		} else {
 			$this->debug("getOperations bindingType $bindingType may not be supported");
 		}
@@ -626,9 +626,9 @@ class wsdl extends nusoap_base {
 	function getOperationData($operation, $bindingType = 'soap')
 	{
 		if ($bindingType == 'soap') {
-			$bindingType = 'http://schemas.xmlsoap.org/wsdl/soap/';
+			$bindingType = 'https://schemas.xmlsoap.org/wsdl/soap/';
 		} elseif ($bindingType == 'soap12') {
-			$bindingType = 'http://schemas.xmlsoap.org/wsdl/soap12/';
+			$bindingType = 'https://schemas.xmlsoap.org/wsdl/soap12/';
 		}
 		// loop thru ports
 		foreach($this->ports as $port => $portData) {
@@ -657,9 +657,9 @@ class wsdl extends nusoap_base {
 	 */
 	function getOperationDataForSoapAction($soapAction, $bindingType = 'soap') {
 		if ($bindingType == 'soap') {
-			$bindingType = 'http://schemas.xmlsoap.org/wsdl/soap/';
+			$bindingType = 'https://schemas.xmlsoap.org/wsdl/soap/';
 		} elseif ($bindingType == 'soap12') {
-			$bindingType = 'http://schemas.xmlsoap.org/wsdl/soap12/';
+			$bindingType = 'https://schemas.xmlsoap.org/wsdl/soap12/';
 		}
 		// loop thru ports
 		foreach($this->ports as $port => $portData) {
@@ -754,14 +754,14 @@ class wsdl extends nusoap_base {
     * @access private
     */
     function webDescription(){
-    	global $HTTP_SERVER_VARS;
+    	global $https_SERVER_VARS;
 
 		if (isset($_SERVER)) {
 			$PHP_SELF = $_SERVER['PHP_SELF'];
-		} elseif (isset($HTTP_SERVER_VARS)) {
-			$PHP_SELF = $HTTP_SERVER_VARS['PHP_SELF'];
+		} elseif (isset($https_SERVER_VARS)) {
+			$PHP_SELF = $https_SERVER_VARS['PHP_SELF'];
 		} else {
-			$this->setError("Neither _SERVER nor HTTP_SERVER_VARS is available");
+			$this->setError("Neither _SERVER nor https_SERVER_VARS is available");
 		}
 
 		$b = '
@@ -1127,7 +1127,7 @@ class wsdl extends nusoap_base {
 		$this->appendDebug($this->varDump($opData));
 
 		// Get encoding style for output and set to current
-		$encodingStyle = 'http://schemas.xmlsoap.org/soap/encoding/';
+		$encodingStyle = 'https://schemas.xmlsoap.org/soap/encoding/';
 		if(($direction == 'input') && isset($opData['output']['encodingStyle']) && ($opData['output']['encodingStyle'] != $encodingStyle)) {
 			$encodingStyle = $opData['output']['encodingStyle'];
 			$enc_style = $encodingStyle;
@@ -1229,7 +1229,7 @@ class wsdl extends nusoap_base {
 		$this->appendDebug($this->varDump($opData));
 		
 		// Get encoding style for output and set to current
-		$encodingStyle = 'http://schemas.xmlsoap.org/soap/encoding/';
+		$encodingStyle = 'https://schemas.xmlsoap.org/soap/encoding/';
 		if(($direction == 'input') && isset($opData['output']['encodingStyle']) && ($opData['output']['encodingStyle'] != $encodingStyle)) {
 			$encodingStyle = $opData['output']['encodingStyle'];
 			$enc_style = $encodingStyle;
@@ -1337,7 +1337,7 @@ class wsdl extends nusoap_base {
 				$this->debug("in serializeType: expanded prefixed type: $uqType, $ns");
 			}
 
-			if($ns == $this->XMLSchemaVersion || $ns == 'http://schemas.xmlsoap.org/soap/encoding/'){
+			if($ns == $this->XMLSchemaVersion || $ns == 'https://schemas.xmlsoap.org/soap/encoding/'){
 				$this->debug('in serializeType: type namespace indicates XML Schema or SOAP Encoding type');
 				if ($unqualified && $use == 'literal') {
 					$elementNS = " xmlns=\"\"";
@@ -1389,16 +1389,16 @@ class wsdl extends nusoap_base {
 					return $xml;
 				}
 				$this->debug('custom type extends XML Schema or SOAP Encoding namespace (yuck)');
-			} else if ($ns == 'http://xml.apache.org/xml-soap') {
+			} else if ($ns == 'https://xml.apache.org/xml-soap') {
 				$this->debug('in serializeType: appears to be Apache SOAP type');
 				if ($uqType == 'Map') {
-					$tt_prefix = $this->getPrefixFromNamespace('http://xml.apache.org/xml-soap');
+					$tt_prefix = $this->getPrefixFromNamespace('https://xml.apache.org/xml-soap');
 					if (! $tt_prefix) {
 						$this->debug('in serializeType: Add namespace for Apache SOAP type');
 						$tt_prefix = 'ns' . rand(1000, 9999);
-						$this->namespaces[$tt_prefix] = 'http://xml.apache.org/xml-soap';
+						$this->namespaces[$tt_prefix] = 'https://xml.apache.org/xml-soap';
 						// force this to be added to usedNamespaces
-						$tt_prefix = $this->getPrefixFromNamespace('http://xml.apache.org/xml-soap');
+						$tt_prefix = $this->getPrefixFromNamespace('https://xml.apache.org/xml-soap');
 					}
 					$contents = '';
 					foreach($value as $k => $v) {
@@ -1522,9 +1522,9 @@ class wsdl extends nusoap_base {
 					$xml = "<$name$elementNS/>";
 				} else {
 					$xml = "<$name$elementNS xsi:nil=\"true\" xsi:type=\"" .
-						$this->getPrefixFromNamespace('http://schemas.xmlsoap.org/soap/encoding/') .
+						$this->getPrefixFromNamespace('https://schemas.xmlsoap.org/soap/encoding/') .
 						":Array\" " .
-						$this->getPrefixFromNamespace('http://schemas.xmlsoap.org/soap/encoding/') .
+						$this->getPrefixFromNamespace('https://schemas.xmlsoap.org/soap/encoding/') .
 						':arrayType="' .
 						$this->getPrefixFromNamespace($this->getPrefix($typeDef['arrayType'])) .
 						':' .
@@ -1549,7 +1549,7 @@ class wsdl extends nusoap_base {
 				foreach($value as $k => $v) {
 					$this->debug("serializing array element: $k, $v of type: $typeDef[arrayType]");
 					//if (strpos($typeDef['arrayType'], ':') ) {
-					if (!in_array($typeDef['arrayType'],$this->typemap['http://www.w3.org/2001/XMLSchema'])) {
+					if (!in_array($typeDef['arrayType'],$this->typemap['https://www.w3.org/2001/XMLSchema'])) {
 					    $contents .= $this->serializeType('item', $typeDef['arrayType'], $v, $use);
 					} else {
 					    $contents .= $this->serialize_val($v, 'item', $typeDef['arrayType'], null, $this->XMLSchemaVersion, false, $use);
@@ -1566,8 +1566,8 @@ class wsdl extends nusoap_base {
 					.$contents
 					."</$name>";
 			} else {
-				$xml = "<$name$elementNS xsi:type=\"".$this->getPrefixFromNamespace('http://schemas.xmlsoap.org/soap/encoding/').':Array" '.
-					$this->getPrefixFromNamespace('http://schemas.xmlsoap.org/soap/encoding/')
+				$xml = "<$name$elementNS xsi:type=\"".$this->getPrefixFromNamespace('https://schemas.xmlsoap.org/soap/encoding/').':Array" '.
+					$this->getPrefixFromNamespace('https://schemas.xmlsoap.org/soap/encoding/')
 					.':arrayType="'
 					.$this->getPrefixFromNamespace($this->getPrefix($typeDef['arrayType']))
 					.":".$this->getLocalPart($typeDef['arrayType'])."[$rows$cols]\">"
@@ -1772,7 +1772,7 @@ class wsdl extends nusoap_base {
 	* @param string $typeClass (complexType|simpleType|attribute)
 	* @param string $phpType currently supported are array and struct (php assoc array)
 	* @param string $compositor (all|sequence|choice)
-	* @param string $restrictionBase namespace:name (http://schemas.xmlsoap.org/soap/encoding/:Array)
+	* @param string $restrictionBase namespace:name (https://schemas.xmlsoap.org/soap/encoding/:Array)
 	* @param array $elements e.g. array ( name => array(name=>'',type=>'') )
 	* @param array $attrs e.g. array(array('ref'=>'SOAP-ENC:arrayType','wsdl:arrayType'=>'xsd:string[]'))
 	* @param string $arrayType as namespace:name (xsd:string)
@@ -1819,7 +1819,7 @@ class wsdl extends nusoap_base {
 	* adds an XML Schema simple type to the WSDL types
 	*
 	* @param string $name
-	* @param string $restrictionBase namespace:name (http://schemas.xmlsoap.org/soap/encoding/:Array)
+	* @param string $restrictionBase namespace:name (https://schemas.xmlsoap.org/soap/encoding/:Array)
 	* @param string $typeClass (should always be simpleType)
 	* @param string $phpType (should always be scalar)
 	* @param array $enumeration array of values
@@ -1856,12 +1856,12 @@ class wsdl extends nusoap_base {
 	* @param string $style (rpc|document) optional The style for the operation Note: when 'document' is specified, parameter and return wrappers are created for you automatically
 	* @param string $use (encoded|literal) optional The use for the parameters (cannot mix right now)
 	* @param string $documentation optional The description to include in the WSDL
-	* @param string $encodingStyle optional (usually 'http://schemas.xmlsoap.org/soap/encoding/' for encoded)
+	* @param string $encodingStyle optional (usually 'https://schemas.xmlsoap.org/soap/encoding/' for encoded)
 	* @access public 
 	*/
 	function addOperation($name, $in = false, $out = false, $namespace = false, $soapaction = false, $style = 'rpc', $use = 'encoded', $documentation = '', $encodingStyle = ''){
 		if ($use == 'encoded' && $encodingStyle == '') {
-			$encodingStyle = 'http://schemas.xmlsoap.org/soap/encoding/';
+			$encodingStyle = 'https://schemas.xmlsoap.org/soap/encoding/';
 		}
 
 		if ($style == 'document') {
@@ -1903,7 +1903,7 @@ class wsdl extends nusoap_base {
 			'message' => $name . 'Response',
 			'parts' => $out),
 		'namespace' => $namespace,
-		'transport' => 'http://schemas.xmlsoap.org/soap/http',
+		'transport' => 'https://schemas.xmlsoap.org/soap/https',
 		'documentation' => $documentation); 
 		// add portTypes
 		// add messages

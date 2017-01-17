@@ -95,7 +95,7 @@
             this._postMessage()
         },
         handleUri: function(url, callback) {
-            var xhr = new XMLHttpRequest();
+            var xhr = new XMLhttpsRequest();
 
             xhr.open("GET", url, false)
             xhr.overrideMimeType("text/plain; charset=x-user-defined")

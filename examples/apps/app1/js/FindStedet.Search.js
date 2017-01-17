@@ -99,7 +99,7 @@ FindStedet.Search = VisStedet.Utils.Class({
             if (ui.item.data.x && ui.item.data.y) {
                 
                 jQuery.ajax({
-                    url: 'http://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+ui.item.data.x+','+ui.item.data.y,
+                    url: 'https://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+ui.item.data.x+','+ui.item.data.y,
                     type: 'GET',
                     data: {ticket: this.serviceOptions.ticket.toString()},
                     dataType: 'jsonp',
@@ -130,7 +130,7 @@ FindStedet.Search = VisStedet.Utils.Class({
                 if (ui.item.data.type === 'matrikelnummer') {
                     
                     jQuery.ajax({
-                        url: 'http://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&f=jsonp&method=matrikelnr&geometry=true&ejkode='+ui.item.data.elavskode+'&matnr='+ui.item.data.matrnr,
+                        url: 'https://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&f=jsonp&method=matrikelnr&geometry=true&ejkode='+ui.item.data.elavskode+'&matnr='+ui.item.data.matrnr,
                         type: 'GET',
                         data: {ticket: this.serviceOptions.ticket.toString()},
                         dataType: 'jsonp',
@@ -144,12 +144,12 @@ FindStedet.Search = VisStedet.Utils.Class({
                             
                                 var wkt = new jsts.io.WKTReader();
                                 var geo = wkt.read(features[i].geometry.toString());
-                                //http://bjornharrtell.github.io/jsts/doc/api/symbols/jsts.geom.Geometry.html#getInteriorPoint
+                                //https://bjornharrtell.github.io/jsts/doc/api/symbols/jsts.geom.Geometry.html#getInteriorPoint
                                 var cen = geo.getInteriorPoint();
                                 var centroid = cen.coordinate;
     
                                 jQuery.ajax({
-                                    url: 'http://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+centroid.x+','+centroid.y,
+                                    url: 'https://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&f=jsonp&method=hoejde&geop='+centroid.x+','+centroid.y,
                                     type: 'GET',
                                     data: {ticket: this.serviceOptions.ticket.toString()},
                                     dataType: 'jsonp',

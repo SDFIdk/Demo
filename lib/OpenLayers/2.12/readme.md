@@ -9,7 +9,7 @@ Please see license.txt in this distribution for more details.
 
 ## Getting OpenLayers
 
-OpenLayers lives at http://www.openlayers.org/.  Find details on downloading stable releases or the development version the [development site](http://trac.osgeo.org/openlayers/wiki/HowToDownload).
+OpenLayers lives at https://www.openlayers.org/.  Find details on downloading stable releases or the development version the [development site](https://trac.osgeo.org/openlayers/wiki/HowToDownload).
 
 ## Installing OpenLayers
 
@@ -61,10 +61,10 @@ and can be used in place of OpenLayers.js in any of the above instructions:
     
 ## Using OpenLayers in Your Own Website
 
-The [examples directory](http://openlayers.org/dev/examples/) is full of useful examples.
+The [examples directory](https://openlayers.org/dev/examples/) is full of useful examples.
 
-Documentation is available at http://trac.osgeo.org/openlayers/wiki/Documentation.
-You can generate the API documentation with http://www.naturaldocs.org/
+Documentation is available at https://trac.osgeo.org/openlayers/wiki/Documentation.
+You can generate the API documentation with https://www.naturaldocs.org/
 As an example, using bash (with the release files in ~/openlayers):
 
     $ cd ~/openlayers/
@@ -74,6 +74,6 @@ Information on changes in the API is available in release notes found in the not
 
 ## Contributing to OpenLayers
 
-Please join the email lists at http://openlayers.org/mailman/listinfo
+Please join the email lists at https://openlayers.org/mailman/listinfo
 Patches are welcome!
 

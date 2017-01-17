@@ -1,8 +1,8 @@
 <html>
 <head>
-  	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+  	<meta https-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-    <script src="http://openlayers.org/api/2.11/OpenLayers.js" type="text/javascript" ></script>
+    <script src="https://openlayers.org/api/2.11/OpenLayers.js" type="text/javascript" ></script>
     <script type="text/javascript" src="../server/Ticket/kfticket.php"></script>
 	<script type="text/javascript" src="../lib/VisStedet/Utils.js"></script>
     <script type="text/javascript" src="../lib/VisStedet/Ticket.js"></script>  
@@ -34,7 +34,7 @@
 	
 	var wmts = new OpenLayers.Layer.WMTS({
 		name: "WMTS",
-		url: ["http://a.services.kortforsyningen.dk/topo_skaermkort", "http://b.services.kortforsyningen.dk/topo_skaermkort", "http://c.services.kortforsyningen.dk/topo_skaermkort"],
+		url: ["https://a.services.kortforsyningen.dk/topo_skaermkort", "https://b.services.kortforsyningen.dk/topo_skaermkort", "https://c.services.kortforsyningen.dk/topo_skaermkort"],
 		style: "default",
 		layer: "dtk_skaermkort",
 		matrixSet: "View1",

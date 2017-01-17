@@ -20,7 +20,7 @@ try {
     if (ticket == null) {
         URL url = new URL(
 
-                "http://kortforsyningen.kms.dk/service?request=GetTicket&login=VisStedet&password=VisStedet");
+                "https://services.kortforsyningen.dk/service?request=GetTicket&login=xxxx&password=yyyy");
 
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(url.openConnection()

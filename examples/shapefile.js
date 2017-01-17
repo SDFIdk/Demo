@@ -78,7 +78,7 @@
     Shapefile.prototype = {
         constructor: Shapefile,
         handleUri: function(o) {
-            var xhr = new XMLHttpRequest(),
+            var xhr = new XMLhttpsRequest(),
                 that = this
             
             xhr.open("GET", o.shp, false)
