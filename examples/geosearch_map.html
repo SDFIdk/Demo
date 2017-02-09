@@ -77,7 +77,7 @@ function init() {
         delay: 200,
         minLength: 1,
         select: function (event, ui) {
-        	var wkt = ui.item.data.geometryWkt;
+        	var wkt = ui.item.data.geometryWkt_detail;
         	vector.removeAllFeatures ();
         	if (wkt) {
                 var in_options = {
@@ -97,7 +97,7 @@ function init() {
                     map.zoomToExtent(vector.getDataExtent()); 
                     var html = ''
                     for (var name in ui.item.data) {
-                        if (name != 'presentationString' && name != 'geometryWkt') {
+                        if (name != 'presentationString' && name != 'geometryWkt_detail') {
                             html += name+': '+ui.item.data[name]+'<br/>';
                         }
                     }

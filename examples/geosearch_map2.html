@@ -80,13 +80,13 @@ function init() {
         	alert('Denne del er endnu ikke færdig! - prøv igen senere...');
         	return;
         	
-        	var wkt = ui.item.data.geometryWkt;
+        	var wkt = ui.item.data.geometryWkt_detail;
         	if (wkt) {
         		
         	}
         	var html = ''
         	for (var name in ui.item.data) {
-        		if (name != 'presentationString' && name != 'geometryWkt') {
+        		if (name != 'presentationString' && name != 'geometryWkt_detail') {
         		    html += name+': '+ui.item.data[name]+'<br/>';
         		}
         	}
