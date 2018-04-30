@@ -1,16 +1,22 @@
 # Demo
 
-## Openlayer3
-https://apps2.kortforsyningen.dk/demo/examples/openlayers3/wmtspluswmskort.html
+## Openlayers
 
-https://apps2.kortforsyningen.dk/demo/examples/openlayers3/wmskort.html
+### WMTS
+https://apps2.kortforsyningen.dk/demo/examples/openlayers/example1
 
-https://apps2.kortforsyningen.dk/demo/examples/openlayers3/wmtskort.html
+### WMS
+https://apps2.kortforsyningen.dk/demo/examples/openlayers/example2
 
 
 
 ## Leaflet
-https://apps2.kortforsyningen.dk/demo/examples/leaflet/WMTS.html
+
+### WMTS
+https://apps2.kortforsyningen.dk/demo/examples/leaflet/example1.html
+
+### WMS
+https://apps2.kortforsyningen.dk/demo/examples/leaflet/example2.html
 
 
 
