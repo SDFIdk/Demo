@@ -12,7 +12,7 @@ https://apps2.kortforsyningen.dk/demo/examples/openlayers/example2
 
 ## Leaflet
 
-#### WMTS
+##### WMTS
 https://apps2.kortforsyningen.dk/demo/examples/leaflet/example1.html
 
 #### WMS
