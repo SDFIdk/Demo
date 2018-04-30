@@ -5,6 +5,7 @@
 ###### WMTS
 https://apps2.kortforsyningen.dk/demo/examples/openlayers/example1
 
+
 ###### WMS
 https://apps2.kortforsyningen.dk/demo/examples/openlayers/example2
 
@@ -14,6 +15,7 @@ https://apps2.kortforsyningen.dk/demo/examples/openlayers/example2
 
 ###### WMTS
 https://apps2.kortforsyningen.dk/demo/examples/leaflet/example1.html
+
 
 ###### WMS
 https://apps2.kortforsyningen.dk/demo/examples/leaflet/example2.html
