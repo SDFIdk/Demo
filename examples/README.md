@@ -2,20 +2,20 @@
 
 ## Openlayers
 
-### WMTS
+#### WMTS
 https://apps2.kortforsyningen.dk/demo/examples/openlayers/example1
 
-### WMS
+#### WMS
 https://apps2.kortforsyningen.dk/demo/examples/openlayers/example2
 
 
 
 ## Leaflet
 
-### WMTS
+#### WMTS
 https://apps2.kortforsyningen.dk/demo/examples/leaflet/example1.html
 
-### WMS
+#### WMS
 https://apps2.kortforsyningen.dk/demo/examples/leaflet/example2.html
 
 
