@@ -11,12 +11,10 @@
 
 ## Leaflet
 
-###### WMTS
-https://apps2.kortforsyningen.dk/demo/examples/leaflet/example1.html
+###### WMTS: https://apps2.kortforsyningen.dk/demo/examples/leaflet/example1.html
 
 
-###### WMS
-https://apps2.kortforsyningen.dk/demo/examples/leaflet/example2.html
+###### WMS: https://apps2.kortforsyningen.dk/demo/examples/leaflet/example2.html
 
 
 
