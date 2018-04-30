@@ -2,10 +2,10 @@
 
 ## Openlayers
 
-###### WMTS: https://apps2.kortforsyningen.dk/demo/examples/openlayers/example1
+###### WMTS: https://apps2.kortforsyningen.dk/demo/examples/openlayers/example1.html
 
 
-###### WMS: https://apps2.kortforsyningen.dk/demo/examples/openlayers/example2
+###### WMS: https://apps2.kortforsyningen.dk/demo/examples/openlayers/example2.html
 
 
 
