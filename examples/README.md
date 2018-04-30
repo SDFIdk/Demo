@@ -10,3 +10,6 @@ https://apps2.kortforsyningen.dk/demo/examples/openlayers3/wmtskort.html
 
 ## Leaflet
 https://apps2.kortforsyningen.dk/demo/examples/leaflet/WMTS.html
+
+## login og sikkerhed
+https://www.kortforsyningen.dk/indhold/login-https-og-ssl
