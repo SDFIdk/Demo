@@ -14,6 +14,7 @@
 ## Leaflet
 
 ###### WMTS: https://apps2.kortforsyningen.dk/demo/examples/leaflet/example1.html
+
 Der er udfordringer med zoom i forbindelse med brugen af WMTS i Leaflet 1.3
 
 Vi arbejder på sagen og vender tilbage når vi har fundet en løsning 
