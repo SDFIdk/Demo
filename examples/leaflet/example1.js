@@ -32,7 +32,6 @@
     var ortofotowmts = L.tileLayer('https://services.kortforsyningen.dk/orto_foraar?token=' + kftoken + '&request=GetTile&version=1.0.0&service=WMTS&Layer=orto_foraar&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
 	minZoom: 0,
         maxZoom: 13,
-        //continuousWorld: true,
         attribution: myAttributionText,
         crossOrigin: true,
         zoom: function () {
@@ -45,15 +44,9 @@
         }
     }).addTo(map);
     
-    var ortofotowms = L.tileLayer.wms('https://services.kortforsyningen.dk/orto_foraar', {
-        layers: 'orto_foraar',
-        token: kftoken,
-        format: 'image/jpeg',
-        attribution: myAttributionText
-    });
     
     // Skærmkort [WMTS:topo_skaermkort]
-    var topo = L.tileLayer.wms('https://services.kortforsyningen.dk/topo_skaermkort', {
+    var toposkaermkortwmts = L.tileLayer.wms('https://services.kortforsyningen.dk/topo_skaermkort', {
         layers: 'dtk_skaermkort',
         token: kftoken,
         format: 'image/png',
@@ -84,8 +77,7 @@
     // Define layer groups for layer control
     var baseLayers = {
         "Ortofoto WMTS": ortofotowmts,
-        "Ortofoto WMS": ortofotowms,
-        "Skærmkort": topo
+        "Skærmkort WMTS": toposkaermkortwmts
     };
     var overlays = {
         "Matrikel": matrikel,
