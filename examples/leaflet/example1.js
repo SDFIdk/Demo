@@ -36,7 +36,7 @@
         attribution: myAttributionText,
         crossOrigin: true,
         zoom: function () {
-            var zoomlevel = map.getZoom();
+            var zoomlevel = map._animateToZoom ? map._animateToZoom : map.getZoom();
             console.log("WMTS: " + zoomlevel);
             if (zoomlevel < 10)
                 return 'L0' + zoomlevel;
