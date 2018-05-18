@@ -1,13 +1,28 @@
 (function() {
-    
+
+    //  Workaround for 1px lines appearing in some browsers due to fractional transforms
+    //  and resulting anti-aliasing.
+    //  https://github.com/Leaflet/Leaflet/issues/3575
+    if (window.navigator.userAgent.indexOf('Chrome') > -1) {
+        var originalInitTile = L.GridLayer.prototype._initTile;
+        L.GridLayer.include({
+            _initTile: function (tile) {
+                originalInitTile.call(this, tile);
+                var tileSize = this.getTileSize();
+                tile.style.width = tileSize.x + 1 + 'px';
+                tile.style.height = tileSize.y + 1 + 'px';
+            }
+        });
+    }
+
     // Set Kortforsyningen token, replace with your own token
     var kftoken = 'd12107f70a3ee93153f313c7c502169a';
 
     // Set the attribution (the copyright statement shown in the lower right corner)
     // We do this as we want the same attributions for all layers
     var myAttributionText = '&copy; <a target="_blank" href="https://download.kortforsyningen.dk/content/vilk%C3%A5r-og-betingelser">Styrelsen for Dataforsyning og Effektivisering</a>';
- 
- 
+
+
     // Make the map object using the custom projection
     //proj4.defs('EPSG:25832', "+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs");
     var crs = new L.Proj.CRS('EPSG:25832',
@@ -43,8 +58,8 @@
                 return 'L' + zoomlevel;
         }
     }).addTo(map);
-    
-    
+
+
     // Skærmkort [WMTS:topo_skaermkort]
     var toposkaermkortwmts = L.tileLayer.wms('https://services.kortforsyningen.dk/topo_skaermkort', {
         layers: 'dtk_skaermkort',
@@ -52,7 +67,7 @@
         format: 'image/png',
         attribution: myAttributionText
     });
-    
+
     // Matrikelskel overlay [WMS:mat]
     var matrikel = L.tileLayer.wms('https://services.kortforsyningen.dk/mat', {
         transparent: true,
@@ -85,9 +100,9 @@
     };
 
     // Add layer control to map
-    L.control.layers(baseLayers, overlays).addTo(map);    
+    L.control.layers(baseLayers, overlays).addTo(map);
 
     // Add scale line to map
     L.control.scale({imperial: false}).addTo(map); // disable feet units
 
-})();    
+})();
