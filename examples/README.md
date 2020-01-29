@@ -23,4 +23,4 @@
 
 
 ## login og sikkerhed
-https://www.kortforsyningen.dk/indhold/login-https-og-ssl
+https://kortforsyningen.dk/indhold/login-https-og-tls
