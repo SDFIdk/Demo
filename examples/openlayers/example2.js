@@ -5,8 +5,10 @@
     // Set projection as we are not using the default OpenLayers projections
     // You can define it yourself or you can use the proj4 library as done below
     proj4.defs('EPSG:25832', "+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs");
+    ol.proj.proj4.register(proj4);
     var myProjection = ol.proj.get('EPSG:25832');
-    myProjection.setExtent([120000, 5661139.2, 1378291.2, 6500000]);
+    var extent = [120000, 5661139.2, 1378291.2, 6500000];
+    myProjection.setExtent(extent);
 
     
     // Set the attribution (the copyright statement shown in the lower right corner)
