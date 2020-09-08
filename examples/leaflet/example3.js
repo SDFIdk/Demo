@@ -10,14 +10,14 @@
     // Make custom projection using proj4 and proj4leaflet
     var crs = new L.Proj.CRS('EPSG:25832',
 	'+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs', {
-        resolutions: [1638.4,819.2,409.6,204.8,102.4,51.2,25.6,12.8,6.4,3.2,1.6,0.8,0.4,0.2]
+        resolutions: [1638.4,819.2,409.6,204.8,102.4,51.2,25.6,12.8,6.4,3.2,1.6,0.8,0.4,0.2,0.1]
     });
 
     // Make the map object using the custom projection
     var map = new L.Map('map', {
         crs: crs,
-        center: [55.8, 11.4], // Set center location
-        zoom: 11, // Set zoom level,
+        center: [55.709155, 11.459081], // Set center location
+        zoom: 9, // Set zoom level,
     });
 
     // Define layers
