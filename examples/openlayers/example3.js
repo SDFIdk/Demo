@@ -5,13 +5,15 @@
     // Set projection as we are not using the default OpenLayers projections
     // You can define it yourself or you can use the proj4 library as done below
     proj4.defs('EPSG:25832', "+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs");
+    ol.proj.proj4.register(proj4);
     var myProjection = ol.proj.get('EPSG:25832');
-    myProjection.setExtent([120000, 5661139.2, 1378291.2, 6500000]);
+    var extent = [120000, 5661139.2, 1378291.2, 6500000];
+    myProjection.setExtent(extent);
 
     // Set the WMTS tile grid. We do this on an overall basis as all the 
     // Kortforsyningen WMTS are based on the same tile grid
     var myTileGrid = new ol.tilegrid.WMTS({
-        extent: [120000, 5661139.2, 1378291.2, 6500000],
+        extent: extent,
         resolutions: [1638.4,819.2,409.6,204.8,102.4,51.2,25.6,12.8,6.4,3.2,1.6,0.8,0.4,0.2],
         matrixIds: ['L00','L01','L02','L03','L04','L05','L06','L07','L08','L09','L10','L11','L12','L13'],
     });

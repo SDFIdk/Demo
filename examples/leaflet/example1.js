@@ -1,20 +1,5 @@
 (function() {
 
-    //  Workaround for 1px lines appearing in some browsers due to fractional transforms
-    //  and resulting anti-aliasing.
-    //  https://github.com/Leaflet/Leaflet/issues/3575
-    if (window.navigator.userAgent.indexOf('Chrome') > -1) {
-        var originalInitTile = L.GridLayer.prototype._initTile;
-        L.GridLayer.include({
-            _initTile: function (tile) {
-                originalInitTile.call(this, tile);
-                var tileSize = this.getTileSize();
-                tile.style.width = tileSize.x + 1 + 'px';
-                tile.style.height = tileSize.y + 1 + 'px';
-            }
-        });
-    }
-
     // Set Kortforsyningen token, replace with your own token
     var kftoken = 'd12107f70a3ee93153f313c7c502169a';
 
@@ -37,21 +22,21 @@
     var map = new L.Map('map', {
         crs: crs,
         continuousWorld: true,
-        center: [55.8, 11.4], // Set center location
+        center: [55.709155, 11.459081], // Set center location
         zoom: 9, // Set zoom level
         minzoom: 0,
         maxzoom: 13
     });
 
     // Define layers
+    // Ortofoto [WMTS:orto_foraar]
     var ortofotowmts = L.tileLayer('https://services.kortforsyningen.dk/orto_foraar?token=' + kftoken + '&request=GetTile&version=1.0.0&service=WMTS&Layer=orto_foraar&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
-	minZoom: 0,
+	    minZoom: 0,
         maxZoom: 13,
         attribution: myAttributionText,
         crossOrigin: true,
         zoom: function () {
             var zoomlevel = map._animateToZoom ? map._animateToZoom : map.getZoom();
-            console.log("WMTS: " + zoomlevel);
             if (zoomlevel < 10)
                 return 'L0' + zoomlevel;
             else
@@ -61,12 +46,19 @@
 
 
     // Skærmkort [WMTS:topo_skaermkort]
-    var toposkaermkortwmts = L.tileLayer.wms('https://services.kortforsyningen.dk/topo_skaermkort', {
-        layers: 'dtk_skaermkort',
-        token: kftoken,
-        format: 'image/png',
-        attribution: myAttributionText
-    });
+    var toposkaermkortwmts = L.tileLayer('https://services.kortforsyningen.dk/topo_skaermkort?token=' + kftoken + '&request=GetTile&version=1.0.0&service=WMTS&Layer=dtk_skaermkort&style=default&format=image/jpeg&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}', {
+	    minZoom: 0,
+        maxZoom: 13,
+        attribution: myAttributionText,
+        crossOrigin: true,
+        zoom: function (data) {
+            var zoomlevel = data.z;
+            if (zoomlevel < 10)
+                return 'L0' + zoomlevel;
+            else
+                return 'L' + zoomlevel;
+        }
+    }).addTo(map);
 
     // Matrikelskel overlay [WMS:mat]
     var matrikel = L.tileLayer.wms('https://services.kortforsyningen.dk/mat', {
