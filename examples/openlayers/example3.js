@@ -1,6 +1,6 @@
 (function() {
     // Set Kortforsyningen token, replace with your own token
-    var kftoken = 'd12107f70a3ee93153f313c7c502169a';
+    var kftoken = '9ca510be3c4eca89b1333cadbaa60c36';
 
     // Set projection as we are not using the default OpenLayers projections
     // You can define it yourself or you can use the proj4 library as done below
