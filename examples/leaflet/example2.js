@@ -1,6 +1,6 @@
 (function() {
     // Set Kortforsyningen token, replace with your own token
-    var kftoken = 'd12107f70a3ee93153f313c7c502169a';
+    var kftoken = '9ca510be3c4eca89b1333cadbaa60c36';
 
     // Set the attribution (the copyright statement shown in the lower right corner)
     // We do this as we want the same attributions for all layers
