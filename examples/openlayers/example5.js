@@ -17,29 +17,26 @@
     
 
     //forvaltning2 - togstation    
-    var vectorSource = new ol.source.Vector({
+    var togstationer = new ol.source.Vector({
         useSpatialIndex : false,
         format: new ol.format.WFS(),
         loader: function(extent) {
            var url = 'https://api.dataforsyningen.dk/forvaltning2?token=9ca510be3c4eca89b1333cadbaa60c36&servicename=forvaltning2&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAMES=forvaltning:togstation&TYPENAME=forvaltning:togstation&STARTINDEX=0&COUNT=100000&SRSNAME=urn:ogc:def:crs:EPSG::25832&' +
            'bbox=' + extent.join(',')
 
-           console.log(url);
+           
            
            var xhr = new XMLHttpRequest();
            xhr.open('GET', url);
            var onError = function() {
-             vectorSource.removeLoadedExtent(extent);
+             togstationer.removeLoadedExtent(extent);
            }
            xhr.onerror = onError;
            xhr.onload = function() {
              if (xhr.status == 200) {
-                
-               
-                console.log(vectorSource.getFeatures(xhr.responseText));
-
-               vectorSource.addFeatures(
-                   vectorSource.getFormat().readFeatures(xhr.responseText));
+           
+               togstationer.addFeatures(
+                   togstationer.getFormat().readFeatures(xhr.responseText));
                    
              } else {
                onError();
@@ -50,6 +47,41 @@
          },
          strategy:  ol.loadingstrategy.bbox
        });
+
+       //forvaltning2 - jernbane
+       var jernbane = new ol.source.Vector({
+        format: new ol.format.WFS(),
+        loader: function(extent) {
+           var url = 'https://api.dataforsyningen.dk/forvaltning2?token=9ca510be3c4eca89b1333cadbaa60c36&servicename=forvaltning2&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAMES=forvaltning:jernbane&TYPENAME=forvaltning:jernbane&STARTINDEX=0&COUNT=100000&SRSNAME=urn:ogc:def:crs:EPSG::25832&' 
+           + 'bbox=' + extent.join(',')
+           
+           
+           var xhr = new XMLHttpRequest();
+           xhr.open('GET', url);
+           var onError = function() {
+             jernbane.removeLoadedExtent(extent);
+           }
+           xhr.onerror = onError;
+           xhr.onload = function() {
+             if (xhr.status == 200) {
+                
+              
+               
+                console.log(jernbane.getFeatures(xhr.responseText));
+
+               jernbane.addFeatures(
+                   jernbane.getFormat().readFeatures(xhr.responseText));
+                   
+             } else {
+               onError();
+             }
+           }
+           xhr.send();
+           
+         },
+         strategy:  ol.loadingstrategy.bbox
+       });
+       
 
 
 
@@ -113,17 +145,33 @@
                     new ol.layer.Vector({
 
                         opacity: 1.0,
-                        zIndex:950,
-                        title:'forvaltning2',
+                        zIndex:1000,
+                        title:'togstationer',
                         visible: true,
                         type:'overlay',
-                        source : vectorSource,
+                        source : togstationer,
                         style: new ol.style.Style({
                             image: new ol.style.Circle({
                                 radius: 4,
                                 fill: new ol.style.Fill({
                                     color: 'rgb(255,255,0)',
                                 })
+                            })
+                        })
+                       
+                    }),
+                    // [WFS:forvaltning2 : jernbane]
+                    new ol.layer.Vector({
+                        opacity: 1.0,
+                        zIndex:950,
+                        title:'jernbane',
+                        visible: true,
+                        type:'overlay',
+                        source : jernbane,
+                        style: new ol.style.Style({
+                            Stroke: new ol.style.Stroke({
+                                color: 'rgba(0, 0, 255, 1.0)',
+                                width: 20,
                             })
                         })
                        
