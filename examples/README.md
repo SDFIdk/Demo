@@ -14,6 +14,8 @@ https://github.com/Dataforsyningen/okapi
 
 ###### Skift fra WMTS til WMS i det inderste zoom niveau: https://apps2.kortforsyningen.dk/demo/examples/openlayers/example4.html
 
+###### WFS forvaltning2 togstationer og jernbane: https://apps2.kortforsyningen.dk/demo/examples/openlayers/example5.html
+
 
 
 ## Leaflet
