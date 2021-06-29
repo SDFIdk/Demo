@@ -21,11 +21,8 @@
         useSpatialIndex : false,
         format: new ol.format.WFS(),
         loader: function(extent) {
-           var url = 'https://api.dataforsyningen.dk/forvaltning2?token=9ca510be3c4eca89b1333cadbaa60c36&servicename=forvaltning2&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAMES=forvaltning:togstation&TYPENAME=forvaltning:togstation&STARTINDEX=0&COUNT=100000&SRSNAME=urn:ogc:def:crs:EPSG::25832&' +
+           var url = 'https://api.dataforsyningen.dk/forvaltning2?token='+kftoken+'&servicename=forvaltning2&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAMES=forvaltning:togstation&TYPENAME=forvaltning:togstation&STARTINDEX=0&COUNT=100000&SRSNAME=urn:ogc:def:crs:EPSG::25832&' +
            'bbox=' + extent.join(',')
-
-           
-           
            var xhr = new XMLHttpRequest();
            xhr.open('GET', url);
            var onError = function() {
@@ -52,10 +49,8 @@
        var jernbane = new ol.source.Vector({
         format: new ol.format.WFS(),
         loader: function(extent) {
-           var url = 'https://api.dataforsyningen.dk/forvaltning2?token=9ca510be3c4eca89b1333cadbaa60c36&servicename=forvaltning2&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAMES=forvaltning:jernbane&TYPENAME=forvaltning:jernbane&STARTINDEX=0&COUNT=100000&SRSNAME=urn:ogc:def:crs:EPSG::25832&' 
+           var url = 'https://api.dataforsyningen.dk/forvaltning2?token='+kftoken +'&servicename=forvaltning2&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAMES=forvaltning:jernbane&TYPENAME=forvaltning:jernbane&STARTINDEX=0&COUNT=100000&SRSNAME=urn:ogc:def:crs:EPSG::25832&' 
            + 'bbox=' + extent.join(',')
-           
-           
            var xhr = new XMLHttpRequest();
            xhr.open('GET', url);
            var onError = function() {
@@ -65,10 +60,6 @@
            xhr.onload = function() {
              if (xhr.status == 200) {
                 
-              
-               
-                console.log(jernbane.getFeatures(xhr.responseText));
-
                jernbane.addFeatures(
                    jernbane.getFormat().readFeatures(xhr.responseText));
                    
@@ -82,16 +73,6 @@
          strategy:  ol.loadingstrategy.bbox
        });
        
-
-
-
-
-
-
-
-
-
-
     // Initialize the map
     var map = new ol.Map({
         target: 'map',
@@ -152,11 +133,13 @@
                         source : togstationer,
                         style: new ol.style.Style({
                             image: new ol.style.Circle({
-                                radius: 4,
-                                fill: new ol.style.Fill({
-                                    color: 'rgb(255,255,0)',
-                                })
-                            })
+                            radius: 3,
+                            fill: new ol.style.Fill({
+                            color: 'rgb(255,255,0)',
+                                }),
+                                
+                            }),
+                            
                         })
                        
                     }),
@@ -169,9 +152,10 @@
                         type:'overlay',
                         source : jernbane,
                         style: new ol.style.Style({
-                            Stroke: new ol.style.Stroke({
-                                color: 'rgba(0, 0, 255, 1.0)',
-                                width: 20,
+                            stroke: new ol.style.Stroke({
+                                color: 'black',
+                                lineDash: [5],
+                                width: 1.5,
                             })
                         })
                        
