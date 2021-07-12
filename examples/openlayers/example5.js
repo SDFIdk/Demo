@@ -16,6 +16,38 @@
     var myAttributionText = '&copy; <a target="_blank" href="https://download.kortforsyningen.dk/content/vilk%C3%A5r-og-betingelser">Styrelsen for Dataforsyning og Effektivisering</a>';
     
 
+
+
+//forvaltning2 - byomraade 
+var byomraade = new ol.source.Vector({
+    useSpatialIndex : false,
+    format: new ol.format.WFS(),
+    loader: function(extent) {
+       var url = 'https://api.dataforsyningen.dk/forvaltning2?token='+kftoken+'&servicename=forvaltning2&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAMES=forvaltning:byomraade&TYPENAME=forvaltning:byomraade&STARTINDEX=0&COUNT=100000&SRSNAME=urn:ogc:def:crs:EPSG::25832&' +
+       'bbox=' + extent.join(',')
+       var xhr = new XMLHttpRequest();
+       xhr.open('GET', url);
+       var onError = function() {
+         togstationer.removeLoadedExtent(extent);
+       }
+       xhr.onerror = onError;
+       xhr.onload = function() {
+         if (xhr.status == 200) {
+       
+           byomraade.addFeatures(
+               byomraade.getFormat().readFeatures(xhr.responseText));
+               
+         } else {
+           onError();
+         }
+       }
+       xhr.send();
+       
+     },
+     strategy:  ol.loadingstrategy.bbox
+   });
+
+
     //forvaltning2 - togstation    
     var togstationer = new ol.source.Vector({
         useSpatialIndex : false,
@@ -121,10 +153,30 @@
             new ol.layer.Group({
                 'title': 'Overlays',
                 layers: [
-                    
+                    // [WFS:forvaltning2 : byomraade]
+                    new ol.layer.Vector({
+                        opacity: 1.0,
+                        zIndex:1000,
+                        title:'byområde',
+                        visible: true,
+                        type:'overlay',
+                        source : byomraade,
+                        style: new ol.style.Style({
+                            stroke: new ol.style.Stroke({
+                            color: 'blue',
+                            width : 2,
+                            }),
+                            fill:new ol.style.Fill({
+                                color: 'rgba(255,0,0,0.2)'
+                             }),
+                             
+                            
+                        })
+                       
+                    }),
+
                     // [WFS:forvaltning2 : togstationer]
                     new ol.layer.Vector({
-
                         opacity: 1.0,
                         zIndex:1000,
                         title:'togstationer',
