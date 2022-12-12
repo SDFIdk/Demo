@@ -6,29 +6,11 @@
 
     <link rel="stylesheet" href="../lib/openlayerstyle.css">
     <style>
-      body {
-        font: 100%/1.3 sans-serif;
-        color: #336370;
-        margin: 0;
-        padding: 0;
-      }
-      header h1,
-      footer p {
-        margin: 0;
-        padding: 2rem 1rem;
-      }
-      #map {
-        height: calc(100vh - 16rem);
-        width: 100%;
-      }
-      a:link,
-      a:visited {
-        color: #53c2cf;
-      }
-      a:hover,
-      a:focus {
-        color: #336370;
-      }
+      body {font: 100%/1.3 sans-serif; color: #336370; margin: 0; padding: 0; }
+      header h1, footer p { margin: 0; padding: 2rem 1rem; }
+      #map { height: calc(100vh - 16rem); width: 100%; }
+      a:link, a:visited { color: #53c2cf; }
+      a:hover, a:focus { color: #336370; }
     </style>
 
     <title>WMTS kort med OpenLayers</title>
@@ -100,7 +82,7 @@
         view: myView
       });
 
-      // Setup WMTS and WMS parsers
+      // Setup WMTS and parser
       const WMTSparser = new WMTSCapabilities();
 
       // Fetches 'topo_skaermkort' capabilites and adds layer to map
