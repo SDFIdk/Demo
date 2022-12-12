@@ -1,0 +1,42 @@
+{
+  "name": "demo",
+  "version": "2.0.0",
+  "description": "En samling a eksempler for brug af Dataforsyningens data med OpenLayers og LeafletJS",
+  "main": "./examples/index.html",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "node esbuild.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SDFIdk/Demo.git"
+  },
+  "keywords": [
+    "OpenLayers",
+    "Dataforsyningen",
+    "LeafletJS",
+    "SDFI"
+  ],
+  "author": {
+    "name": "Styrelsen for Dataforsyning og Infrastruktur",
+    "email": "support@sdfi.dk",
+    "url": "https://sdfi.dk/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SDFIdk/Demo/issues"
+  },
+  "homepage": "https://sdfidk.github.com/demo/",
+  "dependencies": {
+    "@dataforsyningen/css": "^0.4.0",
+    "ol": "^7.1.0",
+    "ol-layerswitcher": "^4.1.0",
+    "proj4": "^2.8.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.16.4"
+  }
+}
