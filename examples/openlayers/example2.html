@@ -80,15 +80,7 @@
         view: myView
       });
 
-      // Add additional controls to map
-      const layerSwitcher = new LayerSwitcher({
-        reverse: true,
-        groupSelectStyle: 'group'
-      });
-      map.addControl(layerSwitcher); // add a layer switcher
-      map.addControl(new ScaleLine()); // add a scale line
-
-      // Create Skærmkort overlay
+      // Create Skærmkort base layer
       const skaermkortServiceUrl = 'https://api.dataforsyningen.dk/topo_skaermkort_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
       const skaermLayer = new TileLayer({
         title: 'Skærmkort',
@@ -102,10 +94,10 @@
           }
         })
       })
-      // Add overlay layer to map
+      // Add layer to map
       baseMapLayerGroup.getLayers().push(skaermLayer)
 
-      // Create ortofoto overlay
+      // Create ortofoto base layer
       const ortofotoServiceUrl = 'https://api.dataforsyningen.dk/orto_foraar_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
       const ortofotoLayer = new TileLayer({
         visible: false,
@@ -120,7 +112,7 @@
           }
         })
       })
-      // Add overlay layer to map
+      // Add layer to map
       baseMapLayerGroup.getLayers().push(ortofotoLayer)
 
       // Create Matrikel overlay
@@ -156,6 +148,14 @@
       })
       // Add overlay layer to map
       overlayLayerGroup.getLayers().push(hillShadeLayer)
+
+      // Add additional controls to map
+      const layerSwitcher = new LayerSwitcher({
+        reverse: true,
+        groupSelectStyle: 'group'
+      });
+      map.addControl(layerSwitcher); // add a layer switcher
+      map.addControl(new ScaleLine()); // add a scale line
 
     </script>
 

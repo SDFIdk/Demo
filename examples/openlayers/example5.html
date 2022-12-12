@@ -3,27 +3,270 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
-    <link rel="stylesheet" href="lib/ol-layerswitcher.css" type="text/css">
+
+    <link rel="stylesheet" href="../lib/openlayerstyle.css">
+    
     <style>
-        .map {
-          height: 400px;
-          width: 100%;
-        }
-        .ol-attribution a {
-            color: #333333;
-            text-decoration: none;
-            font-family: Verdana, sans-serif;
-            font-size: .7rem;
-        }
+      body {font: 100%/1.3 sans-serif; color: #336370; margin: 0; padding: 0; }
+      header h1, footer p { margin: 0; padding: 2rem 1rem; }
+      #map { height: calc(100vh - 16rem); width: 100%; }
+      a:link, a:visited { color: #53c2cf; }
+      a:hover, a:focus { color: #336370; }
     </style>
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4-src.js" type="text/javascript"></script>
-    <script src="https://unpkg.com/ol-layerswitcher@3.8.3" type="text/javascript"></script>
-    <title>OpenLayers Example 5</title>
+
+    <title>Forvaltning2 WFS</title>
   </head>
   <body>
-    <div id="map" class="map"></div>
-    <script src="example5.js" type="text/javascript"></script>
+
+    <header>
+      <h1>Forvaltning2 WFS m. togstationer, jernbane og byområder</h1>
+    </header>
+
+    <div id="map"></div>
+
+    <script type="module">
+
+      // Get required modules
+      import { 
+        Map,
+        TileLayer,
+        View,
+        LayerGroup,
+        proj4,
+        register,
+        olProj,
+        LayerSwitcher,
+        TileWMS,
+        ScaleLine,
+        Style,
+        Stroke,
+        Fill,
+        CircleStyle,
+        VectorLayer,
+        VectorSource,
+        WFS,
+        olLoadingstrategy
+      } from '../lib/openlayers.js';            
+      
+      // Set Dataforsyningen token, replace with your own token
+      const dftoken = '9ca510be3c4eca89b1333cadbaa60c36';
+
+      // Set projection as we are not using the default OpenLayers projections
+      // You can define it yourself or you can use the proj4 library as done below
+      proj4.defs('EPSG:25832', "+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs");
+      register(proj4);
+      const myProjection = olProj.get('EPSG:25832');
+      const extent = [120000, 5661139.2, 1378291.2, 6500000];
+      myProjection.setExtent(extent);
+
+      // Set the attribution (the copyright statement shown in the lower right corner)
+      // We do this as we want the same attributions for all layers
+      const myAttributionText = '&copy; <a target="_blank" href="https://dataforsyningen.dk/Vilkaar">Styrelsen for Dataforsyning og Infrastruktur</a>';
+
+      // Define layer groups
+      const baseMapLayerGroup = new LayerGroup({
+        title: 'Baggrundskort'
+      })
+      const overlayLayerGroup = new LayerGroup({
+        title: 'Lag'
+      })
+
+      // Define view
+      const myView = new View({
+        center: [654500, 6176450], // start center position
+        zoom: 9, // start zoom level
+        projection: myProjection // use our custom projection defined earlier
+      });
+
+      // Initialize the map
+      const map = new Map({
+        layers: [
+          baseMapLayerGroup,
+          overlayLayerGroup
+        ],
+        target: 'map',
+        view: myView
+      });
+
+      // Create Skærmkort base layer
+      const skaermkortServiceUrl = 'https://api.dataforsyningen.dk/topo_skaermkort_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
+      const skaermLayer = new TileLayer({
+        title: 'Skærmkort',
+        type: 'base',
+        source: new TileWMS({
+          attributions: myAttributionText,
+          url: skaermkortServiceUrl,
+          params: {
+            'LAYERS': 'dtk_skaermkort',
+            'TRANSPARENT': 'FALSE'
+          }
+        })
+      })
+      // Add layer to map
+      baseMapLayerGroup.getLayers().push(skaermLayer)
+
+      // Create ortofoto base layer
+      const ortofotoServiceUrl = 'https://api.dataforsyningen.dk/orto_foraar_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
+      const ortofotoLayer = new TileLayer({
+        visible: false,
+        title: 'Ortofoto',
+        type: 'base',
+        source: new TileWMS({
+          attributions: myAttributionText,
+          url: ortofotoServiceUrl,
+          params: {
+            'LAYERS': 'orto_foraar',
+            'TRANSPARENT': 'FALSE'
+          }
+        })
+      })
+      // Add layer to map
+      baseMapLayerGroup.getLayers().push(ortofotoLayer)
+
+      // Forvaltning2 - byomraade source
+      const byomraade = new VectorSource({
+        useSpatialIndex : false,
+        format: new WFS(),
+        loader: function(extent) {
+          var url = 'https://api.dataforsyningen.dk/forvaltning2?token='+dftoken+'&servicename=forvaltning2&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAMES=forvaltning:byomraade&TYPENAME=forvaltning:byomraade&STARTINDEX=0&COUNT=100000&SRSNAME=urn:ogc:def:crs:EPSG::25832&' +
+          'bbox=' + extent.join(',')
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', url);
+          var onError = function() {
+            togstationer.removeLoadedExtent(extent);
+          }
+          xhr.onerror = onError;
+          xhr.onload = function() {
+            if (xhr.status == 200) {
+              byomraade.addFeatures(byomraade.getFormat().readFeatures(xhr.responseText));
+            } else {
+              onError();
+            }
+          }
+          xhr.send();
+        },
+        strategy:  olLoadingstrategy.bbox
+      });
+
+
+      // Forvaltning2 - togstation source    
+      const togstationer = new VectorSource({
+        useSpatialIndex : false,
+        format: new WFS(),
+        loader: function(extent) {
+          var url = 'https://api.dataforsyningen.dk/forvaltning2?token='+dftoken+'&servicename=forvaltning2&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAMES=forvaltning:togstation&TYPENAME=forvaltning:togstation&STARTINDEX=0&COUNT=100000&SRSNAME=urn:ogc:def:crs:EPSG::25832&' +
+          'bbox=' + extent.join(',')
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', url);
+          var onError = function() {
+            togstationer.removeLoadedExtent(extent);
+          }
+          xhr.onerror = onError;
+          xhr.onload = function() {
+            if (xhr.status == 200) {
+              togstationer.addFeatures(togstationer.getFormat().readFeatures(xhr.responseText));
+            } else {
+              onError();
+            }
+          }
+          xhr.send(); 
+        },
+        strategy:  olLoadingstrategy.bbox
+      })
+
+      // Forvaltning2 - jernbane source
+      const jernbane = new VectorSource({
+        format: new WFS(),
+        loader: function(extent) {
+          var url = 'https://api.dataforsyningen.dk/forvaltning2?token='+dftoken +'&servicename=forvaltning2&SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAMES=forvaltning:jernbane&TYPENAME=forvaltning:jernbane&STARTINDEX=0&COUNT=100000&SRSNAME=urn:ogc:def:crs:EPSG::25832&' 
+          + 'bbox=' + extent.join(',')
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', url);
+          var onError = function() {
+            jernbane.removeLoadedExtent(extent);
+          }
+          xhr.onerror = onError;
+          xhr.onload = function() {
+            if (xhr.status == 200) {
+              jernbane.addFeatures(jernbane.getFormat().readFeatures(xhr.responseText));
+            } else {
+              onError();
+            }
+          }
+          xhr.send(); 
+        },
+        strategy:  olLoadingstrategy.bbox
+      })
+
+      // [WFS:forvaltning2 : byomraade]
+      const byomraadeLayer = new VectorLayer({
+        opacity: 1.0,
+        zIndex:1000,
+        title:'Byområde',
+        visible: true,
+        type: 'overlay',
+        source : byomraade,
+        style: new Style({
+          stroke: new Stroke({
+            color: 'blue',
+            width : 2
+          }),
+          fill:new Fill({
+            color: 'rgba(255,0,0,0.2)'
+          })  
+        })
+      })
+      overlayLayerGroup.getLayers().push(byomraadeLayer)
+
+      // [WFS:forvaltning2 : togstationer]
+      const togstationLayer = new VectorLayer({
+        opacity: 1.0,
+        zIndex: 1000,
+        title:'Togstationer',
+        visible: true,
+        type: 'overlay',
+        source : togstationer,
+        style: new Style({
+          image: new CircleStyle({
+            radius: 3,
+            fill: new Fill({
+              color: 'rgb(255,255,0)'
+            })
+          })
+        })  
+      })
+      overlayLayerGroup.getLayers().push(togstationLayer)
+
+      // [WFS:forvaltning2 : jernbane]
+      const jernbaneLayer = new VectorLayer({
+        opacity: 1.0,
+        zIndex: 950,
+        title:'Jernbane',
+        visible: true,
+        type: 'overlay',
+        source : jernbane,
+        style: new Style({
+          stroke: new Stroke({
+            color: 'black',
+            lineDash: [5],
+            width: 1.5
+          })
+        })  
+      })
+      overlayLayerGroup.getLayers().push(jernbaneLayer)
+
+      // Add additional controls to map
+      const layerSwitcher = new LayerSwitcher({
+        reverse: true,
+        groupSelectStyle: 'group'
+      });
+      map.addControl(layerSwitcher); // add a layer switcher
+      map.addControl(new ScaleLine()); // add a scale line
+
+    </script>
+
+    <footer>
+      <p>© 2023 Styrelsen for Dataforsyning og Infrastruktur</p>
+    </footer>
   </body>
 </html>
