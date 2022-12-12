@@ -82,6 +82,14 @@
         view: myView
       });
 
+      // Add additional controls to map
+      const layerSwitcher = new LayerSwitcher({
+        reverse: true,
+        groupSelectStyle: 'group'
+      });
+      map.addControl(layerSwitcher); // add a layer switcher
+      map.addControl(new ScaleLine()); // add a scale line
+
       // Setup WMTS and parser
       const WMTSparser = new WMTSCapabilities();
 
@@ -97,10 +105,8 @@
           layer: 'topo_skaermkort',
           matrixSet: 'View1',
         });
-
         // Set attributions
         options.attributions = myAttributionText;
-
         // Create layer from source
         const skaermkortLayer = new TileLayer({
           title: 'Skærmkort',
@@ -124,10 +130,8 @@
           layer: 'orto_foraar_wmts',
           matrixSet: 'KortforsyningTilingDK',
         });
-
         // Set attributions
         options.attributions = myAttributionText;
-
         // Create layer from source
         const ortoLayer = new TileLayer({
           title: 'Ortofoto',
@@ -173,14 +177,6 @@
       })
       // Add overlay layer to map
       overlayLayerGroup.getLayers().push(hillShadeLayer)
-
-      // Add additional controls to map
-      const layerSwitcher = new LayerSwitcher({
-        reverse: true,
-        groupSelectStyle: 'group'
-      });
-      map.addControl(layerSwitcher); // add a layer switcher
-      map.addControl(new ScaleLine()); // add a scale line
 
     </script>
 
