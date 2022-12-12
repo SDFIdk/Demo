@@ -3,27 +3,130 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
-    <link rel="stylesheet" href="lib/ol-layerswitcher.css" type="text/css">
+
+    <link rel="stylesheet" href="../lib/openlayerstyle.css">
     <style>
-        .map {
-          height: 400px;
-          width: 100%;
-        }
-        .ol-attribution a {
-            color: #333333;
-            text-decoration: none;
-            font-family: Verdana, sans-serif;
-            font-size: .7rem;
-        }
+      body {font: 100%/1.3 sans-serif; color: #336370; margin: 0; padding: 0; }
+      header h1, footer p { margin: 0; padding: 2rem 1rem; }
+      #map { height: calc(100vh - 16rem); width: 100%; }
+      a:link, a:visited { color: #53c2cf; }
+      a:hover, a:focus { color: #336370; }
     </style>
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4-src.js" type="text/javascript"></script>
-    <script src="https://unpkg.com/ol-layerswitcher@3.8.3" type="text/javascript"></script>
-    <title>OpenLayers Example 4</title>
+
+    <title>WMTS til WMS</title>
   </head>
   <body>
-    <div id="map" class="map"></div>
-    <script src="example4.js" type="text/javascript"></script>
+
+    <header>
+      <h1>Skift fra WMTS til WMS i det inderste zoom-niveau</h1>
+    </header>
+
+    <div id="map"></div>
+
+    <script type="module">
+
+      // Get required modules
+      import { 
+        Map,
+        TileLayer,
+        View,
+        WMTS,
+        optionsFromCapabilities,
+        WMTSCapabilities,
+        LayerGroup,
+        proj4,
+        register,
+        olProj,
+        TileWMS,
+        ScaleLine
+      } from '../lib/openlayers.js';            
+      
+      // Set Dataforsyningen token, replace with your own token
+      const dftoken = '9ca510be3c4eca89b1333cadbaa60c36';
+
+      // We will define map and WMTS source later
+      let map
+      let wmtsSource
+
+      // Set projection as we are not using the default OpenLayers projections
+      // You can define it yourself or you can use the proj4 library as done below
+      proj4.defs('EPSG:25832', "+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs");
+      register(proj4);
+      const myProjection = olProj.get('EPSG:25832');
+      const extent = [120000, 5661139.2, 1378291.2, 6500000];
+      myProjection.setExtent(extent);
+
+      // Set the attribution (the copyright statement shown in the lower right corner)
+      // We do this as we want the same attributions for all layers
+      const myAttributionText = '&copy; <a target="_blank" href="https://dataforsyningen.dk/Vilkaar">Styrelsen for Dataforsyning og Infrastruktur</a>';
+
+      // Define Skærmkort layer
+      let skaermkortLayer = new TileLayer();
+
+      // Define WMS source
+      const wmsSource = new TileWMS({
+        attributions: myAttributionText,
+        url: "https://api.dataforsyningen.dk/topo_skaermkort_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=" + dftoken,
+        params: {
+          'LAYERS': 'dtk_skaermkort',
+          'TRANSPARENT': 'FALSE'
+        }
+      });
+
+      // Define view
+      const myView = new View({
+        center: [654500, 6176450], // start center position
+        zoom: 9, // start zoom level
+        projection: myProjection // use our custom projection defined earlier
+      });
+
+      // Fetches 'topo_skaermkort' capabilites and adds WMTS layer to map
+      const skaermkortCapabilitesUrl = 'https://api.dataforsyningen.dk/topo_skaermkort_wmts_DAF?service=WMTS&request=GetCapabilities&token=' + dftoken
+      fetch(skaermkortCapabilitesUrl)
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (text) {
+        // Parse WMTS
+        const WMTSparser = new WMTSCapabilities();
+        const result = WMTSparser.read(text);
+        let options = optionsFromCapabilities(result, {
+          layer: 'topo_skaermkort',
+          matrixSet: 'View1',
+        });
+        // Set attributions
+        options.attributions = myAttributionText;
+        // Update layer source
+        wmtsSource = new WMTS(options)
+        skaermkortLayer.setSource(wmtsSource)
+        
+        // Initialize the map with WMTS layer
+        map = new Map({
+          layers: [
+            skaermkortLayer
+          ],
+          target: 'map',
+          view: myView
+        });
+
+        // switch to WMS when zoom level is greater than 13.
+        map.on('moveend', function (event) {
+          if (event.map.getView().getZoom() > 13) {
+            skaermkortLayer.setSource(wmsSource);
+          } else {
+            skaermkortLayer.setSource(wmtsSource);
+          }
+        });
+
+        // Add additional controls to map
+        map.addControl(new ScaleLine()); // add a scale line
+
+      });
+
+    </script>
+
+    <footer>
+      <p>© 2023 Styrelsen for Dataforsyning og Infrastruktur</p>
+    </footer>
   </body>
 </html>
