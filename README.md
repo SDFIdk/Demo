@@ -11,7 +11,7 @@ Offentlig Kort API er et modul til indlejring af baggrundskort på hjemmesider. 
 - [WMTS](https://sdfidk.github.io/Demo/openlayers/example1.html)
 - [WMS](https://sdfidk.github.io/Demo/openlayers/example2.html)
 - [Type-ahead søgning](https://sdfidk.github.io/Demo/openlayers/example3.html)
-- [Skift fra WMTS til WMS i det inderste zoom niveau](https://sdfidk.github.io/Demo/openlayers/example4.html)
+- [Skift fra WMTS til WMS i det inderste zoom-niveau](https://sdfidk.github.io/Demo/openlayers/example4.html)
 - [Forvaltning2 WFS m. togstationer, jernbane og byområder](https://sdfidk.github.io/Demo/openlayers/example5.html)
 
 ## Eksempler med LeafletJS
@@ -19,7 +19,7 @@ Offentlig Kort API er et modul til indlejring af baggrundskort på hjemmesider. 
 - [WMTS](https://sdfidk.github.io/Demo/leaflet/example1.html)
 - [WMS](https://sdfidk.github.io/Demo/leaflet/example2.html)
 - [Type-ahead søgning](https://sdfidk.github.io/Demo/leaflet/example3.html)
-- [Skift fra WMTS til WMS i det inderste zoom niveau](https://sdfidk.github.io/Demo/leaflet/example4.html)
+- [Skift fra WMTS til WMS i det inderste zoom-niveau](https://sdfidk.github.io/Demo/leaflet/example4.html)
 
 ## login og sikkerhed
 

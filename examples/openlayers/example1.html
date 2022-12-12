@@ -82,14 +82,6 @@
         view: myView
       });
 
-      // Add additional controls to map
-      const layerSwitcher = new LayerSwitcher({
-        reverse: true,
-        groupSelectStyle: 'group'
-      });
-      map.addControl(layerSwitcher); // add a layer switcher
-      map.addControl(new ScaleLine()); // add a scale line
-
       // Setup WMTS and parser
       const WMTSparser = new WMTSCapabilities();
 
@@ -177,6 +169,14 @@
       })
       // Add overlay layer to map
       overlayLayerGroup.getLayers().push(hillShadeLayer)
+
+      // Add additional controls to map
+      const layerSwitcher = new LayerSwitcher({
+        reverse: true,
+        groupSelectStyle: 'group'
+      });
+      map.addControl(layerSwitcher); // add a layer switcher
+      map.addControl(new ScaleLine()); // add a scale line
 
     </script>
 
