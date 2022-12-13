@@ -3,34 +3,198 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
     <style>
-        #map {
-          height: 400px;
-          width: 100%;
-        }
-        .typeahead {
-            width: 400px;
-            position: absolute;
-            z-index: 1000;
-            top: 12px;
-            right: 160px;
-            display: inline-block;
-        }
+      body {font: 100%/1.3 sans-serif; color: hsla(0,0%,0%,0.65); margin: 0; padding: 0; }
+      header h1, footer p { margin: 0; padding: 2rem 1rem; }
+      #map { height: calc(100vh - 16rem); width: 100%; }
+      a:link, a:visited { color: #0097A7; }
+      a:hover, a:focus { color: #00393F; }
+      main { position: relative; }
+      .typeahead {
+        width: 25rem;
+        max-width: calc(100% - 7.5rem);
+        position: absolute;
+        z-index: 1000;
+        top: 0.9rem;
+        right: 4.25rem;
+        display: block;
+      }
     </style>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4-src.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.min.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="undefined" crossorigin="anonymous"></script>
-    <script src="lib/bootstrap3-typeahead.min.js"></script>
-    <script src="lib/wicket.js"></script>
-    <script src="lib/wicket-leaflet.js"></script>
-    <title>Leaflet 3 + GeoSearch typeahead</title>
+
+    <title>GeoSearch type-ahead</title>
   </head>
   <body>
-    <div id="map" class="map"></div>
-    <input type="text" class="typeahead form-control pull-right" data-provide="typeahead" autocomplete="off" placeholder="indtast adresse, vej...">
-    <script src="example3.js" type="text/javascript"></script>
+
+    <header>
+      <h1>GeoSearch type-ahead eksempel</a></h1>
+    </header>
+
+    <main>
+      
+      <input type="text" class="typeahead form-control pull-right" data-provide="typeahead" autocomplete="off" placeholder="indtast adresse, vej...">
+
+      <div id="map"></div>
+
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4-src.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="./lib/bootstrap3-typeahead.min.js"></script>
+    <script src="./lib/wicket.js"></script>
+    <script src="./lib/wicket-leaflet.js"></script>
+
+    <script>
+
+      // Set Kortforsyningen token, replace with your own token
+      const dftoken = '9ca510be3c4eca89b1333cadbaa60c36';
+
+      // Set the attribution (the copyright statement shown in the lower right corner)
+      // We do this as we want the same attributions for all layers
+      const myAttributionText = '&copy; <a target="_blank" href="https://dataforsyningen.dk/Vilkaar">Styrelsen for Dataforsyning og Infrastruktur</a>';
+
+      // Make custom projection using proj4 and proj4leaflet
+      const crs = new L.Proj.CRS('EPSG:25832', '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs', {
+        resolutions: [1638.4,819.2,409.6,204.8,102.4,51.2,25.6,12.8,6.4,3.2,1.6,0.8,0.4,0.2,0.1]
+      });
+
+      // Make the map object using the custom projection
+      const map = new L.Map('map', {
+        crs: crs,
+        center: [55.709155, 11.459081], // Set center location
+        zoom: 9 // Set zoom level
+      });
+
+      // Define layers
+
+      // Ortofoto [WMS:orto_foraar]
+      const ortofotowms = L.tileLayer.wms('https://api.dataforsyningen.dk/orto_foraar_DAF?ignoreillegallayers=TRUE', {
+        layers: 'orto_foraar',
+        token: dftoken,
+        format: 'image/png',
+        attribution: myAttributionText
+      }).addTo(map);
+
+      // Skærmkort [WMTS:topo_skaermkort]
+      const toposkaermkortwms = L.tileLayer.wms('https://api.dataforsyningen.dk/topo_skaermkort_DAF?ignoreillegallayers=TRUE', {
+        layers: 'dtk_skaermkort',
+        token: dftoken,
+        format: 'image/png',
+        attribution: myAttributionText
+      }).addTo(map);
+
+      // Matrikelskel overlay [WMS:mat]
+      const matrikel = L.tileLayer.wms('https://api.dataforsyningen.dk/MatrikelGaeldendeOgForeloebigWMS_DAF?ignoreillegallayers=TRUE', {
+        transparent: true,
+        layers: 'MatrikelSkel_Gaeldende,Centroide_Gaeldende',
+        token: dftoken,
+        format: 'image/png',
+        attribution: myAttributionText,
+        continuousWorld: true,
+        minZoom: 9
+      }).addTo(map); // addTo means that the layer is visible by default
+
+      // Hillshade overlay [WMS:dhm]
+      const hillshade = L.tileLayer.wms('https://api.dataforsyningen.dk/dhm?ignoreillegallayers=TRUE', {
+        transparent: true,
+        layers: 'dhm_terraen_skyggekort_transparent_overdrevet',
+        token: dftoken,
+        format: 'image/png',
+        attribution: myAttributionText,
+        continuousWorld: true
+      });
+
+      // Define layer groups for layer control
+      const baseLayers = {
+        "Ortofoto": ortofotowms,
+        "Skærmkort": toposkaermkortwms
+      };
+      const overlays = {
+        "Matrikel": matrikel,
+        "Skyggekort": hillshade
+      };
+
+      // Add layer control to map
+      L.control.layers(baseLayers, overlays).addTo(map);
+
+      // Add scale line to map
+      L.control.scale({imperial: false}).addTo(map); // disable feet units
+
+      // This is the array to hold the GeoSearch feeatures
+      const gsFeatures = []; 
+    
+      // Function to clear the map from GeoSearch features
+      const clearMap = function() {
+        for (var i in gsFeatures) {
+          if (gsFeatures.hasOwnProperty(i)) {
+            map.removeLayer(gsFeatures[i]);
+          }
+        }
+        gsFeatures.length = 0;
+      }
+
+      // Make a typeahead of the input search field using Bootstrap 3 Typeahead
+      $('input.typeahead').typeahead({
+        displayText:  function (item){
+          return item.presentationString; // this is the attribute of the JSON response to show in the dropdown
+        },
+        source:  function (query, process) {
+          return $.get("https://services.kortforsyningen.dk/Geosearch", { 
+            search: query,
+            resources: "adresser", // the resource to search within - check valid resources on https://kortforsyningen.dk/indhold/geonoegler-geosearch 
+            token: dftoken,
+            crs: 'EPSG:4326'
+          }, 
+          function (response) { // This method is being called when data was received from GeoSearch
+            if(response.data) {
+              return process(response.data);
+            }
+          });
+        },
+        afterSelect: function(item) { 
+          // when an item in the dropdown was selected try to show the geometry of the item
+          if(item.geometryWkt) {
+            clearMap(); // remove any previous geometries from map
+            const wkt = new Wkt.Wkt(); // make a new instance of the Wicket class
+            wkt.read(item.geometryWkt); // read WKT from GeoSearch
+            const obj = wkt.toObject(map.defaults); // Make a Leaflet object
+            
+            // Add to map, distinguish multigeometries (Arrays) from objects
+            if (Wkt.isArray(obj)) {
+              for (i in obj) {
+                if (obj.hasOwnProperty(i) && !Wkt.isArray(obj[i])) {
+                  obj[i].addTo(map);
+                  gsFeatures.push(obj[i]);
+                }
+              }
+            } else {
+              obj.addTo(map);
+              gsFeatures.push(obj);
+            }
+
+            // Pan the map to the feature, distinguish between points and other geometries
+            if (obj.getBounds !== undefined && typeof obj.getBounds === 'function') {
+              map.fitBounds(obj.getBounds());
+            } else {
+              if (obj.getLatLng !== undefined && typeof obj.getLatLng === 'function') {
+                map.panTo(obj.getLatLng());
+              }
+            }
+          }
+        }
+      });
+
+    </script>
+
+    <footer>
+      <p>© 2023 Styrelsen for Dataforsyning og Infrastruktur</p>
+    </footer>
   </body>
 </html>

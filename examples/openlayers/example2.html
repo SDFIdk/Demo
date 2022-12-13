@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../lib/openlayerstyle.css">
     
     <style>
-      body {font: 100%/1.3 sans-serif; color: #336370; margin: 0; padding: 0; }
+      body {font: 100%/1.3 sans-serif; color: hsla(0,0%,0%,0.65); margin: 0; padding: 0; }
       header h1, footer p { margin: 0; padding: 2rem 1rem; }
       #map { height: calc(100vh - 16rem); width: 100%; }
-      a:link, a:visited { color: #53c2cf; }
-      a:hover, a:focus { color: #336370; }
+      a:link, a:visited { color: #0097A7; }
+      a:hover, a:focus { color: #00393F; }
     </style>
 
     <title>WMS kort med OpenLayers</title>
@@ -81,7 +81,7 @@
       });
 
       // Create Skærmkort base layer
-      const skaermkortServiceUrl = 'https://api.dataforsyningen.dk/topo_skaermkort_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
+      const skaermkortServiceUrl = 'https://api.dataforsyningen.dk/topo_skaermkort_DAF?ignoreillegallayers=TRUE&token=' + dftoken
       const skaermLayer = new TileLayer({
         title: 'Skærmkort',
         type: 'base',
@@ -98,7 +98,7 @@
       baseMapLayerGroup.getLayers().push(skaermLayer)
 
       // Create ortofoto base layer
-      const ortofotoServiceUrl = 'https://api.dataforsyningen.dk/orto_foraar_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
+      const ortofotoServiceUrl = 'https://api.dataforsyningen.dk/orto_foraar_DAF?ignoreillegallayers=TRUE&token=' + dftoken
       const ortofotoLayer = new TileLayer({
         visible: false,
         title: 'Ortofoto',
@@ -116,7 +116,7 @@
       baseMapLayerGroup.getLayers().push(ortofotoLayer)
 
       // Create Matrikel overlay
-      const matrikelServiceUrl = 'https://api.dataforsyningen.dk/MatrikelGaeldendeOgForeloebigWMS_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
+      const matrikelServiceUrl = 'https://api.dataforsyningen.dk/MatrikelGaeldendeOgForeloebigWMS_DAF?ignoreillegallayers=TRUE&token=' + dftoken
       const matrikelLayer = new TileLayer({
         visible: false,
         title: 'Matrikel',
@@ -133,7 +133,7 @@
       overlayLayerGroup.getLayers().push(matrikelLayer)
 
       // Create Hill shade overlay
-      const hillShadeServiceUrl = 'https://api.dataforsyningen.dk/dhm?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
+      const hillShadeServiceUrl = 'https://api.dataforsyningen.dk/dhm?ignoreillegallayers=TRUE&token=' + dftoken
       const hillShadeLayer = new TileLayer({
         visible: false,
         title: 'Skyggekort',
