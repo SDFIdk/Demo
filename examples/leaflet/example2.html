@@ -58,7 +58,7 @@
 
       // Define layers
 
-      // Ortofoto [WMTS:orto_foraar]
+      // Ortofoto [WMS:orto_foraar]
       const ortofotowms = L.tileLayer.wms('https://api.dataforsyningen.dk/orto_foraar_DAF?ignoreillegallayers=TRUE', {
         layers: 'orto_foraar',
         token: dftoken,
@@ -66,7 +66,7 @@
         attribution: myAttributionText
       }).addTo(map);
 
-      // Skærmkort [WMTS:topo_skaermkort]
+      // Skærmkort [WMS:topo_skaermkort]
       const toposkaermkortwms = L.tileLayer.wms('https://api.dataforsyningen.dk/topo_skaermkort_DAF?ignoreillegallayers=TRUE', {
         layers: 'dtk_skaermkort',
         token: dftoken,
