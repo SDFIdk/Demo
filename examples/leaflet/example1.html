@@ -39,26 +39,26 @@
 
       // Make the map object using the custom projection
       //proj4.defs('EPSG:25832', "+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs");
-      var crs = new L.Proj.CRS('EPSG:25832',
+      const crs = new L.Proj.CRS('EPSG:25832',
       '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs', {
-          resolutions: [1638.4,819.2,409.6,204.8,102.4,51.2,25.6,12.8,6.4,3.2,1.6,0.8,0.4,0.2],
-          origin: [120000,6500000],
-          bounds: L.bounds([120000, 5661139.2],[1378291.2, 6500000])
+        resolutions: [1638.4,819.2,409.6,204.8,102.4,51.2,25.6,12.8,6.4,3.2,1.6,0.8,0.4,0.2],
+        origin: [120000,6500000],
+        bounds: L.bounds([120000, 5661139.2],[1378291.2, 6500000])
       });
 
       // Make the map object using the custom projection
-      var map = new L.Map('map', {
-          crs: crs,
-          continuousWorld: true,
-          center: [55.709155, 11.459081], // Set center location
-          zoom: 9, // Set zoom level
-          minzoom: 0,
-          maxzoom: 13
+      const map = new L.Map('map', {
+        crs: crs,
+        continuousWorld: true,
+        center: [55.709155, 11.459081], // Set center location
+        zoom: 9, // Set zoom level
+        minzoom: 0,
+        maxzoom: 13
       });
 
       // Define layers
       // Ortofoto [WMTS:orto_foraar]
-      var ortofotowmts = L.tileLayer('https://api.dataforsyningen.dk/orto_foraar_wmts_DAF?service=WMTS&request=GetTile&version=1.3.0&Layer=orto_foraar_wmts&style=default&format=image/jpg&TileMatrixSet=KortforsyningTilingDK&TileMatrix={zoom}&TileRow={y}&TileCol={x}&token=' + dftoken, {
+      const ortofotowmts = L.tileLayer('https://api.dataforsyningen.dk/orto_foraar_wmts_DAF?service=WMTS&request=GetTile&version=1.3.0&Layer=orto_foraar_wmts&style=default&format=image/jpg&TileMatrixSet=KortforsyningTilingDK&TileMatrix={zoom}&TileRow={y}&TileCol={x}&token=' + dftoken, {
         minZoom: 0,
         maxZoom: 13,
         attribution: myAttributionText,
@@ -69,7 +69,7 @@
       }).addTo(map);
 
       // Skærmkort [WMTS:topo_skaermkort]
-      var toposkaermkortwmts = L.tileLayer('https://api.dataforsyningen.dk/topo_skaermkort_wmts_DAF?service=WMTS&request=GetTile&version=1.3.0&Layer=topo_skaermkort&style=default&format=image/png&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}&token=' + dftoken, {
+      const toposkaermkortwmts = L.tileLayer('https://api.dataforsyningen.dk/topo_skaermkort_wmts_DAF?service=WMTS&request=GetTile&version=1.3.0&Layer=topo_skaermkort&style=default&format=image/png&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}&token=' + dftoken, {
         minZoom: 0,
         maxZoom: 13,
         attribution: myAttributionText,
@@ -80,7 +80,7 @@
       }).addTo(map);
 
       // Matrikelskel overlay [WMS:mat]
-      var matrikel = L.tileLayer.wms('https://api.dataforsyningen.dk/MatrikelGaeldendeOgForeloebigWMS_DAF?ignoreillegallayers=TRUE', {
+      const matrikel = L.tileLayer.wms('https://api.dataforsyningen.dk/MatrikelGaeldendeOgForeloebigWMS_DAF?ignoreillegallayers=TRUE', {
         transparent: true,
         layers: 'MatrikelSkel_Gaeldende,Centroide_Gaeldende',
         token: dftoken,
@@ -91,7 +91,7 @@
       }).addTo(map); // addTo means that the layer is visible by default
 
       // Hillshade overlay [WMS:dhm]
-      var hillshade = L.tileLayer.wms('https://api.dataforsyningen.dk/dhm?ignoreillegallayers=TRUE', {
+      const hillshade = L.tileLayer.wms('https://api.dataforsyningen.dk/dhm?ignoreillegallayers=TRUE', {
         transparent: true,
         layers: 'dhm_terraen_skyggekort_transparent_overdrevet',
         token: dftoken,
@@ -101,13 +101,13 @@
       });
 
       // Define layer groups for layer control
-      var baseLayers = {
-          "Ortofoto": ortofotowmts,
-          "Skærmkort": toposkaermkortwmts
+      const baseLayers = {
+        "Ortofoto": ortofotowmts,
+        "Skærmkort": toposkaermkortwmts
       };
-      var overlays = {
-          "Matrikel": matrikel,
-          "Skyggekort": hillshade
+      const overlays = {
+        "Matrikel": matrikel,
+        "Skyggekort": hillshade
       };
 
       // Add layer control to map
