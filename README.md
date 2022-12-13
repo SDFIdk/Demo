@@ -23,4 +23,4 @@ Offentlig Kort API er et modul til indlejring af baggrundskort på hjemmesider. 
 
 ## login og sikkerhed
 
-https://kortforsyningen.dk/indhold/login-https-og-tls
+https://docs.dataforsyningen.dk/
