@@ -8,6 +8,7 @@ export { default as TileWMS } from 'ol/source/TileWMS';
 export { default as VectorSource } from 'ol/source/Vector';
 export { default as WMTSCapabilities } from 'ol/format/WMTSCapabilities';
 export { default as WFS } from 'ol/format/WFS';
+export { default as WKT } from 'ol/format/WKT';
 export { default as ScaleLine } from 'ol/control/ScaleLine';
 export { default as Style } from 'ol/style/Style';
 export { default as Stroke } from 'ol/style/Stroke';
