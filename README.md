@@ -21,6 +21,6 @@ Offentlig Kort API er et modul til indlejring af baggrundskort på hjemmesider. 
 - [Type-ahead søgning](https://sdfidk.github.io/Demo/leaflet/example3.html)
 - [Skift fra WMTS til WMS i det inderste zoom-niveau](https://sdfidk.github.io/Demo/leaflet/example4.html)
 
-## login og sikkerhed
+## Login og sikkerhed
 
 https://docs.dataforsyningen.dk/
