@@ -14,7 +14,7 @@
       a:link, a:visited { color: #0097A7; }
       a:hover, a:focus { color: #00393F; }
       main { position: relative; }
-      .typeahead {
+      g-search {
         width: 25rem;
         max-width: calc(100% - 7.5rem);
         position: absolute;
@@ -35,7 +35,11 @@
 
     <main>
       
-      <input type="text" class="typeahead form-control pull-right" data-provide="typeahead" autocomplete="off" placeholder="indtast adresse, vej...">
+      <g-search 
+        data-token="9ca510be3c4eca89b1333cadbaa60c36"
+        data-limit="30"
+        data-resources="stednavn,navngivenvej">
+      </g-search>
 
       <div id="map"></div>
 
@@ -51,7 +55,9 @@
     <script src="./lib/wicket.js"></script>
     <script src="./lib/wicket-leaflet.js"></script>
 
-    <script>
+    <script type="module">
+
+      import { GSearchUI, translator } from '../lib/leaflet.js'
 
       // Set Kortforsyningen token, replace with your own token
       const dftoken = '9ca510be3c4eca89b1333cadbaa60c36';
@@ -80,7 +86,7 @@
         token: dftoken,
         format: 'image/png',
         attribution: myAttributionText
-      }).addTo(map);
+      });
 
       // Skærmkort [WMTS:topo_skaermkort]
       const toposkaermkortwms = L.tileLayer.wms('https://api.dataforsyningen.dk/topo_skaermkort_DAF?ignoreillegallayers=TRUE', {
@@ -90,105 +96,49 @@
         attribution: myAttributionText
       }).addTo(map);
 
-      // Matrikelskel overlay [WMS:mat]
-      const matrikel = L.tileLayer.wms('https://api.dataforsyningen.dk/MatrikelGaeldendeOgForeloebigWMS_DAF?ignoreillegallayers=TRUE', {
-        transparent: true,
-        layers: 'MatrikelSkel_Gaeldende,Centroide_Gaeldende',
-        token: dftoken,
-        format: 'image/png',
-        attribution: myAttributionText,
-        continuousWorld: true,
-        minZoom: 9
-      }).addTo(map); // addTo means that the layer is visible by default
-
-      // Hillshade overlay [WMS:dhm]
-      const hillshade = L.tileLayer.wms('https://api.dataforsyningen.dk/dhm?ignoreillegallayers=TRUE', {
-        transparent: true,
-        layers: 'dhm_terraen_skyggekort_transparent_overdrevet',
-        token: dftoken,
-        format: 'image/png',
-        attribution: myAttributionText,
-        continuousWorld: true
-      });
-
       // Define layer groups for layer control
       const baseLayers = {
         "Ortofoto": ortofotowms,
         "Skærmkort": toposkaermkortwms
       };
-      const overlays = {
-        "Matrikel": matrikel,
-        "Skyggekort": hillshade
-      };
 
-      // Add layer control to map
-      L.control.layers(baseLayers, overlays).addTo(map);
+      // Add layers to map
+      L.control.layers(baseLayers).addTo(map);
 
       // Add scale line to map
       L.control.scale({imperial: false}).addTo(map); // disable feet units
 
-      // This is the array to hold the GeoSearch feeatures
-      const gsFeatures = []; 
+      // This is the layer to hold the GSearch features
+      let gsFeature; 
     
-      // Function to clear the map from GeoSearch features
-      const clearMap = function() {
-        for (var i in gsFeatures) {
-          if (gsFeatures.hasOwnProperty(i)) {
-            map.removeLayer(gsFeatures[i]);
-          }
+      // Function to clear GSearch feature from map
+      function clearMap() {
+        if (gsFeature) {
+          map.removeLayer(gsFeature);
         }
-        gsFeatures.length = 0;
       }
 
-      // Make a typeahead of the input search field using Bootstrap 3 Typeahead
-      $('input.typeahead').typeahead({
-        displayText:  function (item){
-          return item.presentationString; // this is the attribute of the JSON response to show in the dropdown
-        },
-        source:  function (query, process) {
-          return $.get("https://services.kortforsyningen.dk/Geosearch", { 
-            search: query,
-            resources: "adresser", // the resource to search within - check valid resources on https://kortforsyningen.dk/indhold/geonoegler-geosearch 
-            token: dftoken,
-            crs: 'EPSG:4326'
-          }, 
-          function (response) { // This method is being called when data was received from GeoSearch
-            if(response.data) {
-              return process(response.data);
-            }
-          });
-        },
-        afterSelect: function(item) { 
-          // when an item in the dropdown was selected try to show the geometry of the item
-          if(item.geometryWkt) {
-            clearMap(); // remove any previous geometries from map
-            const wkt = new Wkt.Wkt(); // make a new instance of the Wicket class
-            wkt.read(item.geometryWkt); // read WKT from GeoSearch
-            const obj = wkt.toObject(map.defaults); // Make a Leaflet object
-            
-            // Add to map, distinguish multigeometries (Arrays) from objects
-            if (Wkt.isArray(obj)) {
-              for (i in obj) {
-                if (obj.hasOwnProperty(i) && !Wkt.isArray(obj[i])) {
-                  obj[i].addTo(map);
-                  gsFeatures.push(obj[i]);
-                }
-              }
-            } else {
-              obj.addTo(map);
-              gsFeatures.push(obj);
-            }
-
-            // Pan the map to the feature, distinguish between points and other geometries
-            if (obj.getBounds !== undefined && typeof obj.getBounds === 'function') {
-              map.fitBounds(obj.getBounds());
-            } else {
-              if (obj.getLatLng !== undefined && typeof obj.getLatLng === 'function') {
-                map.panTo(obj.getLatLng());
-              }
-            }
-          }
+      // Define GSearch type-ahead
+      customElements.define('g-search', GSearchUI);
+      
+      // Setup GSearch event listener
+      document.querySelector("g-search").addEventListener('gsearch:select', (event) => {
+        // When an item in the dropdown was selected, try to show the geometry of the item.  
+        
+        // Get latlongs and convert them to Leaflet-friendly WGS84 coordinate
+        let latlongs = event.detail.bbox.coordinates;
+        for (let l in latlongs[0]) {
+          latlongs[0][l] = translator.forward(latlongs[0][l]);
+          latlongs[0][l].reverse();
         }
+        latlongs[0].pop();
+        
+        // Clear map
+        clearMap();
+
+        // Create new polygon and add to map
+        gsFeature = L.polygon(latlongs, {color: 'red'}).addTo(map);
+        map.fitBounds(gsFeature.getBounds()); // zoom to geometry
       });
 
     </script>

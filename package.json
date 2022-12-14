@@ -33,6 +33,7 @@
   "dependencies": {
     "@dataforsyningen/css": "^0.4.0",
     "@dataforsyningen/gsearch-ui": "^0.5.0",
+    "@dataforsyningen/saul": "^3.2.0",
     "ol": "^7.1.0",
     "ol-layerswitcher": "^4.1.0",
     "proj4": "^2.8.0"
