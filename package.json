@@ -31,7 +31,7 @@
   },
   "homepage": "https://sdfidk.github.com/demo/",
   "dependencies": {
-    "@dataforsyningen/gsearch-ui": "^0.7.0",
+    "@dataforsyningen/gsearch-ui": "^0.7.2",
     "@dataforsyningen/saul": "^3.2.0",
     "ol": "^7.1.0",
     "ol-layerswitcher": "^4.1.0"

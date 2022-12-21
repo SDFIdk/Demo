@@ -38,7 +38,7 @@
       <g-search 
         data-token="9ca510be3c4eca89b1333cadbaa60c36"
         data-limit="30"
-        data-resources="stednavn,navngivenvej">
+        data-resources="stednavn,navngivenvej,husnummer">
       </g-search>
       
       <div id="map"></div>
@@ -216,8 +216,16 @@
       
       // Setup GSearch event listener
       document.querySelector("g-search").addEventListener('gsearch:select', (event) => {
+
+        let feature
+        if (event.detail.geometry.type === 'MultiPoint') {
+          feature = new Point(event.detail.geometry.coordinates[0])
+        } else {
+          feature = new Polygon(event.detail.bbox.coordinates)
+        }
+
         // When an item in the dropdown was selected, try to show the geometry of the item.
-        const gsFeature = new Feature(new Polygon(event.detail.bbox.coordinates));
+        const gsFeature = new Feature(feature);
         gsVectorSource.clear(); // remove any previous geosearch geometry
         gsVectorSource.addFeature(gsFeature); // add new geosearch geometry
         map.getView().fit(gsVectorSource.getExtent()); // zoom to geosearch geometry

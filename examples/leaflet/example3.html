@@ -37,7 +37,7 @@
       <g-search 
         data-token="9ca510be3c4eca89b1333cadbaa60c36"
         data-limit="30"
-        data-resources="stednavn,navngivenvej">
+        data-resources="stednavn,navngivenvej,husnummer">
       </g-search>
 
       <div id="map"></div>
@@ -120,21 +120,32 @@
       // Setup GSearch event listener
       document.querySelector("g-search").addEventListener('gsearch:select', (event) => {
         // When an item in the dropdown was selected, try to show the geometry of the item.  
-        
-        // Get latlongs and convert them to Leaflet-friendly WGS84 coordinate
-        let latlongs = event.detail.bbox.coordinates;
-        for (let l in latlongs[0]) {
-          latlongs[0][l] = translator.forward(latlongs[0][l]);
-          latlongs[0][l].reverse();
-        }
-        latlongs[0].pop();
-        
-        // Clear map
-        clearMap();
 
-        // Create new polygon and add to map
-        gsFeature = L.polygon(latlongs, {color: 'red'}).addTo(map);
-        map.fitBounds(gsFeature.getBounds()); // zoom to geometry
+        clearMap(); // Clear map
+
+        let feature
+        if (event.detail.geometry.type === 'MultiPoint') {
+          // Get latlong and convert to Leaflet-friendly WGS84 coordinate
+          let latlong = event.detail.geometry.coordinates[0];
+          latlong = translator.forward(latlong);
+          latlong.reverse();
+          // Create circle feature
+          console.log(latlong, L)
+          feature = L.circle(latlong, {radius: 5}).addTo(map);
+        } else {
+          // Most other geometries will be 'MultiPolygon'
+          // Get latlongs and convert them to Leaflet-friendly WGS84 coordinate
+          let latlongs = event.detail.geometry.coordinates[0];
+          for (let l in latlongs[0]) {
+            latlongs[0][l] = translator.forward(latlongs[0][l]);
+            latlongs[0][l].reverse();
+          }
+          latlongs[0].pop();
+          // Create polygon feature
+          feature = L.polygon(latlongs, {color: 'red'}).addTo(map);
+        }
+        
+        map.fitBounds(feature.getBounds()); // zoom to geometry
       });
 
     </script>
