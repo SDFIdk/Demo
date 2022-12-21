@@ -12,7 +12,6 @@ require('esbuild').build({
   outdir: 'examples/lib/',
   bundle: true,
   minify: true,
-  sourcemap:true,
   format: 'esm'
 })
 .then(() => {

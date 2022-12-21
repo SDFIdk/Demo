@@ -31,12 +31,12 @@
   },
   "homepage": "https://sdfidk.github.com/demo/",
   "dependencies": {
-    "@dataforsyningen/gsearch-ui": "^0.5.0",
+    "@dataforsyningen/gsearch-ui": "^0.7.0",
     "@dataforsyningen/saul": "^3.2.0",
     "ol": "^7.1.0",
     "ol-layerswitcher": "^4.1.0"
   },
   "devDependencies": {
-    "esbuild": "^0.16.4"
+    "esbuild": "^0.16.10"
   }
 }
