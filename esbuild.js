@@ -1,4 +1,6 @@
 
+import {build} from 'esbuild'
+
 const entry_points = {
   openlayers: 'src/ol.js',
   leaflet: 'src/leaflet.js',
@@ -7,7 +9,7 @@ const entry_points = {
 }
 
 // Production build
-require('esbuild').build({
+build({
   entryPoints: entry_points,
   outdir: 'examples/lib/',
   bundle: true,
