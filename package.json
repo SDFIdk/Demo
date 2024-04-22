@@ -3,11 +3,13 @@
   "version": "2.1.0",
   "description": "En samling a eksempler for brug af Dataforsyningens data med OpenLayers og LeafletJS",
   "main": "./examples/index.html",
+  "type": "module",
   "directories": {
     "example": "examples"
   },
   "scripts": {
     "build": "node esbuild.js",
+    "dev": "node esbuildDev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
