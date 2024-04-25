@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../lib/openlayerstyle.css">
+    <style>
+      body {font: 100%/1.3 sans-serif; color: hsla(0,0%,0%,0.65); margin: 0; padding: 0; }
+      header h1, footer p { margin: 0; padding: 2rem 1rem; }
+      #map { height: calc(100vh - 16rem); width: 100%; }
+      a:link, a:visited { color: #0097A7; }
+      a:hover, a:focus { color: #00393F; }
+    </style>
+
+    <title>OGCAPI features med OpenLayers</title>
+  </head>
+  <body>
+
+    <header>
+      <h1>OGCAPI features med <a href="https://openlayers.org/">OpenLayers</a></h1>
+    </header>
+
+    <div id="map"></div>
+
+    <script type="module">
+
+      // Get required modules
+      import { 
+        Map,
+        TileLayer,
+        View,
+        WMTS,
+        optionsFromCapabilities,
+        WMTSCapabilities,
+        LayerGroup,
+        proj4,
+        register,
+        olProj,
+        LayerSwitcher,
+        TileWMS,
+        ScaleLine,
+        OGCMapTile,
+        VectorLayer,
+        VectorSource,
+        GeoJSON
+      } from '../lib/openlayers.js';            
+      
+      // Set Dataforsyningen token, replace with your own token
+      const dftoken = '9ca510be3c4eca89b1333cadbaa60c36';
+
+      // Set projection as we are not using the default OpenLayers projections
+      // You can define it yourself or you can use the proj4 library as done below
+      proj4.defs('EPSG:25832', "+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs");
+      register(proj4);
+      const myProjection = olProj.get('EPSG:25832');
+      const extent = [120000, 5661139.2, 1378291.2, 6500000];
+      myProjection.setExtent(extent);
+
+      // Set the attribution (the copyright statement shown in the lower right corner)
+      // We do this as we want the same attributions for all layers
+      const myAttributionText = '&copy; <a target="_blank" href="https://dataforsyningen.dk/Vilkaar">Styrelsen for Dataforsyning og Infrastruktur</a>';
+
+      // Define layer groups
+      const baseMapLayerGroup = new LayerGroup({
+        title: 'Baggrundskort'
+      })
+      const overlayLayerGroup = new LayerGroup({
+        title: 'Lag'
+      })
+
+      // Define view
+      const myView = new View({
+        center: [495000, 6080000], // start center position
+        zoom: 6, // start zoom level
+        projection: myProjection // use our custom projection defined earlier
+      });
+
+      // Initialize the map
+      const map = new Map({
+        layers: [
+          baseMapLayerGroup,
+          overlayLayerGroup
+        ],
+        target: 'map',
+        view: myView
+      });
+
+      // Fetches OGCAPI features as geoJSON
+      fetch('https://api.dataforsyningen.dk/ogcapi/features/ad_inspire/collections/administrativeboundary/items?limit=10&crs=EPSG:25832', {
+        headers: {
+          'Accept': 'application/geo+json',
+          'host': 'example.com'
+        }
+      })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function(json) {
+        // Create Vector layer
+        const vectorLayer = new VectorLayer({
+          source: new VectorSource({
+            features: new GeoJSON().readFeatures(json, { featureProjection: 'EPSG:25832' }),
+            attributions: myAttributionText
+          })
+        })
+        // Add the vector layer to the map
+        overlayLayerGroup.getLayers().push(vectorLayer)
+      })
+
+      // Setup WMTS and parser
+      const WMTSparser = new WMTSCapabilities();
+
+      // Fetches 'topo_skaermkort' capabilites and adds layer to map
+      const skaermkortCapabilitesUrl = 'https://api.dataforsyningen.dk/topo_skaermkort_wmts_DAF?service=WMTS&request=GetCapabilities&token=' + dftoken
+      fetch(skaermkortCapabilitesUrl)
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (text) {
+        const result = WMTSparser.read(text);
+        let options = optionsFromCapabilities(result, {
+          layer: 'topo_skaermkort',
+          matrixSet: 'View1',
+        });
+        // Set attributions
+        options.attributions = myAttributionText;
+        // Create layer from source
+        const skaermkortLayer = new TileLayer({
+          title: 'Skærmkort',
+          type: 'base',
+          opacity: 1,
+          source: new WMTS(options)
+        })
+        // Add layer to map
+        baseMapLayerGroup.getLayers().push(skaermkortLayer)
+      });
+
+      // Fetches 'orto_foraar' capabilites and adds layer to map
+      const ortoCapabilitesUrl = 'https://api.dataforsyningen.dk/orto_foraar_wmts_DAF?service=WMTS&request=GetCapabilities&token=' + dftoken
+      fetch(ortoCapabilitesUrl)
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (text) {
+        const result = WMTSparser.read(text);
+        let options = optionsFromCapabilities(result, {
+          layer: 'orto_foraar_wmts',
+          matrixSet: 'KortforsyningTilingDK',
+        });
+        // Set attributions
+        options.attributions = myAttributionText;
+        // Create layer from source
+        const ortoLayer = new TileLayer({
+          title: 'Ortofoto',
+          type: 'base',
+          visible: false,
+          opacity: 1,
+          source: new WMTS(options)
+        })
+        // Add layer to map
+        baseMapLayerGroup.getLayers().push(ortoLayer)
+      });
+
+      // Add additional controls to map
+      const layerSwitcher = new LayerSwitcher({
+        reverse: true,
+        groupSelectStyle: 'group'
+      });
+      map.addControl(layerSwitcher); // add a layer switcher
+      map.addControl(new ScaleLine()); // add a scale line
+
+    </script>
+
+    <footer>
+      <p>© 2023 Styrelsen for Dataforsyning og Infrastruktur</p>
+    </footer>
+  </body>
+</html>
