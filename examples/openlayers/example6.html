@@ -71,8 +71,8 @@
 
       // Define view
       const myView = new View({
-        center: [654500, 6176450], // start center position
-        zoom: 9, // start zoom level
+        center: [495000, 6080000], // start center position
+        zoom: 6, // start zoom level
         projection: myProjection // use our custom projection defined earlier
       });
 
@@ -97,7 +97,6 @@
         return response.json();
       })
       .then(function(json) {
-        console.log(json)
         // Create Vector layer
         const vectorLayer = new VectorLayer({
           source: new VectorSource({
