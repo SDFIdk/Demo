@@ -41,8 +41,9 @@
         ScaleLine
       } from '../lib/openlayers.js';            
       
-      // Set Dataforsyningen token, replace with your own token
-      const dftoken = '9ca510be3c4eca89b1333cadbaa60c36';
+      // Set Datafordeler username/password. Replace with your own
+      const dfUser = 'QKJBQATHVS'
+      const dfPass = 'ytxCA8UGM5n0Z*zi'
 
       // We will define map and WMTS source later
       let map
@@ -66,7 +67,7 @@
       // Define WMS source
       const wmsSource = new TileWMS({
         attributions: myAttributionText,
-        url: "https://api.dataforsyningen.dk/topo_skaermkort_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=" + dftoken,
+        url: `https://services.datafordeler.dk/Dkskaermkort/topo_skaermkort/1.0.0/wms?username=${ dfUser }&password=${ dfPass }&ignoreillegallayers=TRUE`,
         params: {
           'LAYERS': 'dtk_skaermkort',
           'TRANSPARENT': 'FALSE'
@@ -81,7 +82,7 @@
       });
 
       // Fetches 'topo_skaermkort' capabilites and adds WMTS layer to map
-      const skaermkortCapabilitesUrl = 'https://api.dataforsyningen.dk/topo_skaermkort_wmts_DAF?service=WMTS&request=GetCapabilities&token=' + dftoken
+      const skaermkortCapabilitesUrl =  `https://services.datafordeler.dk/Dkskaermkort/topo_skaermkort_wmts/1.0.0/wmts?username=${ dfUser }&password=${ dfPass }&service=WMTS&request=GetCapabilities`
       fetch(skaermkortCapabilitesUrl)
       .then(function (response) {
         return response.text();

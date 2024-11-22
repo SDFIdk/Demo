@@ -48,8 +48,10 @@
         olLoadingstrategy
       } from '../lib/openlayers.js';            
       
-      // Set Dataforsyningen token, replace with your own token
+      // Set Dataforsyningen token and Datafordeler username/password. Replace with your own
       const dftoken = '9ca510be3c4eca89b1333cadbaa60c36';
+      const dfUser = 'QKJBQATHVS'
+      const dfPass = 'ytxCA8UGM5n0Z*zi'
 
       // Set projection as we are not using the default OpenLayers projections
       // You can define it yourself or you can use the proj4 library as done below
@@ -89,7 +91,7 @@
       });
 
       // Create Skærmkort base layer
-      const skaermkortServiceUrl = 'https://api.dataforsyningen.dk/topo_skaermkort_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
+      const skaermkortServiceUrl = `https://services.datafordeler.dk/Dkskaermkort/topo_skaermkort/1.0.0/wms?username=${ dfUser }&password=${ dfPass }&ignoreillegallayers=TRUE`
       const skaermLayer = new TileLayer({
         title: 'Skærmkort',
         type: 'base',
@@ -106,7 +108,7 @@
       baseMapLayerGroup.getLayers().push(skaermLayer)
 
       // Create ortofoto base layer
-      const ortofotoServiceUrl = 'https://api.dataforsyningen.dk/orto_foraar_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
+      const ortofotoServiceUrl = `https://services.datafordeler.dk/GeoDanmarkOrto/orto_foraar/1.0.0/WMS?username=${ dfUser }&password=${ dfPass }&ignoreillegallayers=TRUE`
       const ortofotoLayer = new TileLayer({
         visible: false,
         title: 'Ortofoto',

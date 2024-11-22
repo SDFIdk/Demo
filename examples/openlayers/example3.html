@@ -75,8 +75,9 @@
         Point
       } from '../lib/openlayers.js';  
 
-      // Set Kortforsyningen token, replace with your own token
-      var dftoken = '9ca510be3c4eca89b1333cadbaa60c36';
+      // Set Datafordeler username/password. Replace with your own
+      const dfUser = 'QKJBQATHVS'
+      const dfPass = 'ytxCA8UGM5n0Z*zi'
 
       // Set projection as we are not using the default OpenLayers projections
       // You can define it yourself or you can use the proj4 library as done below
@@ -153,7 +154,7 @@
       const WMTSparser = new WMTSCapabilities();
 
       // Fetches 'topo_skaermkort' capabilites and adds layer to map
-      const skaermkortCapabilitesUrl = 'https://api.dataforsyningen.dk/topo_skaermkort_wmts_DAF?service=WMTS&request=GetCapabilities&token=' + dftoken
+      const skaermkortCapabilitesUrl =  `https://services.datafordeler.dk/Dkskaermkort/topo_skaermkort_wmts/1.0.0/wmts?username=${ dfUser }&password=${ dfPass }&service=WMTS&request=GetCapabilities`
       fetch(skaermkortCapabilitesUrl)
       .then(function (response) {
         return response.text();
@@ -178,7 +179,7 @@
       });
 
       // Fetches 'orto_foraar' capabilites and adds layer to map
-      const ortoCapabilitesUrl = 'https://api.dataforsyningen.dk/orto_foraar_wmts_DAF?service=WMTS&request=GetCapabilities&token=' + dftoken
+      const ortoCapabilitesUrl = `https://services.datafordeler.dk/GeoDanmarkOrto/orto_foraar_wmts/1.0.0/WMTS?username=${ dfUser }&password=${ dfPass }&service=WMTS&request=GetCapabilities`
       fetch(ortoCapabilitesUrl)
       .then(function (response) {
         return response.text();
