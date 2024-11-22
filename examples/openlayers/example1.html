@@ -42,8 +42,10 @@
         ScaleLine
       } from '../lib/openlayers.js';            
       
-      // Set Dataforsyningen token, replace with your own token
+      // Set Dataforsyningen token and Datafordeler username/password. Replace with your own
       const dftoken = '9ca510be3c4eca89b1333cadbaa60c36';
+      const dfUser = 'QKJBQATHVS'
+      const dfPass = 'ytxCA8UGM5n0Z*zi'
 
       // Set projection as we are not using the default OpenLayers projections
       // You can define it yourself or you can use the proj4 library as done below
@@ -86,7 +88,7 @@
       const WMTSparser = new WMTSCapabilities();
 
       // Fetches 'topo_skaermkort' capabilites and adds layer to map
-      const skaermkortCapabilitesUrl = 'https://api.dataforsyningen.dk/topo_skaermkort_wmts_DAF?service=WMTS&request=GetCapabilities&token=' + dftoken
+      const skaermkortCapabilitesUrl =  `https://services.datafordeler.dk/Dkskaermkort/topo_skaermkort_wmts/1.0.0/wmts?username=${ dfUser }&password=${ dfPass }&service=WMTS&request=GetCapabilities`
       fetch(skaermkortCapabilitesUrl)
       .then(function (response) {
         return response.text();
@@ -111,7 +113,7 @@
       });
 
       // Fetches 'orto_foraar' capabilites and adds layer to map
-      const ortoCapabilitesUrl = 'https://api.dataforsyningen.dk/orto_foraar_wmts_DAF?service=WMTS&request=GetCapabilities&token=' + dftoken
+      const ortoCapabilitesUrl = `https://services.datafordeler.dk/GeoDanmarkOrto/orto_foraar_wmts/1.0.0/WMTS?username=${ dfUser }&password=${ dfPass }&service=WMTS&request=GetCapabilities`
       fetch(ortoCapabilitesUrl)
       .then(function (response) {
         return response.text();
@@ -137,7 +139,7 @@
       });
 
       // Create Matrikel overlay
-      const matrikelServiceUrl = 'https://api.dataforsyningen.dk/MatrikelGaeldendeOgForeloebigWMS_DAF?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
+      const matrikelServiceUrl = `https://services.datafordeler.dk/MATRIKLEN2/MatGaeldendeOgForeloebigWMS/1.0.0/WMS?username=${ dfUser }&password=${ dfPass }&ignoreillegallayers=TRUE`
       const matrikelLayer = new TileLayer({
         visible: false,
         title: 'Matrikel',
@@ -154,7 +156,7 @@
       overlayLayerGroup.getLayers().push(matrikelLayer)
 
       // Create Hill shade overlay
-      const hillShadeServiceUrl = 'https://api.dataforsyningen.dk/dhm?ignoreillegallayers=TRUE&transparent=TRUE&token=' + dftoken
+      const hillShadeServiceUrl = `https://services.datafordeler.dk/DHMNedboer/dhm/1.0.0/WMS?username=${ dfUser }&password=${ dfPass }&ignoreillegallayers=TRUE`
       const hillShadeLayer = new TileLayer({
         visible: false,
         title: 'Skyggekort',
@@ -162,7 +164,7 @@
         source: new TileWMS({
           url: hillShadeServiceUrl,
           params: {
-            'LAYERS': 'dhm_terraen_skyggekort_transparent_overdrevet',
+            'LAYERS': 'dhm_terraen_skyggekort',
             'TRANSPARENT': 'TRUE'
           }
         })
