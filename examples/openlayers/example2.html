@@ -117,7 +117,6 @@
       baseMapLayerGroup.getLayers().push(ortofotoLayer)
 
       // Create Matrikel overlay
-
       const matrikelServiceUrl = `https://services.datafordeler.dk/MATRIKLEN2/MatGaeldendeOgForeloebigWMS/1.0.0/WMS?username=${ dfUser }&password=${ dfPass }&ignoreillegallayers=TRUE`
       const matrikelLayer = new TileLayer({
         visible: false,
