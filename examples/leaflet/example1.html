@@ -30,8 +30,9 @@
 
     <script>
 
-       // Set Kortforsyningen token, replace with your own token
-      const dftoken = '9ca510be3c4eca89b1333cadbaa60c36';
+      // Set Datafordeler username/password. Replace with your own
+      const dfUser = 'QKJBQATHVS'
+      const dfPass = 'ytxCA8UGM5n0Z*zi'
 
       // Set the attribution (the copyright statement shown in the lower right corner)
       // We do this as we want the same attributions for all layers
@@ -58,7 +59,7 @@
 
       // Define layers
       // Ortofoto [WMTS:orto_foraar]
-      const ortofotowmts = L.tileLayer('https://api.dataforsyningen.dk/orto_foraar_wmts_DAF?service=WMTS&request=GetTile&version=1.3.0&Layer=orto_foraar_wmts&style=default&format=image/jpg&TileMatrixSet=KortforsyningTilingDK&TileMatrix={zoom}&TileRow={y}&TileCol={x}&token=' + dftoken, {
+      const ortofotowmts = L.tileLayer(`https://services.datafordeler.dk/GeoDanmarkOrto/orto_foraar_wmts/1.0.0/WMTS?username=${ dfUser }&password=${ dfPass }&service=WMTS&request=GetTile&version=1.0.0&Layer=orto_foraar_wmts&style=default&format=image/jpg&TileMatrixSet=KortforsyningTilingDK&TileMatrix={zoom}&TileRow={y}&TileCol={x}`, {
         minZoom: 0,
         maxZoom: 13,
         attribution: myAttributionText,
@@ -69,7 +70,7 @@
       }).addTo(map);
 
       // Skærmkort [WMTS:topo_skaermkort]
-      const toposkaermkortwmts = L.tileLayer('https://api.dataforsyningen.dk/topo_skaermkort_wmts_DAF?service=WMTS&request=GetTile&version=1.3.0&Layer=topo_skaermkort&style=default&format=image/png&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}&token=' + dftoken, {
+      const toposkaermkortwmts = L.tileLayer(`https://services.datafordeler.dk/Dkskaermkort/topo_skaermkort_wmts/1.0.0/wmts?username=${ dfUser }&password=${ dfPass }&service=WMTS&request=GetTile&version=1.0.0&Layer=topo_skaermkort&style=default&format=image/png&TileMatrixSet=View1&TileMatrix={zoom}&TileRow={y}&TileCol={x}`, {
         minZoom: 0,
         maxZoom: 13,
         attribution: myAttributionText,
@@ -80,24 +81,22 @@
       }).addTo(map);
 
       // Matrikelskel overlay [WMS:mat]
-      const matrikel = L.tileLayer.wms('https://api.dataforsyningen.dk/MatrikelGaeldendeOgForeloebigWMS_DAF?ignoreillegallayers=TRUE', {
-        transparent: true,
-        layers: 'MatrikelSkel_Gaeldende,Centroide_Gaeldende',
-        token: dftoken,
+      const matrikelServiceWmsUrl = `https://services.datafordeler.dk/MATRIKLEN2/MatGaeldendeOgForeloebigWMS/1.0.0/WMS?username=${ dfUser }&password=${ dfPass }&ignoreillegallayers=TRUE`
+      const matrikel = L.tileLayer.wms(matrikelServiceWmsUrl, {
+        transparent: 'TRUE',
+        layers: 'MatrikelSkel_Gaeldende',
         format: 'image/png',
         attribution: myAttributionText,
-        continuousWorld: true,
         minZoom: 9
       }).addTo(map); // addTo means that the layer is visible by default
 
       // Hillshade overlay [WMS:dhm]
-      const hillshade = L.tileLayer.wms('https://api.dataforsyningen.dk/dhm?ignoreillegallayers=TRUE', {
-        transparent: true,
-        layers: 'dhm_terraen_skyggekort_transparent_overdrevet',
-        token: dftoken,
+      const hillshadeServiceWmsUrl = `https://services.datafordeler.dk/DHMNedboer/dhm/1.0.0/WMS?username=${ dfUser }&password=${ dfPass }&ignoreillegallayers=TRUE`
+      const hillshade = L.tileLayer.wms(hillshadeServiceWmsUrl, {
+        transparent: 'TRUE',
+        layers: 'dhm_terraen_skyggekort',
         format: 'image/png',
-        attribution: myAttributionText,
-        continuousWorld: true
+        attribution: myAttributionText
       });
 
       // Define layer groups for layer control
