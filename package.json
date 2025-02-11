@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "En samling a eksempler for brug af Dataforsyningens data med OpenLayers og LeafletJS",
   "main": "./examples/index.html",
   "type": "module",
