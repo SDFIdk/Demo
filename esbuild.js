@@ -1,5 +1,5 @@
 
-import {build} from 'esbuild'
+import { build } from 'esbuild'
 
 const entry_points = {
   openlayers: 'src/ol.js',

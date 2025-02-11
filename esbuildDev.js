@@ -1,4 +1,4 @@
-import {serve} from 'esbuild'
+import * as esbuild from 'esbuild'
 
 const entry_points = {
   openlayers: 'src/ol.js',
@@ -7,9 +7,7 @@ const entry_points = {
   leafletstyle: 'src/ol.css'
 }
 
-serve({
-  servedir: 'examples',
-}, {
+let ctx = await esbuild.context({
   entryPoints: entry_points,
   loader: {
     '.ttf': 'file',
@@ -17,12 +15,12 @@ serve({
   },
   outdir: 'examples',
   bundle: true,
-  splitting: true,
   format: 'esm'
-}).then(server => {
-
-  console.log(server)
-  // Call "stop" on the web server to stop serving
-  // server.stop()
-
 })
+
+// Serve the HTML demos on localhost:8000
+let { host, port } = await ctx.serve({
+  servedir: 'examples',
+})
+console.info('--- Serving at http://localhost:8000 ---')
+console.info('--- Stop with CTRL + C ---')

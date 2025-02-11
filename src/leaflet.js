@@ -1,4 +1,4 @@
-import { createTranslator } from '../../saul/modules/saul-projection';
+import { createTranslator } from '@dataforsyningen/saul/modules/saul-projection'
 
 const translator = createTranslator('EPSG:25832', 'WGS84')
 
